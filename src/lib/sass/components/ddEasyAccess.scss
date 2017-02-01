@@ -1,0 +1,115 @@
+/*
+	DivoDivnoe EasyAccess
+	Зависит от всех компонентов
+*/
+
+/*
+	@function ___($_args...)
+	{
+		@return ___($_args...);
+	}
+
+	@mixin ___($_args...)
+	{
+		@include ___($_args...);
+	}
+*/
+
+// DivoDivnoe Helpers
+
+@function stripUnits($_args...)
+{
+	@return ddHelpersStripUnits($_args...);
+}
+
+@function mean($_args...)
+{
+	@return ddHelpersGetMean($_args...);
+}
+
+@function decimalRound($_args...)
+{
+	@return ddHelpersDecimalRound($_args...);
+}
+
+// DivoDivnoe Space
+
+@function space($_args...)
+{
+	@return ddSpaceGetSpace($_args...);
+}
+
+// DivoDivnoe Responsive
+
+@function breakpointVal($_args...)
+{
+	@return ddResponsiveBreakpointVal($_args...);
+}
+
+@function minWidth($_args...)
+{
+	@return ddResponsiveMinWidth($_args...);
+}
+
+@function maxWidth($_args...)
+{
+	@return ddResponsiveMaxWidth($_args...);
+}
+
+@function minMeanWidth($_args...)
+{
+	@return ddResponsiveMinMeanWidth($_args...);
+}
+
+@function maxMeanWidth($_args...)
+{
+	@return ddResponsiveMaxMeanWidth($_args...);
+}
+
+@function nextBreakpointName($_args...)
+{
+	@return ddResponsiveNextBreakpointName($_args...);
+}
+
+@function nextBreakpoint($_args...)
+{
+	@return ddResponsiveNextBreakpoint($_args...);
+}
+
+@mixin media($_args...)
+{
+	@include dd-responsive-media($_args...);
+}
+
+@mixin helpers($_args...)
+{
+	@include dd-responsive-helpers($_args...);
+}
+
+// DivoDivnoe Grid
+
+@mixin grid-template($_args...)
+{
+	@include dd-grid-template($_args...);
+}
+
+@mixin grid-template-columns($_args...)
+{
+	@include dd-grid-template-columns($_args...);
+}
+
+@mixin grid-template-rows($_args...)
+{
+	@include dd-grid-template-rows($_args...);
+}
+
+@mixin grid-area($_args...)
+{
+	@include dd-grid-area($_args...);
+}
+
+@mixin grid-cell($_args...)
+{
+	@include dd-grid-cell($_args...);
+}
+

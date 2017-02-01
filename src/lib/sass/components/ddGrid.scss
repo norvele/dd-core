@@ -1,0 +1,231 @@
+/*
+	DivoDivnoe Grid
+	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
+*/
+
+$dd-grid-columns: 12 !default;
+$dd-grid-gutter-horizontal: ddSpaceGetSpace($dd-space-defaultSpace) !default;
+$dd-grid-gutter-vertical: ddSpaceGetSpace($dd-space-defaultSpace) !default;
+
+// Генерирует сетку в заданном направлении
+// используя grid-подобный синтаксис
+@mixin dd-grid-template($_dir, $_params) {
+	$_lngs: ();
+	// Формируем массив сумм величин по их измерениям
+	// px: 250px, em: 100em, fr: 3fr
+	@each $_param in $_params {
+		@if not unitless($_param) {
+			$_unit: unit($_param);
+			$_newVal: null;
+			@if map-has-key($_lngs, $_unit) {
+				$_newVal: map-get($_lngs, $_unit) + $_param;
+			} @else {
+				$_newVal: $_param;
+			}
+			$_newMap: ($_unit:$_newVal);
+			$_lngs: map-merge($_lngs, $_newMap);
+		}
+	}
+	// Итоговая строка для calc, в виде 100% - 150px - 15em
+	$_calcString: '100%';
+	// Сумма для fr размерности
+	$_calcSum: 0;
+	@each $_unit, $_lng in $_lngs {
+		@if $_unit == fr {
+			$_calcSum: $_calcSum + ddHelpersStripUnits($_lng);
+		} @else {
+			$_calcString: $_calcString + ' - #{$_lng}';
+		}
+	}
+
+	display: flex;
+	@if $_dir == row {
+		flex-direction: row;
+	} @else {
+		flex-direction: column;
+	}
+
+	$_i: 1;
+	@each $_param in $_params {
+		& > *:nth-child(#{$_i}) {
+			@if unitless($_param) {
+				flex-grow: $_param;
+				@if $_param > 0 {
+					flex-shrink: 1;
+				} @else {
+					flex-shrink: 0;
+				}
+			} @else {
+				flex-grow: 0;
+				flex-shrink: 0;
+				@if unit($_param) == fr {
+					@if $_dir == row {
+						width: calc((#{$_calcString}) * #{ddHelpersStripUnits($_param)/$_calcSum});
+					} @else {
+						height: calc((#{$_calcString}) * #{ddHelpersStripUnits($_param)/$_calcSum});
+					}
+				} @else {
+					@if $_dir == row {
+						width: $_param;
+					} @else {
+						height: $_param;
+					}
+				}
+			}
+		}
+		$_i: $_i + 1;
+	}
+}
+
+@mixin dd-grid-template-columns($params...) {
+	@include dd-grid-template(row, $params)
+}
+
+@mixin dd-grid-template-rows($params...) {
+	@include dd-grid-template(col, $params)
+}
+
+@mixin dd-grid-area($_gutter_h: $dd-grid-gutter-horizontal, $_gutter_v: $dd-grid-gutter-vertical) {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex-basis: auto;
+	min-width: 0;
+
+	&._#{$dd-system-classPrefix}row {
+		margin-left: -$_gutter_h/2;
+		margin-right: -$_gutter_h/2;
+
+		.#{$dd-system-classPrefix}grid-cell {
+			padding-left: $_gutter_h/2;
+			padding-right: $_gutter_h/2;
+		}
+	}
+
+	&._#{$dd-system-classPrefix}col {
+		margin-top: -$_gutter_v/2;
+		margin-bottom: -$_gutter_v/2;
+
+		.#{$dd-system-classPrefix}grid-cell {
+			width: 100%;
+			padding-top: $_gutter_v/2;
+			padding-bottom: $_gutter_v/2;
+		}
+	}
+}
+
+@mixin dd-grid-cell($_grow: 1, $_shrink: 1) {
+	box-sizing: border-box;
+	flex-grow: $_grow;
+	flex-shrink: $_shrink;
+	min-width: 0;
+}
+
+.#{$dd-system-classPrefix}grid {
+
+	&-container {
+		box-sizing: border-box;
+		padding: 0 $dd-grid-gutter-horizontal;
+		margin: 0 auto;
+
+		&._#{$dd-system-classPrefix}fluid {
+			width: 100%;
+		}
+	}
+
+	&-area {
+		@include dd-grid-area();
+	}
+
+	&-cell {
+		@include dd-grid-cell();
+	}
+}
+
+// Генерируем селектор для всех ячеек с заданным размером
+$_cellSelector: '';
+@each $_key, $_params in $dd-responsive-breakpoints {
+	@for $j from 1 through $dd-grid-columns {
+		$_cellSelector: $_cellSelector + '.#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j}';
+		@if (not ddResponsiveNextBreakpoint($_key) and $j == $dd-grid-columns) {} @else {
+			$_cellSelector: $_cellSelector + ', ';
+		}
+	}
+}
+// Запрещаем растягивание ячеек, для которых задан размер
+#{$_cellSelector} {
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+// Для генерации отступов в брейкпойнтах
+@mixin _dd-grid-mediaGenerateSpace($_gridGutterHorizontal, $_gridGutterVertical) {
+	&-area._#{$dd-system-classPrefix}row {
+		margin-left: -$_gridGutterHorizontal/2;
+		margin-right: -$_gridGutterHorizontal/2;
+
+		.#{$dd-system-classPrefix}grid-cell {
+			padding-left: $_gridGutterHorizontal/2;
+			padding-right: $_gridGutterHorizontal/2;
+		}
+	}
+
+	&-area._#{$dd-system-classPrefix}col {
+		margin-top: -$_gridGutterVertical/2;
+		margin-bottom: -$_gridGutterVertical/2;
+
+		.#{$dd-system-classPrefix}grid-cell {
+			padding-top: $_gridGutterVertical/2;
+			padding-bottom: $_gridGutterVertical/2;
+		}
+	}
+}
+
+@if (not $dd-system-disableMedia) {
+	.#{$dd-system-classPrefix}grid {
+		// Генерируем стили для брейкпойтнов
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			$_cutoff: map_get($_params, 'cutoff');
+			$_range: map_get($_params, 'range');
+			$_minWidth: nth($_range, 1);
+			$_maxWidth: nth($_range, 2);
+			$_containerWidth: map_get($_params, 'containerWidth');
+			$_containerGutter: map_get($_params, 'containerGutter');
+			@if (type_of($_containerGutter) == string) {
+				$_containerGutter: ddSpaceGetSpace($_containerGutter);
+			}
+			$_gridGutterHorizontal: map_get($_params, 'gridGutterHorizontal');
+			@if (type_of($_gridGutterHorizontal) == string) {
+				$_gridGutterHorizontal: ddSpaceGetSpace($_gridGutterHorizontal);
+			}
+			$_gridGutterVertical: map_get($_params, 'gridGutterVertical');
+			@if (type_of($_gridGutterVertical) == string) {
+				$_gridGutterVertical: ddSpaceGetSpace($_gridGutterVertical);
+			}
+			// Отступы сетки
+			@if ($_maxWidth) {
+				@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
+					@include _dd-grid-mediaGenerateSpace($_gridGutterHorizontal, $_gridGutterVertical);
+				}
+			} @else {
+				@media all and ( min-width: $_minWidth ) {
+					@include _dd-grid-mediaGenerateSpace($_gridGutterHorizontal, $_gridGutterVertical);
+				}
+			}
+			// Размеры ячеек сетки
+			@media all and ( min-width: $_minWidth ) {
+				&-container {
+					width: $_containerWidth;
+					padding: 0 $_containerGutter;
+				}
+				@for $j from 1 through $dd-grid-columns {
+					&-area {
+						.#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j} {
+							width: percentage($j / $dd-grid-columns);
+						}
+					}
+				}
+			}
+		}
+	}
+}

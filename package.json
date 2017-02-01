@@ -1,0 +1,25 @@
+{
+  "name": "DivoDivnoe",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-html-extend": "*",
+    "gulp-load-plugins": "*",
+    "gulp-plumber": "*",
+    "gulp-preprocess": "*",
+    "gulp-sass": "*"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-preset-es2015": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Konstantin Doroschenko",
+  "license": "ISC"
+}

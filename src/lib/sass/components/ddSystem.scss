@@ -1,0 +1,17 @@
+/*
+	DivoDivnoe System.
+*/
+
+/*
+	Устанавливает префикс для всех генерируемых классов библиотеки
+	Например при "dd-": .dd-grid-area ._dd-col .__dd-hidden
+*/
+$dd-system-classPrefix: 'dd-' !default;
+
+/*
+	Выключает все медиа выражения (адаптивность)
+	Работает только для выражений созданных при помощи dd-responsive-media()
+	TODO не хорошо работает с сетками, надо переименовать в fixedMedia
+	TODO и указывать отсечку, которую нужно зафиксировать
+*/
+$dd-system-disableMedia: false !default;

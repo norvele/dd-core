@@ -1,0 +1,48 @@
+.responsiveTester
+
+	&-grid
+		display: flex
+
+		&-item
+			box-sizing: border-box
+			width: 20%
+			flex-grow: 0
+			flex-shrink: 0
+			padding: 10px
+			text-align: center
+
+	&-mediaTester
+		&::before
+			content: 'no media'
+			@include dd-responsive-media(xs)
+				content: 'xs'
+			@include dd-responsive-media(sm, 600px)
+				content: 'sm-600px'
+			@include dd-responsive-media(md, xl)
+				content: 'md-xl'
+
+@each $_key, $_params in $dd-responsive-breakpoints
+	$_range: map_get($_params, 'range')
+	$_min: nth($_range, 1)
+	$_max: nth($_range, 2)
+
+	@media all and ( min-width: $_min )
+		.responsiveTester-grid-item._#{$_key}-up
+			background: #75ae22
+
+	@if $_max
+		@media all and ( max-width: $_max )
+			.responsiveTester-grid-item._#{$_key}-down
+				background: #75ae22
+	@else
+		.responsiveTester-grid-item._#{$_key}-down
+			background: #75ae22
+
+	@if $_max
+		@media all and ( min-width: $_min ) and ( max-width: $_max )
+			.responsiveTester-grid-item._#{$_key}
+				background: #75ae22
+	@else
+		@media all and ( min-width: $_min )
+			.responsiveTester-grid-item._#{$_key}
+				background: #75ae22
