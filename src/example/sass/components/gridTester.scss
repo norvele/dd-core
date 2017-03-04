@@ -1,6 +1,25 @@
 .gridTester {
+
 	&-item {
 		padding: 10px;
 		background: #34a1cf;
+	}
+
+	&-customGrid {
+		@include dd-grid-list(
+			(
+				rowItems: 4,
+				gutterHorizontal: tiny,
+			),
+			(
+				media: (md),
+				rowItems: 3,
+				gutterHorizontal: massive,
+			),
+			(
+				media: ((xs, 600px)),
+				rowItems: 2,
+			)
+		);
 	}
 }

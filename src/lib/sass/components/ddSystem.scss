@@ -9,9 +9,36 @@
 $dd-system-classPrefix: 'dd-' !default;
 
 /*
-	Выключает все медиа выражения (адаптивность)
-	Работает только для выражений созданных при помощи dd-responsive-media()
-	TODO не хорошо работает с сетками, надо переименовать в fixedMedia
-	TODO и указывать отсечку, которую нужно зафиксировать
+	Устанавливает режим дебага
+	Если true - будут выводиться все предупреждения
 */
-$dd-system-disableMedia: false !default;
+$dd-system-debug: true !default;
+
+/*
+	TODO медиа выражение, в пределах которого будет работать адавтивность
+*/
+$dd-system-mediaBounds: null !default;
+
+@function _dd-system-message($_message, $_type: 'warn')
+{
+	@if ($dd-system-debug) {
+		@if ($_type == 'warn') {
+			@warn $_message;
+		} @elseif ($_type == 'error') {
+			@error $_message;
+		} @else {
+			@debug $_message;
+		}
+	}
+	@return null;
+}
+
+@mixin dd-system-message($_message, $_type: 'warn')
+{
+	$_: _dd-system-message($_message, $_type);
+}
+
+@function dd-system-message($_message, $_type: 'warn')
+{
+	@return _dd-system-message($_message, $_type);
+}

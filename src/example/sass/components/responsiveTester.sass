@@ -12,14 +12,26 @@
 			text-align: center
 
 	&-mediaTester
+
 		&::before
 			content: 'no media'
 			@include dd-responsive-media(xs)
 				content: 'xs'
-			@include dd-responsive-media(sm, 600px)
+			@include dd-responsive-media((sm, 600px))
 				content: 'sm-600px'
-			@include dd-responsive-media(md, xl)
+			@include dd-responsive-media((md, xl))
 				content: 'md-xl'
+
+	&-helpersTester
+
+		@include dd-responsive-media((xl, infinite))
+			background: #00d6b2
+
+	&-spaceTester
+
+		width: 10px
+		background: #ffaaaa
+		@include dd-responsive-space(large)
 
 @each $_key, $_params in $dd-responsive-breakpoints
 	$_range: map_get($_params, 'range')

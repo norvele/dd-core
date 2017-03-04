@@ -11,19 +11,19 @@ $typ-blockElements: (mark, pre, code, a, strong, em, s, del, u, ins, small, abbr
 $typ-rhythm: 1em * $typ-lineHeight !default;
 
 // Нужно для доступа к любому заголовку
-.typ-prototype-header {
+.typ-prototypeHeader {
 	font-weight: 600;
 	line-height: $typ-headerLineHeight;
 }
 
 @mixin typ-header($_size) {
-	@extend .typ-prototype-header;
+	@extend .typ-prototypeHeader;
 	font-size: $_size;
 	// Если размер в нормальных единицах - то вычисляем отступы
 	// для поддержания вертикального ритма
 	@if unit($_size) == em {
 		// Высчитываем $typ-rhythm в контексте заголовка в em
-		$_headingRhythm: $typ-lineHeight / ddHelpersStripUnits($_size) + 0em;
+		$_headingRhythm: $typ-lineHeight / dd-helpers-stripUnits($_size) + 0em;
 		// Высчитываем разницу между абсолютным и контекстным ритмом
 		$_rhythmRate: $typ-rhythm / $_headingRhythm;
 		// Считаем относительный размер заголовка

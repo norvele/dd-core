@@ -7,6 +7,7 @@ export default class TaskSass
 {
 	constructor(config = {})
 	{
+		//var result = sass.renderSync({file: config.src});
 		gulp.task(config.name, () => {
 			gulp.src(config.src)
 				.pipe(plumber())

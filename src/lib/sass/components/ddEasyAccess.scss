@@ -19,61 +19,61 @@
 
 @function stripUnits($_args...)
 {
-	@return ddHelpersStripUnits($_args...);
+	@return dd-helpers-stripUnits($_args...);
 }
 
 @function mean($_args...)
 {
-	@return ddHelpersGetMean($_args...);
+	@return dd-helpers-getMean($_args...);
 }
 
 @function decimalRound($_args...)
 {
-	@return ddHelpersDecimalRound($_args...);
+	@return dd-helpers-decimalRound($_args...);
 }
 
 // DivoDivnoe Space
 
 @function space($_args...)
 {
-	@return ddSpaceGetSpace($_args...);
+	@return dd-space-getSpace($_args...);
 }
 
 // DivoDivnoe Responsive
 
 @function breakpointVal($_args...)
 {
-	@return ddResponsiveBreakpointVal($_args...);
+	@return dd-responsive-breakpointVal($_args...);
 }
 
 @function minWidth($_args...)
 {
-	@return ddResponsiveMinWidth($_args...);
+	@return dd-responsive-minWidth($_args...);
 }
 
 @function maxWidth($_args...)
 {
-	@return ddResponsiveMaxWidth($_args...);
+	@return dd-responsive-maxWidth($_args...);
 }
 
 @function minMeanWidth($_args...)
 {
-	@return ddResponsiveMinMeanWidth($_args...);
+	@return dd-responsive-minMeanWidth($_args...);
 }
 
 @function maxMeanWidth($_args...)
 {
-	@return ddResponsiveMaxMeanWidth($_args...);
+	@return dd-responsive-maxMeanWidth($_args...);
 }
 
 @function nextBreakpointName($_args...)
 {
-	@return ddResponsiveNextBreakpointName($_args...);
+	@return dd-responsive-nextBreakpointName($_args...);
 }
 
 @function nextBreakpoint($_args...)
 {
-	@return ddResponsiveNextBreakpoint($_args...);
+	@return dd-responsive-nextBreakpoint($_args...);
 }
 
 @mixin media($_args...)
@@ -88,27 +88,27 @@
 
 // DivoDivnoe Grid
 
-@mixin grid-template($_args...)
+@mixin gridTemplate($_args...)
 {
 	@include dd-grid-template($_args...);
 }
 
-@mixin grid-template-columns($_args...)
+@mixin gridTemplateColumns($_args...)
 {
-	@include dd-grid-template-columns($_args...);
+	@include dd-grid-templateColumns($_args...);
 }
 
-@mixin grid-template-rows($_args...)
+@mixin gridTemplateRows($_args...)
 {
-	@include dd-grid-template-rows($_args...);
+	@include dd-grid-templateRows($_args...);
 }
 
-@mixin grid-area($_args...)
+@mixin gridArea($_args...)
 {
 	@include dd-grid-area($_args...);
 }
 
-@mixin grid-cell($_args...)
+@mixin gridCell($_args...)
 {
 	@include dd-grid-cell($_args...);
 }

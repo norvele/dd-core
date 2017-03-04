@@ -48,7 +48,7 @@ $dd-helpers-map: (
 	flexNoWrap: (
 		flex-wrap: 'nowrap',
 	),
-);
+) !default;
 
 @each $_key, $_params in $dd-helpers-map {
 	.__#{$dd-system-classPrefix}#{$_key} {
@@ -59,33 +59,16 @@ $dd-helpers-map: (
 }
 
 // Обрезает юниты (размерность) у числа
-@function ddHelpersStripUnits($_number)
+@function dd-helpers-stripUnits($_number)
 {
 	@return $_number / ($_number * 0 + 1);
-}
-
-// Возвращает среднее значение между двумя
-// $_number1 - первое значение
-// $_number2 - второе значение
-// $_offset - смещение среднего значения от первого (от 0 до 1)
-@function ddHelpersGetMean($_number1, $_number2, $_offset:0.5)
-{
-	$_normalizedOffset: 0.5;
-	@if unit($_offset) == '%' {
-		$_normalizedOffset: ddHelpersStripUnits($_offset)/100;
-	} @else if unitless($_offset) {
-		$_normalizedOffset: $_offset;
-	} @else {
-		$_normalizedOffset: ddHelpersStripUnits($_offset);
-	}
-	@return round($_number1 + ($_number2 - $_number1) * $_normalizedOffset);
 }
 
 // Откругляет число до заданного знака после запятой
 // $_number - число
 // $_digits - кол-во знаков после запятой
 // $_mode - метод округления (round, ceil, floor)
-@function ddHelpersDecimalRound($_number, $_digits: 0, $_mode: round)
+@function dd-helpers-decimalRound($_number, $_digits: 0, $_mode: round)
 {
 	$_n: 1;
 	@if $_digits > 0 {
@@ -105,12 +88,30 @@ $dd-helpers-map: (
 	}
 }
 
-@function ddHelpersImplode($_pieces, $_glue: "") {
+// Возвращает среднее значение между двумя
+// $_number1 - первое значение
+// $_number2 - второе значение
+// $_offset - смещение среднего значения от первого (от 0 до 1)
+@function dd-helpers-getMean($_number1, $_number2, $_offset:0.5, $_digits: 0)
+{
+	$_normalizedOffset: 0.5;
+	@if unit($_offset) == '%' {
+		$_normalizedOffset: dd-helpers-stripUnits($_offset)/100;
+	} @else if unitless($_offset) {
+		$_normalizedOffset: $_offset;
+	} @else {
+		$_normalizedOffset: dd-helpers-stripUnits($_offset);
+	}
+	$_result: $_number1 + ($_number2 - $_number1) * $_normalizedOffset;
+	@return dd-helpers-decimalRound($_result, $_digits);
+}
+
+@function dd-helpers-implode($_pieces, $_glue: "") {
 	$_result: null;
 	@for $_i from 1 through length($_pieces) {
 		$_piece: nth($_pieces, $_i);
 		@if type-of($_piece) == list {
-			$_result: unquote("#{$_result}#{$_glue}#{ddHelpersImplode($_piece, $_glue)}");
+			$_result: unquote("#{$_result}#{$_glue}#{dd-helpers-implode($_piece, $_glue)}");
 		} @else {
 			$_result: unquote("#{$_result}#{$_glue}#{$_piece}");
 		}
@@ -121,36 +122,6 @@ $dd-helpers-map: (
 	@return $_result;
 }
 
-@function ddHelpersColorToMatrix($_to)
-{
-	$_red: red($_to)/255;
-	$_green: green($_to)/255;
-	$_blue: blue($_to)/255;
-	$_matrix: (
-		($_red, 0,       0,      0, 0),
-		(0,     $_green, 0,      0, 0),
-		(0,     0,       $_blue, 0, 0),
-		(0,     0,       0,      1, 0),
-	);
-	@return $_matrix;
-}
-
-@function ddHelpersColorMatrixToString($_matrix)
-{
-	$_result: ();
-	@each $_val1 in $_matrix {
-		$_row: ddHelpersImplode($_val1, ' ');
-		$_result: append($_result, $_row, comma);
-	}
-	@return $_result;
-}
-
-@mixin ddHelpersColorFilter($_to)
-{
-	$_matrix: ddHelpersColorMatrixToString(ddHelpersColorToMatrix($_to));
-	filter: url("data:image/svg+xml;utf8,<svg><defs><filter id='filter'><feColorMatrix type='matrix' values='#{$_matrix}'></feColorMatrix></filter></defs></svg>#filter");
-}
-
-.govno {
-	@include ddHelpersColorFilter(#ee5500);
+@function dd-helpers-capitalize($_string) {
+	@return to-upper-case(str-slice($_string, 1, 1)) + str-slice($_string, 2);
 }

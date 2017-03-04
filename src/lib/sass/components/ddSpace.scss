@@ -2,19 +2,53 @@
 	DivoDivnoe Space
 */
 
-// Массив отступов
-$dd-space-spaces: (
-	xs: 4px,
-	sm: 8px,
-	md: 16px,
-	lg: 32px,
-	xl: 64px,
-) !default;
+$dd-space-defaultSpace: 16px !default;
 
-// Имя отступа по умолчанию
-$dd-space-defaultSpace: md !default;
+$dd-space-factor: (
+	tiny: 0.25,
+	small: 0.5,
+	medium: 1,
+	large: 2,
+	massive: 4,
+);
 
-// Возвращает отступ по его имени
-@function ddSpaceGetSpace($_name) {
-	@return map_get($dd-space-spaces, $_name);
+@function dd-space-getSpace($_factor, $_strict: false)
+{
+	@if (type_of($_factor) == string) {
+		$_val: map_get($dd-space-factor, $_factor);
+		@if ($_val != null) {
+			@return round($_val * $dd-space-defaultSpace);
+		} @else {
+			$🗑: dd-system-message('Не существует размера "#{$_factor}"');
+			@return null;
+		}
+	} @elseif (type_of($_factor) == number and unitless($_factor)) {
+		@return round($_factor * $dd-space-defaultSpace);
+	} @else {
+		@if ($_strict) {
+			$🗑: dd-system-message('Не правильное имя размера "#{$_factor}"');
+			@return null;
+		}
+	}
+	@return $_factor;
+}
+
+@function dd-space-getFactor($_factor)
+{
+	@return map_get($dd-space-factor, $_factor);
+}
+
+@mixin dd-space($_factor)
+{
+	display: block;
+	height: dd-space-getSpace($_factor);
+}
+
+.#{$dd-system-classPrefix}space {
+	display: block;
+	@each $_key, $_val in $dd-space-factor {
+		&._#{$_key} {
+			height: dd-space-getSpace($_key);
+		}
+	}
 }

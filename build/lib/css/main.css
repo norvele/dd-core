@@ -7,10 +7,11 @@
 	Например при "dd-": .dd-grid-area ._dd-col .__dd-hidden
 */
 /*
-	Выключает все медиа выражения (адаптивность)
-	Работает только для выражений созданных при помощи dd-responsive-media()
-	TODO не хорошо работает с сетками, надо переименовать в fixedMedia
-	TODO и указывать отсечку, которую нужно зафиксировать
+	Устанавливает режим дебага
+	Если true - будут выводиться все предупреждения
+*/
+/*
+	TODO медиа выражение, в пределах которого будет работать адавтивность
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -94,12 +95,22 @@ table {
   -ms-flex-wrap: nowrap !important;
       flex-wrap: nowrap !important; }
 
-.govno {
-  filter: url("data:image/svg+xml;utf8,<svg><defs><filter id='filter'><feColorMatrix type='matrix' values='0.93333 0 0 0 0, 0 0.33333 0 0 0, 0 0 0 0 0, 0 0 0 1 0'></feColorMatrix></filter></defs></svg>#filter"); }
-
 /*
 	DivoDivnoe Space
 */
+.dd-space {
+  display: block; }
+  .dd-space._tiny {
+    height: 4px; }
+  .dd-space._small {
+    height: 8px; }
+  .dd-space._medium {
+    height: 16px; }
+  .dd-space._large {
+    height: 32px; }
+  .dd-space._massive {
+    height: 64px; }
+
 /*
 	DivoDivnoe Responsive
 	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
@@ -109,9 +120,7 @@ table {
 	cutoff - отсечка в пикселях. (обязательно если не указан range)
 	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
 	containerWidth - ширина контейнера (по умолчанию равен cutoff)
-	containerGutter - отступы от краев контейнера (по умолчанию равен $dd-responsive-defaultSpace)
-	gridGutterHorizontal - отступы между колонками (по умолчанию равен $dd-responsive-defaultSpace)
-	gridGutterVertical - отступы между ячейками по вертикале (по умолчанию равен $dd-responsive-defaultSpace)
+	spaceScale - множитель отступов
 */
 @media all and (min-width: 0) {
   .__dd-pullRight-xs-up {
@@ -147,7 +156,7 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
-@media all and (max-width: 543px) {
+@media all and (min-width: 0) and (max-width: 543px) {
   .__dd-pullRight-xs-down {
     float: right !important; }
   .__dd-pullLeft-xs-down {
@@ -249,7 +258,7 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
-@media all and (max-width: 767px) {
+@media all and (min-width: 0) and (max-width: 767px) {
   .__dd-pullRight-sm-down {
     float: right !important; }
   .__dd-pullLeft-sm-down {
@@ -351,7 +360,7 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
-@media all and (max-width: 991px) {
+@media all and (min-width: 0) and (max-width: 991px) {
   .__dd-pullRight-md-down {
     float: right !important; }
   .__dd-pullLeft-md-down {
@@ -453,7 +462,7 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
-@media all and (max-width: 1199px) {
+@media all and (min-width: 0) and (max-width: 1199px) {
   .__dd-pullRight-lg-down {
     float: right !important; }
   .__dd-pullLeft-lg-down {
@@ -636,9 +645,126 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._tiny {
+    height: 2px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._tiny {
+    height: 2px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._tiny {
+    height: 3px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._tiny {
+    height: 4px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._tiny {
+    height: 8px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._small {
+    height: 4px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._small {
+    height: 4px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._small {
+    height: 6px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._small {
+    height: 8px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._small {
+    height: 16px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._medium {
+    height: 8px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._medium {
+    height: 8px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._medium {
+    height: 12px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._medium {
+    height: 16px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._medium {
+    height: 32px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._large {
+    height: 16px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._large {
+    height: 16px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._large {
+    height: 24px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._large {
+    height: 32px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._large {
+    height: 64px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._massive {
+    height: 32px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._massive {
+    height: 32px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._massive {
+    height: 48px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._massive {
+    height: 64px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._massive {
+    height: 128px; } }
+
 /*
 	DivoDivnoe Grid
 	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
+*/
+/*
+	@include dd-grid-list(
+		(
+			rowItems: 5,
+			gutterVertical: 16px,
+			gutterHorizontal: small,
+		),
+		(
+			media: ((sm, md), xl),
+			rowItems: 3,
+		),
+		(
+			media: ((360px, 500px)),
+			gutterVertical: tiny,
+		),
+	)
 */
 .dd-grid-container {
   box-sizing: border-box;
@@ -648,31 +774,29 @@ table {
     width: 100%; }
 
 .dd-grid-area {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-  min-width: 0; }
-  .dd-grid-area._dd-row {
-    margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
-      padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
-    margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      width: 100%;
-      padding-top: 8px;
-      padding-bottom: 8px; }
+  min-width: 0;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: -16px; }
+  .dd-grid-area > * {
+    width: 100%; }
+  .dd-grid-area::after {
+    content: ''; }
+  .dd-grid-area > * {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 16px; }
+  .dd-grid-area::after {
+    height: 16px; }
 
 .dd-grid-cell {
   box-sizing: border-box;
@@ -681,7 +805,10 @@ table {
           flex-grow: 1;
   -ms-flex-negative: 1;
       flex-shrink: 1;
-  min-width: 0; }
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  min-width: 0;
+  min-height: 0; }
 
 .dd-grid-cell._xs-1, .dd-grid-cell._xs-2, .dd-grid-cell._xs-3, .dd-grid-cell._xs-4, .dd-grid-cell._xs-5, .dd-grid-cell._xs-6, .dd-grid-cell._xs-7, .dd-grid-cell._xs-8, .dd-grid-cell._xs-9, .dd-grid-cell._xs-10, .dd-grid-cell._xs-11, .dd-grid-cell._xs-12, .dd-grid-cell._sm-1, .dd-grid-cell._sm-2, .dd-grid-cell._sm-3, .dd-grid-cell._sm-4, .dd-grid-cell._sm-5, .dd-grid-cell._sm-6, .dd-grid-cell._sm-7, .dd-grid-cell._sm-8, .dd-grid-cell._sm-9, .dd-grid-cell._sm-10, .dd-grid-cell._sm-11, .dd-grid-cell._sm-12, .dd-grid-cell._md-1, .dd-grid-cell._md-2, .dd-grid-cell._md-3, .dd-grid-cell._md-4, .dd-grid-cell._md-5, .dd-grid-cell._md-6, .dd-grid-cell._md-7, .dd-grid-cell._md-8, .dd-grid-cell._md-9, .dd-grid-cell._md-10, .dd-grid-cell._md-11, .dd-grid-cell._md-12, .dd-grid-cell._lg-1, .dd-grid-cell._lg-2, .dd-grid-cell._lg-3, .dd-grid-cell._lg-4, .dd-grid-cell._lg-5, .dd-grid-cell._lg-6, .dd-grid-cell._lg-7, .dd-grid-cell._lg-8, .dd-grid-cell._lg-9, .dd-grid-cell._lg-10, .dd-grid-cell._lg-11, .dd-grid-cell._lg-12, .dd-grid-cell._xl-1, .dd-grid-cell._xl-2, .dd-grid-cell._xl-3, .dd-grid-cell._xl-4, .dd-grid-cell._xl-5, .dd-grid-cell._xl-6, .dd-grid-cell._xl-7, .dd-grid-cell._xl-8, .dd-grid-cell._xl-9, .dd-grid-cell._xl-10, .dd-grid-cell._xl-11, .dd-grid-cell._xl-12 {
   -webkit-box-flex: 0;
@@ -691,220 +818,211 @@ table {
       flex-shrink: 0; }
 
 @media all and (min-width: 0) and (max-width: 543px) {
-  .dd-grid-area._dd-row {
-    margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
-      padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
+  .dd-grid-area {
+    margin-left: -4px;
+    margin-right: -4px;
     margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      padding-top: 8px;
-      padding-bottom: 8px; } }
+    .dd-grid-area > * {
+      padding-left: 4px;
+      padding-right: 4px;
+      margin-bottom: 8px; }
+    .dd-grid-area::after {
+      height: 8px; } }
 
 @media all and (min-width: 0) {
   .dd-grid-container {
     width: 100%;
-    padding: 0 4px; }
-  .dd-grid-area .dd-grid-cell._xs-1 {
+    padding: 0 8px; }
+  .dd-grid-area > .dd-grid-cell._xs-1 {
     width: 8.33333%; }
-  .dd-grid-area .dd-grid-cell._xs-2 {
+  .dd-grid-area > .dd-grid-cell._xs-2 {
     width: 16.66667%; }
-  .dd-grid-area .dd-grid-cell._xs-3 {
+  .dd-grid-area > .dd-grid-cell._xs-3 {
     width: 25%; }
-  .dd-grid-area .dd-grid-cell._xs-4 {
+  .dd-grid-area > .dd-grid-cell._xs-4 {
     width: 33.33333%; }
-  .dd-grid-area .dd-grid-cell._xs-5 {
+  .dd-grid-area > .dd-grid-cell._xs-5 {
     width: 41.66667%; }
-  .dd-grid-area .dd-grid-cell._xs-6 {
+  .dd-grid-area > .dd-grid-cell._xs-6 {
     width: 50%; }
-  .dd-grid-area .dd-grid-cell._xs-7 {
+  .dd-grid-area > .dd-grid-cell._xs-7 {
     width: 58.33333%; }
-  .dd-grid-area .dd-grid-cell._xs-8 {
+  .dd-grid-area > .dd-grid-cell._xs-8 {
     width: 66.66667%; }
-  .dd-grid-area .dd-grid-cell._xs-9 {
+  .dd-grid-area > .dd-grid-cell._xs-9 {
     width: 75%; }
-  .dd-grid-area .dd-grid-cell._xs-10 {
+  .dd-grid-area > .dd-grid-cell._xs-10 {
     width: 83.33333%; }
-  .dd-grid-area .dd-grid-cell._xs-11 {
+  .dd-grid-area > .dd-grid-cell._xs-11 {
     width: 91.66667%; }
-  .dd-grid-area .dd-grid-cell._xs-12 {
+  .dd-grid-area > .dd-grid-cell._xs-12 {
     width: 100%; } }
 
 @media all and (min-width: 544px) and (max-width: 767px) {
-  .dd-grid-area._dd-row {
-    margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
-      padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
+  .dd-grid-area {
+    margin-left: -4px;
+    margin-right: -4px;
     margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      padding-top: 8px;
-      padding-bottom: 8px; } }
+    .dd-grid-area > * {
+      padding-left: 4px;
+      padding-right: 4px;
+      margin-bottom: 8px; }
+    .dd-grid-area::after {
+      height: 8px; } }
 
 @media all and (min-width: 544px) {
   .dd-grid-container {
     width: 544px;
-    padding: 0 16px; }
-  .dd-grid-area .dd-grid-cell._sm-1 {
+    padding: 0 8px; }
+  .dd-grid-area > .dd-grid-cell._sm-1 {
     width: 8.33333%; }
-  .dd-grid-area .dd-grid-cell._sm-2 {
+  .dd-grid-area > .dd-grid-cell._sm-2 {
     width: 16.66667%; }
-  .dd-grid-area .dd-grid-cell._sm-3 {
+  .dd-grid-area > .dd-grid-cell._sm-3 {
     width: 25%; }
-  .dd-grid-area .dd-grid-cell._sm-4 {
+  .dd-grid-area > .dd-grid-cell._sm-4 {
     width: 33.33333%; }
-  .dd-grid-area .dd-grid-cell._sm-5 {
+  .dd-grid-area > .dd-grid-cell._sm-5 {
     width: 41.66667%; }
-  .dd-grid-area .dd-grid-cell._sm-6 {
+  .dd-grid-area > .dd-grid-cell._sm-6 {
     width: 50%; }
-  .dd-grid-area .dd-grid-cell._sm-7 {
+  .dd-grid-area > .dd-grid-cell._sm-7 {
     width: 58.33333%; }
-  .dd-grid-area .dd-grid-cell._sm-8 {
+  .dd-grid-area > .dd-grid-cell._sm-8 {
     width: 66.66667%; }
-  .dd-grid-area .dd-grid-cell._sm-9 {
+  .dd-grid-area > .dd-grid-cell._sm-9 {
     width: 75%; }
-  .dd-grid-area .dd-grid-cell._sm-10 {
+  .dd-grid-area > .dd-grid-cell._sm-10 {
     width: 83.33333%; }
-  .dd-grid-area .dd-grid-cell._sm-11 {
+  .dd-grid-area > .dd-grid-cell._sm-11 {
     width: 91.66667%; }
-  .dd-grid-area .dd-grid-cell._sm-12 {
+  .dd-grid-area > .dd-grid-cell._sm-12 {
     width: 100%; } }
 
 @media all and (min-width: 768px) and (max-width: 991px) {
-  .dd-grid-area._dd-row {
-    margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
-      padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
-    margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      padding-top: 8px;
-      padding-bottom: 8px; } }
+  .dd-grid-area {
+    margin-left: -6px;
+    margin-right: -6px;
+    margin-bottom: -12px; }
+    .dd-grid-area > * {
+      padding-left: 6px;
+      padding-right: 6px;
+      margin-bottom: 12px; }
+    .dd-grid-area::after {
+      height: 12px; } }
 
 @media all and (min-width: 768px) {
   .dd-grid-container {
     width: 768px;
-    padding: 0 16px; }
-  .dd-grid-area .dd-grid-cell._md-1 {
+    padding: 0 12px; }
+  .dd-grid-area > .dd-grid-cell._md-1 {
     width: 8.33333%; }
-  .dd-grid-area .dd-grid-cell._md-2 {
+  .dd-grid-area > .dd-grid-cell._md-2 {
     width: 16.66667%; }
-  .dd-grid-area .dd-grid-cell._md-3 {
+  .dd-grid-area > .dd-grid-cell._md-3 {
     width: 25%; }
-  .dd-grid-area .dd-grid-cell._md-4 {
+  .dd-grid-area > .dd-grid-cell._md-4 {
     width: 33.33333%; }
-  .dd-grid-area .dd-grid-cell._md-5 {
+  .dd-grid-area > .dd-grid-cell._md-5 {
     width: 41.66667%; }
-  .dd-grid-area .dd-grid-cell._md-6 {
+  .dd-grid-area > .dd-grid-cell._md-6 {
     width: 50%; }
-  .dd-grid-area .dd-grid-cell._md-7 {
+  .dd-grid-area > .dd-grid-cell._md-7 {
     width: 58.33333%; }
-  .dd-grid-area .dd-grid-cell._md-8 {
+  .dd-grid-area > .dd-grid-cell._md-8 {
     width: 66.66667%; }
-  .dd-grid-area .dd-grid-cell._md-9 {
+  .dd-grid-area > .dd-grid-cell._md-9 {
     width: 75%; }
-  .dd-grid-area .dd-grid-cell._md-10 {
+  .dd-grid-area > .dd-grid-cell._md-10 {
     width: 83.33333%; }
-  .dd-grid-area .dd-grid-cell._md-11 {
+  .dd-grid-area > .dd-grid-cell._md-11 {
     width: 91.66667%; }
-  .dd-grid-area .dd-grid-cell._md-12 {
+  .dd-grid-area > .dd-grid-cell._md-12 {
     width: 100%; } }
 
 @media all and (min-width: 992px) and (max-width: 1199px) {
-  .dd-grid-area._dd-row {
+  .dd-grid-area {
     margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
+    margin-right: -8px;
+    margin-bottom: -16px; }
+    .dd-grid-area > * {
       padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
-    margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      padding-top: 8px;
-      padding-bottom: 8px; } }
+      padding-right: 8px;
+      margin-bottom: 16px; }
+    .dd-grid-area::after {
+      height: 16px; } }
 
 @media all and (min-width: 992px) {
   .dd-grid-container {
     width: 992px;
     padding: 0 16px; }
-  .dd-grid-area .dd-grid-cell._lg-1 {
+  .dd-grid-area > .dd-grid-cell._lg-1 {
     width: 8.33333%; }
-  .dd-grid-area .dd-grid-cell._lg-2 {
+  .dd-grid-area > .dd-grid-cell._lg-2 {
     width: 16.66667%; }
-  .dd-grid-area .dd-grid-cell._lg-3 {
+  .dd-grid-area > .dd-grid-cell._lg-3 {
     width: 25%; }
-  .dd-grid-area .dd-grid-cell._lg-4 {
+  .dd-grid-area > .dd-grid-cell._lg-4 {
     width: 33.33333%; }
-  .dd-grid-area .dd-grid-cell._lg-5 {
+  .dd-grid-area > .dd-grid-cell._lg-5 {
     width: 41.66667%; }
-  .dd-grid-area .dd-grid-cell._lg-6 {
+  .dd-grid-area > .dd-grid-cell._lg-6 {
     width: 50%; }
-  .dd-grid-area .dd-grid-cell._lg-7 {
+  .dd-grid-area > .dd-grid-cell._lg-7 {
     width: 58.33333%; }
-  .dd-grid-area .dd-grid-cell._lg-8 {
+  .dd-grid-area > .dd-grid-cell._lg-8 {
     width: 66.66667%; }
-  .dd-grid-area .dd-grid-cell._lg-9 {
+  .dd-grid-area > .dd-grid-cell._lg-9 {
     width: 75%; }
-  .dd-grid-area .dd-grid-cell._lg-10 {
+  .dd-grid-area > .dd-grid-cell._lg-10 {
     width: 83.33333%; }
-  .dd-grid-area .dd-grid-cell._lg-11 {
+  .dd-grid-area > .dd-grid-cell._lg-11 {
     width: 91.66667%; }
-  .dd-grid-area .dd-grid-cell._lg-12 {
+  .dd-grid-area > .dd-grid-cell._lg-12 {
     width: 100%; } }
 
 @media all and (min-width: 1200px) {
-  .dd-grid-area._dd-row {
-    margin-left: -8px;
-    margin-right: -8px; }
-    .dd-grid-area._dd-row .dd-grid-cell {
-      padding-left: 8px;
-      padding-right: 8px; }
-  .dd-grid-area._dd-col {
-    margin-top: -8px;
-    margin-bottom: -8px; }
-    .dd-grid-area._dd-col .dd-grid-cell {
-      padding-top: 8px;
-      padding-bottom: 8px; } }
+  .dd-grid-area {
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -32px; }
+    .dd-grid-area > * {
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-bottom: 32px; }
+    .dd-grid-area::after {
+      height: 32px; } }
 
 @media all and (min-width: 1200px) {
   .dd-grid-container {
     width: 1200px;
-    padding: 0 16px; }
-  .dd-grid-area .dd-grid-cell._xl-1 {
+    padding: 0 32px; }
+  .dd-grid-area > .dd-grid-cell._xl-1 {
     width: 8.33333%; }
-  .dd-grid-area .dd-grid-cell._xl-2 {
+  .dd-grid-area > .dd-grid-cell._xl-2 {
     width: 16.66667%; }
-  .dd-grid-area .dd-grid-cell._xl-3 {
+  .dd-grid-area > .dd-grid-cell._xl-3 {
     width: 25%; }
-  .dd-grid-area .dd-grid-cell._xl-4 {
+  .dd-grid-area > .dd-grid-cell._xl-4 {
     width: 33.33333%; }
-  .dd-grid-area .dd-grid-cell._xl-5 {
+  .dd-grid-area > .dd-grid-cell._xl-5 {
     width: 41.66667%; }
-  .dd-grid-area .dd-grid-cell._xl-6 {
+  .dd-grid-area > .dd-grid-cell._xl-6 {
     width: 50%; }
-  .dd-grid-area .dd-grid-cell._xl-7 {
+  .dd-grid-area > .dd-grid-cell._xl-7 {
     width: 58.33333%; }
-  .dd-grid-area .dd-grid-cell._xl-8 {
+  .dd-grid-area > .dd-grid-cell._xl-8 {
     width: 66.66667%; }
-  .dd-grid-area .dd-grid-cell._xl-9 {
+  .dd-grid-area > .dd-grid-cell._xl-9 {
     width: 75%; }
-  .dd-grid-area .dd-grid-cell._xl-10 {
+  .dd-grid-area > .dd-grid-cell._xl-10 {
     width: 83.33333%; }
-  .dd-grid-area .dd-grid-cell._xl-11 {
+  .dd-grid-area > .dd-grid-cell._xl-11 {
     width: 91.66667%; }
-  .dd-grid-area .dd-grid-cell._xl-12 {
+  .dd-grid-area > .dd-grid-cell._xl-12 {
     width: 100%; } }
 
+/*@import 'components/typ';*/
 /*
 	DivoDivnoe Icon
 */

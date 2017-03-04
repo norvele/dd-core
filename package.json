@@ -5,13 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "colors": "*",
+    "dart-sass": "^1.0.0-alpha.9",
     "gulp": "*",
     "gulp-autoprefixer": "*",
     "gulp-html-extend": "*",
     "gulp-load-plugins": "*",
     "gulp-plumber": "*",
     "gulp-preprocess": "*",
-    "gulp-sass": "*"
+    "gulp-sass": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "*",

@@ -8,64 +8,65 @@
 	cutoff - отсечка в пикселях. (обязательно если не указан range)
 	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
 	containerWidth - ширина контейнера (по умолчанию равен cutoff)
-	containerGutter - отступы от краев контейнера (по умолчанию равен $dd-responsive-defaultSpace)
-	gridGutterHorizontal - отступы между колонками (по умолчанию равен $dd-responsive-defaultSpace)
-	gridGutterVertical - отступы между ячейками по вертикале (по умолчанию равен $dd-responsive-defaultSpace)
+	spaceScale - множитель отступов
 */
 $dd-responsive-breakpoints: (
 	xs:(
 		cutoff: 0,
 		containerWidth: 100%,
-		containerGutter: xs,
+		spaceScale: 0.5,
 	),
 	sm:(
-		//cutoff: 544px,
-		range: (544px, 767px)
+		cutoff: 544px,
+		spaceScale: 0.5,
 	),
 	md:(
 		cutoff: 768px,
+		spaceScale: 0.75,
 	),
 	lg:(
 		cutoff: 992px,
+		spaceScale: 1,
 	),
 	xl:(
 		cutoff: 1200px,
+		spaceScale: 2,
 	),
 ) !default
 
 // Возвращает параметр отсечки по имени отсечки и имени параметра
-@function ddResponsiveBreakpointVal($_name, $_key)
+@function dd-responsive-breakpointVal($_name, $_key)
 {
 	@return map_get(map_get($dd-responsive-breakpoints, $_name), $_key);
 }
 
 // Возвращает минимальную ширину для отсечки
-@function ddResponsiveMinWidth($_name)
+@function dd-responsive-minWidth($_name)
 {
-	@return nth(ddResponsiveBreakpointVal($_name, range), 1);
+	@return nth(dd-responsive-breakpointVal($_name, range), 1);
 }
 
 // Возвращает максимальную ширину для отсечки
-@function ddResponsiveMaxWidth($_name)
+@function dd-responsive-maxWidth($_name)
 {
-	@return nth(ddResponsiveBreakpointVal($_name, range), 2);
+	@return nth(dd-responsive-breakpointVal($_name, range), 2);
 }
 
 // Возвращает среднее значение между минимальными ширинами отсечки
-@function ddResponsiveMinMeanWidth($_name1, $_name2, $_offset: 0.5)
+@function dd-responsive-minMeanWidth($_name1, $_name2, $_offset: 0.5)
 {
-	@return ddHelpersGetMean(ddResponsiveMinWidth($_name1), ddResponsiveMinWidth($_name2), $_offset);
+	@return dd-helpers-getMean(dd-responsive-minWidth($_name1), dd-responsive-minWidth($_name2), $_offset);
 }
 
 // Возвращает среднее значение между максимальными ширинами отсечки
-@function ddResponsiveMaxMeanWidth($_name1, $_name2, $_offset: 0.5)
+@function dd-responsive-maxMeanWidth($_name1, $_name2, $_offset: 0.5)
 {
-	@return ddHelpersGetMean(ddResponsiveMaxWidth($_name1), ddResponsiveMaxWidth($_name2), $_offset);
+	@return dd-helpers-getMean(dd-responsive-maxWidth($_name1), dd-responsive-maxWidth($_name2), $_offset);
 }
 
 // Возвращает следующее имя отсейчки или null если такой нет
 // TODO потенциальная проблема если отсечки не по порядку
-@function ddResponsiveNextBreakpointName($_name)
+@function dd-responsive-nextBreakpointName($_name)
 {
 	$_keys: map_keys($dd-responsive-breakpoints);
 	$_index: index($_keys, $_name);
@@ -77,9 +78,9 @@ $dd-responsive-breakpoints: (
 }
 
 // Возвращает мапу следующей отсейчки или null если такой нет
-@function ddResponsiveNextBreakpoint($_name)
+@function dd-responsive-nextBreakpoint($_name)
 {
-	$_nextName: ddResponsiveNextBreakpointName($_name);
+	$_nextName: dd-responsive-nextBreakpointName($_name);
 	@if $_nextName {
 		@return map-get($dd-responsive-breakpoints, $_nextName)
 	} @else {
@@ -87,51 +88,61 @@ $dd-responsive-breakpoints: (
 	}
 }
 
-// Создает медиа выражение
-// Примеры:
-// @include dd-responsive-media(sm) { ... } - создаст медиа выражение, активное на размере sm
-// @include dd-responsive-media(sm, lg) { ... } - активно на размерах sm, md, lg
-// @include dd-responsive-media(sm, 800px) { ... } - активно на размерах от sm до 800px
-// TODO возможность передачи разных интервалов ((sm, 800px), (lg), xl)
-@mixin dd-responsive-media($_p1, $_p2: null)
+@function dd-responsive-parseMedia($_args...)
 {
-	$_firstPoint: null;
-	$_secondPoint: null;
-	@if (not $dd-system-disableMedia) {
-		@if ($_p1) {
-			// Если указаны два параметра
-			@if ($_p2) {
-				// Преобразуем точки
-				@if (type-of($_p1) == 'number') {
-					$_firstPoint: $_p1;
-				} @else {
-					$_firstPoint: ddResponsiveMinWidth($_p1);
+	$_result: ();
+	@each $_arg in $_args {
+		$_firstPoint: null;
+		$_secondPoint: null;
+		@if (type_of($_arg) == 'list') {
+			$_p1: nth($_arg, 1);
+			$_p2: nth($_arg, 2);
+			@if ($_p1) {
+				// Если указаны два параметра
+				@if ($_p2) {
+					// Преобразуем точки
+					@if (type-of($_p1) == 'number') {
+						$_firstPoint: $_p1;
+					} @else {
+						$_firstPoint: dd-responsive-minWidth($_p1);
+					}
+					@if (type-of($_p2) == 'number') {
+						$_secondPoint: $_p2;
+					} @else {
+						@if ($_p2 == infinite) {
+							$_secondPoint: null;
+						} @else {
+							$_secondPoint: dd-responsive-maxWidth($_p2);
+						}
+					}
 				}
-				@if (type-of($_p2) == 'number') {
-					$_secondPoint: $_p2;
-				} @else {
-					$_secondPoint: ddResponsiveMaxWidth($_p2);
+				// Если указан только первый параметр
+				@else {
+					@if (type-of($_p1) == 'number') {
+						@error 'Если указан 1 параметр "#{$_arg}" - он должен быть именем отсечки';
+					} @else {
+						$_firstPoint: dd-responsive-minWidth($_p1);
+						$_secondPoint: dd-responsive-maxWidth($_p1);
+					}
 				}
 			}
-			// Если указан только первый параметр
-			@else {
-				@if (type-of($_p1) == 'number') {
-					@error 'Если указан 1 параметр - он должен быть строкой';
-				} @else {
-					$_firstPoint: ddResponsiveMinWidth($_p1);
-					$_secondPoint: ddResponsiveMaxWidth($_p1);
-				}
-			}
+		} @elseif (type_of($_arg) == 'string') {
+			$_firstPoint: dd-responsive-minWidth($_arg);
+			$_secondPoint: dd-responsive-maxWidth($_arg);
 		}
-		@if $_secondPoint {
-			@media all and (min-width: $_firstPoint) and (max-width: $_secondPoint) {
-				@content
-			}
+		@if ($_secondPoint) {
+			$_result: append($_result, 'all and (min-width: #{$_firstPoint}) and (max-width: #{$_secondPoint})', comma);
 		} @else {
-			@media all and (min-width: $_firstPoint) {
-				@content
-			}
+			$_result: append($_result, 'all and (min-width: #{$_firstPoint})', comma);
 		}
+	}
+	@return $_result;
+}
+
+@mixin dd-responsive-media($_args...)
+{
+	@media #{dd-helpers-implode(dd-responsive-parseMedia($_args...), ', ')} {
+		@content;
 	}
 }
 
@@ -153,114 +164,127 @@ $dd-responsive-breakpoints: (
 	}
 }
 
-// Проходим по брейкпойнтам, проставляя недостающие данные
-$_dd-responsive-breakpoints: ();
-@each $_key, $_params in $dd-responsive-breakpoints {
-	//$_newParams: ();
-	$_cutoff: map_get($_params, 'cutoff');
-	$_range: map_get($_params, 'range');
-	$_minWidth: null;
-	$_maxWidth: null;
-	@if ($_range) {
-		$_minWidth: nth($_range, 1);
-		$_maxWidth: nth($_range, 2);
-	}
-	$_containerWidth: map_get($_params, 'containerWidth');
-	$_containerGutter: map_get($_params, 'containerGutter');
-	$_gridGutterHorizontal: map_get($_params, 'gridGutterHorizontal');
-	$_gridGutterVertical: map_get($_params, 'gridGutterVertical');
-	$_nextBreakpoint: ddResponsiveNextBreakpoint($_key);
-
-	// Нормализуем minWidth, maxWidth и cutoff
-	@if ($_cutoff) {
-		@if ($_minWidth or $_maxWidth) {
-			@error 'Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff';
+@function dd-responsive-normalizeBreakpoints($_breakpoints)
+{
+	// Проходим по брейкпойнтам, проставляя недостающие данные
+	$_newBreakpoints: ();
+	@each $_key, $_params in $_breakpoints {
+		$_cutoff: map_get($_params, 'cutoff');
+		$_range: map_get($_params, 'range');
+		$_minWidth: null;
+		$_maxWidth: null;
+		@if ($_range) {
+			$_minWidth: nth($_range, 1);
+			$_maxWidth: nth($_range, 2);
 		}
-		@if ($_nextBreakpoint) {
-			$_nextCutoff: map_get($_nextBreakpoint, 'cutoff');
-			@if (not $_nextCutoff) {
-				$_nextRange: map_get($_nextBreakpoint, 'range');
-				$_nextCutoff: nth($_nextRange, 1);
+		$_containerWidth: map_get($_params, 'containerWidth');
+		$_containerGutter: map_get($_params, 'containerGutter');
+		$_gridGutterHorizontal: map_get($_params, 'gridGutterHorizontal');
+		$_gridGutterVertical: map_get($_params, 'gridGutterVertical');
+		$_spaceScale: map_get($_params, 'spaceScale');
+		$_nextBreakpoint: dd-responsive-nextBreakpoint($_key);
+
+		// Нормализуем range и cutoff
+		@if ($_cutoff) {
+			@if ($_minWidth or $_maxWidth) {
+				@error 'Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff';
 			}
-			@if (not $_nextCutoff) {
-				@error 'Для отсейчки следующей за #{$_key} нет minWidth или cutoff';
+			@if ($_nextBreakpoint) {
+				$_nextCutoff: map_get($_nextBreakpoint, 'cutoff');
+				@if (not $_nextCutoff) {
+					$_nextRange: map_get($_nextBreakpoint, 'range');
+					$_nextCutoff: nth($_nextRange, 1);
+				}
+				@if (not $_nextCutoff) {
+					@error 'Для отсейчки следующей за #{$_key} нет minWidth или cutoff';
+				}
+				$_params: map_merge($_params, (
+					range: ($_cutoff, $_nextCutoff - 1px)
+				));
+			} @else {
+				$_params: map_merge($_params, (
+					range: ($_cutoff, null)
+				));
 			}
-			$_params: map_merge($_params, (
-				//minWidth: $_cutoff,
-				//maxWidth: $_nextCutoff - 1px,
-				range: ($_cutoff, $_nextCutoff - 1px)
-			));
 		} @else {
+			@if (not $_minWidth or not $_maxWidth) {
+				@error 'Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff';
+			}
 			$_params: map_merge($_params, (
-				range: ($_cutoff, null)
+				cutoff: $_minWidth,
 			));
+		}
+
+		// Проставляем containerWidth
+		@if (not $_containerWidth) {
+			$_params: map_merge($_params, (
+				containerWidth: map_get($_params, 'cutoff'),
+			));
+		}
+
+		// Проставляем spaceScale
+		@if (not $_spaceScale) {
+			$_params: map_merge($_params, (
+				spaceScale: 1,
+			));
+		}
+
+		$_newBreakpoints: map-merge($_newBreakpoints, (
+			$_key: $_params,
+		));
+	}
+	@return $_newBreakpoints;
+}
+
+@mixin dd-responsive-space($_val)
+{
+	display: block;
+	$_val: dd-space-getSpace($_val);
+	// Генерируем вспомогательные классы Space компонента
+	@each $_key, $_params in $dd-responsive-breakpoints {
+		@include dd-responsive-media(($_key)) {
+			height: $_val * map_get($_params, 'spaceScale');
+		}
+	}
+}
+
+// Сохраняем новую мапу брейкпойнтов
+$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints);
+
+// Генерируем вспомогательные классы Helpers компонента
+@each $_key, $_params in $dd-responsive-breakpoints {
+	$_range: map_get($_params, 'range');
+	$_min: nth($_range, 1);
+	$_max: nth($_range, 2);
+
+	@include dd-responsive-media(($_key, infinite)) {
+		@include dd-responsive-helpers($_key, up);
+	}
+
+	@if $_max {
+		@include dd-responsive-media((0, $_key)) {
+			@include dd-responsive-helpers($_key, down)
+		}
+		@include dd-responsive-media($_key) {
+			@include dd-responsive-helpers($_key)
 		}
 	} @else {
-		@if (not $_minWidth or not $_maxWidth) {
-			@error 'Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff';
+		@include dd-responsive-helpers($_key, down);
+		@include dd-responsive-media(($_key, infinite)) {
+			@include dd-responsive-helpers($_key)
 		}
-		$_params: map_merge($_params, (
-			cutoff: $_minWidth,
-		));
 	}
-
-	// Проставляем containerWidth
-	@if (not $_containerWidth) {
-		$_params: map_merge($_params, (
-			containerWidth: map_get($_params, 'cutoff'),
-		));
-	}
-
-	// Проставляем containerGutter
-	@if (not $_containerGutter) {
-		$_params: map_merge($_params, (
-			containerGutter: ddSpaceGetSpace($dd-space-defaultSpace),
-		));
-	}
-
-	// Проставляем gridGutterHorizontal
-	@if (not $_gridGutterHorizontal) {
-		$_params: map_merge($_params, (
-			gridGutterHorizontal: ddSpaceGetSpace($dd-space-defaultSpace),
-		));
-	}
-
-	// Проставляем gridGutterVertical
-	@if (not $_gridGutterVertical) {
-		$_params: map_merge($_params, (
-			gridGutterVertical: ddSpaceGetSpace($dd-space-defaultSpace),
-		));
-	}
-
-	$_dd-responsive-breakpoints: map-merge($_dd-responsive-breakpoints, (
-		$_key: $_params,
-	));
 }
-// Сохраняем новую мапу брейкпойнтов
-$dd-responsive-breakpoints: $_dd-responsive-breakpoints;
 
-// Генерируем вспомогательные классы
-@if (not $dd-system-disableMedia) {
-	@each $_key, $_params in $dd-responsive-breakpoints {
-		$_range: map_get($_params, 'range');
-		$_min: nth($_range, 1);
-		$_max: nth($_range, 2);
-
-		@media all and (min-width: $_min) {
-			@include dd-responsive-helpers($_key, up);
-		}
-
-		@if $_max {
-			@media all and (max-width: $_max) {
-				@include dd-responsive-helpers($_key, down)
-			}
-			@media all and (min-width: $_min) and (max-width: $_max) {
-				@include dd-responsive-helpers($_key)
-			}
-		} @else {
-			@include dd-responsive-helpers($_key, down);
-			@media all and (min-width: $_min) {
-				@include dd-responsive-helpers($_key);
+// Генерируем вспомогательные классы Space компонента
+.#{$dd-system-classPrefix}space {
+	@each $_factorKey, $_factorVal in $dd-space-factor {
+		$_val: dd-space-getSpace($_factorKey);
+		@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
+			@include dd-responsive-media($_breakKey) {
+				&._#{$_factorKey} {
+					height: $_val * map_get($_breakParams, 'spaceScale');
+				}
 			}
 		}
 	}

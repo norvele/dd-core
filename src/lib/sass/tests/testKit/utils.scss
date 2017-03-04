@@ -1,0 +1,3 @@
+@function test-util-capitalize($_string) {
+	@return to-upper-case(str-slice($_string, 1, 1)) + str-slice($_string, 2);
+}
