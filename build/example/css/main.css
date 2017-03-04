@@ -10,9 +10,6 @@
 	Устанавливает режим дебага
 	Если true - будут выводиться все предупреждения
 */
-/*
-	TODO медиа выражение, в пределах которого будет работать адавтивность
-*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -121,6 +118,9 @@ table {
 	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
 	containerWidth - ширина контейнера (по умолчанию равен cutoff)
 	spaceScale - множитель отступов
+*/
+/*
+	TODO медиа выражение, в пределах которого будет работать адавтивность
 */
 @media all and (min-width: 0) {
   .__pullRight-xs-up {
@@ -665,6 +665,9 @@ table {
   .space._tiny {
     height: 8px; } }
 
+.space._tiny._fixed {
+  height: 4px; }
+
 @media all and (min-width: 0) and (max-width: 543px) {
   .space._small {
     height: 4px; } }
@@ -684,6 +687,9 @@ table {
 @media all and (min-width: 1200px) {
   .space._small {
     height: 16px; } }
+
+.space._small._fixed {
+  height: 8px; }
 
 @media all and (min-width: 0) and (max-width: 543px) {
   .space._medium {
@@ -705,6 +711,9 @@ table {
   .space._medium {
     height: 32px; } }
 
+.space._medium._fixed {
+  height: 16px; }
+
 @media all and (min-width: 0) and (max-width: 543px) {
   .space._large {
     height: 16px; } }
@@ -725,6 +734,9 @@ table {
   .space._large {
     height: 64px; } }
 
+.space._large._fixed {
+  height: 32px; }
+
 @media all and (min-width: 0) and (max-width: 543px) {
   .space._massive {
     height: 32px; } }
@@ -744,6 +756,9 @@ table {
 @media all and (min-width: 1200px) {
   .space._massive {
     height: 128px; } }
+
+.space._massive._fixed {
+  height: 64px; }
 
 /*
 	DivoDivnoe Grid
@@ -1157,6 +1172,24 @@ html, body {
       height: 32px; } }
   @media all and (min-width: 1200px) {
     .responsiveTester-spaceTester {
+      height: 64px; } }
+
+.component {
+  display: block; }
+  @media all and (min-width: 0) and (max-width: 543px) {
+    .component {
+      height: 16px; } }
+  @media all and (min-width: 544px) and (max-width: 767px) {
+    .component {
+      height: 16px; } }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    .component {
+      height: 24px; } }
+  @media all and (min-width: 992px) and (max-width: 1199px) {
+    .component {
+      height: 32px; } }
+  @media all and (min-width: 1200px) {
+    .component {
       height: 64px; } }
 
 @media all and (min-width: 0) {

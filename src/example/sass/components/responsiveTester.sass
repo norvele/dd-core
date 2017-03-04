@@ -33,6 +33,9 @@
 		background: #ffaaaa
 		@include dd-responsive-space(large)
 
+.component
+	@include dd-responsive-space(large)
+
 @each $_key, $_params in $dd-responsive-breakpoints
 	$_range: map_get($_params, 'range')
 	$_min: nth($_range, 1)

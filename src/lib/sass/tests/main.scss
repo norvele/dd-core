@@ -31,6 +31,11 @@ $dd-system-debug: false;
 ), 'Helpers: get mean decimal');
 
 @include test-assert('equal', (
+	dd-helpers-getMean(1, null),
+	null
+), 'Helpers: get mean null');
+
+@include test-assert('equal', (
 	dd-helpers-implode(('test', 2, 20px), ', '),
 	'test, 2, 20px'
 ), 'Helpers: implode');
@@ -93,6 +98,9 @@ $dd-responsive-breakpoints: (
 	sm: (
 		range: (544px, 767px),
 	),
+	md: (
+		cutoff: 768px,
+	),
 );
 
 @include test-assert('equal', (
@@ -108,6 +116,12 @@ $dd-responsive-breakpoints: (
 			cutoff: 544px,
 			containerWidth: 544px,
 			range: (544px, 767px),
+			spaceScale: 1,
+		),
+		md: (
+			cutoff: 768px,
+			containerWidth: 768px,
+			range: (768px, null),
 			spaceScale: 1,
 		),
 	)

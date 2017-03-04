@@ -14,11 +14,6 @@ $dd-system-classPrefix: 'dd-' !default;
 */
 $dd-system-debug: true !default;
 
-/*
-	TODO медиа выражение, в пределах которого будет работать адавтивность
-*/
-$dd-system-mediaBounds: null !default;
-
 @function _dd-system-message($_message, $_type: 'warn')
 {
 	@if ($dd-system-debug) {

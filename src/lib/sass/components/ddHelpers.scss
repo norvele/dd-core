@@ -94,6 +94,9 @@ $dd-helpers-map: (
 // $_offset - смещение среднего значения от первого (от 0 до 1)
 @function dd-helpers-getMean($_number1, $_number2, $_offset:0.5, $_digits: 0)
 {
+	@if (type_of($_number1) != number or type_of($_number2) != number) {
+		@return null;
+	}
 	$_normalizedOffset: 0.5;
 	@if unit($_offset) == '%' {
 		$_normalizedOffset: dd-helpers-stripUnits($_offset)/100;
