@@ -8,17 +8,17 @@
 	&-customGrid {
 		@include dd-grid-list(
 			(
-				rowItems: 4,
+				columns: 4,
 				gutterHorizontal: tiny,
 			),
 			(
 				media: (md),
-				rowItems: 3,
+				columns: 3,
 				gutterHorizontal: massive,
 			),
 			(
 				media: ((xs, 600px)),
-				rowItems: 2,
+				columns: 2,
 			)
 		);
 	}

@@ -128,3 +128,16 @@ $dd-helpers-map: (
 @function dd-helpers-capitalize($_string) {
 	@return to-upper-case(str-slice($_string, 1, 1)) + str-slice($_string, 2);
 }
+
+@function dd-helpers-mergeMap($_parent, $_child) {
+	$_result: $_parent;
+	@each $_key, $_value in $_child {
+		@if(type-of(map-get($_result, $_key)) == map and type-of($_value) == map) {
+			$_result: map-merge($_result, ($_key: dd-helpers-mergeMap(map-get($_result, $_key), $_value)));
+		}
+		@else {
+			$_result: map-merge($_result, ($_key: $_value));
+		}
+	}
+	@return $_result;
+}

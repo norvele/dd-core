@@ -10,7 +10,8 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 
 // Генерирует сетку в заданном направлении
 // используя grid-подобный синтаксис
-@mixin dd-grid-template($_dir, $_params) {
+@mixin dd-grid-template($_dir, $_params)
+{
 	$_lngs: ();
 	// Формируем массив сумм величин по их измерениям
 	// px: 250px, em: 100em, fr: 3fr
@@ -78,49 +79,98 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 	}
 }
 
-@mixin dd-grid-templateColumns($params...) {
+@mixin dd-grid-templateColumns($params...)
+{
 	@include dd-grid-template(row, $params)
 }
 
-@mixin dd-grid-templateRows($params...) {
+@mixin dd-grid-templateRows($params...)
+{
 	@include dd-grid-template(col, $params)
 }
 
 // Для генерации отступов в grid-area
-@mixin _dd-grid-mediaAreaGenerateSpace($_gutterH, $_gutterV) {
-	margin-left: -$_gutterH/2;
-	margin-right: -$_gutterH/2;
-	margin-bottom: -$_gutterV;
+@mixin dd-grid-gutters($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: false, $_spaces: false)
+{
+	@if ($_gutterDynamic == false) {
+		$_gutterH: dd-space-getSpace($_gutterH);
+		$_gutterV: dd-space-getSpace($_gutterV);
 
-	& > * {
-		padding-left: $_gutterH/2;
-		padding-right: $_gutterH/2;
-		margin-bottom: $_gutterV;
-	}
+		@if ($_gutterH != 0) {
+			margin-left: -$_gutterH/2;
+			margin-right: -$_gutterH/2;
+		}
+		@if ($_gutterV != 0) {
+			margin-bottom: -$_gutterV/2;
+			margin-top: -$_gutterV/2;
+		}
 
-	&::after {
-		height: $_gutterV;
+		& > * {
+			@if ($_gutterH != 0) {
+				padding-left: $_gutterH/2;
+				padding-right: $_gutterH/2;
+			}
+			@if ($_gutterV != 0) {
+				padding-bottom: $_gutterV/2;
+				padding-top: $_gutterV/2;
+			}
+		}
+
+		@if ($_spaces == true) {
+			@each $_factorKey, $_factorVal in $dd-space-factor {
+				$_val: dd-space-getSpace($_factorKey);
+				$_gutterHorizontal: $_factorVal * $_gutterH;
+				$_gutterVertical: $_factorVal * $_gutterV;
+
+				&._#{$_factorKey} {
+					@include dd-grid-gutters($_gutterHorizontal, $_gutterVertical, false, false);
+				}
+			}
+		}
+
+	} @else {
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			$_range: map_get($_params, 'range');
+			$_minWidth: nth($_range, 1);
+			$_maxWidth: nth($_range, 2);
+
+			$_spaceScale: map_get($_params, 'spaceScale');
+			$_gutterHorizontal: $_spaceScale * $_gutterH;
+			$_gutterVertical: $_spaceScale * $_gutterV;
+
+			// Отступы сетки
+			@if ($_maxWidth) {
+				@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
+					@include dd-grid-gutters($_gutterHorizontal, $_gutterVertical, false, false);
+				}
+			} @else {
+				@media all and ( min-width: $_minWidth ) {
+					@include dd-grid-gutters($_gutterHorizontal, $_gutterVertical, false, false);
+				}
+			}
+
+			@if ($_spaces == true) {
+				@each $_factorKey, $_factorVal in $dd-space-factor {
+
+					&._#{$_factorKey} {
+						@if ($_maxWidth) {
+							@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
+								@include dd-grid-gutters($_gutterHorizontal, $_gutterVertical, false, true);
+							}
+						} @else {
+							@media all and ( min-width: $_minWidth ) {
+								@include dd-grid-gutters($_gutterHorizontal, $_gutterVertical, false, true);
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
-@mixin dd-grid-area($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical) {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	min-width: 0;
-
-	& > * {
-		width: 100%;
-	}
-
-	&::after {
-		content: '';
-	}
-
-	@include _dd-grid-mediaAreaGenerateSpace($_gutterH, $_gutterV);
-}
-
-@mixin dd-grid-cell($_grow: 1, $_shrink: 1) {
+@mixin dd-grid-cell($_grow: 1, $_shrink: 1)
+{
 	box-sizing: border-box;
 	flex-grow: $_grow;
 	flex-shrink: $_shrink;
@@ -129,17 +179,43 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 	min-height: 0;
 }
 
+@mixin dd-grid-area($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: false, $_spaces: false)
+{
+	$_gutterH: dd-space-getSpace($_gutterH);
+	$_gutterV: dd-space-getSpace($_gutterV);
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	min-width: 0;
+
+	@if ($_gutterV != 0) {
+		&:empty::after, &:blank::after {
+			content: '';
+			height: $_gutterV*2;
+		}
+	}
+
+	& > * {
+		@include dd-grid-cell();
+		width: 100%;
+	}
+
+	@include dd-grid-gutters($_gutterH, $_gutterV, $_gutterDynamic, $_spaces);
+}
+
 @mixin _dd-grid-listMedia($_params)
 {
-	@if (map_get($_params, 'rowItems') != null) {
+	@if (map_get($_params, 'columns') != null) {
 		$_params: map_merge($_params, (
-			cellWidth: percentage(1/map_get($_params, 'rowItems'))
+			cellWidth: percentage(1/map_get($_params, 'columns'))
 		));
 	}
 
 	margin-left: - map_get($_params, 'gutterHorizontal')/2;
 	margin-right: - map_get($_params, 'gutterHorizontal')/2;
 	margin-bottom: - map_get($_params, 'gutterVertical');
+	margin-top: - map_get($_params, 'gutterVertical');
 
 	& > * {
 		@if (map_get($_params, 'cellWidth') != null) {
@@ -150,23 +226,20 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 		padding-left: map_get($_params, 'gutterHorizontal')/2;
 		padding-right: map_get($_params, 'gutterHorizontal')/2;
 		margin-bottom: map_get($_params, 'gutterVertical');
-	}
-
-	&::after {
-		height: map_get($_params, 'gutterVertical');
+		margin-top: map_get($_params, 'gutterVertical');
 	}
 }
 
 /*
 	@include dd-grid-list(
 		(
-			rowItems: 5,
+			columns: 5,
 			gutterVertical: 16px,
 			gutterHorizontal: small,
 		),
 		(
 			media: ((sm, md), xl),
-			rowItems: 3,
+			columns: 3,
 		),
 		(
 			media: ((360px, 500px)),
@@ -177,7 +250,7 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 @mixin dd-grid-list($_args...)
 {
 	$_defaults: (
-		rowItems: null,
+		columns: null,
 		gutterVertical: $dd-grid-gutterVertical,
 		gutterHorizontal: $dd-grid-gutterHorizontal,
 	);
@@ -207,8 +280,9 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 				@include dd-grid-cell();
 			}
 
-			&::after {
+			&:empty::after, &:blank::after {
 				content: '';
+				height: map_get($_params, 'gutterVertical')*2;
 			}
 
 			@include _dd-grid-listMedia($_params);
@@ -235,11 +309,7 @@ $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
 	}
 
 	&-area {
-		@include dd-grid-area();
-	}
-
-	&-cell {
-		@include dd-grid-cell();
+		@include dd-grid-area($dd-grid-gutterHorizontal, $dd-grid-gutterVertical, true, true);
 	}
 }
 
@@ -260,38 +330,22 @@ $_cellSelector: '';
 }
 
 .#{$dd-system-classPrefix}grid {
+
 	// Генерируем стили для брейкпойтнов
 	@each $_key, $_params in $dd-responsive-breakpoints {
-		$_cutoff: map_get($_params, 'cutoff');
 		$_range: map_get($_params, 'range');
 		$_minWidth: nth($_range, 1);
-		$_maxWidth: nth($_range, 2);
 		$_containerWidth: map_get($_params, 'containerWidth');
 
 		$_spaceScale: map_get($_params, 'spaceScale');
 		$_gutterContainer: $_spaceScale * $dd-grid-gutterContainer;
-		$_gutterHorizontal: $_spaceScale * $dd-grid-gutterHorizontal;
-		$_gutterVertical: $_spaceScale * $dd-grid-gutterVertical;
 
-		// Отступы сетки
-		@if ($_maxWidth) {
-			@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
-				&-area {
-					@include _dd-grid-mediaAreaGenerateSpace($_gutterHorizontal, $_gutterVertical);
-				}
-			}
-		} @else {
-			@media all and ( min-width: $_minWidth ) {
-				&-area {
-					@include _dd-grid-mediaAreaGenerateSpace($_gutterHorizontal, $_gutterVertical);
-				}
-			}
-		}
 		// Размеры ячеек сетки
 		@media all and ( min-width: $_minWidth ) {
 			&-container {
 				width: $_containerWidth;
-				padding: 0 $_gutterContainer;
+				padding-left: $_gutterContainer;
+				padding-right: $_gutterContainer;
 			}
 			@for $j from 1 through $dd-grid-columns {
 				&-area {

@@ -30,7 +30,7 @@ $dd-responsive-breakpoints: (
 	),
 	xl:(
 		cutoff: 1200px,
-		spaceScale: 2,
+		spaceScale: 1.5,
 	),
 ) !default
 
@@ -40,6 +40,7 @@ $dd-responsive-breakpoints: (
 $dd-responsive-mediaBounds: null !default;
 
 $dd-responsive-spaceFixedMod: fixed !default;
+
 
 // Возвращает параметр отсечки по имени отсечки и имени параметра
 @function dd-responsive-breakpointVal($_breakpoint, $_param)
@@ -289,13 +290,10 @@ $dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-br
 		$_val: dd-space-getSpace($_factorKey);
 		@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
 			@include dd-responsive-media($_breakKey) {
-				&._#{$_factorKey} {
+				&._#{$_factorKey}:not(._#{$dd-responsive-spaceFixedMod}) {
 					height: $_val * map_get($_breakParams, 'spaceScale');
 				}
 			}
-		}
-		&._#{$_factorKey}._#{$dd-responsive-spaceFixedMod} {
-			height: $_val;
 		}
 	}
 }
