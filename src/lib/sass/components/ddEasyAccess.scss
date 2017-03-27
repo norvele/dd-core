@@ -39,6 +39,16 @@
 	@return dd-space-getSpace($_args...);
 }
 
+@function spaceFactor($_args...)
+{
+	@return dd-space-getFactor($_args...);
+}
+
+@mixin space($_args...)
+{
+	@include dd-space($_args...);
+}
+
 // DivoDivnoe Responsive
 
 @function breakpointVal($_args...)
@@ -76,14 +86,26 @@
 	@return dd-responsive-nextBreakpoint($_args...);
 }
 
-@mixin media($_args...)
+@function parseMedia($_args...)
 {
-	@include dd-responsive-media($_args...);
+	@return dd-responsive-parseMedia($_args...);
 }
 
-@mixin helpers($_args...)
+@mixin media($_args...)
 {
-	@include dd-responsive-helpers($_args...);
+	@include dd-responsive-media($_args...) {
+		@content;
+	}
+}
+
+@function normalizeBreakpoints($_args...)
+{
+	@return dd-responsive-normalizeBreakpoints($_args...);
+}
+
+@mixin responsiveSpace($_args...)
+{
+	@include dd-responsive-space($_args...);
 }
 
 // DivoDivnoe Grid
@@ -103,6 +125,11 @@
 	@include dd-grid-templateRows($_args...);
 }
 
+@mixin gridGutters($_args...)
+{
+	@include dd-grid-gutters($_args...);
+}
+
 @mixin gridArea($_args...)
 {
 	@include dd-grid-area($_args...);
@@ -112,4 +139,10 @@
 {
 	@include dd-grid-cell($_args...);
 }
+
+@mixin gridList($_args...)
+{
+	@include dd-grid-list($_args...);
+}
+
 
