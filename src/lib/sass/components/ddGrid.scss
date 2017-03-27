@@ -167,7 +167,7 @@ $dd-grid-spaceGutters: true;
 	}
 }
 
-@mixin dd-grid-gutters($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: $dd-grid-dynamicGutters, $_spaces: $dd-grid-spaceGutters)
+@mixin dd-grid-gutters($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: false, $_spaces: false)
 {
 	$_gutterH: dd-space-getSpace($_gutterH);
 	$_gutterV: dd-space-getSpace($_gutterV);
@@ -329,6 +329,10 @@ $dd-grid-spaceGutters: true;
 
 	&-area {
 		@include dd-grid-area($dd-grid-gutterHorizontal, $dd-grid-gutterVertical, true, true);
+
+		&._center {
+			justify-content: center;
+		}
 	}
 }
 
