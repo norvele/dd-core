@@ -71,3 +71,19 @@
 		}*/
 	}
 }
+
+.sukaStatic {
+	@include _dd-grid-guttersStatic(10px, 10px)
+}
+
+.sukaDynamic {
+	@include _dd-grid-guttersDynamic(10px, 10px)
+}
+
+.sukaStaticSpaces {
+	@include _dd-grid-guttersStaticSpaces(10px, 10px)
+}
+
+.sukaDynamicSpaces {
+	@include _dd-grid-guttersDynamicSpaces(10px, 10px)
+}

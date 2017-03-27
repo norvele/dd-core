@@ -13,7 +13,7 @@ export default class TaskSass
 			gulp.src(config.src)
 				.pipe(plumber())
 				.pipe(sass())
-				.pipe(gcmq())
+				//.pipe(gcmq())
 				.pipe(autoprefixer())
 				.pipe(gulp.dest(config.dest));
 		});

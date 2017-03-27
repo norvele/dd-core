@@ -1,252 +1,117 @@
 @charset "UTF-8";
-
 /*
 	DivoDivnoe System.
 */
-
 /*
 	Устанавливает префикс для всех генерируемых классов библиотеки
 	Например при "dd-": .dd-grid-area ._dd-col .__dd-hidden
 */
-
 /*
 	Устанавливает режим дебага
 	Если true - будут выводиться все предупреждения
 */
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
 
 body {
-  line-height: 1;
-}
+  line-height: 1; }
 
-ol,
-ul {
-  list-style: none;
-}
+ol, ul {
+  list-style: none; }
 
-blockquote,
-q {
-  quotes: none;
-}
+blockquote, q {
+  quotes: none; }
 
-blockquote:before,
-blockquote:after {
+blockquote:before, blockquote:after {
   content: '';
-  content: none;
-}
+  content: none; }
 
-q:before,
-q:after {
+q:before, q:after {
   content: '';
-  content: none;
-}
+  content: none; }
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 /*
 	DivoDivnoe Helpers
 */
-
 .__dd-pullRight {
-  float: right !important;
-}
+  float: right !important; }
 
 .__dd-pullLeft {
-  float: left !important;
-}
+  float: left !important; }
 
 .__dd-invisible {
-  visibility: hidden !important;
-}
+  visibility: hidden !important; }
 
 .__dd-hidden {
-  display: none !important;
-}
+  display: none !important; }
 
 .__dd-clear {
-  clear: both !important;
-}
+  clear: both !important; }
 
 .__dd-textRight {
-  text-align: right !important;
-}
+  text-align: right !important; }
 
 .__dd-textLeft {
-  text-align: left !important;
-}
+  text-align: left !important; }
 
 .__dd-textCenter {
-  text-align: center !important;
-}
+  text-align: center !important; }
 
 .__dd-textJustify {
-  text-align: justify !important;
-}
+  text-align: justify !important; }
 
 .__dd-textNoWrap {
-  white-space: nowrap !important;
-}
+  white-space: nowrap !important; }
 
 .__dd-textLowerCase {
-  text-transform: lowercase !important;
-}
+  text-transform: lowercase !important; }
 
 .__dd-textUpperCase {
-  text-transform: uppercase !important;
-}
+  text-transform: uppercase !important; }
 
 .__dd-textCapitalize {
-  text-transform: capitalize !important;
-}
+  text-transform: capitalize !important; }
 
 .__dd-flexWrap {
   -ms-flex-wrap: wrap !important;
-      flex-wrap: wrap !important;
-}
+      flex-wrap: wrap !important; }
 
 .__dd-flexNoWrap {
   -ms-flex-wrap: nowrap !important;
-      flex-wrap: nowrap !important;
-}
+      flex-wrap: nowrap !important; }
 
 /*
 	DivoDivnoe Space
 */
-
 .dd-space {
-  display: block;
-}
-
-.dd-space._tiny {
-  height: 4px;
-}
-
-.dd-space._small {
-  height: 8px;
-}
-
-.dd-space._medium {
-  height: 16px;
-}
-
-.dd-space._large {
-  height: 32px;
-}
-
-.dd-space._massive {
-  height: 64px;
-}
+  display: block; }
+  .dd-space._tiny {
+    height: 4px; }
+  .dd-space._small {
+    height: 8px; }
+  .dd-space._medium {
+    height: 16px; }
+  .dd-space._large {
+    height: 32px; }
+  .dd-space._massive {
+    height: 64px; }
 
 /*
 	DivoDivnoe Responsive
 	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
 */
-
 /*
 	Массив размеров устройств, каждый размер может содержать следующие параметры:
 	cutoff - отсечка в пикселях. (обязательно если не указан range)
@@ -254,78 +119,636 @@ table {
 	containerWidth - ширина контейнера (по умолчанию равен cutoff)
 	spaceScale - множитель отступов
 */
-
 /*
 	TODO медиа выражение, в пределах которого будет работать адавтивность
 */
+@media all and (min-width: 0) {
+  .__dd-pullRight-xs-up {
+    float: right !important; }
+  .__dd-pullLeft-xs-up {
+    float: left !important; }
+  .__dd-invisible-xs-up {
+    visibility: hidden !important; }
+  .__dd-hidden-xs-up {
+    display: none !important; }
+  .__dd-clear-xs-up {
+    clear: both !important; }
+  .__dd-textRight-xs-up {
+    text-align: right !important; }
+  .__dd-textLeft-xs-up {
+    text-align: left !important; }
+  .__dd-textCenter-xs-up {
+    text-align: center !important; }
+  .__dd-textJustify-xs-up {
+    text-align: justify !important; }
+  .__dd-textNoWrap-xs-up {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-xs-up {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-xs-up {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-xs-up {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-xs-up {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-xs-up {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .__dd-pullRight-xs-down {
+    float: right !important; }
+  .__dd-pullLeft-xs-down {
+    float: left !important; }
+  .__dd-invisible-xs-down {
+    visibility: hidden !important; }
+  .__dd-hidden-xs-down {
+    display: none !important; }
+  .__dd-clear-xs-down {
+    clear: both !important; }
+  .__dd-textRight-xs-down {
+    text-align: right !important; }
+  .__dd-textLeft-xs-down {
+    text-align: left !important; }
+  .__dd-textCenter-xs-down {
+    text-align: center !important; }
+  .__dd-textJustify-xs-down {
+    text-align: justify !important; }
+  .__dd-textNoWrap-xs-down {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-xs-down {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-xs-down {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-xs-down {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-xs-down {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-xs-down {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .__dd-pullRight-xs {
+    float: right !important; }
+  .__dd-pullLeft-xs {
+    float: left !important; }
+  .__dd-invisible-xs {
+    visibility: hidden !important; }
+  .__dd-hidden-xs {
+    display: none !important; }
+  .__dd-clear-xs {
+    clear: both !important; }
+  .__dd-textRight-xs {
+    text-align: right !important; }
+  .__dd-textLeft-xs {
+    text-align: left !important; }
+  .__dd-textCenter-xs {
+    text-align: center !important; }
+  .__dd-textJustify-xs {
+    text-align: justify !important; }
+  .__dd-textNoWrap-xs {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-xs {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-xs {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-xs {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-xs {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-xs {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 544px) {
+  .__dd-pullRight-sm-up {
+    float: right !important; }
+  .__dd-pullLeft-sm-up {
+    float: left !important; }
+  .__dd-invisible-sm-up {
+    visibility: hidden !important; }
+  .__dd-hidden-sm-up {
+    display: none !important; }
+  .__dd-clear-sm-up {
+    clear: both !important; }
+  .__dd-textRight-sm-up {
+    text-align: right !important; }
+  .__dd-textLeft-sm-up {
+    text-align: left !important; }
+  .__dd-textCenter-sm-up {
+    text-align: center !important; }
+  .__dd-textJustify-sm-up {
+    text-align: justify !important; }
+  .__dd-textNoWrap-sm-up {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-sm-up {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-sm-up {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-sm-up {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-sm-up {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-sm-up {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 767px) {
+  .__dd-pullRight-sm-down {
+    float: right !important; }
+  .__dd-pullLeft-sm-down {
+    float: left !important; }
+  .__dd-invisible-sm-down {
+    visibility: hidden !important; }
+  .__dd-hidden-sm-down {
+    display: none !important; }
+  .__dd-clear-sm-down {
+    clear: both !important; }
+  .__dd-textRight-sm-down {
+    text-align: right !important; }
+  .__dd-textLeft-sm-down {
+    text-align: left !important; }
+  .__dd-textCenter-sm-down {
+    text-align: center !important; }
+  .__dd-textJustify-sm-down {
+    text-align: justify !important; }
+  .__dd-textNoWrap-sm-down {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-sm-down {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-sm-down {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-sm-down {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-sm-down {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-sm-down {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .__dd-pullRight-sm {
+    float: right !important; }
+  .__dd-pullLeft-sm {
+    float: left !important; }
+  .__dd-invisible-sm {
+    visibility: hidden !important; }
+  .__dd-hidden-sm {
+    display: none !important; }
+  .__dd-clear-sm {
+    clear: both !important; }
+  .__dd-textRight-sm {
+    text-align: right !important; }
+  .__dd-textLeft-sm {
+    text-align: left !important; }
+  .__dd-textCenter-sm {
+    text-align: center !important; }
+  .__dd-textJustify-sm {
+    text-align: justify !important; }
+  .__dd-textNoWrap-sm {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-sm {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-sm {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-sm {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-sm {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-sm {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 768px) {
+  .__dd-pullRight-md-up {
+    float: right !important; }
+  .__dd-pullLeft-md-up {
+    float: left !important; }
+  .__dd-invisible-md-up {
+    visibility: hidden !important; }
+  .__dd-hidden-md-up {
+    display: none !important; }
+  .__dd-clear-md-up {
+    clear: both !important; }
+  .__dd-textRight-md-up {
+    text-align: right !important; }
+  .__dd-textLeft-md-up {
+    text-align: left !important; }
+  .__dd-textCenter-md-up {
+    text-align: center !important; }
+  .__dd-textJustify-md-up {
+    text-align: justify !important; }
+  .__dd-textNoWrap-md-up {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-md-up {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-md-up {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-md-up {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-md-up {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-md-up {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 991px) {
+  .__dd-pullRight-md-down {
+    float: right !important; }
+  .__dd-pullLeft-md-down {
+    float: left !important; }
+  .__dd-invisible-md-down {
+    visibility: hidden !important; }
+  .__dd-hidden-md-down {
+    display: none !important; }
+  .__dd-clear-md-down {
+    clear: both !important; }
+  .__dd-textRight-md-down {
+    text-align: right !important; }
+  .__dd-textLeft-md-down {
+    text-align: left !important; }
+  .__dd-textCenter-md-down {
+    text-align: center !important; }
+  .__dd-textJustify-md-down {
+    text-align: justify !important; }
+  .__dd-textNoWrap-md-down {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-md-down {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-md-down {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-md-down {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-md-down {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-md-down {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .__dd-pullRight-md {
+    float: right !important; }
+  .__dd-pullLeft-md {
+    float: left !important; }
+  .__dd-invisible-md {
+    visibility: hidden !important; }
+  .__dd-hidden-md {
+    display: none !important; }
+  .__dd-clear-md {
+    clear: both !important; }
+  .__dd-textRight-md {
+    text-align: right !important; }
+  .__dd-textLeft-md {
+    text-align: left !important; }
+  .__dd-textCenter-md {
+    text-align: center !important; }
+  .__dd-textJustify-md {
+    text-align: justify !important; }
+  .__dd-textNoWrap-md {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-md {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-md {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-md {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-md {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-md {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 992px) {
+  .__dd-pullRight-lg-up {
+    float: right !important; }
+  .__dd-pullLeft-lg-up {
+    float: left !important; }
+  .__dd-invisible-lg-up {
+    visibility: hidden !important; }
+  .__dd-hidden-lg-up {
+    display: none !important; }
+  .__dd-clear-lg-up {
+    clear: both !important; }
+  .__dd-textRight-lg-up {
+    text-align: right !important; }
+  .__dd-textLeft-lg-up {
+    text-align: left !important; }
+  .__dd-textCenter-lg-up {
+    text-align: center !important; }
+  .__dd-textJustify-lg-up {
+    text-align: justify !important; }
+  .__dd-textNoWrap-lg-up {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-lg-up {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-lg-up {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-lg-up {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-lg-up {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-lg-up {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 1199px) {
+  .__dd-pullRight-lg-down {
+    float: right !important; }
+  .__dd-pullLeft-lg-down {
+    float: left !important; }
+  .__dd-invisible-lg-down {
+    visibility: hidden !important; }
+  .__dd-hidden-lg-down {
+    display: none !important; }
+  .__dd-clear-lg-down {
+    clear: both !important; }
+  .__dd-textRight-lg-down {
+    text-align: right !important; }
+  .__dd-textLeft-lg-down {
+    text-align: left !important; }
+  .__dd-textCenter-lg-down {
+    text-align: center !important; }
+  .__dd-textJustify-lg-down {
+    text-align: justify !important; }
+  .__dd-textNoWrap-lg-down {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-lg-down {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-lg-down {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-lg-down {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-lg-down {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-lg-down {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .__dd-pullRight-lg {
+    float: right !important; }
+  .__dd-pullLeft-lg {
+    float: left !important; }
+  .__dd-invisible-lg {
+    visibility: hidden !important; }
+  .__dd-hidden-lg {
+    display: none !important; }
+  .__dd-clear-lg {
+    clear: both !important; }
+  .__dd-textRight-lg {
+    text-align: right !important; }
+  .__dd-textLeft-lg {
+    text-align: left !important; }
+  .__dd-textCenter-lg {
+    text-align: center !important; }
+  .__dd-textJustify-lg {
+    text-align: justify !important; }
+  .__dd-textNoWrap-lg {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-lg {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-lg {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-lg {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-lg {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-lg {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 1200px) {
+  .__dd-pullRight-xl-up {
+    float: right !important; }
+  .__dd-pullLeft-xl-up {
+    float: left !important; }
+  .__dd-invisible-xl-up {
+    visibility: hidden !important; }
+  .__dd-hidden-xl-up {
+    display: none !important; }
+  .__dd-clear-xl-up {
+    clear: both !important; }
+  .__dd-textRight-xl-up {
+    text-align: right !important; }
+  .__dd-textLeft-xl-up {
+    text-align: left !important; }
+  .__dd-textCenter-xl-up {
+    text-align: center !important; }
+  .__dd-textJustify-xl-up {
+    text-align: justify !important; }
+  .__dd-textNoWrap-xl-up {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-xl-up {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-xl-up {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-xl-up {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-xl-up {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-xl-up {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
 
 .__dd-pullRight-xl-down {
-  float: right !important;
-}
+  float: right !important; }
 
 .__dd-pullLeft-xl-down {
-  float: left !important;
-}
+  float: left !important; }
 
 .__dd-invisible-xl-down {
-  visibility: hidden !important;
-}
+  visibility: hidden !important; }
 
 .__dd-hidden-xl-down {
-  display: none !important;
-}
+  display: none !important; }
 
 .__dd-clear-xl-down {
-  clear: both !important;
-}
+  clear: both !important; }
 
 .__dd-textRight-xl-down {
-  text-align: right !important;
-}
+  text-align: right !important; }
 
 .__dd-textLeft-xl-down {
-  text-align: left !important;
-}
+  text-align: left !important; }
 
 .__dd-textCenter-xl-down {
-  text-align: center !important;
-}
+  text-align: center !important; }
 
 .__dd-textJustify-xl-down {
-  text-align: justify !important;
-}
+  text-align: justify !important; }
 
 .__dd-textNoWrap-xl-down {
-  white-space: nowrap !important;
-}
+  white-space: nowrap !important; }
 
 .__dd-textLowerCase-xl-down {
-  text-transform: lowercase !important;
-}
+  text-transform: lowercase !important; }
 
 .__dd-textUpperCase-xl-down {
-  text-transform: uppercase !important;
-}
+  text-transform: uppercase !important; }
 
 .__dd-textCapitalize-xl-down {
-  text-transform: capitalize !important;
-}
+  text-transform: capitalize !important; }
 
 .__dd-flexWrap-xl-down {
   -ms-flex-wrap: wrap !important;
-      flex-wrap: wrap !important;
-}
+      flex-wrap: wrap !important; }
 
 .__dd-flexNoWrap-xl-down {
   -ms-flex-wrap: nowrap !important;
-      flex-wrap: nowrap !important;
-}
+      flex-wrap: nowrap !important; }
+
+@media all and (min-width: 1200px) {
+  .__dd-pullRight-xl {
+    float: right !important; }
+  .__dd-pullLeft-xl {
+    float: left !important; }
+  .__dd-invisible-xl {
+    visibility: hidden !important; }
+  .__dd-hidden-xl {
+    display: none !important; }
+  .__dd-clear-xl {
+    clear: both !important; }
+  .__dd-textRight-xl {
+    text-align: right !important; }
+  .__dd-textLeft-xl {
+    text-align: left !important; }
+  .__dd-textCenter-xl {
+    text-align: center !important; }
+  .__dd-textJustify-xl {
+    text-align: justify !important; }
+  .__dd-textNoWrap-xl {
+    white-space: nowrap !important; }
+  .__dd-textLowerCase-xl {
+    text-transform: lowercase !important; }
+  .__dd-textUpperCase-xl {
+    text-transform: uppercase !important; }
+  .__dd-textCapitalize-xl {
+    text-transform: capitalize !important; }
+  .__dd-flexWrap-xl {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important; }
+  .__dd-flexNoWrap-xl {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._tiny:not(._fixed) {
+    height: 2px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._tiny:not(._fixed) {
+    height: 2px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._tiny:not(._fixed) {
+    height: 3px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._tiny:not(._fixed) {
+    height: 4px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._tiny:not(._fixed) {
+    height: 6px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._small:not(._fixed) {
+    height: 4px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._small:not(._fixed) {
+    height: 4px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._small:not(._fixed) {
+    height: 6px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._small:not(._fixed) {
+    height: 8px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._small:not(._fixed) {
+    height: 12px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._medium:not(._fixed) {
+    height: 8px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._medium:not(._fixed) {
+    height: 8px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._medium:not(._fixed) {
+    height: 12px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._medium:not(._fixed) {
+    height: 16px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._medium:not(._fixed) {
+    height: 24px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._large:not(._fixed) {
+    height: 16px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._large:not(._fixed) {
+    height: 16px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._large:not(._fixed) {
+    height: 24px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._large:not(._fixed) {
+    height: 32px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._large:not(._fixed) {
+    height: 48px; } }
+
+@media all and (min-width: 0) and (max-width: 543px) {
+  .dd-space._massive:not(._fixed) {
+    height: 32px; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  .dd-space._massive:not(._fixed) {
+    height: 32px; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .dd-space._massive:not(._fixed) {
+    height: 48px; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  .dd-space._massive:not(._fixed) {
+    height: 64px; } }
+
+@media all and (min-width: 1200px) {
+  .dd-space._massive:not(._fixed) {
+    height: 96px; } }
 
 /*
 	DivoDivnoe Grid
 	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
 */
-
 /*
 	@include dd-grid-list(
 		(
@@ -343,16 +766,12 @@ table {
 		),
 	)
 */
-
 .dd-grid-container {
   box-sizing: border-box;
   padding: 0 16px;
-  margin: 0 auto;
-}
-
-.dd-grid-container._dd-fluid {
-  width: 100%;
-}
+  margin: 0 auto; }
+  .dd-grid-container._dd-fluid {
+    width: 100%; }
 
 .dd-grid-area {
   display: -webkit-box;
@@ -364,98 +783,491 @@ table {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-width: 0;
-}
+  min-width: 0; }
+  .dd-grid-area:empty::after, .dd-grid-area:blank::after {
+    content: '';
+    height: 32px; }
+  .dd-grid-area > * {
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    min-width: 0;
+    min-height: 0;
+    width: 100%; }
+  @media all and (min-width: 0) and (max-width: 543px) {
+    .dd-grid-area {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: -4px;
+      margin-top: -4px; }
+      .dd-grid-area > * {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px; } }
+  @media all and (min-width: 544px) and (max-width: 767px) {
+    .dd-grid-area {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: -4px;
+      margin-top: -4px; }
+      .dd-grid-area > * {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px; } }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    .dd-grid-area {
+      margin-left: -6px;
+      margin-right: -6px;
+      margin-bottom: -6px;
+      margin-top: -6px; }
+      .dd-grid-area > * {
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 6px;
+        padding-top: 6px; } }
+  @media all and (min-width: 992px) and (max-width: 1199px) {
+    .dd-grid-area {
+      margin-left: -8px;
+      margin-right: -8px;
+      margin-bottom: -8px;
+      margin-top: -8px; }
+      .dd-grid-area > * {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        padding-top: 8px; } }
+  @media all and (min-width: 1200px) {
+    .dd-grid-area {
+      margin-left: -12px;
+      margin-right: -12px;
+      margin-bottom: -12px;
+      margin-top: -12px; }
+      .dd-grid-area > * {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        padding-top: 12px; } }
+  @media all and (min-width: 0) and (max-width: 543px) {
+    .dd-grid-area._tiny {
+      margin-left: -1px;
+      margin-right: -1px;
+      margin-bottom: -1px;
+      margin-top: -1px; }
+      .dd-grid-area._tiny > * {
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-bottom: 1px;
+        padding-top: 1px; }
+    .dd-grid-area._small {
+      margin-left: -2px;
+      margin-right: -2px;
+      margin-bottom: -2px;
+      margin-top: -2px; }
+      .dd-grid-area._small > * {
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-bottom: 2px;
+        padding-top: 2px; }
+    .dd-grid-area._medium {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: -4px;
+      margin-top: -4px; }
+      .dd-grid-area._medium > * {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px; }
+    .dd-grid-area._large {
+      margin-left: -8px;
+      margin-right: -8px;
+      margin-bottom: -8px;
+      margin-top: -8px; }
+      .dd-grid-area._large > * {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        padding-top: 8px; }
+    .dd-grid-area._massive {
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: -16px;
+      margin-top: -16px; }
+      .dd-grid-area._massive > * {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-top: 16px; } }
+  @media all and (min-width: 544px) and (max-width: 767px) {
+    .dd-grid-area._tiny {
+      margin-left: -1px;
+      margin-right: -1px;
+      margin-bottom: -1px;
+      margin-top: -1px; }
+      .dd-grid-area._tiny > * {
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-bottom: 1px;
+        padding-top: 1px; }
+    .dd-grid-area._small {
+      margin-left: -2px;
+      margin-right: -2px;
+      margin-bottom: -2px;
+      margin-top: -2px; }
+      .dd-grid-area._small > * {
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-bottom: 2px;
+        padding-top: 2px; }
+    .dd-grid-area._medium {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: -4px;
+      margin-top: -4px; }
+      .dd-grid-area._medium > * {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px; }
+    .dd-grid-area._large {
+      margin-left: -8px;
+      margin-right: -8px;
+      margin-bottom: -8px;
+      margin-top: -8px; }
+      .dd-grid-area._large > * {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        padding-top: 8px; }
+    .dd-grid-area._massive {
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: -16px;
+      margin-top: -16px; }
+      .dd-grid-area._massive > * {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-top: 16px; } }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    .dd-grid-area._tiny {
+      margin-left: -1.5px;
+      margin-right: -1.5px;
+      margin-bottom: -1.5px;
+      margin-top: -1.5px; }
+      .dd-grid-area._tiny > * {
+        padding-left: 1.5px;
+        padding-right: 1.5px;
+        padding-bottom: 1.5px;
+        padding-top: 1.5px; }
+    .dd-grid-area._small {
+      margin-left: -3px;
+      margin-right: -3px;
+      margin-bottom: -3px;
+      margin-top: -3px; }
+      .dd-grid-area._small > * {
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-bottom: 3px;
+        padding-top: 3px; }
+    .dd-grid-area._medium {
+      margin-left: -6px;
+      margin-right: -6px;
+      margin-bottom: -6px;
+      margin-top: -6px; }
+      .dd-grid-area._medium > * {
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 6px;
+        padding-top: 6px; }
+    .dd-grid-area._large {
+      margin-left: -12px;
+      margin-right: -12px;
+      margin-bottom: -12px;
+      margin-top: -12px; }
+      .dd-grid-area._large > * {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        padding-top: 12px; }
+    .dd-grid-area._massive {
+      margin-left: -24px;
+      margin-right: -24px;
+      margin-bottom: -24px;
+      margin-top: -24px; }
+      .dd-grid-area._massive > * {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
+        padding-top: 24px; } }
+  @media all and (min-width: 992px) and (max-width: 1199px) {
+    .dd-grid-area._tiny {
+      margin-left: -2px;
+      margin-right: -2px;
+      margin-bottom: -2px;
+      margin-top: -2px; }
+      .dd-grid-area._tiny > * {
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-bottom: 2px;
+        padding-top: 2px; }
+    .dd-grid-area._small {
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-bottom: -4px;
+      margin-top: -4px; }
+      .dd-grid-area._small > * {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px; }
+    .dd-grid-area._medium {
+      margin-left: -8px;
+      margin-right: -8px;
+      margin-bottom: -8px;
+      margin-top: -8px; }
+      .dd-grid-area._medium > * {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        padding-top: 8px; }
+    .dd-grid-area._large {
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: -16px;
+      margin-top: -16px; }
+      .dd-grid-area._large > * {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 16px;
+        padding-top: 16px; }
+    .dd-grid-area._massive {
+      margin-left: -32px;
+      margin-right: -32px;
+      margin-bottom: -32px;
+      margin-top: -32px; }
+      .dd-grid-area._massive > * {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+        padding-top: 32px; } }
+  @media all and (min-width: 1200px) {
+    .dd-grid-area._tiny {
+      margin-left: -3px;
+      margin-right: -3px;
+      margin-bottom: -3px;
+      margin-top: -3px; }
+      .dd-grid-area._tiny > * {
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-bottom: 3px;
+        padding-top: 3px; }
+    .dd-grid-area._small {
+      margin-left: -6px;
+      margin-right: -6px;
+      margin-bottom: -6px;
+      margin-top: -6px; }
+      .dd-grid-area._small > * {
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 6px;
+        padding-top: 6px; }
+    .dd-grid-area._medium {
+      margin-left: -12px;
+      margin-right: -12px;
+      margin-bottom: -12px;
+      margin-top: -12px; }
+      .dd-grid-area._medium > * {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        padding-top: 12px; }
+    .dd-grid-area._large {
+      margin-left: -24px;
+      margin-right: -24px;
+      margin-bottom: -24px;
+      margin-top: -24px; }
+      .dd-grid-area._large > * {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
+        padding-top: 24px; }
+    .dd-grid-area._massive {
+      margin-left: -48px;
+      margin-right: -48px;
+      margin-bottom: -48px;
+      margin-top: -48px; }
+      .dd-grid-area._massive > * {
+        padding-left: 48px;
+        padding-right: 48px;
+        padding-bottom: 48px;
+        padding-top: 48px; } }
 
-.dd-grid-area:empty::after,
-.dd-grid-area:blank::after {
-  content: '';
-  height: 32px;
-}
-
-.dd-grid-area > * {
-  box-sizing: border-box;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-  min-width: 0;
-  min-height: 0;
-  width: 100%;
-}
-
-.dd-grid-cell._xs-1,
-.dd-grid-cell._xs-2,
-.dd-grid-cell._xs-3,
-.dd-grid-cell._xs-4,
-.dd-grid-cell._xs-5,
-.dd-grid-cell._xs-6,
-.dd-grid-cell._xs-7,
-.dd-grid-cell._xs-8,
-.dd-grid-cell._xs-9,
-.dd-grid-cell._xs-10,
-.dd-grid-cell._xs-11,
-.dd-grid-cell._xs-12,
-.dd-grid-cell._sm-1,
-.dd-grid-cell._sm-2,
-.dd-grid-cell._sm-3,
-.dd-grid-cell._sm-4,
-.dd-grid-cell._sm-5,
-.dd-grid-cell._sm-6,
-.dd-grid-cell._sm-7,
-.dd-grid-cell._sm-8,
-.dd-grid-cell._sm-9,
-.dd-grid-cell._sm-10,
-.dd-grid-cell._sm-11,
-.dd-grid-cell._sm-12,
-.dd-grid-cell._md-1,
-.dd-grid-cell._md-2,
-.dd-grid-cell._md-3,
-.dd-grid-cell._md-4,
-.dd-grid-cell._md-5,
-.dd-grid-cell._md-6,
-.dd-grid-cell._md-7,
-.dd-grid-cell._md-8,
-.dd-grid-cell._md-9,
-.dd-grid-cell._md-10,
-.dd-grid-cell._md-11,
-.dd-grid-cell._md-12,
-.dd-grid-cell._lg-1,
-.dd-grid-cell._lg-2,
-.dd-grid-cell._lg-3,
-.dd-grid-cell._lg-4,
-.dd-grid-cell._lg-5,
-.dd-grid-cell._lg-6,
-.dd-grid-cell._lg-7,
-.dd-grid-cell._lg-8,
-.dd-grid-cell._lg-9,
-.dd-grid-cell._lg-10,
-.dd-grid-cell._lg-11,
-.dd-grid-cell._lg-12,
-.dd-grid-cell._xl-1,
-.dd-grid-cell._xl-2,
-.dd-grid-cell._xl-3,
-.dd-grid-cell._xl-4,
-.dd-grid-cell._xl-5,
-.dd-grid-cell._xl-6,
-.dd-grid-cell._xl-7,
-.dd-grid-cell._xl-8,
-.dd-grid-cell._xl-9,
-.dd-grid-cell._xl-10,
-.dd-grid-cell._xl-11,
-.dd-grid-cell._xl-12 {
+.dd-grid-cell._xs-1, .dd-grid-cell._xs-2, .dd-grid-cell._xs-3, .dd-grid-cell._xs-4, .dd-grid-cell._xs-5, .dd-grid-cell._xs-6, .dd-grid-cell._xs-7, .dd-grid-cell._xs-8, .dd-grid-cell._xs-9, .dd-grid-cell._xs-10, .dd-grid-cell._xs-11, .dd-grid-cell._xs-12, .dd-grid-cell._sm-1, .dd-grid-cell._sm-2, .dd-grid-cell._sm-3, .dd-grid-cell._sm-4, .dd-grid-cell._sm-5, .dd-grid-cell._sm-6, .dd-grid-cell._sm-7, .dd-grid-cell._sm-8, .dd-grid-cell._sm-9, .dd-grid-cell._sm-10, .dd-grid-cell._sm-11, .dd-grid-cell._sm-12, .dd-grid-cell._md-1, .dd-grid-cell._md-2, .dd-grid-cell._md-3, .dd-grid-cell._md-4, .dd-grid-cell._md-5, .dd-grid-cell._md-6, .dd-grid-cell._md-7, .dd-grid-cell._md-8, .dd-grid-cell._md-9, .dd-grid-cell._md-10, .dd-grid-cell._md-11, .dd-grid-cell._md-12, .dd-grid-cell._lg-1, .dd-grid-cell._lg-2, .dd-grid-cell._lg-3, .dd-grid-cell._lg-4, .dd-grid-cell._lg-5, .dd-grid-cell._lg-6, .dd-grid-cell._lg-7, .dd-grid-cell._lg-8, .dd-grid-cell._lg-9, .dd-grid-cell._lg-10, .dd-grid-cell._lg-11, .dd-grid-cell._lg-12, .dd-grid-cell._xl-1, .dd-grid-cell._xl-2, .dd-grid-cell._xl-3, .dd-grid-cell._xl-4, .dd-grid-cell._xl-5, .dd-grid-cell._xl-6, .dd-grid-cell._xl-7, .dd-grid-cell._xl-8, .dd-grid-cell._xl-9, .dd-grid-cell._xl-10, .dd-grid-cell._xl-11, .dd-grid-cell._xl-12 {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   -ms-flex-negative: 0;
-      flex-shrink: 0;
-}
+      flex-shrink: 0; }
+
+@media all and (min-width: 0) {
+  .dd-grid-container {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px; }
+  .dd-grid-area > .dd-grid-cell._xs-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._xs-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._xs-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._xs-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._xs-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._xs-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._xs-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._xs-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._xs-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._xs-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._xs-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._xs-12 {
+    width: 100%; } }
+
+@media all and (min-width: 544px) {
+  .dd-grid-container {
+    width: 544px;
+    padding-left: 8px;
+    padding-right: 8px; }
+  .dd-grid-area > .dd-grid-cell._sm-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._sm-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._sm-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._sm-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._sm-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._sm-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._sm-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._sm-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._sm-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._sm-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._sm-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._sm-12 {
+    width: 100%; } }
+
+@media all and (min-width: 768px) {
+  .dd-grid-container {
+    width: 768px;
+    padding-left: 12px;
+    padding-right: 12px; }
+  .dd-grid-area > .dd-grid-cell._md-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._md-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._md-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._md-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._md-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._md-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._md-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._md-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._md-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._md-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._md-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._md-12 {
+    width: 100%; } }
+
+@media all and (min-width: 992px) {
+  .dd-grid-container {
+    width: 992px;
+    padding-left: 16px;
+    padding-right: 16px; }
+  .dd-grid-area > .dd-grid-cell._lg-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._lg-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._lg-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._lg-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._lg-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._lg-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._lg-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._lg-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._lg-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._lg-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._lg-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._lg-12 {
+    width: 100%; } }
+
+@media all and (min-width: 1200px) {
+  .dd-grid-container {
+    width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px; }
+  .dd-grid-area > .dd-grid-cell._xl-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._xl-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._xl-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._xl-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._xl-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._xl-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._xl-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._xl-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._xl-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._xl-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._xl-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._xl-12 {
+    width: 100%; } }
 
 /*@import 'components/typ';*/
-
 .dd-form-message {
   font-size: 1em;
   padding: 0.5em 1em;
@@ -464,32 +1276,23 @@ table {
   border: 1px solid;
   color: #555555;
   background-color: rgba(162, 162, 162, 0.1);
-  border-color: #888888;
-}
-
-.dd-form-message.-error {
-  color: #9f3a38;
-  background-color: rgba(218, 151, 150, 0.1);
-  border-color: #cd7270;
-}
-
-.dd-form-message.-warning {
-  color: #573a08;
-  background-color: rgba(227, 151, 21, 0.1);
-  border-color: #b47811;
-}
-
-.dd-form-message.-success {
-  color: #2c662d;
-  background-color: rgba(108, 191, 109, 0.1);
-  border-color: #4bad4c;
-}
-
-.dd-form-message.-notice {
-  color: #276f86;
-  background-color: rgba(112, 189, 214, 0.1);
-  border-color: #49abca;
-}
+  border-color: #888888; }
+  .dd-form-message.-error {
+    color: #9f3a38;
+    background-color: rgba(218, 151, 150, 0.1);
+    border-color: #cd7270; }
+  .dd-form-message.-warning {
+    color: #573a08;
+    background-color: rgba(227, 151, 21, 0.1);
+    border-color: #b47811; }
+  .dd-form-message.-success {
+    color: #2c662d;
+    background-color: rgba(108, 191, 109, 0.1);
+    border-color: #4bad4c; }
+  .dd-form-message.-notice {
+    color: #276f86;
+    background-color: rgba(112, 189, 214, 0.1);
+    border-color: #49abca; }
 
 .dd-form-messageList {
   display: -webkit-box;
@@ -503,56 +1306,71 @@ table {
       flex-wrap: wrap;
   min-width: 0;
   margin-bottom: -2px;
-  margin-top: -2px;
-}
-
-.dd-form-messageList:empty::after,
-.dd-form-messageList:blank::after {
-  content: '';
-  height: 8px;
-}
-
-.dd-form-messageList > * {
-  box-sizing: border-box;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-  min-width: 0;
-  min-height: 0;
-  width: 100%;
-}
-
-.dd-form-messageList > * {
-  padding-bottom: 2px;
-  padding-top: 2px;
-}
+  margin-top: -2px; }
+  .dd-form-messageList:empty::after, .dd-form-messageList:blank::after {
+    content: '';
+    height: 8px; }
+  .dd-form-messageList > * {
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    min-width: 0;
+    min-height: 0;
+    width: 100%; }
+  .dd-form-messageList > * {
+    padding-bottom: 2px;
+    padding-top: 2px; }
+  .dd-form-messageList._tiny {
+    margin-bottom: -0.5px;
+    margin-top: -0.5px; }
+    .dd-form-messageList._tiny > * {
+      padding-bottom: 0.5px;
+      padding-top: 0.5px; }
+  .dd-form-messageList._small {
+    margin-bottom: -1px;
+    margin-top: -1px; }
+    .dd-form-messageList._small > * {
+      padding-bottom: 1px;
+      padding-top: 1px; }
+  .dd-form-messageList._medium {
+    margin-bottom: -2px;
+    margin-top: -2px; }
+    .dd-form-messageList._medium > * {
+      padding-bottom: 2px;
+      padding-top: 2px; }
+  .dd-form-messageList._large {
+    margin-bottom: -4px;
+    margin-top: -4px; }
+    .dd-form-messageList._large > * {
+      padding-bottom: 4px;
+      padding-top: 4px; }
+  .dd-form-messageList._massive {
+    margin-bottom: -8px;
+    margin-top: -8px; }
+    .dd-form-messageList._massive > * {
+      padding-bottom: 8px;
+      padding-top: 8px; }
 
 .dd-form-field-label {
   display: block;
   font-size: 1em;
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
 .dd-form-field-message {
   padding: 5px 0;
-  font-size: 1em;
-}
-
-.dd-form-field-message._error {
-  color: #9f3a38;
-}
+  font-size: 1em; }
+  .dd-form-field-message._error {
+    color: #9f3a38; }
 
 .dd-form-field.-error .dd-form-field-label {
-  color: #9f3a38;
-}
+  color: #9f3a38; }
 
-.dd-form-input > input,
-.dd-form-input > select,
-.dd-form-input > textarea {
+.dd-form-input > input, .dd-form-input > select, .dd-form-input > textarea {
   width: 100%;
   box-sizing: border-box;
   background-color: #fff;
@@ -560,8 +1378,7 @@ table {
   padding: 0.5em 1em;
   border-radius: 3px;
   font-size: 1em;
-  line-height: 1.2em;
-}
+  line-height: 1.2em; }
 
 .dd-form-inputText > input {
   width: 100%;
@@ -571,25 +1388,21 @@ table {
   padding: 0.5em 1em;
   border-radius: 3px;
   font-size: 1em;
-  line-height: 1.2em;
-}
+  line-height: 1.2em; }
 
 /*
 	DivoDivnoe Icon
 */
-
 .dd-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 /*
 	DivoDivnoe EasyAccess
 	Зависит от всех компонентов
 */
-
 /*
 	@function ___($_args...)
 	{
@@ -601,3435 +1414,3 @@ table {
 		@include ___($_args...);
 	}
 */
-
-@media all and (min-width: 0) {
-  .__dd-pullRight-xs-up {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-xs-up {
-    float: left !important;
-  }
-
-  .__dd-invisible-xs-up {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-xs-up {
-    display: none !important;
-  }
-
-  .__dd-clear-xs-up {
-    clear: both !important;
-  }
-
-  .__dd-textRight-xs-up {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-xs-up {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-xs-up {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-xs-up {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-xs-up {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-xs-up {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-xs-up {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-xs-up {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-xs-up {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-xs-up {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-grid-container {
-    width: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-1 {
-    width: 8.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-2 {
-    width: 16.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-3 {
-    width: 25%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-4 {
-    width: 33.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-5 {
-    width: 41.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-6 {
-    width: 50%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-7 {
-    width: 58.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-8 {
-    width: 66.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-9 {
-    width: 75%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-10 {
-    width: 83.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-11 {
-    width: 91.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xs-12 {
-    width: 100%;
-  }
-}
-
-@media all and (min-width: 544px) {
-  .__dd-pullRight-sm-up {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-sm-up {
-    float: left !important;
-  }
-
-  .__dd-invisible-sm-up {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-sm-up {
-    display: none !important;
-  }
-
-  .__dd-clear-sm-up {
-    clear: both !important;
-  }
-
-  .__dd-textRight-sm-up {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-sm-up {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-sm-up {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-sm-up {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-sm-up {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-sm-up {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-sm-up {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-sm-up {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-sm-up {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-sm-up {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-grid-container {
-    width: 544px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-1 {
-    width: 8.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-2 {
-    width: 16.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-3 {
-    width: 25%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-4 {
-    width: 33.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-5 {
-    width: 41.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-6 {
-    width: 50%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-7 {
-    width: 58.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-8 {
-    width: 66.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-9 {
-    width: 75%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-10 {
-    width: 83.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-11 {
-    width: 91.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._sm-12 {
-    width: 100%;
-  }
-}
-
-@media all and (min-width: 768px) {
-  .__dd-pullRight-md-up {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-md-up {
-    float: left !important;
-  }
-
-  .__dd-invisible-md-up {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-md-up {
-    display: none !important;
-  }
-
-  .__dd-clear-md-up {
-    clear: both !important;
-  }
-
-  .__dd-textRight-md-up {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-md-up {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-md-up {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-md-up {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-md-up {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-md-up {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-md-up {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-md-up {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-md-up {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-md-up {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-grid-container {
-    width: 768px;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-1 {
-    width: 8.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-2 {
-    width: 16.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-3 {
-    width: 25%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-4 {
-    width: 33.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-5 {
-    width: 41.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-6 {
-    width: 50%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-7 {
-    width: 58.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-8 {
-    width: 66.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-9 {
-    width: 75%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-10 {
-    width: 83.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-11 {
-    width: 91.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._md-12 {
-    width: 100%;
-  }
-}
-
-@media all and (min-width: 992px) {
-  .__dd-pullRight-lg-up {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-lg-up {
-    float: left !important;
-  }
-
-  .__dd-invisible-lg-up {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-lg-up {
-    display: none !important;
-  }
-
-  .__dd-clear-lg-up {
-    clear: both !important;
-  }
-
-  .__dd-textRight-lg-up {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-lg-up {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-lg-up {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-lg-up {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-lg-up {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-lg-up {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-lg-up {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-lg-up {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-lg-up {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-lg-up {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-grid-container {
-    width: 992px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-1 {
-    width: 8.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-2 {
-    width: 16.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-3 {
-    width: 25%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-4 {
-    width: 33.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-5 {
-    width: 41.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-6 {
-    width: 50%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-7 {
-    width: 58.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-8 {
-    width: 66.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-9 {
-    width: 75%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-10 {
-    width: 83.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-11 {
-    width: 91.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._lg-12 {
-    width: 100%;
-  }
-}
-
-@media all and (min-width: 1200px) {
-  .__dd-pullRight-xl-up {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-xl-up {
-    float: left !important;
-  }
-
-  .__dd-invisible-xl-up {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-xl-up {
-    display: none !important;
-  }
-
-  .__dd-clear-xl-up {
-    clear: both !important;
-  }
-
-  .__dd-textRight-xl-up {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-xl-up {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-xl-up {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-xl-up {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-xl-up {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-xl-up {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-xl-up {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-xl-up {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-xl-up {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-xl-up {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .__dd-pullRight-xl {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-xl {
-    float: left !important;
-  }
-
-  .__dd-invisible-xl {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-xl {
-    display: none !important;
-  }
-
-  .__dd-clear-xl {
-    clear: both !important;
-  }
-
-  .__dd-textRight-xl {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-xl {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-xl {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-xl {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-xl {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-xl {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-xl {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-xl {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-xl {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-xl {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-space._tiny:not(._fixed) {
-    height: 6px;
-  }
-
-  .dd-space._small:not(._fixed) {
-    height: 12px;
-  }
-
-  .dd-space._medium:not(._fixed) {
-    height: 24px;
-  }
-
-  .dd-space._large:not(._fixed) {
-    height: 48px;
-  }
-
-  .dd-space._massive:not(._fixed) {
-    height: 96px;
-  }
-
-  .dd-grid-area {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._tiny {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._tiny > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._tiny._tiny {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._tiny._tiny > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._tiny._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._tiny._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._tiny._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._tiny._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._tiny._large {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._tiny._large > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._tiny._massive {
-    margin-left: -48px;
-    margin-right: -48px;
-    margin-bottom: -48px;
-    margin-top: -48px;
-  }
-
-  .dd-grid-area._tiny._massive > * {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 48px;
-    padding-top: 48px;
-  }
-
-  .dd-grid-area._small {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._small > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._small._tiny {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._small._tiny > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._small._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._small._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._small._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._small._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._small._large {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._small._large > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._small._massive {
-    margin-left: -48px;
-    margin-right: -48px;
-    margin-bottom: -48px;
-    margin-top: -48px;
-  }
-
-  .dd-grid-area._small._massive > * {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 48px;
-    padding-top: 48px;
-  }
-
-  .dd-grid-area._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._medium._tiny {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._medium._tiny > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._medium._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._medium._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._medium._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._medium._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._medium._large {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._medium._large > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._medium._massive {
-    margin-left: -48px;
-    margin-right: -48px;
-    margin-bottom: -48px;
-    margin-top: -48px;
-  }
-
-  .dd-grid-area._medium._massive > * {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 48px;
-    padding-top: 48px;
-  }
-
-  .dd-grid-area._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._large._tiny {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._large._tiny > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._large._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._large._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._large._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._large._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._large._large {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._large._large > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._large._massive {
-    margin-left: -48px;
-    margin-right: -48px;
-    margin-bottom: -48px;
-    margin-top: -48px;
-  }
-
-  .dd-grid-area._large._massive > * {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 48px;
-    padding-top: 48px;
-  }
-
-  .dd-grid-area._massive {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._massive > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._massive._tiny {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._massive._tiny > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._massive._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._massive._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._massive._medium {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._massive._medium > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._massive._large {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._massive._large > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._massive._massive {
-    margin-left: -48px;
-    margin-right: -48px;
-    margin-bottom: -48px;
-    margin-top: -48px;
-  }
-
-  .dd-grid-area._massive._massive > * {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 48px;
-    padding-top: 48px;
-  }
-
-  .dd-grid-container {
-    width: 1200px;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-1 {
-    width: 8.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-2 {
-    width: 16.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-3 {
-    width: 25%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-4 {
-    width: 33.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-5 {
-    width: 41.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-6 {
-    width: 50%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-7 {
-    width: 58.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-8 {
-    width: 66.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-9 {
-    width: 75%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-10 {
-    width: 83.33333%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-11 {
-    width: 91.66667%;
-  }
-
-  .dd-grid-area > .dd-grid-cell._xl-12 {
-    width: 100%;
-  }
-}
-
-@media all and (min-width: 0) and (max-width: 543px) {
-  .__dd-pullRight-xs-down {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-xs-down {
-    float: left !important;
-  }
-
-  .__dd-invisible-xs-down {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-xs-down {
-    display: none !important;
-  }
-
-  .__dd-clear-xs-down {
-    clear: both !important;
-  }
-
-  .__dd-textRight-xs-down {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-xs-down {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-xs-down {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-xs-down {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-xs-down {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-xs-down {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-xs-down {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-xs-down {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-xs-down {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-xs-down {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .__dd-pullRight-xs {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-xs {
-    float: left !important;
-  }
-
-  .__dd-invisible-xs {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-xs {
-    display: none !important;
-  }
-
-  .__dd-clear-xs {
-    clear: both !important;
-  }
-
-  .__dd-textRight-xs {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-xs {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-xs {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-xs {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-xs {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-xs {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-xs {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-xs {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-xs {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-xs {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-space._tiny:not(._fixed) {
-    height: 2px;
-  }
-
-  .dd-space._small:not(._fixed) {
-    height: 4px;
-  }
-
-  .dd-space._medium:not(._fixed) {
-    height: 8px;
-  }
-
-  .dd-space._large:not(._fixed) {
-    height: 16px;
-  }
-
-  .dd-space._massive:not(._fixed) {
-    height: 32px;
-  }
-
-  .dd-grid-area {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._tiny > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._tiny._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._tiny._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._tiny._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._tiny._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._tiny._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._tiny._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._tiny._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._tiny._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._small._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._small._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._small._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._small._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._small._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._small._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._small._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._small._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._small._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._small._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._medium._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._medium._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._medium._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._medium._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._medium._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._medium._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._medium._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._medium._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._medium._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._medium._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._large {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._large > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._large._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._large._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._large._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._large._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._large._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._large._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._large._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._large._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._large._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._large._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._massive {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._massive > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._massive._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._massive._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._massive._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._massive._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._massive._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._massive._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._massive._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._massive._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._massive._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._massive._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-}
-
-@media all and (min-width: 0) and (max-width: 767px) {
-  .__dd-pullRight-sm-down {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-sm-down {
-    float: left !important;
-  }
-
-  .__dd-invisible-sm-down {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-sm-down {
-    display: none !important;
-  }
-
-  .__dd-clear-sm-down {
-    clear: both !important;
-  }
-
-  .__dd-textRight-sm-down {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-sm-down {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-sm-down {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-sm-down {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-sm-down {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-sm-down {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-sm-down {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-sm-down {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-sm-down {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-sm-down {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-}
-
-@media all and (min-width: 544px) and (max-width: 767px) {
-  .__dd-pullRight-sm {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-sm {
-    float: left !important;
-  }
-
-  .__dd-invisible-sm {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-sm {
-    display: none !important;
-  }
-
-  .__dd-clear-sm {
-    clear: both !important;
-  }
-
-  .__dd-textRight-sm {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-sm {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-sm {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-sm {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-sm {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-sm {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-sm {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-sm {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-sm {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-sm {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-space._tiny:not(._fixed) {
-    height: 2px;
-  }
-
-  .dd-space._small:not(._fixed) {
-    height: 4px;
-  }
-
-  .dd-space._medium:not(._fixed) {
-    height: 8px;
-  }
-
-  .dd-space._large:not(._fixed) {
-    height: 16px;
-  }
-
-  .dd-space._massive:not(._fixed) {
-    height: 32px;
-  }
-
-  .dd-grid-area {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._tiny > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._tiny._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._tiny._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._tiny._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._tiny._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._tiny._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._tiny._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._tiny._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._tiny._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._small._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._small._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._small._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._small._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._small._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._small._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._small._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._small._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._small._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._small._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._medium._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._medium._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._medium._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._medium._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._medium._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._medium._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._medium._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._medium._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._medium._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._medium._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._large {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._large > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._large._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._large._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._large._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._large._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._large._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._large._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._large._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._large._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._large._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._large._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._massive {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._massive > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._massive._tiny {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-bottom: -1px;
-    margin-top: -1px;
-  }
-
-  .dd-grid-area._massive._tiny > * {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-  }
-
-  .dd-grid-area._massive._small {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._massive._small > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._massive._medium {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._massive._medium > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._massive._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._massive._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._massive._massive {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._massive._massive > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-}
-
-@media all and (min-width: 0) and (max-width: 991px) {
-  .__dd-pullRight-md-down {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-md-down {
-    float: left !important;
-  }
-
-  .__dd-invisible-md-down {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-md-down {
-    display: none !important;
-  }
-
-  .__dd-clear-md-down {
-    clear: both !important;
-  }
-
-  .__dd-textRight-md-down {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-md-down {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-md-down {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-md-down {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-md-down {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-md-down {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-md-down {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-md-down {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-md-down {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-md-down {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-}
-
-@media all and (min-width: 768px) and (max-width: 991px) {
-  .__dd-pullRight-md {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-md {
-    float: left !important;
-  }
-
-  .__dd-invisible-md {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-md {
-    display: none !important;
-  }
-
-  .__dd-clear-md {
-    clear: both !important;
-  }
-
-  .__dd-textRight-md {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-md {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-md {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-md {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-md {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-md {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-md {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-md {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-md {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-md {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-space._tiny:not(._fixed) {
-    height: 3px;
-  }
-
-  .dd-space._small:not(._fixed) {
-    height: 6px;
-  }
-
-  .dd-space._medium:not(._fixed) {
-    height: 12px;
-  }
-
-  .dd-space._large:not(._fixed) {
-    height: 24px;
-  }
-
-  .dd-space._massive:not(._fixed) {
-    height: 48px;
-  }
-
-  .dd-grid-area {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._tiny {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._tiny > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._tiny._tiny {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-    margin-bottom: -1.5px;
-    margin-top: -1.5px;
-  }
-
-  .dd-grid-area._tiny._tiny > * {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-  }
-
-  .dd-grid-area._tiny._small {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._tiny._small > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._tiny._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._tiny._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._tiny._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._tiny._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._tiny._massive {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._tiny._massive > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._small {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._small > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._small._tiny {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-    margin-bottom: -1.5px;
-    margin-top: -1.5px;
-  }
-
-  .dd-grid-area._small._tiny > * {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-  }
-
-  .dd-grid-area._small._small {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._small._small > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._small._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._small._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._small._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._small._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._small._massive {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._small._massive > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._medium._tiny {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-    margin-bottom: -1.5px;
-    margin-top: -1.5px;
-  }
-
-  .dd-grid-area._medium._tiny > * {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-  }
-
-  .dd-grid-area._medium._small {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._medium._small > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._medium._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._medium._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._medium._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._medium._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._medium._massive {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._medium._massive > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._large {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._large > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._large._tiny {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-    margin-bottom: -1.5px;
-    margin-top: -1.5px;
-  }
-
-  .dd-grid-area._large._tiny > * {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-  }
-
-  .dd-grid-area._large._small {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._large._small > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._large._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._large._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._large._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._large._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._large._massive {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._large._massive > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-
-  .dd-grid-area._massive {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._massive > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._massive._tiny {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-    margin-bottom: -1.5px;
-    margin-top: -1.5px;
-  }
-
-  .dd-grid-area._massive._tiny > * {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-    padding-bottom: 1.5px;
-    padding-top: 1.5px;
-  }
-
-  .dd-grid-area._massive._small {
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-top: -3px;
-  }
-
-  .dd-grid-area._massive._small > * {
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-  }
-
-  .dd-grid-area._massive._medium {
-    margin-left: -6px;
-    margin-right: -6px;
-    margin-bottom: -6px;
-    margin-top: -6px;
-  }
-
-  .dd-grid-area._massive._medium > * {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-  }
-
-  .dd-grid-area._massive._large {
-    margin-left: -12px;
-    margin-right: -12px;
-    margin-bottom: -12px;
-    margin-top: -12px;
-  }
-
-  .dd-grid-area._massive._large > * {
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-top: 12px;
-  }
-
-  .dd-grid-area._massive._massive {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-bottom: -24px;
-    margin-top: -24px;
-  }
-
-  .dd-grid-area._massive._massive > * {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    padding-top: 24px;
-  }
-}
-
-@media all and (min-width: 0) and (max-width: 1199px) {
-  .__dd-pullRight-lg-down {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-lg-down {
-    float: left !important;
-  }
-
-  .__dd-invisible-lg-down {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-lg-down {
-    display: none !important;
-  }
-
-  .__dd-clear-lg-down {
-    clear: both !important;
-  }
-
-  .__dd-textRight-lg-down {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-lg-down {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-lg-down {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-lg-down {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-lg-down {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-lg-down {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-lg-down {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-lg-down {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-lg-down {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-lg-down {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-}
-
-@media all and (min-width: 992px) and (max-width: 1199px) {
-  .__dd-pullRight-lg {
-    float: right !important;
-  }
-
-  .__dd-pullLeft-lg {
-    float: left !important;
-  }
-
-  .__dd-invisible-lg {
-    visibility: hidden !important;
-  }
-
-  .__dd-hidden-lg {
-    display: none !important;
-  }
-
-  .__dd-clear-lg {
-    clear: both !important;
-  }
-
-  .__dd-textRight-lg {
-    text-align: right !important;
-  }
-
-  .__dd-textLeft-lg {
-    text-align: left !important;
-  }
-
-  .__dd-textCenter-lg {
-    text-align: center !important;
-  }
-
-  .__dd-textJustify-lg {
-    text-align: justify !important;
-  }
-
-  .__dd-textNoWrap-lg {
-    white-space: nowrap !important;
-  }
-
-  .__dd-textLowerCase-lg {
-    text-transform: lowercase !important;
-  }
-
-  .__dd-textUpperCase-lg {
-    text-transform: uppercase !important;
-  }
-
-  .__dd-textCapitalize-lg {
-    text-transform: capitalize !important;
-  }
-
-  .__dd-flexWrap-lg {
-    -ms-flex-wrap: wrap !important;
-        flex-wrap: wrap !important;
-  }
-
-  .__dd-flexNoWrap-lg {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-  }
-
-  .dd-space._tiny:not(._fixed) {
-    height: 4px;
-  }
-
-  .dd-space._small:not(._fixed) {
-    height: 8px;
-  }
-
-  .dd-space._medium:not(._fixed) {
-    height: 16px;
-  }
-
-  .dd-space._large:not(._fixed) {
-    height: 32px;
-  }
-
-  .dd-space._massive:not(._fixed) {
-    height: 64px;
-  }
-
-  .dd-grid-area {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._tiny {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._tiny > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._tiny._tiny {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._tiny._tiny > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._tiny._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._tiny._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._tiny._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._tiny._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._tiny._large {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._tiny._large > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._tiny._massive {
-    margin-left: -32px;
-    margin-right: -32px;
-    margin-bottom: -32px;
-    margin-top: -32px;
-  }
-
-  .dd-grid-area._tiny._massive > * {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
-
-  .dd-grid-area._small {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._small > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._small._tiny {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._small._tiny > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._small._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._small._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._small._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._small._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._small._large {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._small._large > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._small._massive {
-    margin-left: -32px;
-    margin-right: -32px;
-    margin-bottom: -32px;
-    margin-top: -32px;
-  }
-
-  .dd-grid-area._small._massive > * {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
-
-  .dd-grid-area._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._medium._tiny {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._medium._tiny > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._medium._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._medium._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._medium._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._medium._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._medium._large {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._medium._large > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._medium._massive {
-    margin-left: -32px;
-    margin-right: -32px;
-    margin-bottom: -32px;
-    margin-top: -32px;
-  }
-
-  .dd-grid-area._medium._massive > * {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
-
-  .dd-grid-area._large {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._large > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._large._tiny {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._large._tiny > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._large._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._large._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._large._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._large._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._large._large {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._large._large > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._large._massive {
-    margin-left: -32px;
-    margin-right: -32px;
-    margin-bottom: -32px;
-    margin-top: -32px;
-  }
-
-  .dd-grid-area._large._massive > * {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
-
-  .dd-grid-area._massive {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._massive > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._massive._tiny {
-    margin-left: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-top: -2px;
-  }
-
-  .dd-grid-area._massive._tiny > * {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-  }
-
-  .dd-grid-area._massive._small {
-    margin-left: -4px;
-    margin-right: -4px;
-    margin-bottom: -4px;
-    margin-top: -4px;
-  }
-
-  .dd-grid-area._massive._small > * {
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-
-  .dd-grid-area._massive._medium {
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: -8px;
-    margin-top: -8px;
-  }
-
-  .dd-grid-area._massive._medium > * {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-  }
-
-  .dd-grid-area._massive._large {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: -16px;
-    margin-top: -16px;
-  }
-
-  .dd-grid-area._massive._large > * {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-  }
-
-  .dd-grid-area._massive._massive {
-    margin-left: -32px;
-    margin-right: -32px;
-    margin-bottom: -32px;
-    margin-top: -32px;
-  }
-
-  .dd-grid-area._massive._massive > * {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
-}
