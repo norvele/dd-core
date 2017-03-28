@@ -1,0 +1,27 @@
+.#{$dd-system-classPrefix}form {
+
+	&-field {
+
+		&-label {
+			display: block;
+			font-size: $dd-form-fontSize;
+			margin-bottom: 5px;
+		}
+
+		&-message {
+			padding: 5px 0;
+			font-size: $dd-form-fontSize;
+
+			&._error {
+				color: $dd-form-colorError;
+			}
+		}
+
+		&.-error & {
+
+			&-label {
+				color: $dd-form-colorError;
+			}
+		}
+	}
+}

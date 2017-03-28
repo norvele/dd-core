@@ -1,0 +1,34 @@
+@mixin dd-form-messageColor($_color)
+{
+	color: $_color;
+	background-color: rgba(lighten($_color, 30%), 0.1);
+	border-color: lighten($_color, 20%);
+}
+
+.#{$dd-system-classPrefix}form {
+
+	&-message {
+		font-size: $dd-form-fontSize;
+		padding: 0.5em 1em;
+		border-radius: 3px;
+		line-height: 1.2em;
+		border: 1px solid;
+		@include dd-form-messageColor($dd-form-colorDefault);
+
+		&.-error {
+			@include dd-form-messageColor($dd-form-colorError);
+		}
+
+		&.-warning {
+			@include dd-form-messageColor($dd-form-colorWarning);
+		}
+
+		&.-success {
+			@include dd-form-messageColor($dd-form-colorSuccess);
+		}
+
+		&.-notice {
+			@include dd-form-messageColor($dd-form-colorNotice);
+		}
+	}
+}

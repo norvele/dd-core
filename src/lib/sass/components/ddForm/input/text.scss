@@ -1,0 +1,13 @@
+@mixin dd-form-inputText()
+{
+	& > input {
+		@include dd-form-input();
+	}
+}
+
+.#{$dd-system-classPrefix}form {
+
+	&-inputText {
+		@include dd-form-inputText();
+	}
+}

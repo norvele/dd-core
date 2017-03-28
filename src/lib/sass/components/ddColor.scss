@@ -1,0 +1,62 @@
+$dd-color-palette: (
+	splashy: #EC6A00,
+	emphasis: #FFCC65,
+	deep: #34362D,
+	neutral: #669E81,
+	gray: #666666,
+) !default;
+
+$dd-color-state: (
+	default: #666666,
+	error: #9f3a38,
+	success: #2c662d,
+	warning: #573a08,
+	notice: #276f86,
+) !default;
+
+$dd-color-modifier: (
+	light: dd-color-modifierLight,
+	dark: dd-color-modifierDark,
+) !default;
+
+@function dd-color-modifierLight($_color)
+{
+	@return lighten($_color, 30%);
+}
+
+@function dd-color-modifierDark($_color)
+{
+	@return darken($_color, 30%);
+}
+
+@function _dd-color-get($_map, $_color, $_modifier: null)
+{
+	$_color: map_get($_map, $_color);
+	@if ($_color == null) {
+		$🗑: dd-system-message('Не существует цвета "#{$_color}"');
+		@return null;
+	}
+	@if ($_modifier != null) {
+		$_modifierFunc: map_get($dd-color-modifier, $_modifier);
+		@if ($_modifierFunc == null) {
+			$🗑: dd-system-message('Не существует модификатора цвета "#{$_modifier}"');
+			@return $_color;
+		}
+		@if (not function_exists($_modifierFunc)) {
+			$🗑: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"');
+			@return $_color;
+		}
+		$_color: call($_modifierFunc, $_color);
+	}
+	@return $_color;
+}
+
+@function dd-color-palette($_color, $_modifier: null)
+{
+	@return _dd-color-get($dd-color-palette, $_color, $_modifier);
+}
+
+@function dd-color-state($_color, $_modifier: null)
+{
+	@return _dd-color-get($dd-color-state, $_color, $_modifier);
+}

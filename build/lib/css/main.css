@@ -1272,6 +1272,20 @@ table {
     width: 100%; } }
 
 /*@import 'components/typ';*/
+.dd-form-field-label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 5px; }
+
+.dd-form-field-message {
+  padding: 5px 0;
+  font-size: 1em; }
+  .dd-form-field-message._error {
+    color: #9f3a38; }
+
+.dd-form-field.-error .dd-form-field-label {
+  color: #9f3a38; }
+
 .dd-form-message {
   font-size: 1em;
   padding: 0.5em 1em;
@@ -1297,92 +1311,6 @@ table {
     color: #276f86;
     background-color: rgba(112, 189, 214, 0.1);
     border-color: #49abca; }
-
-.dd-form-messageList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  min-width: 0;
-  margin-bottom: -2px;
-  margin-top: -2px; }
-  .dd-form-messageList:empty::after, .dd-form-messageList:blank::after {
-    content: '';
-    height: 8px; }
-  .dd-form-messageList > * {
-    box-sizing: border-box;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    -ms-flex-negative: 1;
-        flex-shrink: 1;
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
-    min-width: 0;
-    min-height: 0;
-    width: 100%; }
-  .dd-form-messageList > * {
-    padding-bottom: 2px;
-    padding-top: 2px; }
-  .dd-form-messageList._tiny {
-    margin-bottom: -0.5px;
-    margin-top: -0.5px; }
-    .dd-form-messageList._tiny > * {
-      padding-bottom: 0.5px;
-      padding-top: 0.5px; }
-  .dd-form-messageList._small {
-    margin-bottom: -1px;
-    margin-top: -1px; }
-    .dd-form-messageList._small > * {
-      padding-bottom: 1px;
-      padding-top: 1px; }
-  .dd-form-messageList._medium {
-    margin-bottom: -2px;
-    margin-top: -2px; }
-    .dd-form-messageList._medium > * {
-      padding-bottom: 2px;
-      padding-top: 2px; }
-  .dd-form-messageList._large {
-    margin-bottom: -4px;
-    margin-top: -4px; }
-    .dd-form-messageList._large > * {
-      padding-bottom: 4px;
-      padding-top: 4px; }
-  .dd-form-messageList._massive {
-    margin-bottom: -8px;
-    margin-top: -8px; }
-    .dd-form-messageList._massive > * {
-      padding-bottom: 8px;
-      padding-top: 8px; }
-
-.dd-form-field-label {
-  display: block;
-  font-size: 1em;
-  margin-bottom: 5px; }
-
-.dd-form-field-message {
-  padding: 5px 0;
-  font-size: 1em; }
-  .dd-form-field-message._error {
-    color: #9f3a38; }
-
-.dd-form-field.-error .dd-form-field-label {
-  color: #9f3a38; }
-
-.dd-form-input > input, .dd-form-input > select, .dd-form-input > textarea {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid #e1e1e1;
-  padding: 0.5em 1em;
-  border-radius: 3px;
-  font-size: 1em;
-  line-height: 1.2em; }
 
 .dd-form-inputText > input {
   width: 100%;

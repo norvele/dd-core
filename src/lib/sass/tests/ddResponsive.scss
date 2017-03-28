@@ -1,0 +1,98 @@
+$_test-snapshot: (
+	dd-responsive-breakpoints: $dd-responsive-breakpoints,
+	dd-space-defaultSpace: $dd-space-defaultSpace,
+);
+$dd-responsive-breakpoints: (
+	xs: (
+		cutoff: 0,
+		containerWidth: 100%,
+		spaceScale: 0.5,
+	),
+	sm: (
+		range: (544px, 767px),
+	),
+	md: (
+		cutoff: 768px,
+	),
+);
+
+@include test-assert('equal', (
+	dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints),
+	(
+		xs: (
+			cutoff: 0,
+			containerWidth: 100%,
+			range: (0, 543px),
+			spaceScale: 0.5,
+		),
+		sm: (
+			cutoff: 544px,
+			containerWidth: 544px,
+			range: (544px, 767px),
+			spaceScale: 1,
+		),
+		md: (
+			cutoff: 768px,
+			containerWidth: 768px,
+			range: (768px, null),
+			spaceScale: 1,
+		),
+	)
+), 'Responsive: normalize breakpoints');
+
+$dd-responsive-breakpoints: map_get($_test-snapshot, dd-responsive-breakpoints);
+
+$_test-snapshot: (
+	dd-responsive-breakpoints: $dd-responsive-breakpoints,
+);
+$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints((
+	xs: (
+		cutoff: 0,
+	),
+	sm: (
+		cutoff: 544px,
+	),
+	md:(
+		cutoff: 768px,
+	),
+	lg:(
+		cutoff: 992px,
+	),
+	xl:(
+		cutoff: 1200px,
+	),
+));
+
+@include test-assert('equal', (
+	dd-responsive-parseMedia((sm, md), lg),
+		(
+			'all and (min-width: 544px) and (max-width: 991px)',
+			'all and (min-width: 992px) and (max-width: 1199px)',
+		)
+), 'Responsive: parse media 1');
+
+@include test-assert('equal', (
+	dd-responsive-parseMedia(sm, lg),
+		(
+			'all and (min-width: 544px) and (max-width: 767px)',
+			'all and (min-width: 992px) and (max-width: 1199px)',
+		)
+), 'Responsive: parse media 2');
+
+@include test-assert('equal', (
+	dd-responsive-parseMedia((sm, 800px), xl, (100px, 200px)),
+		(
+			'all and (min-width: 544px) and (max-width: 800px)',
+			'all and (min-width: 1200px)',
+			'all and (min-width: 100px) and (max-width: 200px)',
+		)
+), 'Responsive: parse media 3');
+
+@include test-assert('equal', (
+	dd-responsive-parseMedia((xs, 600px)),
+		(
+			'all and (min-width: 0) and (max-width: 600px)',
+		)
+), 'Responsive: parse media 4');
+
+$dd-responsive-breakpoints: map_get($_test-snapshot, dd-responsive-breakpoints);

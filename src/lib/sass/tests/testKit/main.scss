@@ -67,6 +67,13 @@ $_test-snapshot: ();
 
 @function test-assertEqual($_val1, $_val2)
 {
+	@if (type-of($_val2) == color) {
+		@if ('#{$_val1}' != '#{$_val2}') {
+			@return 'Value "#{$_val1}" not equal "#{$_val2}"';
+		} @else {
+			@return null;
+		}
+	}
 	@if ($_val1 != $_val2) {
 		@return 'Value "#{inspect($_val1)}" not equal "#{inspect($_val2)}"';
 	}

@@ -1,0 +1,24 @@
+// Цвета форм
+$dd-form-colorBackground: #fff;
+$dd-form-colorBorder: #e1e1e1;
+
+$dd-form-colors: (
+	default: #555555,
+	error: #9f3a38,
+	success: #2c662d,
+	warning: #573a08,
+	notice: #276f86,
+);
+
+// Цвета состояния
+$dd-form-colorDefault: #555555;
+$dd-form-colorError: #9f3a38;
+$dd-form-colorSuccess: #2c662d;
+$dd-form-colorWarning: #573a08;
+$dd-form-colorNotice: #276f86;
+
+// Параметры форм
+$dd-form-fontSize: 1em;
+$dd-form-border: 1px solid $dd-form-colorBorder;
+$dd-form-padding: 5px 10px;
+$dd-form-borderRadius: 3px;
