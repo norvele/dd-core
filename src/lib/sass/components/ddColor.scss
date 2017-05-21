@@ -1,17 +1,21 @@
+@include dd-system-componentRegister(ddColor);
+
 $dd-color-palette: (
 	splashy: #EC6A00,
 	emphasis: #FFCC65,
 	deep: #34362D,
 	neutral: #669E81,
-	gray: #666666,
+	default: #333333,
 ) !default;
+
+$dd-color-default: default !default;
 
 $dd-color-state: (
 	default: #666666,
-	error: #9f3a38,
-	success: #2c662d,
-	warning: #573a08,
-	notice: #276f86,
+	error: #EC6A00,
+	success: #669E81,
+	warning: #FFCC65,
+	notice: #8fccff,
 ) !default;
 
 $dd-color-modifier: (
@@ -21,29 +25,33 @@ $dd-color-modifier: (
 
 @function dd-color-modifierLight($_color)
 {
-	@return lighten($_color, 30%);
+	@return mix(#fff, $_color, 10%);
 }
 
 @function dd-color-modifierDark($_color)
 {
-	@return darken($_color, 30%);
+	@return mix(#000, $_color, 10%);
 }
 
-@function _dd-color-get($_map, $_color, $_modifier: null)
+@function _dd-color-get($_map, $_colorSrc, $_modifier: null, $_strict: false)
 {
-	$_color: map_get($_map, $_color);
+	$_color: map_get($_map, $_colorSrc);
 	@if ($_color == null) {
-		$🗑: dd-system-message('Не существует цвета "#{$_color}"');
-		@return null;
+		@if ($_strict == true) {
+			$_: dd-system-message('Не существует цвета "#{$_color}"');
+			@return null;
+		} @else {
+			$_color: $_colorSrc;
+		}
 	}
 	@if ($_modifier != null) {
 		$_modifierFunc: map_get($dd-color-modifier, $_modifier);
 		@if ($_modifierFunc == null) {
-			$🗑: dd-system-message('Не существует модификатора цвета "#{$_modifier}"');
+			$_: dd-system-message('Не существует модификатора цвета "#{$_modifier}"');
 			@return $_color;
 		}
 		@if (not function_exists($_modifierFunc)) {
-			$🗑: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"');
+			$_: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"');
 			@return $_color;
 		}
 		$_color: call($_modifierFunc, $_color);
@@ -51,12 +59,40 @@ $dd-color-modifier: (
 	@return $_color;
 }
 
-@function dd-color-palette($_color, $_modifier: null)
+@function dd-color-palette($_color, $_modifier: null, $_strict: false)
 {
-	@return _dd-color-get($dd-color-palette, $_color, $_modifier);
+	@return _dd-color-get($dd-color-palette, $_color, $_modifier, $_strict);
 }
 
-@function dd-color-state($_color, $_modifier: null)
+@function dd-color-state($_color, $_modifier: null, $_strict: false)
 {
-	@return _dd-color-get($dd-color-state, $_color, $_modifier);
+	@return _dd-color-get($dd-color-state, $_color, $_modifier, $_strict);
+}
+
+@function dd-color-contrast($color, $dark: #000, $light: #fff) {
+	@if (type_of($color) == string) {
+		$color: dd-color-palette($color);
+	}
+	@if (type_of($dark) == string) {
+		$dark: dd-color-palette($dark);
+	}
+	@if (type_of($light) == string) {
+		$light: dd-color-palette($light);
+	}
+	@if $color == null {
+		@return null;
+	}
+	@else {
+		$yiq: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+		@return if($yiq >= 133, $dark, $light);
+	}
+}
+
+@mixin dd-color-map($_map, $_property: 'color', $_prefix: '')
+{
+	@each $_name, $_color in $_map {
+		&.#{$_prefix}#{$_name} {
+			#{$_property}: $_color;
+		}
+	}
 }

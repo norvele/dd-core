@@ -7,12 +7,314 @@
 	DivoDivnoe System.
 */
 /*
+
+*/
+/*
 	Устанавливает префикс для всех генерируемых классов библиотеки
 	Например при "dd-": .dd-grid-area ._dd-col .__dd-hidden
 */
 /*
 	Устанавливает режим дебага
 	Если true - будут выводиться все предупреждения
+*/
+/*
+	Включает генерацию стилей
+	Если false - никакой css код библиотеки не будет сгенерирован
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+
+*/
+/*
+	DivoDivnoe Responsive
+	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
+*/
+/*
+	Массив размеров устройств, каждый размер может содержать следующие параметры:
+	cutoff - отсечка в пикселях. (обязательно если не указан range)
+	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
+	containerWidth - ширина контейнера (по умолчанию равен cutoff)
+*/
+/*
+	DivoDivnoe Helpers
+*/
+/*
+	DivoDivnoe Space
+*/
+/*
+	DivoDivnoe Grid
+	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
+*/
+/*
+	@include dd-grid-list(
+		(
+			columns: 5,
+			gutterVertical: 16px,
+			gutterHorizontal: small,
+		),
+		(
+			media: ((sm, md), xl),
+			columns: 3,
+		),
+		(
+			media: ((360px, 500px)),
+			gutterVertical: tiny,
+		),
+	)
+*/
+.typ, .typ-block {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333; }
+
+.typ-widthControl {
+  max-width: 30em;
+  position: relative; }
+
+.typ-rhythmGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(#aacee6 1px, transparent 1px), -webkit-linear-gradient(left, #aacee6 1px, transparent 1px), -webkit-linear-gradient(left, transparent 1.5em, #aacee6 1.5em);
+  background-image: linear-gradient(#aacee6 1px, transparent 1px), linear-gradient(to right, #aacee6 1px, transparent 1px), linear-gradient(to right, transparent 1.5em, #aacee6 1.5em);
+  background-size: 100% 1.5em, calc(1.5em + 2px) 100%, calc(1.5em + 2px) 100%;
+  background-repeat: repeat, no-repeat, no-repeat; }
+
+.form-field-label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 0.5em; }
+
+.form-field-message {
+  padding: 5px 0;
+  font-size: 1em; }
+
+.form-message {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  line-height: 1.2em;
+  border: 1px solid;
+  /*&.-error {
+			@include dd-form-messageColor($dd-form-colorError);
+		}
+
+		&.-warning {
+			@include dd-form-messageColor($dd-form-colorWarning);
+		}
+
+		&.-success {
+			@include dd-form-messageColor($dd-form-colorSuccess);
+		}
+
+		&.-notice {
+			@include dd-form-messageColor($dd-form-colorNotice);
+		}*/ }
+
+.form-button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0.65em 0.73125em;
+  font-size: 1em;
+  line-height: 1.2;
+  min-height: 2.5em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 1px solid #e1e1e1;
+  vertical-align: top;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  background-color: #333333;
+  border-color: #2e2e2e;
+  color: #fff; }
+  .form-button > * {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    margin: 0 0.24375em; }
+  .form-button-icon {
+    display: inline-block;
+    line-height: 1;
+    width: 1.2em;
+    height: 1.2em;
+    fill: currentColor; }
+    .form-button-icon > * {
+      fill: currentColor;
+      max-width: 100%;
+      max-height: 100%; }
+  .form-button._fluid {
+    width: 100%; }
+  .form-button._toggle > input {
+    display: none; }
+  .form-button._sort > input {
+    display: none; }
+  .form-button._sort::before {
+    margin-right: 0.3em; }
+  .form-button._sort.-desc::before {
+    content: '↓'; }
+  .form-button._sort.-asc::before {
+    content: '↑'; }
+  .form-button:hover, .form-button:focus {
+    background-color: #474747; }
+  .form-button:active, .form-button.-active {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #2e2e2e; }
+  .form-button._splashy {
+    background-color: #EC6A00;
+    border-color: #d45f00;
+    color: #fff; }
+    .form-button._splashy:hover, .form-button._splashy:focus {
+      background-color: #ee791a; }
+    .form-button._splashy:active, .form-button._splashy.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #d45f00; }
+  .form-button._emphasis {
+    background-color: #FFCC65;
+    border-color: #e6b85b;
+    color: #000; }
+    .form-button._emphasis:hover, .form-button._emphasis:focus {
+      background-color: #ffd174; }
+    .form-button._emphasis:active, .form-button._emphasis.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #e6b85b; }
+  .form-button._deep {
+    background-color: #34362D;
+    border-color: #2f3129;
+    color: #fff; }
+    .form-button._deep:hover, .form-button._deep:focus {
+      background-color: #484a42; }
+    .form-button._deep:active, .form-button._deep.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #2f3129; }
+  .form-button._neutral {
+    background-color: #669E81;
+    border-color: #5c8e74;
+    color: #000; }
+    .form-button._neutral:hover, .form-button._neutral:focus {
+      background-color: #75a88e; }
+    .form-button._neutral:active, .form-button._neutral.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #5c8e74; }
+  .form-button._default {
+    background-color: #333333;
+    border-color: #2e2e2e;
+    color: #fff; }
+    .form-button._default:hover, .form-button._default:focus {
+      background-color: #474747; }
+    .form-button._default:active, .form-button._default.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #2e2e2e; }
+
+.form-inputText {
+  display: inline-block; }
+  .form-inputText > input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    padding: 0.65em 0.975em;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.2;
+    min-height: 2.5em;
+    color: #333;
+    font-family: inherit; }
+    .form-inputText > input::-webkit-input-placeholder {
+      color: #339933; }
+    .form-inputText > input::-moz-placeholder {
+      color: #339933; }
+    .form-inputText > input:-ms-input-placeholder {
+      color: #339933; }
+    .form-inputText > input::placeholder {
+      color: #339933; }
+  .form-inputText._fluid {
+    width: 100%; }
+
+.form-inputTextarea {
+  display: inline-block; }
+  .form-inputTextarea > textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    padding: 0.65em 0.975em;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.2;
+    min-height: 2.5em;
+    color: #333;
+    font-family: inherit;
+    min-height: 150px;
+    max-width: 100%; }
+    .form-inputTextarea > textarea::-webkit-input-placeholder {
+      color: #339933; }
+    .form-inputTextarea > textarea::-moz-placeholder {
+      color: #339933; }
+    .form-inputTextarea > textarea:-ms-input-placeholder {
+      color: #339933; }
+    .form-inputTextarea > textarea::placeholder {
+      color: #339933; }
+  .form-inputTextarea._fluid {
+    width: 100%; }
+
+/*
+	DivoDivnoe Icon
+*/
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle; }
+
+/*
+	DivoDivnoe EasyAccess
+	Зависит от всех компонентов
+*/
+/*
+	@function ___($_args...)
+	{
+		@return ___($_args...);
+	}
+
+	@mixin ___($_args...)
+	{
+		@include ___($_args...);
+	}
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -46,9 +348,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/*
-	DivoDivnoe Helpers
-*/
+abbr {
+  text-decoration: none; }
+
 .__pullRight {
   float: right !important; }
 
@@ -96,36 +398,6 @@ table {
   -ms-flex-wrap: nowrap !important;
       flex-wrap: nowrap !important; }
 
-/*
-	DivoDivnoe Space
-*/
-.space {
-  display: block; }
-  .space._tiny {
-    height: 4px; }
-  .space._small {
-    height: 8px; }
-  .space._medium {
-    height: 16px; }
-  .space._large {
-    height: 32px; }
-  .space._massive {
-    height: 64px; }
-
-/*
-	DivoDivnoe Responsive
-	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
-*/
-/*
-	Массив размеров устройств, каждый размер может содержать следующие параметры:
-	cutoff - отсечка в пикселях. (обязательно если не указан range)
-	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
-	containerWidth - ширина контейнера (по умолчанию равен cutoff)
-	spaceScale - множитель отступов
-*/
-/*
-	TODO медиа выражение, в пределах которого будет работать адавтивность
-*/
 @media all and (min-width: 0) {
   .__pullRight-xs-up {
     float: right !important; }
@@ -649,6 +921,19 @@ table {
     -ms-flex-wrap: nowrap !important;
         flex-wrap: nowrap !important; } }
 
+.space {
+  display: block; }
+  .space._tiny {
+    height: 4px; }
+  .space._small {
+    height: 8px; }
+  .space._medium {
+    height: 16px; }
+  .space._large {
+    height: 32px; }
+  .space._massive {
+    height: 64px; }
+
 @media all and (min-width: 0) and (max-width: 543px) {
   .space._tiny:not(._fixed) {
     height: 2px; } }
@@ -749,27 +1034,6 @@ table {
   .space._massive:not(._fixed) {
     height: 96px; } }
 
-/*
-	DivoDivnoe Grid
-	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
-*/
-/*
-	@include dd-grid-list(
-		(
-			columns: 5,
-			gutterVertical: 16px,
-			gutterHorizontal: small,
-		),
-		(
-			media: ((sm, md), xl),
-			columns: 3,
-		),
-		(
-			media: ((360px, 500px)),
-			gutterVertical: tiny,
-		),
-	)
-*/
 .grid-container {
   box-sizing: border-box;
   padding: 0 16px;
@@ -1113,10 +1377,23 @@ table {
         padding-right: 48px;
         padding-bottom: 48px;
         padding-top: 48px; } }
-  .grid-area._center {
+  .grid-area._justifyCenter {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
+  .grid-area._alignCenter {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .grid-area._center {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .grid-area._auto > * {
+    width: auto; }
 
 .grid-cell._xs-1, .grid-cell._xs-2, .grid-cell._xs-3, .grid-cell._xs-4, .grid-cell._xs-5, .grid-cell._xs-6, .grid-cell._xs-7, .grid-cell._xs-8, .grid-cell._xs-9, .grid-cell._xs-10, .grid-cell._xs-11, .grid-cell._xs-12, .grid-cell._sm-1, .grid-cell._sm-2, .grid-cell._sm-3, .grid-cell._sm-4, .grid-cell._sm-5, .grid-cell._sm-6, .grid-cell._sm-7, .grid-cell._sm-8, .grid-cell._sm-9, .grid-cell._sm-10, .grid-cell._sm-11, .grid-cell._sm-12, .grid-cell._md-1, .grid-cell._md-2, .grid-cell._md-3, .grid-cell._md-4, .grid-cell._md-5, .grid-cell._md-6, .grid-cell._md-7, .grid-cell._md-8, .grid-cell._md-9, .grid-cell._md-10, .grid-cell._md-11, .grid-cell._md-12, .grid-cell._lg-1, .grid-cell._lg-2, .grid-cell._lg-3, .grid-cell._lg-4, .grid-cell._lg-5, .grid-cell._lg-6, .grid-cell._lg-7, .grid-cell._lg-8, .grid-cell._lg-9, .grid-cell._lg-10, .grid-cell._lg-11, .grid-cell._lg-12, .grid-cell._xl-1, .grid-cell._xl-2, .grid-cell._xl-3, .grid-cell._xl-4, .grid-cell._xl-5, .grid-cell._xl-6, .grid-cell._xl-7, .grid-cell._xl-8, .grid-cell._xl-9, .grid-cell._xl-10, .grid-cell._xl-11, .grid-cell._xl-12 {
   -webkit-box-flex: 0;
@@ -1275,81 +1552,510 @@ table {
   .grid-area > .grid-cell._xl-12 {
     width: 100%; } }
 
-/*@import 'components/typ';*/
-.form-field-label {
+a.typ {
+  color: #34a1cf;
+  text-decoration: underline; }
+  a.typ:hover {
+    color: #cf3434;
+    text-decoration: none; }
+  a.typ:visited {
+    color: #9534cf; }
+
+.typ-block a {
+  color: #34a1cf;
+  text-decoration: underline; }
+  .typ-block a:hover {
+    color: #cf3434;
+    text-decoration: none; }
+  .typ-block a:visited {
+    color: #9534cf; }
+
+abbr.typ {
+  cursor: help;
+  border-bottom: 1px dotted; }
+
+.typ-block abbr {
+  cursor: help;
+  border-bottom: 1px dotted; }
+
+blockquote.typ {
+  border-left: 5px solid #eee;
+  padding: 1.5em 0 1.5em calc(1.5em - 5px); }
+  blockquote.typ > p:last-child {
+    margin-bottom: 0; }
+  blockquote.typ > footer, blockquote.typ > cite {
+    color: gray;
+    font-size: 0.9em;
+    line-height: 1.66667; }
+  blockquote.typ:before {
+    content: '\2014 \00A0'; }
+
+.typ-block blockquote {
+  border-left: 5px solid #eee;
+  padding: 1.5em 0 1.5em calc(1.5em - 5px);
+  margin-bottom: 1.5em; }
+  .typ-block blockquote > p:last-child {
+    margin-bottom: 0; }
+  .typ-block blockquote > footer, .typ-block blockquote > cite {
+    color: gray;
+    font-size: 0.9em;
+    line-height: 1.66667; }
+  .typ-block blockquote:before {
+    content: '\2014 \00A0'; }
+  .typ-block blockquote:last-child {
+    margin-bottom: 0; }
+
+code.typ {
+  background: #f7f7f7;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+
+.typ-block code {
+  background: #f7f7f7;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+
+code._block.typ {
   display: block;
-  font-size: 1em;
-  margin-bottom: 5px; }
+  max-width: 100%;
+  background: #2b2b2b;
+  color: #fff;
+  padding: 1.5em;
+  overflow-x: auto;
+  white-space: pre;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+  box-sizing: border-box; }
 
-.form-field-message {
-  padding: 5px 0;
-  font-size: 1em; }
-  .form-field-message._error {
-    color: #9f3a38; }
-
-.form-field.-error .form-field-label {
-  color: #9f3a38; }
-
-.form-message {
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border-radius: 3px;
-  line-height: 1.2em;
-  border: 1px solid;
-  color: #555555;
-  background-color: rgba(162, 162, 162, 0.1);
-  border-color: #888888; }
-  .form-message.-error {
-    color: #9f3a38;
-    background-color: rgba(218, 151, 150, 0.1);
-    border-color: #cd7270; }
-  .form-message.-warning {
-    color: #573a08;
-    background-color: rgba(227, 151, 21, 0.1);
-    border-color: #b47811; }
-  .form-message.-success {
-    color: #2c662d;
-    background-color: rgba(108, 191, 109, 0.1);
-    border-color: #4bad4c; }
-  .form-message.-notice {
-    color: #276f86;
-    background-color: rgba(112, 189, 214, 0.1);
-    border-color: #49abca; }
-
-.form-inputText > input {
-  width: 100%;
+.typ-block code._block {
+  display: block;
+  max-width: 100%;
+  background: #2b2b2b;
+  color: #fff;
+  padding: 1.5em;
+  overflow-x: auto;
+  white-space: pre;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
   box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid #e1e1e1;
-  padding: 0.5em 1em;
-  border-radius: 3px;
+  margin-bottom: 1.5em; }
+  .typ-block code._block:last-child {
+    margin-bottom: 0; }
+
+del.typ {
+  text-decoration: line-through; }
+
+.typ-block del {
+  text-decoration: line-through; }
+
+em.typ {
+  font-style: italic; }
+
+.typ-block em {
+  font-style: italic; }
+
+h1.typ {
+  font-weight: 600;
+  font-size: 3em;
+  line-height: 1.2; }
+
+.typ-block h1 {
+  font-weight: 600;
+  font-size: 3em;
+  line-height: 1.2; }
+
+.typ-block h1 {
+  margin-top: 0.86667em;
+  margin-bottom: 0.43333em; }
+
+h2.typ {
+  font-weight: 600;
+  font-size: 2.25em;
+  line-height: 1.2; }
+
+.typ-block h2 {
+  font-weight: 600;
+  font-size: 2.25em;
+  line-height: 1.2; }
+
+.typ-block h2 {
+  margin-top: 1.42222em;
+  margin-bottom: 0.71111em; }
+
+h3.typ {
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.2; }
+
+.typ-block h3 {
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.2; }
+
+.typ-block h3 {
+  margin-top: 1.86667em;
+  margin-bottom: 0.93333em; }
+
+h4.typ {
+  font-weight: 600;
+  font-size: 1.3em;
+  line-height: 1.2; }
+
+.typ-block h4 {
+  font-weight: 600;
+  font-size: 1.3em;
+  line-height: 1.2; }
+
+.typ-block h4 {
+  margin-top: 2.27692em;
+  margin-bottom: 1.13846em; }
+
+h5.typ {
+  font-weight: 600;
+  font-size: 1.12em;
+  line-height: 1.2; }
+
+.typ-block h5 {
+  font-weight: 600;
+  font-size: 1.12em;
+  line-height: 1.2; }
+
+.typ-block h5 {
+  margin-top: 2.77143em;
+  margin-bottom: 1.38571em; }
+
+h6.typ {
+  font-weight: 600;
   font-size: 1em;
-  line-height: 1.2em; }
+  line-height: 1.2; }
 
-/*
-	DivoDivnoe Icon
-*/
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: middle; }
+.typ-block h6 {
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1.2; }
 
-/*
-	DivoDivnoe EasyAccess
-	Зависит от всех компонентов
-*/
-/*
-	@function ___($_args...)
-	{
-		@return ___($_args...);
-	}
+.typ-block h6 {
+  margin-top: 3.2em;
+  margin-bottom: 1.6em; }
 
-	@mixin ___($_args...)
-	{
-		@include ___($_args...);
-	}
-*/
+@media all and (min-width: 0) and (max-width: 543px) {
+  h1.typ {
+    font-size: 1.5em; }
+  .typ-block h1 {
+    font-size: 1.5em; }
+  .typ-block h1 {
+    margin-top: 1.86667em;
+    margin-bottom: 0.93333em; }
+  h2.typ {
+    font-size: 1.125em; }
+  .typ-block h2 {
+    font-size: 1.125em; }
+  .typ-block h2 {
+    margin-top: 2.75556em;
+    margin-bottom: 1.37778em; }
+  h3.typ {
+    font-size: 1em; }
+  .typ-block h3 {
+    font-size: 1em; }
+  .typ-block h3 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h4.typ {
+    font-size: 1em; }
+  .typ-block h4 {
+    font-size: 1em; }
+  .typ-block h4 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h5.typ {
+    font-size: 1em; }
+  .typ-block h5 {
+    font-size: 1em; }
+  .typ-block h5 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h6.typ {
+    font-size: 1em; }
+  .typ-block h6 {
+    font-size: 1em; }
+  .typ-block h6 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; } }
+
+@media all and (min-width: 544px) and (max-width: 767px) {
+  h1.typ {
+    font-size: 2.1em; }
+  .typ-block h1 {
+    font-size: 2.1em; }
+  .typ-block h1 {
+    margin-top: 1.58095em;
+    margin-bottom: 0.79048em; }
+  h2.typ {
+    font-size: 1.575em; }
+  .typ-block h2 {
+    font-size: 1.575em; }
+  .typ-block h2 {
+    margin-top: 1.73968em;
+    margin-bottom: 0.86984em; }
+  h3.typ {
+    font-size: 1.05em; }
+  .typ-block h3 {
+    font-size: 1.05em; }
+  .typ-block h3 {
+    margin-top: 3.00952em;
+    margin-bottom: 1.50476em; }
+  h4.typ {
+    font-size: 1em; }
+  .typ-block h4 {
+    font-size: 1em; }
+  .typ-block h4 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h5.typ {
+    font-size: 1em; }
+  .typ-block h5 {
+    font-size: 1em; }
+  .typ-block h5 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h6.typ {
+    font-size: 1em; }
+  .typ-block h6 {
+    font-size: 1em; }
+  .typ-block h6 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; } }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  h1.typ {
+    font-size: 2.4em; }
+  .typ-block h1 {
+    font-size: 2.4em; }
+  .typ-block h1 {
+    margin-top: 1.28333em;
+    margin-bottom: 0.64167em; }
+  h2.typ {
+    font-size: 1.8em; }
+  .typ-block h2 {
+    font-size: 1.8em; }
+  .typ-block h2 {
+    margin-top: 1.42222em;
+    margin-bottom: 0.71111em; }
+  h3.typ {
+    font-size: 1.2em; }
+  .typ-block h3 {
+    font-size: 1.2em; }
+  .typ-block h3 {
+    margin-top: 2.53333em;
+    margin-bottom: 1.26667em; }
+  h4.typ {
+    font-size: 1.04em; }
+  .typ-block h4 {
+    font-size: 1.04em; }
+  .typ-block h4 {
+    margin-top: 3.04615em;
+    margin-bottom: 1.52308em; }
+  h5.typ {
+    font-size: 1em; }
+  .typ-block h5 {
+    font-size: 1em; }
+  .typ-block h5 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; }
+  h6.typ {
+    font-size: 1em; }
+  .typ-block h6 {
+    font-size: 1em; }
+  .typ-block h6 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; } }
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  h1.typ {
+    font-size: 3em; }
+  .typ-block h1 {
+    font-size: 3em; }
+  .typ-block h1 {
+    margin-top: 0.86667em;
+    margin-bottom: 0.43333em; }
+  h2.typ {
+    font-size: 2.25em; }
+  .typ-block h2 {
+    font-size: 2.25em; }
+  .typ-block h2 {
+    margin-top: 1.42222em;
+    margin-bottom: 0.71111em; }
+  h3.typ {
+    font-size: 1.5em; }
+  .typ-block h3 {
+    font-size: 1.5em; }
+  .typ-block h3 {
+    margin-top: 1.86667em;
+    margin-bottom: 0.93333em; }
+  h4.typ {
+    font-size: 1.3em; }
+  .typ-block h4 {
+    font-size: 1.3em; }
+  .typ-block h4 {
+    margin-top: 2.27692em;
+    margin-bottom: 1.13846em; }
+  h5.typ {
+    font-size: 1.12em; }
+  .typ-block h5 {
+    font-size: 1.12em; }
+  .typ-block h5 {
+    margin-top: 2.77143em;
+    margin-bottom: 1.38571em; }
+  h6.typ {
+    font-size: 1em; }
+  .typ-block h6 {
+    font-size: 1em; }
+  .typ-block h6 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; } }
+
+@media all and (min-width: 1200px) {
+  h1.typ {
+    font-size: 3em; }
+  .typ-block h1 {
+    font-size: 3em; }
+  .typ-block h1 {
+    margin-top: 0.86667em;
+    margin-bottom: 0.43333em; }
+  h2.typ {
+    font-size: 2.25em; }
+  .typ-block h2 {
+    font-size: 2.25em; }
+  .typ-block h2 {
+    margin-top: 1.42222em;
+    margin-bottom: 0.71111em; }
+  h3.typ {
+    font-size: 1.5em; }
+  .typ-block h3 {
+    font-size: 1.5em; }
+  .typ-block h3 {
+    margin-top: 1.86667em;
+    margin-bottom: 0.93333em; }
+  h4.typ {
+    font-size: 1.3em; }
+  .typ-block h4 {
+    font-size: 1.3em; }
+  .typ-block h4 {
+    margin-top: 2.27692em;
+    margin-bottom: 1.13846em; }
+  h5.typ {
+    font-size: 1.12em; }
+  .typ-block h5 {
+    font-size: 1.12em; }
+  .typ-block h5 {
+    margin-top: 2.77143em;
+    margin-bottom: 1.38571em; }
+  h6.typ {
+    font-size: 1em; }
+  .typ-block h6 {
+    font-size: 1em; }
+  .typ-block h6 {
+    margin-top: 3.2em;
+    margin-bottom: 1.6em; } }
+
+img.typ {
+  max-width: 100%; }
+
+.typ-block img {
+  max-width: 100%;
+  margin-bottom: 1.5em; }
+  .typ-block img:last-child {
+    margin-bottom: 0; }
+
+del.typ {
+  text-decoration: underline; }
+
+.typ-block del {
+  text-decoration: underline; }
+
+mark.typ {
+  background: #eff6ff;
+  padding: 0.2em; }
+
+.typ-block mark {
+  background: #eff6ff;
+  padding: 0.2em; }
+
+ol.typ {
+  list-style: decimal;
+  padding-left: 40px; }
+  ol.typ ul, ol.typ ol {
+    margin-bottom: 0; }
+
+.typ-block ol {
+  list-style: decimal;
+  padding-left: 40px;
+  margin-bottom: 1.5em; }
+  .typ-block ol ul, .typ-block ol ol {
+    margin-bottom: 0; }
+  .typ-block ol:last-child {
+    margin-bottom: 0; }
+
+.typ-block p {
+  margin-bottom: 1.5em; }
+  .typ-block p:last-child {
+    margin-bottom: 0; }
+
+pre.typ {
+  white-space: pre;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4; }
+
+.typ-block pre {
+  white-space: pre;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4; }
+
+s.typ {
+  text-decoration: line-through; }
+
+.typ-block s {
+  text-decoration: line-through; }
+
+small.typ {
+  font-size: 0.8em; }
+
+.typ-block small {
+  font-size: 0.8em; }
+
+strong.typ {
+  font-weight: 600; }
+
+.typ-block strong {
+  font-weight: 600; }
+
+u.typ {
+  text-decoration: underline; }
+
+.typ-block u {
+  text-decoration: underline; }
+
+ul.typ {
+  list-style: disc;
+  padding-left: 40px; }
+  ul.typ ul, ul.typ ol {
+    margin-bottom: 0; }
+
+.typ-block ul {
+  list-style: disc;
+  padding-left: 40px;
+  margin-bottom: 1.5em; }
+  .typ-block ul ul, .typ-block ul ol {
+    margin-bottom: 0; }
+  .typ-block ul:last-child {
+    margin-bottom: 0; }
+
 html, body {
   height: 100%;
   font-family: Arial; }

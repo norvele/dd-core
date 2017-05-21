@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-p, (ddTyp));
+
+@mixin dd-typ-p-generator()
+{
+	p {
+		@include dd-typ-node(true) {
+
+		}
+	}
+}

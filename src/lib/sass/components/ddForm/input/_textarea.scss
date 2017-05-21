@@ -1,0 +1,21 @@
+@mixin dd-form-inputTextarea()
+{
+	display: inline-block;
+
+	& > textarea {
+		@include dd-form-input();
+		min-height: 150px;
+		max-width: 100%;
+	}
+}
+
+.#{$dd-system-classPrefix}form {
+
+	&-inputTextarea {
+		@include dd-form-inputTextarea();
+
+		&._fluid {
+			width: 100%;
+		}
+	}
+}

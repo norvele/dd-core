@@ -3,6 +3,11 @@
 */
 
 /*
+
+*/
+$_dd-system-components: (ddSystem);
+
+/*
 	Устанавливает префикс для всех генерируемых классов библиотеки
 	Например при "dd-": .dd-grid-area ._dd-col .__dd-hidden
 */
@@ -14,6 +19,15 @@ $dd-system-classPrefix: 'dd-' !default;
 */
 $dd-system-debug: true !default;
 
+/*
+	Включает генерацию стилей
+	Если false - никакой css код библиотеки не будет сгенерирован
+*/
+$dd-system-autoGenerate: true !default;
+
+/*
+
+*/
 @function _dd-system-message($_message, $_type: 'warn')
 {
 	@if ($dd-system-debug) {
@@ -28,12 +42,84 @@ $dd-system-debug: true !default;
 	@return null;
 }
 
+/*
+
+*/
 @mixin dd-system-message($_message, $_type: 'warn')
 {
 	$_: _dd-system-message($_message, $_type);
 }
 
+/*
+
+*/
 @function dd-system-message($_message, $_type: 'warn')
 {
 	@return _dd-system-message($_message, $_type);
+}
+
+/*
+
+*/
+@function dd-system-componentListOfMissing($_components...)
+{
+	$_notFoundComponents: ();
+	@each $_component in $_components {
+		@if ((null == index($_dd-system-components, $_component))) {
+			$_notFoundComponents: append($_notFoundComponents, $_component);
+		}
+	}
+	@return $_notFoundComponents;
+}
+
+/*
+
+*/
+@function dd-system-componentExist($_components, $_message: true)
+{
+	$_result: true;
+	@if (type_of($_components) != list) {
+		$_components: ($_components);
+	}
+	@each $_component in $_components {
+		@if ((null == index($_dd-system-components, $_component))) {
+			$_result: false;
+		}
+	}
+	@if ($_result == false) {
+		@if ($_message == true) {
+			$_missing: dd-system-componentListOfMissing($_components...);
+			$_: dd-system-message('Не найдены следующие зависимости: #{$_missing}', warn);
+		}
+		@if (type_of($_message) == string) {
+			$_: dd-system-message($_message, warn);
+		}
+	}
+	@return $_result;
+}
+
+/*
+
+*/
+@function dd-system-componentRegister($_component, $_dependencies: ())
+{
+	@if (dd-system-componentExist($_component, false)) {
+		$_: dd-system-message('Компонент #{$_component} уже существует', error);
+		@return false;
+	}
+	$_dependenciesNotExists: dd-system-componentListOfMissing($_dependencies...);
+	@if (length($_dependenciesNotExists) > 0) {
+		$_: dd-system-message('Для #{$_component} не найдены следующие зависимости: #{$_dependenciesNotExists}', error);
+		@return true;
+	}
+	$_dd-system-components: append($_dd-system-components, $_component) !global;
+	@return true;
+}
+
+/*
+
+*/
+@mixin dd-system-componentRegister($_component, $_dependencies: ())
+{
+	$_: dd-system-componentRegister($_component, $_dependencies);
 }

@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-strong, (ddTyp));
+
+@mixin dd-typ-strong-generator()
+{
+	strong {
+		@include dd-typ-node() {
+			font-weight: 600;
+		}
+	}
+}

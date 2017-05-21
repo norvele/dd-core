@@ -1,5 +1,7 @@
 @mixin dd-form-inputText()
 {
+	display: inline-block;
+
 	& > input {
 		@include dd-form-input();
 	}
@@ -9,5 +11,9 @@
 
 	&-inputText {
 		@include dd-form-inputText();
+
+		&._fluid {
+			width: 100%;
+		}
 	}
 }

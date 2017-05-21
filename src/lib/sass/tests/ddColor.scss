@@ -38,8 +38,13 @@ $dd-color-modifier: (
 
 @include test-assert('equal', (
 	dd-color-state(splashy),
-	null
+	splashy
 ), 'Color: get undefined color');
+
+@include test-assert('equal', (
+	dd-color-state(splashy, null, true),
+	null
+), 'Color: get undefined color with strict mode');
 
 @include test-assert('equal', (
 	dd-color-palette(emphasis, light),

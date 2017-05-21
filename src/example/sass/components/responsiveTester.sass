@@ -31,10 +31,10 @@
 
 		width: 10px
 		background: #ffaaaa
-		@include dd-responsive-space(large)
+		@include dd-space-responsive(large)
 
 .component
-	@include dd-responsive-space(large)
+	@include dd-space-responsive(large)
 
 @each $_key, $_params in $dd-responsive-breakpoints
 	$_range: map_get($_params, 'range')

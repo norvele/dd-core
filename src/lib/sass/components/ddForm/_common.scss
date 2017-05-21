@@ -5,7 +5,7 @@
 		&-label {
 			display: block;
 			font-size: $dd-form-fontSize;
-			margin-bottom: 5px;
+			margin-bottom: 0.5em;
 		}
 
 		&-message {
@@ -13,14 +13,14 @@
 			font-size: $dd-form-fontSize;
 
 			&._error {
-				color: $dd-form-colorError;
+				//color: $dd-form-colorError;
 			}
 		}
 
 		&.-error & {
 
 			&-label {
-				color: $dd-form-colorError;
+				//color: $dd-form-colorError;
 			}
 		}
 	}

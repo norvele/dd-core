@@ -1,0 +1,87 @@
+@include dd-system-componentRegister(ddTyp-h, (ddTyp));
+
+$dd-typ-h-lineHeight: $dd-typ-lineHeight * 0.8 !default;
+$dd-typ-h-color: $dd-typ-color !default;
+$dd-typ-h-fontSizes: (3em, 2.25em, 1.5em, 1.3em, 1.12em, 1em) !default;
+$dd-typ-h-responsiveMinFontSize: 1em !default;
+
+@if (dd-system-componentExist(ddResponsive)) {
+	$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints, (
+		typHScale: 1,
+	));
+}
+
+@function dd-typ-h-margins($_headerSize, $_headerLineHeight, $_textSize, $_textLineHeight) {
+	// Высчитываем $typ-rhythm в контексте заголовка в em
+	$_headingRhythm: $_textLineHeight / dd-helpers-stripUnits($_headerSize) + 0em;
+	// Высчитываем ритм текста
+	$_rhythm: 1em * $_textLineHeight;
+	// Высчитываем разницу между абсолютным и контекстным ритмом
+	$_rhythmRate: $_rhythm / $_headingRhythm;
+	// Считаем относительный размер заголовка
+	$_headingRelativeSize: ($_headerSize * $_headerLineHeight) / $_rhythmRate;
+	// Считаем относительные размеры с отступами
+	$_headingRelativeFullSize: $_headingRelativeSize + $_headingRhythm * 3;
+	// Находим число вхождений ритма в размер и округляем
+	$_occurrence: round($_headingRelativeFullSize / $_headingRhythm);
+	// Вычисляем новый округленный размер
+	$_roundHeadingRelativeFullSize: $_occurrence * $_headingRhythm;
+	$_fullMargin: $_roundHeadingRelativeFullSize - $_headingRelativeSize;
+
+	@return ($_fullMargin/3*2, $_fullMargin/3);
+}
+
+@mixin dd-typ-h-margins($_size, $_lineHeight: $dd-typ-h-lineHeight) {
+	// Если размер в нормальных единицах - то вычисляем отступы
+	// для поддержания вертикального ритма
+	@if unit($_size) == em {
+		$_margins: dd-typ-h-margins($_size, $_lineHeight, $dd-typ-fontSize, $dd-typ-lineHeight);
+		margin-top: nth($_margins, 1);
+		margin-bottom: nth($_margins, 2);
+	} @else {
+		margin-top: $typ-fontSize*2;
+		margin-bottom: $typ-fontSize;
+	}
+}
+
+@mixin dd-typ-h-generator()
+{
+	// Генерируем заголовки
+	@for $_i from 1 through length($dd-typ-h-fontSizes) {
+		$_size: nth($dd-typ-h-fontSizes, $_i);
+		h#{$_i} {
+			@include dd-typ-node() {
+				font-weight: 600;
+				font-size: $_size;
+				line-height: $dd-typ-h-lineHeight;
+			}
+			.#{$dd-system-classPrefix}typ-block & {
+				@include dd-typ-h-margins($_size);
+			}
+		}
+	}
+}
+
+@mixin dd-typ-h-generatorResponsive()
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
+			@include dd-responsive-media($_breakKey) {
+				@for $_i from 1 through length($dd-typ-h-fontSizes) {
+					$_size: nth($dd-typ-h-fontSizes, $_i) * map_get($_breakParams, 'typHScale');
+					@if ($_size < $dd-typ-h-responsiveMinFontSize) {
+						$_size: $dd-typ-h-responsiveMinFontSize;
+					}
+					h#{$_i} {
+						@include dd-typ-node() {
+							font-size: $_size;
+						}
+						.#{$dd-system-classPrefix}typ-block & {
+							@include dd-typ-h-margins($_size);
+						}
+					}
+				}
+			}
+		}
+	}
+}

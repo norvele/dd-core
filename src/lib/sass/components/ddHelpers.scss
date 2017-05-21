@@ -2,6 +2,8 @@
 	DivoDivnoe Helpers
 */
 
+@include dd-system-componentRegister(ddHelpers);
+
 $dd-helpers-map: (
 	pullRight: (
 		float: 'right',
@@ -49,14 +51,6 @@ $dd-helpers-map: (
 		flex-wrap: 'nowrap',
 	),
 ) !default;
-
-@each $_key, $_params in $dd-helpers-map {
-	.__#{$dd-system-classPrefix}#{$_key} {
-		@each $_prop, $_value in $_params {
-			#{$_prop}: #{$_value} !important;
-		}
-	}
-}
 
 // Обрезает юниты (размерность) у числа
 @function dd-helpers-stripUnits($_number)
@@ -140,4 +134,45 @@ $dd-helpers-map: (
 		}
 	}
 	@return $_result;
+}
+
+@mixin dd-helpers-generator()
+{
+	@each $_key, $_params in $dd-helpers-map {
+		.__#{$dd-system-classPrefix}#{$_key} {
+			@each $_prop, $_value in $_params {
+				#{$_prop}: #{$_value} !important;
+			}
+		}
+	}
+}
+
+
+@mixin dd-helpers-generatorResponsive()
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			$_range: map_get($_params, 'range');
+			$_min: nth($_range, 1);
+			$_max: nth($_range, 2);
+
+			@include dd-responsive-media(($_key, infinite)) {
+				@include _dd-responsive-helpers($_key, up);
+			}
+
+			@if $_max {
+				@include dd-responsive-media((0, $_key)) {
+					@include _dd-responsive-helpers($_key, down)
+				}
+				@include dd-responsive-media($_key) {
+					@include _dd-responsive-helpers($_key)
+				}
+			} @else {
+				@include _dd-responsive-helpers($_key, down);
+				@include dd-responsive-media(($_key, infinite)) {
+					@include _dd-responsive-helpers($_key)
+				}
+			}
+		}
+	}
 }

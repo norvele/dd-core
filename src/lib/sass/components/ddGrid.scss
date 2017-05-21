@@ -3,6 +3,8 @@
 	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
 */
 
+@include dd-system-componentRegister(ddGrid, (ddResponsive));
+
 $dd-grid-columns: 12 !default;
 $dd-grid-gutterContainer: $dd-space-defaultSpace !default;
 $dd-grid-gutterHorizontal: $dd-space-defaultSpace !default;
@@ -223,6 +225,12 @@ $dd-grid-spaceGutters: true;
 	@include dd-grid-gutters($_gutterH, $_gutterV, $_gutterDynamic, $_spaces);
 }
 
+// TODO
+@mixin dd-grid-container()
+{
+
+}
+
 @mixin _dd-grid-listMedia($_params)
 {
 	@if (map_get($_params, 'columns') != null) {
@@ -315,65 +323,85 @@ $dd-grid-spaceGutters: true;
 	}
 }
 
-.#{$dd-system-classPrefix}grid {
+@mixin dd-grid-generator()
+{
+	.#{$dd-system-classPrefix}grid {
 
-	&-container {
-		box-sizing: border-box;
-		padding: 0 $dd-grid-gutterHorizontal;
-		margin: 0 auto;
+		&-container {
+			box-sizing: border-box;
+			padding: 0 $dd-grid-gutterHorizontal;
+			margin: 0 auto;
 
-		&._#{$dd-system-classPrefix}fluid {
-			width: 100%;
-		}
-	}
-
-	&-area {
-		@include dd-grid-area($dd-grid-gutterHorizontal, $dd-grid-gutterVertical, true, true);
-
-		&._center {
-			justify-content: center;
-		}
-	}
-}
-
-// Генерируем селектор для всех ячеек с заданным размером
-$_cellSelector: '';
-@each $_key, $_params in $dd-responsive-breakpoints {
-	@for $j from 1 through $dd-grid-columns {
-		$_cellSelector: $_cellSelector + '.#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j}';
-		@if (not dd-responsive-nextBreakpoint($_key) and $j == $dd-grid-columns) {} @else {
-			$_cellSelector: $_cellSelector + ', ';
-		}
-	}
-}
-// Запрещаем растягивание ячеек, для которых задан размер
-#{$_cellSelector} {
-	flex-grow: 0;
-	flex-shrink: 0;
-}
-
-.#{$dd-system-classPrefix}grid {
-
-	// Генерируем стили для брейкпойтнов
-	@each $_key, $_params in $dd-responsive-breakpoints {
-		$_range: map_get($_params, 'range');
-		$_minWidth: nth($_range, 1);
-		$_containerWidth: map_get($_params, 'containerWidth');
-
-		$_spaceScale: map_get($_params, 'spaceScale');
-		$_gutterContainer: $_spaceScale * $dd-grid-gutterContainer;
-
-		// Размеры ячеек сетки
-		@media all and ( min-width: $_minWidth ) {
-			&-container {
-				width: $_containerWidth;
-				padding-left: $_gutterContainer;
-				padding-right: $_gutterContainer;
+			&._#{$dd-system-classPrefix}fluid {
+				width: 100%;
 			}
-			@for $j from 1 through $dd-grid-columns {
-				&-area {
-					& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j} {
-						width: percentage($j / $dd-grid-columns);
+		}
+
+		&-area {
+			@include dd-grid-area($dd-grid-gutterHorizontal, $dd-grid-gutterVertical, true, true);
+
+			&._justifyCenter {
+				justify-content: center;
+			}
+
+			&._alignCenter {
+				align-items: center;
+			}
+
+			&._center {
+				justify-content: center;
+				align-items: center;
+			}
+
+			&._auto {
+
+				& > * {
+					width: auto;
+				}
+
+			}
+		}
+	}
+
+	// Генерируем селектор для всех ячеек с заданным размером
+	$_cellSelector: '';
+	@each $_key, $_params in $dd-responsive-breakpoints {
+		@for $j from 1 through $dd-grid-columns {
+			$_cellSelector: $_cellSelector + '.#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j}';
+			@if (not dd-responsive-nextBreakpoint($_key) and $j == $dd-grid-columns) {} @else {
+				$_cellSelector: $_cellSelector + ', ';
+			}
+		}
+	}
+	// Запрещаем растягивание ячеек, для которых задан размер
+	#{$_cellSelector} {
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	.#{$dd-system-classPrefix}grid {
+
+		// Генерируем стили для брейкпойтнов
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			$_range: map_get($_params, 'range');
+			$_minWidth: nth($_range, 1);
+			$_containerWidth: map_get($_params, 'containerWidth');
+
+			$_spaceScale: map_get($_params, 'spaceScale');
+			$_gutterContainer: $_spaceScale * $dd-grid-gutterContainer;
+
+			// Размеры ячеек сетки
+			@media all and ( min-width: $_minWidth ) {
+				&-container {
+					width: $_containerWidth;
+					padding-left: $_gutterContainer;
+					padding-right: $_gutterContainer;
+				}
+				@for $j from 1 through $dd-grid-columns {
+					&-area {
+						& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j} {
+							width: percentage($j / $dd-grid-columns);
+						}
 					}
 				}
 			}

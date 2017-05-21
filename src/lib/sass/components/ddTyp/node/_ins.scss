@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-ins, (ddTyp));
+
+@mixin dd-typ-ins-generator()
+{
+	del {
+		@include dd-typ-node() {
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-small, (ddTyp));
+
+@mixin dd-typ-small-generator()
+{
+	small {
+		@include dd-typ-node() {
+			font-size: 0.8em;
+		}
+	}
+}

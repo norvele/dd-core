@@ -1,0 +1,18 @@
+@mixin dd-form-input()
+{
+	width: 100%;
+	box-sizing: border-box;
+	background-color: $dd-form-inputBackgroundColor;
+	border: 1px solid $dd-form-inputBorderColor;
+	padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
+	border-radius: $dd-form-borderRadius;
+	font-size: $dd-form-fontSize;
+	line-height: $dd-form-lineHeight;
+	min-height: $dd-form-height;
+	color: $dd-form-inputColor;
+	font-family: $dd-form-fontFamily;
+
+	&::placeholder {
+		color: $dd-form-inputPlaceholderColor;
+	}
+}

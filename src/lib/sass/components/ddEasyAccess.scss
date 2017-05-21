@@ -103,6 +103,23 @@
 	@return dd-responsive-normalizeBreakpoints($_args...);
 }
 
+// DivoDivnoe Color
+
+@function colorPalette($_args...)
+{
+	@return dd-color-palette($_args...);
+}
+
+@function colorState($_args...)
+{
+	@return dd-color-state($_args...);
+}
+
+@function colorContrast($_args...)
+{
+	@return dd-color-contrast($_args...);
+}
+
 @mixin responsiveSpace($_args...)
 {
 	@include dd-responsive-space($_args...);

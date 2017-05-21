@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-s, (ddTyp));
+
+@mixin dd-typ-s-generator()
+{
+	s {
+		@include dd-typ-node() {
+			text-decoration: line-through;
+		}
+	}
+}

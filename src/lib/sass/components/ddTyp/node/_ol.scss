@@ -1,0 +1,15 @@
+@include dd-system-componentRegister(ddTyp-ol, (ddTyp));
+
+@mixin dd-typ-ol-generator()
+{
+	ol {
+		@include dd-typ-node(true) {
+			list-style: decimal;
+			padding-left: 40px;
+
+			ul, ol {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

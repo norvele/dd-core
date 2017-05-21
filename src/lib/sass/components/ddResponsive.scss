@@ -3,44 +3,42 @@
 	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
 */
 
+@include dd-system-componentRegister(ddResponsive);
+
 /*
 	Массив размеров устройств, каждый размер может содержать следующие параметры:
 	cutoff - отсечка в пикселях. (обязательно если не указан range)
 	range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
 	containerWidth - ширина контейнера (по умолчанию равен cutoff)
-	spaceScale - множитель отступов
 */
 $dd-responsive-breakpoints: (
 	xs:(
 		cutoff: 0,
 		containerWidth: 100%,
 		spaceScale: 0.5,
+		typHScale: 0.5,
 	),
 	sm:(
 		cutoff: 544px,
 		spaceScale: 0.5,
+		typHScale: 0.7,
 	),
 	md:(
 		cutoff: 768px,
 		spaceScale: 0.75,
+		typHScale: 0.8,
 	),
 	lg:(
 		cutoff: 992px,
 		spaceScale: 1,
+		typHScale: 1,
 	),
 	xl:(
 		cutoff: 1200px,
 		spaceScale: 1.5,
+		typHScale: 1,
 	),
 ) !default
-
-/*
-	TODO медиа выражение, в пределах которого будет работать адавтивность
-*/
-$dd-responsive-mediaBounds: null !default;
-
-$dd-responsive-spaceFixedMod: fixed !default;
-
 
 // Возвращает параметр отсечки по имени отсечки и имени параметра
 @function dd-responsive-breakpointVal($_breakpoint, $_param)
@@ -154,6 +152,13 @@ $dd-responsive-spaceFixedMod: fixed !default;
 	}
 }
 
+@function dd-responsive-between($_to, $_from, $_toWidth, $_fromWidth) {
+	$_slope: ($_to - $_from) / ($_toWidth - $_fromWidth);
+	$_base: $_from - $_slope * $_fromWidth;
+
+	@return calc(#{$_base} + #{100vw * $_slope});
+}
+
 // Генерирует адаптивные вспомогательные свойства
 // для переданного брейкпойнта в заданном направлении (up\down)
 @mixin _dd-responsive-helpers($_key, $_dir: null)
@@ -172,7 +177,7 @@ $dd-responsive-spaceFixedMod: fixed !default;
 	}
 }
 
-@function dd-responsive-normalizeBreakpoints($_breakpoints)
+@function _dd-responsive-normalizeBreakpoints($_breakpoints)
 {
 	// Проходим по брейкпойнтам, проставляя недостающие данные
 	$_newBreakpoints: ();
@@ -230,13 +235,6 @@ $dd-responsive-spaceFixedMod: fixed !default;
 			));
 		}
 
-		// Проставляем spaceScale
-		@if (not $_spaceScale) {
-			$_params: map_merge($_params, (
-				spaceScale: 1,
-			));
-		}
-
 		$_newBreakpoints: map-merge($_newBreakpoints, (
 			$_key: $_params,
 		));
@@ -244,56 +242,23 @@ $dd-responsive-spaceFixedMod: fixed !default;
 	@return $_newBreakpoints;
 }
 
-@mixin dd-responsive-space($_val)
+@function dd-responsive-normalizeBreakpoints($_breakpoints, $_defaults)
 {
-	display: block;
-	$_val: dd-space-getSpace($_val);
-	// Генерируем вспомогательные классы Space компонента
-	@each $_key, $_params in $dd-responsive-breakpoints {
-		@include dd-responsive-media(($_key)) {
-			height: $_val * map_get($_params, 'spaceScale');
+	$_newBreakpoints: ();
+	@each $_key, $_params in $_breakpoints {
+		@each $_defaultKey, $_defaultVal in $_defaults {
+			@if (not map_get($_params, $_defaultKey)) {
+				$_params: map_merge($_params, (
+					$_defaultKey: $_defaultVal,
+				));
+			}
 		}
+		$_newBreakpoints: map-merge($_newBreakpoints, (
+			$_key: $_params,
+		));
 	}
+	@return $_newBreakpoints;
 }
 
 // Сохраняем новую мапу брейкпойнтов
-$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints);
-
-// Генерируем вспомогательные классы Helpers компонента
-@each $_key, $_params in $dd-responsive-breakpoints {
-	$_range: map_get($_params, 'range');
-	$_min: nth($_range, 1);
-	$_max: nth($_range, 2);
-
-	@include dd-responsive-media(($_key, infinite)) {
-		@include _dd-responsive-helpers($_key, up);
-	}
-
-	@if $_max {
-		@include dd-responsive-media((0, $_key)) {
-			@include _dd-responsive-helpers($_key, down)
-		}
-		@include dd-responsive-media($_key) {
-			@include _dd-responsive-helpers($_key)
-		}
-	} @else {
-		@include _dd-responsive-helpers($_key, down);
-		@include dd-responsive-media(($_key, infinite)) {
-			@include _dd-responsive-helpers($_key)
-		}
-	}
-}
-
-// Генерируем вспомогательные классы Space компонента
-.#{$dd-system-classPrefix}space {
-	@each $_factorKey, $_factorVal in $dd-space-factor {
-		$_val: dd-space-getSpace($_factorKey);
-		@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
-			@include dd-responsive-media($_breakKey) {
-				&._#{$_factorKey}:not(._#{$dd-responsive-spaceFixedMod}) {
-					height: $_val * map_get($_breakParams, 'spaceScale');
-				}
-			}
-		}
-	}
-}
+$dd-responsive-breakpoints: _dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints);

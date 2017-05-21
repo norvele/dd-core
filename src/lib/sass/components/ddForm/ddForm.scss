@@ -1,0 +1,26 @@
+// Параметры форм
+$dd-form-fontFamily: inherit !default;
+$dd-form-fontSize: 1em !default;
+$dd-form-lineHeight: 1.2 !default;
+$dd-form-height: 2.5em !default;
+$dd-form-borderRadius: 3px !default;
+$dd-form-inputColor: #333 !default;
+$dd-form-inputPlaceholderColor: scale-color($dd-form-inputColor, lightness, 50%) !default;
+$dd-form-inputBackgroundColor: #fff !default;
+$dd-form-inputBorderColor: #e1e1e1 !default;
+
+$_dd-form-padding: ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) / 2 !default;
+$_dd-form-paddingVertical: $_dd-form-padding !default;
+$_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
+
+@import '_common';
+@import '_message';
+@import '_button';
+@import '_input';
+@import 'input/_text';
+@import 'input/_textarea';
+
+@mixin dd-form-generator()
+{
+
+}

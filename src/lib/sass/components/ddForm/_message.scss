@@ -13,9 +13,9 @@
 		border-radius: 3px;
 		line-height: 1.2em;
 		border: 1px solid;
-		@include dd-form-messageColor($dd-form-colorDefault);
+		//@include dd-form-messageColor($dd-form-colorDefault);
 
-		&.-error {
+		/*&.-error {
 			@include dd-form-messageColor($dd-form-colorError);
 		}
 
@@ -29,6 +29,6 @@
 
 		&.-notice {
 			@include dd-form-messageColor($dd-form-colorNotice);
-		}
+		}*/
 	}
 }

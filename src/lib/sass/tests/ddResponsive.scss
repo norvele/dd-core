@@ -17,7 +17,7 @@ $dd-responsive-breakpoints: (
 );
 
 @include test-assert('equal', (
-	dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints),
+	_dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints),
 	(
 		xs: (
 			cutoff: 0,
@@ -45,7 +45,7 @@ $dd-responsive-breakpoints: map_get($_test-snapshot, dd-responsive-breakpoints);
 $_test-snapshot: (
 	dd-responsive-breakpoints: $dd-responsive-breakpoints,
 );
-$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints((
+$dd-responsive-breakpoints: _dd-responsive-normalizeBreakpoints((
 	xs: (
 		cutoff: 0,
 	),

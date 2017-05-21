@@ -1,0 +1,11 @@
+@include dd-system-componentRegister(ddTyp-em, (ddTyp));
+
+@mixin dd-typ-em-generator()
+{
+	em {
+		@include dd-typ-node() {
+			font-style: italic;
+		}
+	}
+
+}

@@ -1,0 +1,11 @@
+@include dd-system-componentRegister(ddTyp-abbr, (ddTyp));
+
+@mixin dd-typ-abbr-generator()
+{
+	abbr {
+		@include dd-typ-node() {
+			cursor: help;
+			border-bottom: 1px dotted;
+		}
+	}
+}

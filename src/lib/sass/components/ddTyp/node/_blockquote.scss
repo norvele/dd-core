@@ -1,0 +1,25 @@
+@include dd-system-componentRegister(ddTyp-blockquote, (ddTyp));
+
+@mixin dd-typ-blockquote-generator()
+{
+	blockquote {
+		@include dd-typ-node(true) {
+			border-left: 5px solid #eee;
+			padding: $dd-typ-rhythm 0 $dd-typ-rhythm calc(#{$dd-typ-rhythm} - 5px);
+
+			& > p:last-child {
+				margin-bottom: 0;
+			}
+
+			& > footer, & > cite {
+				color: lighten(dd-color-palette($dd-typ-color), 30%);
+				font-size: 0.9em;
+				line-height: 1em / 0.9em * $dd-typ-lineHeight;
+			}
+
+			&:before {
+				content: '\2014 \00A0';
+			}
+		}
+	}
+}

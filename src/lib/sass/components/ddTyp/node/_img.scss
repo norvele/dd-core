@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(ddTyp-img, (ddTyp));
+
+@mixin dd-typ-img-generator()
+{
+	img {
+		@include dd-typ-node(true) {
+			max-width: 100%;
+		}
+	}
+}

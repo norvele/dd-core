@@ -2,7 +2,11 @@
 	DivoDivnoe Space
 */
 
+@include dd-system-componentRegister(ddSpace);
+
 $dd-space-defaultSpace: 16px !default;
+
+$dd-space-fixedMod: fixed !default;
 
 $dd-space-factor: (
 	tiny: 0.25,
@@ -11,6 +15,12 @@ $dd-space-factor: (
 	large: 2,
 	massive: 4,
 );
+
+@if (dd-system-componentExist(ddResponsive)) {
+	$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints, (
+		spaceScale: 1,
+	));
+}
 
 @function dd-space-getSpace($_factor, $_strict: false)
 {
@@ -44,11 +54,46 @@ $dd-space-factor: (
 	height: dd-space-getSpace($_factor);
 }
 
-.#{$dd-system-classPrefix}space {
-	display: block;
-	@each $_key, $_val in $dd-space-factor {
-		&._#{$_key} {
-			height: dd-space-getSpace($_key);
+@mixin dd-space-responsive($_val)
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		display: block;
+		$_val: dd-space-getSpace($_val);
+		// Генерируем вспомогательные классы Space компонента
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			@include dd-responsive-media(($_key)) {
+				height: $_val * map_get($_params, 'spaceScale');
+			}
+		}
+	}
+}
+
+@mixin dd-space-generator()
+{
+	.#{$dd-system-classPrefix}space {
+		display: block;
+		@each $_key, $_val in $dd-space-factor {
+			&._#{$_key} {
+				height: dd-space-getSpace($_key);
+			}
+		}
+	}
+}
+
+@mixin dd-space-generatorResponsive()
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		.#{$dd-system-classPrefix}space {
+			@each $_factorKey, $_factorVal in $dd-space-factor {
+				$_val: dd-space-getSpace($_factorKey);
+				@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
+					@include dd-responsive-media($_breakKey) {
+						&._#{$_factorKey}:not(._#{$dd-space-fixedMod}) {
+							height: $_val * map_get($_breakParams, 'spaceScale');
+						}
+					}
+				}
+			}
 		}
 	}
 }
