@@ -1,6 +1,5 @@
 /*
 	DivoDivnoe Responsive
-	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
 */
 
 @include dd-system-componentRegister(ddResponsive);
@@ -61,13 +60,13 @@ $dd-responsive-breakpoints: (
 // Возвращает среднее значение между минимальными ширинами отсечки
 @function dd-responsive-minMeanWidth($_breakpoint1, $_breakpoint2, $_offset: 0.5)
 {
-	@return dd-helpers-getMean(dd-responsive-minWidth($_breakpoint1), dd-responsive-minWidth($_breakpoint2), $_offset);
+	@return dd-util-getMean(dd-responsive-minWidth($_breakpoint1), dd-responsive-minWidth($_breakpoint2), $_offset);
 }
 
 // Возвращает среднее значение между максимальными ширинами отсечки
 @function dd-responsive-maxMeanWidth($_breakpoint1, $_breakpoint2, $_offset: 0.5)
 {
-	@return dd-helpers-getMean(dd-responsive-maxWidth($_breakpoint1), dd-responsive-maxWidth($_breakpoint2), $_offset);
+	@return dd-util-getMean(dd-responsive-maxWidth($_breakpoint1), dd-responsive-maxWidth($_breakpoint2), $_offset);
 }
 
 // Возвращает следующее имя отсейчки или null если такой нет
@@ -147,34 +146,16 @@ $dd-responsive-breakpoints: (
 
 @mixin dd-responsive-media($_args...)
 {
-	@media #{dd-helpers-implode(dd-responsive-parseMedia($_args...), ', ')} {
+	@media #{dd-util-implode(dd-responsive-parseMedia($_args...), ', ')} {
 		@content;
 	}
 }
 
-@function dd-responsive-between($_to, $_from, $_toWidth, $_fromWidth) {
+@function dd-responsive-lock($_to, $_from, $_toWidth, $_fromWidth) {
 	$_slope: ($_to - $_from) / ($_toWidth - $_fromWidth);
 	$_base: $_from - $_slope * $_fromWidth;
 
 	@return calc(#{$_base} + #{100vw * $_slope});
-}
-
-// Генерирует адаптивные вспомогательные свойства
-// для переданного брейкпойнта в заданном направлении (up\down)
-@mixin _dd-responsive-helpers($_key, $_dir: null)
-{
-	@if ($_dir) {
-		$_dir: '-#{$_dir}';
-	} @else {
-		$_dir: '';
-	}
-	@each $_name, $_params in $dd-helpers-map {
-		.__#{$dd-system-classPrefix}#{$_name}-#{$_key}#{$_dir} {
-			@each $_prop, $_value in $_params {
-				#{$_prop}: #{$_value} !important;
-			}
-		}
-	}
 }
 
 @function _dd-responsive-normalizeBreakpoints($_breakpoints)

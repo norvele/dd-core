@@ -1,4 +1,4 @@
-@include dd-system-componentRegister(ddTyp-h, (ddTyp));
+@include dd-system-componentRegister(ddTyp-h, (ddTyp, ddUtil));
 
 $dd-typ-h-lineHeight: $dd-typ-lineHeight * 0.8 !default;
 $dd-typ-h-color: $dd-typ-color !default;
@@ -13,7 +13,7 @@ $dd-typ-h-responsiveMinFontSize: 1em !default;
 
 @function dd-typ-h-margins($_headerSize, $_headerLineHeight, $_textSize, $_textLineHeight) {
 	// Высчитываем $typ-rhythm в контексте заголовка в em
-	$_headingRhythm: $_textLineHeight / dd-helpers-stripUnits($_headerSize) + 0em;
+	$_headingRhythm: $_textLineHeight / dd-util-stripUnits($_headerSize) + 0em;
 	// Высчитываем ритм текста
 	$_rhythm: 1em * $_textLineHeight;
 	// Высчитываем разницу между абсолютным и контекстным ритмом

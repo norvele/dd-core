@@ -39,8 +39,10 @@
 
 */
 /*
+	DivoDivnoe Utils
+*/
+/*
 	DivoDivnoe Responsive
-	Зависит от "DivoDivnoe Space", "DivoDivnoe Helpers"
 */
 /*
 	Массив размеров устройств, каждый размер может содержать следующие параметры:
@@ -1576,7 +1578,7 @@ abbr.dd-typ {
 
 blockquote.dd-typ {
   border-left: 5px solid #eee;
-  padding: 1.5em 0 1.5em calc(1.5em - 5px); }
+  padding-left: calc(1.5em - 5px); }
   blockquote.dd-typ > p:last-child {
     margin-bottom: 0; }
   blockquote.dd-typ > footer, blockquote.dd-typ > cite {
@@ -1588,7 +1590,7 @@ blockquote.dd-typ {
 
 .dd-typ-block blockquote {
   border-left: 5px solid #eee;
-  padding: 1.5em 0 1.5em calc(1.5em - 5px);
+  padding-left: calc(1.5em - 5px);
   margin-bottom: 1.5em; }
   .dd-typ-block blockquote > p:last-child {
     margin-bottom: 0; }

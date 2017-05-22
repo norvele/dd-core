@@ -1,12 +1,13 @@
 // Подключение всех компонентов
-@import 'components/ddSystem'; //+
-@import 'components/ddReset'; //+
-@import 'components/ddResponsive'; //+
-@import 'components/ddHelpers'; //+
-@import 'components/ddSpace'; //+
-@import 'components/ddColor'; //+
-@import 'components/ddGrid'; //+
-@import 'components/ddTyp/ddTyp'; //+
+@import 'components/ddSystem';
+@import 'components/ddUtil';
+@import 'components/ddReset';
+@import 'components/ddResponsive';
+@import 'components/ddGlobalMod';
+@import 'components/ddSpace';
+@import 'components/ddColor';
+@import 'components/ddGrid';
+@import 'components/ddTyp/ddTyp';
 @import 'components/ddForm/ddForm';
 @import 'components/ddIcon';
 @import 'components/ddEasyAccess';
@@ -15,8 +16,8 @@
 @if ($dd-system-autoGenerate) {
 	@include dd-reset-generator();
 
-	@include dd-helpers-generator();
-	@include dd-helpers-generatorResponsive();
+	@include dd-globalMod-generator();
+	@include dd-globalMod-generatorResponsive();
 
 	@include dd-space-generator();
 	@include dd-space-generatorResponsive();
@@ -25,5 +26,3 @@
 
 	@include dd-typ-generator();
 }
-
-//@import 'tests/main';

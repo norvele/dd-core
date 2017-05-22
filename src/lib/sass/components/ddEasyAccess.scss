@@ -19,17 +19,17 @@
 
 @function stripUnits($_args...)
 {
-	@return dd-helpers-stripUnits($_args...);
+	@return dd-util-stripUnits($_args...);
 }
 
 @function mean($_args...)
 {
-	@return dd-helpers-getMean($_args...);
+	@return dd-util-getMean($_args...);
 }
 
 @function decimalRound($_args...)
 {
-	@return dd-helpers-decimalRound($_args...);
+	@return dd-util-decimalRound($_args...);
 }
 
 // DivoDivnoe Space

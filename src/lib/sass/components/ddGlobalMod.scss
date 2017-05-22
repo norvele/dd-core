@@ -1,0 +1,113 @@
+/*
+	DivoDivnoe Helpers
+*/
+
+@include dd-system-componentRegister(ddGlobalMod);
+
+$dd-globalMod-map: (
+	pullRight: (
+		float: 'right',
+	),
+	pullLeft: (
+		float: 'left',
+	),
+	invisible: (
+		visibility: 'hidden',
+	),
+	hidden: (
+		display: 'none',
+	),
+	clear: (
+		clear: 'both',
+	),
+	textRight: (
+		text-align: 'right',
+	),
+	textLeft: (
+		text-align: 'left',
+	),
+	textCenter: (
+		text-align: 'center',
+	),
+	textJustify: (
+		text-align: 'justify',
+	),
+	textNoWrap: (
+		white-space: 'nowrap',
+	),
+	textLowerCase: (
+		text-transform: 'lowercase',
+	),
+	textUpperCase: (
+		text-transform: 'uppercase',
+	),
+	textCapitalize: (
+		text-transform: 'capitalize',
+	),
+	flexWrap: (
+		flex-wrap: 'wrap',
+	),
+	flexNoWrap: (
+		flex-wrap: 'nowrap',
+	),
+) !default;
+
+// Генерирует адаптивные вспомогательные свойства
+// для переданного брейкпойнта в заданном направлении (up\down)
+// TODO отрефакторить
+@mixin _dd-globalMod-responsive($_key, $_dir: null)
+{
+	@if ($_dir) {
+		$_dir: '-#{$_dir}';
+	} @else {
+		$_dir: '';
+	}
+	@each $_name, $_params in $dd-globalMod-map {
+		.__#{$dd-system-classPrefix}#{$_name}-#{$_key}#{$_dir} {
+			@each $_prop, $_value in $_params {
+				#{$_prop}: #{$_value} !important;
+			}
+		}
+	}
+}
+
+@mixin dd-globalMod-generator()
+{
+	@each $_key, $_params in $dd-globalMod-map {
+		.__#{$dd-system-classPrefix}#{$_key} {
+			@each $_prop, $_value in $_params {
+				#{$_prop}: #{$_value} !important;
+			}
+		}
+	}
+}
+
+// TODO отрефакторить
+@mixin dd-globalMod-generatorResponsive()
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		@each $_key, $_params in $dd-responsive-breakpoints {
+			$_range: map_get($_params, 'range');
+			$_min: nth($_range, 1);
+			$_max: nth($_range, 2);
+
+			@include dd-responsive-media(($_key, infinite)) {
+				@include _dd-globalMod-responsive($_key, up);
+			}
+
+			@if $_max {
+				@include dd-responsive-media((0, $_key)) {
+					@include _dd-globalMod-responsive($_key, down)
+				}
+				@include dd-responsive-media($_key) {
+					@include _dd-globalMod-responsive($_key)
+				}
+			} @else {
+				@include _dd-globalMod-responsive($_key, down);
+				@include dd-responsive-media(($_key, infinite)) {
+					@include _dd-globalMod-responsive($_key)
+				}
+			}
+		}
+	}
+}

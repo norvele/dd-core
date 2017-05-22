@@ -1,0 +1,89 @@
+/*
+	DivoDivnoe Utils
+*/
+
+@include dd-system-componentRegister(ddUtil);
+
+// Обрезает юниты (размерность) у числа
+@function dd-util-stripUnits($_number)
+{
+	@return $_number / ($_number * 0 + 1);
+}
+
+// Откругляет число до заданного знака после запятой
+// $_number - число
+// $_digits - кол-во знаков после запятой
+// $_mode - метод округления (round, ceil, floor)
+@function dd-util-decimalRound($_number, $_digits: 0, $_mode: round)
+{
+	$_n: 1;
+	@if $_digits > 0 {
+		@for $_i from 1 through $_digits {
+			$_n: $_n * 10;
+		}
+	}
+	@if $_mode == round {
+		@return round($_number * $_n) / $_n;
+	} @else if $_mode == ceil {
+		@return ceil($_number * $_n) / $_n;
+	} @else if $_mode == floor {
+		@return floor($_number * $_n) / $_n;
+	} @else {
+		@warn 'Mode "#{$_mode}" not found';
+		@return $_number;
+	}
+}
+
+// Возвращает среднее значение между двумя
+// $_number1 - первое значение
+// $_number2 - второе значение
+// $_offset - смещение среднего значения от первого (от 0 до 1)
+@function dd-util-getMean($_number1, $_number2, $_offset:0.5, $_digits: 0)
+{
+	@if (type_of($_number1) != number or type_of($_number2) != number) {
+		@return null;
+	}
+	$_normalizedOffset: 0.5;
+	@if unit($_offset) == '%' {
+		$_normalizedOffset: dd-util-stripUnits($_offset)/100;
+	} @else if unitless($_offset) {
+		$_normalizedOffset: $_offset;
+	} @else {
+		$_normalizedOffset: dd-util-stripUnits($_offset);
+	}
+	$_result: $_number1 + ($_number2 - $_number1) * $_normalizedOffset;
+	@return dd-util-decimalRound($_result, $_digits);
+}
+
+@function dd-util-implode($_pieces, $_glue: "") {
+	$_result: null;
+	@for $_i from 1 through length($_pieces) {
+		$_piece: nth($_pieces, $_i);
+		@if type-of($_piece) == list {
+			$_result: unquote("#{$_result}#{$_glue}#{dd-util-implode($_piece, $_glue)}");
+		} @else {
+			$_result: unquote("#{$_result}#{$_glue}#{$_piece}");
+		}
+	}
+	@if $_result != null {
+		$_result: str-slice($_result, str-length($_glue) + 1, -1);
+	}
+	@return $_result;
+}
+
+@function dd-util-capitalize($_string) {
+	@return to-upper-case(str-slice($_string, 1, 1)) + str-slice($_string, 2);
+}
+
+@function dd-util-mergeMap($_parent, $_child) {
+	$_result: $_parent;
+	@each $_key, $_value in $_child {
+		@if(type-of(map-get($_result, $_key)) == map and type-of($_value) == map) {
+			$_result: map-merge($_result, ($_key: dd-util-mergeMap(map-get($_result, $_key), $_value)));
+		}
+		@else {
+			$_result: map-merge($_result, ($_key: $_value));
+		}
+	}
+	@return $_result;
+}
