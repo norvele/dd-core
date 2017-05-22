@@ -1,39 +1,39 @@
 @include test-assert('equal', (
-	dd-helpers-stripUnits(20px),
+	dd-util-stripUnits(20px),
 	20
 ), 'Helpers: strip units');
 
 @include test-assert('equal', (
-	dd-helpers-decimalRound(20.467, 1, round),
+	dd-util-decimalRound(20.467, 1, round),
 	20.5
 ), 'Helpers: decimal round');
 
 @include test-assert('equal', (
-	dd-helpers-decimalRound(20.467, 1, floor),
+	dd-util-decimalRound(20.467, 1, floor),
 	20.4
 ), 'Helpers: decimal floor');
 
 @include test-assert('equal', (
-	dd-helpers-getMean(1, 3),
+	dd-util-getMean(1, 3),
 	2
 ), 'Helpers: get mean');
 
 @include test-assert('equal', (
-	dd-helpers-getMean(1, 3, 0.8, 1),
+	dd-util-getMean(1, 3, 0.8, 1),
 	2.6
 ), 'Helpers: get mean decimal');
 
 @include test-assert('equal', (
-	dd-helpers-getMean(1, null),
+	dd-util-getMean(1, null),
 	null
 ), 'Helpers: get mean null');
 
 @include test-assert('equal', (
-	dd-helpers-implode(('test', 2, 20px), ', '),
+	dd-util-implode(('test', 2, 20px), ', '),
 	'test, 2, 20px'
 ), 'Helpers: implode');
 
 @include test-assert('equal', (
-	dd-helpers-capitalize('test string'),
+	dd-util-capitalize('test string'),
 	'Test string'
 ),'Helpers: capitalize');

@@ -23,6 +23,11 @@ var collector = new Collector({
 					dest: `${roots.dest}/lib/js/`,
 					watch: `${roots.src}/lib/js/**/*.*`,
 				},
+				{
+					type: 'test',
+					src: `${roots.src}/lib/sass/tests/main.scss`,
+					watch: `${roots.src}/lib/sass/tests/**/*.*`,
+				},
 			],
 		},
 		{

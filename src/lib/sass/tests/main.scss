@@ -2,6 +2,11 @@
 
 // Отключаем вывод предупреждений библиотеки
 $dd-system-debug: false;
+// Отключаем генерацию
+$dd-system-autoGenerate: true;
+
+// Подключаем библиотеку
+@import '../main.scss';
 
 // Подключаем тесты
 @import 'ddHelpers';
@@ -10,6 +15,4 @@ $dd-system-debug: false;
 @import 'ddResponsive';
 
 // Print result
-
 @include test-output();
-
