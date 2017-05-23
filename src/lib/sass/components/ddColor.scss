@@ -12,10 +12,11 @@ $dd-color-default: default !default;
 
 $dd-color-state: (
 	default: #666666,
-	error: #EC6A00,
+	error: #ED5135,
 	success: #669E81,
 	warning: #FFCC65,
 	notice: #8fccff,
+	muted: #CCCCCC,
 ) !default;
 
 $dd-color-modifier: (
@@ -33,6 +34,20 @@ $dd-color-modifier: (
 	@return mix(#000, $_color, 10%);
 }
 
+@function dd-color-modifier($_color, $_modifier: null)
+{
+	$_modifierFunc: map_get($dd-color-modifier, $_modifier);
+	@if ($_modifierFunc == null) {
+		$_: dd-system-message('Не существует модификатора цвета "#{$_modifier}"');
+		@return $_color;
+	}
+	@if (not function_exists($_modifierFunc)) {
+		$_: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"');
+		@return $_color;
+	}
+	@return call($_modifierFunc, $_color);
+}
+
 @function _dd-color-get($_map, $_colorSrc, $_modifier: null, $_strict: false)
 {
 	$_color: map_get($_map, $_colorSrc);
@@ -45,16 +60,7 @@ $dd-color-modifier: (
 		}
 	}
 	@if ($_modifier != null) {
-		$_modifierFunc: map_get($dd-color-modifier, $_modifier);
-		@if ($_modifierFunc == null) {
-			$_: dd-system-message('Не существует модификатора цвета "#{$_modifier}"');
-			@return $_color;
-		}
-		@if (not function_exists($_modifierFunc)) {
-			$_: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"');
-			@return $_color;
-		}
-		$_color: call($_modifierFunc, $_color);
+		$_color: dd-color-modifier($_color, $_modifier);
 	}
 	@return $_color;
 }
@@ -88,7 +94,7 @@ $dd-color-modifier: (
 	}
 }
 
-@mixin dd-color-mods($_map, $_property: 'color', $_prefix: '')
+@mixin dd-color-map($_map, $_property: 'color', $_prefix: '')
 {
 	@each $_name, $_color in $_map {
 		&.#{$_prefix}#{$_name} {

@@ -10,19 +10,21 @@
 @import 'components/ddTyp/ddTyp';
 @import 'components/ddForm/ddForm';
 @import 'components/ddIcon';
-@import 'components/ddEasyAccess';
+//@import 'components/ddEasyAccess';
+
+@mixin dd-generator()
+{
+	@include dd-reset-generator();
+	@include dd-globalMod-generator();
+	@include dd-globalMod-generatorResponsive();
+	@include dd-space-generator();
+	@include dd-space-generatorResponsive();
+	@include dd-grid-generator();
+	@include dd-typ-generator();
+	@include dd-form-generator();
+}
 
 // Генерация стилей
 @if ($dd-system-autoGenerate) {
-	@include dd-reset-generator();
-
-	@include dd-globalMod-generator();
-	@include dd-globalMod-generatorResponsive();
-
-	@include dd-space-generator();
-	@include dd-space-generatorResponsive();
-
-	@include dd-grid-generator();
-
-	@include dd-typ-generator();
+	@include dd-generator();
 }

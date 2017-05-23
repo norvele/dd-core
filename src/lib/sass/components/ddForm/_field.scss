@@ -1,0 +1,58 @@
+@include dd-system-componentRegister(ddForm-field, (ddForm));
+
+@mixin dd-form-field-messageVariant($_color)
+{
+	color: $_color;
+}
+
+@mixin dd-form-field-messageVariantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-field-messageVariant($_color);
+			}
+		}
+	}
+}
+
+@mixin dd-form-field-stateVariant($_color)
+{
+	.#{$dd-system-classPrefix}form-field-label {
+		color: $_color;
+	}
+}
+
+@mixin dd-form-field-stateVariantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-field-stateVariant($_color);
+			}
+		}
+	}
+}
+
+@mixin dd-form-field-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-field {
+
+			&-label {
+				display: block;
+				font-size: $dd-form-fontSize;
+				margin-bottom: 0.5em;
+			}
+
+			&-message {
+				padding: 5px 0;
+				font-size: $dd-form-fontSize;
+				@include dd-form-field-messageVariantMods();
+			}
+
+			@include dd-form-field-stateVariantMods();
+		}
+	}
+}

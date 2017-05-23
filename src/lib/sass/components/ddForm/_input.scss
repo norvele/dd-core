@@ -1,3 +1,26 @@
+@include dd-system-componentRegister(ddForm-input, (ddForm));
+
+$dd-form-inputColor: $dd-form-color !default;
+$dd-form-inputPlaceholderColor: $dd-form-placeholderColor !default;
+$dd-form-inputBackgroundColor: $dd-form-backgroundColor !default;
+$dd-form-inputBorderColor: $dd-form-borderColor !default;
+
+@mixin dd-form-input-stateVariant($_color)
+{
+	border-color: $_color;
+}
+
+@mixin dd-form-input-stateVariantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-input-stateVariant($_color);
+			}
+		}
+	}
+}
+
 @mixin dd-form-input()
 {
 	width: 100%;

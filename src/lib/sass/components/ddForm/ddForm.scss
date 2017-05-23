@@ -1,13 +1,15 @@
+@include dd-system-componentRegister(ddForm);
+
 // Параметры форм
 $dd-form-fontFamily: inherit !default;
 $dd-form-fontSize: 1em !default;
 $dd-form-lineHeight: 1.2 !default;
 $dd-form-height: 2.5em !default;
 $dd-form-borderRadius: 3px !default;
-$dd-form-inputColor: #333 !default;
-$dd-form-inputPlaceholderColor: scale-color($dd-form-inputColor, lightness, 50%) !default;
-$dd-form-inputBackgroundColor: #fff !default;
-$dd-form-inputBorderColor: #e1e1e1 !default;
+$dd-form-color: #333 !default;
+$dd-form-placeholderColor: mix(#fff, $dd-form-color, 80%) !default;
+$dd-form-backgroundColor: #fff !default;
+$dd-form-borderColor: mix(#fff, $dd-form-color, 70%) !default;
 
 $_dd-form-padding: ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) / 2 !default;
 $_dd-form-paddingVertical: $_dd-form-padding !default;
@@ -16,11 +18,18 @@ $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
 @import '_common';
 @import '_message';
 @import '_button';
+@import '_field';
 @import '_input';
 @import 'input/_text';
 @import 'input/_textarea';
+@import 'input/_select';
 
 @mixin dd-form-generator()
 {
-
+	@include dd-form-message-generator();
+	@include dd-form-field-generator();
+	@include dd-form-button-generator();
+	@include dd-form-inputText-generator();
+	@include dd-form-inputTextarea-generator();
+	@include dd-form-inputSelect-generator();
 }

@@ -1,0 +1,64 @@
+@include dd-system-componentRegister(ddForm-inputSelect, (ddForm, ddForm-input));
+
+@mixin dd-form-inputSelect-stateVariant($_color)
+{
+	& > select {
+		border-color: $_color;
+	}
+}
+
+@mixin dd-form-inputSelect-stateVariantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-inputSelect-stateVariant($_color);
+			}
+		}
+	}
+}
+
+@mixin dd-form-inputSelect()
+{
+	display: inline-block;
+	position: relative;
+	$_arrowSize: $_dd-form-paddingHorizontal/3;
+
+	& > select {
+		@include dd-form-input();
+		appearance: none;
+		padding-right: $_dd-form-paddingHorizontal * 2 + $_arrowSize;
+
+		/*option {
+			padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
+		}*/
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		height: 0;
+		width: 0;
+		top: ($dd-form-height - $_arrowSize)/2 + 0.1em;
+		right: $_dd-form-paddingHorizontal;
+		pointer-events: none;
+		border: $_arrowSize solid transparent;
+		border-top: $_arrowSize solid $dd-form-inputBorderColor;
+	}
+
+	@include dd-form-inputSelect-stateVariantMods();
+}
+
+@mixin dd-form-inputSelect-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-inputSelect {
+			@include dd-form-inputSelect();
+
+			&._fluid {
+				width: 100%;
+			}
+		}
+	}
+}

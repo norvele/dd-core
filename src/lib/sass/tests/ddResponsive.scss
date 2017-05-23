@@ -3,17 +3,33 @@ $_test-snapshot: (
 	dd-space-defaultSpace: $dd-space-defaultSpace,
 );
 $dd-responsive-breakpoints: (
-	xs: (
-		cutoff: 0,
-		containerWidth: 100%,
-	),
 	sm: (
 		range: (544px, 767px),
 	),
 	md: (
 		cutoff: 768px,
 	),
+	xs: (
+		cutoff: 0,
+		containerWidth: 100%,
+	),
 );
+
+@include test-assert('equal', (
+	_dd-responsive-sortBreakpoints($dd-responsive-breakpoints),
+	(
+		xs: (
+			cutoff: 0,
+			containerWidth: 100%,
+		),
+		sm: (
+			range: (544px, 767px),
+		),
+		md: (
+			cutoff: 768px,
+		),
+	)
+), 'Responsive: sort breakpoints');
 
 @include test-assert('equal', (
 	_dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints),

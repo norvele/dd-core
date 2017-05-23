@@ -95,21 +95,21 @@ $dd-grid-spaceGutters: true;
 
 @mixin _dd-grid-guttersStatic($_gutterH, $_gutterV)
 {
-	@if ($_gutterH != 0) {
+	@if ($_gutterH != null) {
 		margin-left: -$_gutterH/2;
 		margin-right: -$_gutterH/2;
 	}
-	@if ($_gutterV != 0) {
+	@if ($_gutterV != null) {
 		margin-bottom: -$_gutterV/2;
 		margin-top: -$_gutterV/2;
 	}
 
 	& > * {
-		@if ($_gutterH != 0) {
+		@if ($_gutterH != null) {
 			padding-left: $_gutterH/2;
 			padding-right: $_gutterH/2;
 		}
-		@if ($_gutterV != 0) {
+		@if ($_gutterV != null) {
 			padding-bottom: $_gutterV/2;
 			padding-top: $_gutterV/2;
 		}
@@ -368,7 +368,7 @@ $dd-grid-spaceGutters: true;
 	@each $_key, $_params in $dd-responsive-breakpoints {
 		@for $j from 1 through $dd-grid-columns {
 			$_cellSelector: $_cellSelector + '.#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j}';
-			@if (not dd-responsive-nextBreakpoint($_key) and $j == $dd-grid-columns) {} @else {
+			@if (not dd-responsive-nextBreakpoint($dd-responsive-breakpoints, $_key) and $j == $dd-grid-columns) {} @else {
 				$_cellSelector: $_cellSelector + ', ';
 			}
 		}

@@ -1,34 +1,37 @@
-@mixin dd-form-messageColor($_color)
+@include dd-system-componentRegister(ddForm-message, (ddForm));
+
+$dd-form-message-defaultColor: #999 !default;
+
+@mixin dd-form-message-variant($_color)
 {
-	color: $_color;
-	background-color: rgba(lighten($_color, 30%), 0.1);
-	border-color: lighten($_color, 20%);
+	color: mix(#000, $_color, 20%);
+	background-color: mix(#fff, $_color, 80%);
+	border-color: mix(#fff, $_color, 10%);
 }
 
-.#{$dd-system-classPrefix}form {
-
-	&-message {
-		font-size: $dd-form-fontSize;
-		padding: 0.5em 1em;
-		border-radius: 3px;
-		line-height: 1.2em;
-		border: 1px solid;
-		//@include dd-form-messageColor($dd-form-colorDefault);
-
-		/*&.-error {
-			@include dd-form-messageColor($dd-form-colorError);
+@mixin dd-form-message-variantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-message-variant($_color);
+			}
 		}
+	}
+}
 
-		&.-warning {
-			@include dd-form-messageColor($dd-form-colorWarning);
+@mixin dd-form-message-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-message {
+			font-size: $dd-form-fontSize;
+			padding: 0.5em 1em;
+			border-radius: 3px;
+			line-height: 1.2em;
+			border: 1px solid;
+			@include dd-form-message-variant($dd-form-message-defaultColor);
+			@include dd-form-message-variantMods();
 		}
-
-		&.-success {
-			@include dd-form-messageColor($dd-form-colorSuccess);
-		}
-
-		&.-notice {
-			@include dd-form-messageColor($dd-form-colorNotice);
-		}*/
 	}
 }

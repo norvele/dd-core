@@ -22,4 +22,8 @@
 			)
 		);
 	}
+
+	&-guttersTest {
+		@include dd-grid-gutters(10px, 0, true, true);
+	}
 }

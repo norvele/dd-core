@@ -15,7 +15,7 @@
 */
 /*
 	Включает генерацию стилей
-	Если false - никакой css код библиотеки не будет сгенерирован
+	Если false - никакой css код библиотеки не будет сгенерирован, генерация должна быть запущена вручную
 */
 /*
 
@@ -97,199 +97,6 @@
   background-size: 100% 1.5em, calc(1.5em + 2px) 100%, calc(1.5em + 2px) 100%;
   background-repeat: repeat, no-repeat, no-repeat; }
 
-.dd-form-field-label {
-  display: block;
-  font-size: 1em;
-  margin-bottom: 0.5em; }
-
-.dd-form-field-message {
-  padding: 5px 0;
-  font-size: 1em; }
-
-.dd-form-message {
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border-radius: 3px;
-  line-height: 1.2em;
-  border: 1px solid;
-  /*&.-error {
-			@include dd-form-messageColor($dd-form-colorError);
-		}
-
-		&.-warning {
-			@include dd-form-messageColor($dd-form-colorWarning);
-		}
-
-		&.-success {
-			@include dd-form-messageColor($dd-form-colorSuccess);
-		}
-
-		&.-notice {
-			@include dd-form-messageColor($dd-form-colorNotice);
-		}*/ }
-
-.dd-form-button {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 0.65em 0.73125em;
-  font-size: 1em;
-  line-height: 1.2;
-  min-height: 2.5em;
-  text-decoration: none;
-  border-radius: 3px;
-  border: 1px solid #e1e1e1;
-  vertical-align: top;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  cursor: pointer;
-  background-color: #333333;
-  border-color: #2e2e2e;
-  color: #fff; }
-  .dd-form-button > * {
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
-    margin: 0 0.24375em; }
-  .dd-form-button-icon {
-    display: inline-block;
-    line-height: 1;
-    width: 1.2em;
-    height: 1.2em;
-    fill: currentColor; }
-    .dd-form-button-icon > * {
-      fill: currentColor;
-      max-width: 100%;
-      max-height: 100%; }
-  .dd-form-button._fluid {
-    width: 100%; }
-  .dd-form-button._toggle > input {
-    display: none; }
-  .dd-form-button._sort > input {
-    display: none; }
-  .dd-form-button._sort::before {
-    margin-right: 0.3em; }
-  .dd-form-button._sort.-desc::before {
-    content: '↓'; }
-  .dd-form-button._sort.-asc::before {
-    content: '↑'; }
-  .dd-form-button:hover, .dd-form-button:focus {
-    background-color: #474747; }
-  .dd-form-button:active, .dd-form-button.-active {
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #2e2e2e; }
-  .dd-form-button._splashy {
-    background-color: #EC6A00;
-    border-color: #d45f00;
-    color: #fff; }
-    .dd-form-button._splashy:hover, .dd-form-button._splashy:focus {
-      background-color: #ee791a; }
-    .dd-form-button._splashy:active, .dd-form-button._splashy.-active {
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #d45f00; }
-  .dd-form-button._emphasis {
-    background-color: #FFCC65;
-    border-color: #e6b85b;
-    color: #000; }
-    .dd-form-button._emphasis:hover, .dd-form-button._emphasis:focus {
-      background-color: #ffd174; }
-    .dd-form-button._emphasis:active, .dd-form-button._emphasis.-active {
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #e6b85b; }
-  .dd-form-button._deep {
-    background-color: #34362D;
-    border-color: #2f3129;
-    color: #fff; }
-    .dd-form-button._deep:hover, .dd-form-button._deep:focus {
-      background-color: #484a42; }
-    .dd-form-button._deep:active, .dd-form-button._deep.-active {
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #2f3129; }
-  .dd-form-button._neutral {
-    background-color: #669E81;
-    border-color: #5c8e74;
-    color: #000; }
-    .dd-form-button._neutral:hover, .dd-form-button._neutral:focus {
-      background-color: #75a88e; }
-    .dd-form-button._neutral:active, .dd-form-button._neutral.-active {
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #5c8e74; }
-  .dd-form-button._default {
-    background-color: #333333;
-    border-color: #2e2e2e;
-    color: #fff; }
-    .dd-form-button._default:hover, .dd-form-button._default:focus {
-      background-color: #474747; }
-    .dd-form-button._default:active, .dd-form-button._default.-active {
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #2e2e2e; }
-
-.dd-form-inputText {
-  display: inline-block; }
-  .dd-form-inputText > input {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #fff;
-    border: 1px solid #e1e1e1;
-    padding: 0.65em 0.975em;
-    border-radius: 3px;
-    font-size: 1em;
-    line-height: 1.2;
-    min-height: 2.5em;
-    color: #333;
-    font-family: inherit; }
-    .dd-form-inputText > input::-webkit-input-placeholder {
-      color: #339933; }
-    .dd-form-inputText > input::-moz-placeholder {
-      color: #339933; }
-    .dd-form-inputText > input:-ms-input-placeholder {
-      color: #339933; }
-    .dd-form-inputText > input::placeholder {
-      color: #339933; }
-  .dd-form-inputText._fluid {
-    width: 100%; }
-
-.dd-form-inputTextarea {
-  display: inline-block; }
-  .dd-form-inputTextarea > textarea {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #fff;
-    border: 1px solid #e1e1e1;
-    padding: 0.65em 0.975em;
-    border-radius: 3px;
-    font-size: 1em;
-    line-height: 1.2;
-    min-height: 2.5em;
-    color: #333;
-    font-family: inherit;
-    min-height: 150px;
-    max-width: 100%; }
-    .dd-form-inputTextarea > textarea::-webkit-input-placeholder {
-      color: #339933; }
-    .dd-form-inputTextarea > textarea::-moz-placeholder {
-      color: #339933; }
-    .dd-form-inputTextarea > textarea:-ms-input-placeholder {
-      color: #339933; }
-    .dd-form-inputTextarea > textarea::placeholder {
-      color: #339933; }
-  .dd-form-inputTextarea._fluid {
-    width: 100%; }
-
 /*
 	DivoDivnoe Icon
 */
@@ -299,21 +106,6 @@
   height: 1em;
   vertical-align: middle; }
 
-/*
-	DivoDivnoe EasyAccess
-	Зависит от всех компонентов
-*/
-/*
-	@function ___($_args...)
-	{
-		@return ___($_args...);
-	}
-
-	@mixin ___($_args...)
-	{
-		@include ___($_args...);
-	}
-*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -348,6 +140,9 @@ table {
 
 abbr {
   text-decoration: none; }
+
+mark {
+  color: inherit; }
 
 .__dd-pullRight {
   float: right !important; }
@@ -1582,7 +1377,7 @@ blockquote.dd-typ {
   blockquote.dd-typ > p:last-child {
     margin-bottom: 0; }
   blockquote.dd-typ > footer, blockquote.dd-typ > cite {
-    color: gray;
+    color: #999999;
     font-size: 0.9em;
     line-height: 1.66667; }
   blockquote.dd-typ:before {
@@ -1595,7 +1390,7 @@ blockquote.dd-typ {
   .dd-typ-block blockquote > p:last-child {
     margin-bottom: 0; }
   .dd-typ-block blockquote > footer, .dd-typ-block blockquote > cite {
-    color: gray;
+    color: #999999;
     font-size: 0.9em;
     line-height: 1.66667; }
   .dd-typ-block blockquote:before {
@@ -2053,3 +1848,318 @@ ul.dd-typ {
     margin-bottom: 0; }
   .dd-typ-block ul:last-child {
     margin-bottom: 0; }
+
+.dd-form-message {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  line-height: 1.2em;
+  border: 1px solid;
+  color: #7a7a7a;
+  background-color: #ebebeb;
+  border-color: #a3a3a3; }
+  .dd-form-message.-default {
+    color: #525252;
+    background-color: #e0e0e0;
+    border-color: #757575; }
+  .dd-form-message.-error {
+    color: #be412a;
+    background-color: #fbdcd7;
+    border-color: #ef6249; }
+  .dd-form-message.-success {
+    color: #527e67;
+    background-color: #e0ece6;
+    border-color: #75a88e; }
+  .dd-form-message.-warning {
+    color: #cca351;
+    background-color: #fff5e0;
+    border-color: #ffd174; }
+  .dd-form-message.-notice {
+    color: #72a3cc;
+    background-color: #e9f5ff;
+    border-color: #9ad1ff; }
+  .dd-form-message.-muted {
+    color: #a3a3a3;
+    background-color: whitesmoke;
+    border-color: #d1d1d1; }
+
+.dd-form-field-label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 0.5em; }
+
+.dd-form-field-message {
+  padding: 5px 0;
+  font-size: 1em; }
+  .dd-form-field-message.-default {
+    color: #666666; }
+  .dd-form-field-message.-error {
+    color: #ED5135; }
+  .dd-form-field-message.-success {
+    color: #669E81; }
+  .dd-form-field-message.-warning {
+    color: #FFCC65; }
+  .dd-form-field-message.-notice {
+    color: #8fccff; }
+  .dd-form-field-message.-muted {
+    color: #CCCCCC; }
+
+.dd-form-field.-default .dd-form-field-label {
+  color: #666666; }
+
+.dd-form-field.-error .dd-form-field-label {
+  color: #ED5135; }
+
+.dd-form-field.-success .dd-form-field-label {
+  color: #669E81; }
+
+.dd-form-field.-warning .dd-form-field-label {
+  color: #FFCC65; }
+
+.dd-form-field.-notice .dd-form-field-label {
+  color: #8fccff; }
+
+.dd-form-field.-muted .dd-form-field-label {
+  color: #CCCCCC; }
+
+.dd-form-button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0.65em 0.73125em;
+  font-size: 1em;
+  line-height: 1.2;
+  min-height: 2.5em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 1px solid;
+  vertical-align: top;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  background-color: #333;
+  border-color: #2e2e2e;
+  color: #fff; }
+  .dd-form-button > * {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    margin: 0 0.24375em; }
+  .dd-form-button-icon {
+    display: inline-block;
+    line-height: 1;
+    width: 1.2em;
+    height: 1.2em;
+    fill: currentColor; }
+    .dd-form-button-icon > * {
+      fill: currentColor;
+      max-width: 100%;
+      max-height: 100%; }
+  .dd-form-button._fluid {
+    width: 100%; }
+  .dd-form-button._toggle > input {
+    display: none; }
+  .dd-form-button._sort > input {
+    display: none; }
+  .dd-form-button._sort::before {
+    margin-right: 0.3em; }
+  .dd-form-button._sort.-desc::before {
+    content: '↓'; }
+  .dd-form-button._sort.-asc::before {
+    content: '↑'; }
+  .dd-form-button:hover, .dd-form-button:focus {
+    background-color: #474747; }
+  .dd-form-button:active, .dd-form-button.-active {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #2e2e2e; }
+  .dd-form-button._splashy {
+    background-color: #EC6A00;
+    border-color: #d45f00;
+    color: #fff; }
+    .dd-form-button._splashy:hover, .dd-form-button._splashy:focus {
+      background-color: #ee791a; }
+    .dd-form-button._splashy:active, .dd-form-button._splashy.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #d45f00; }
+  .dd-form-button._emphasis {
+    background-color: #FFCC65;
+    border-color: #e6b85b;
+    color: #000; }
+    .dd-form-button._emphasis:hover, .dd-form-button._emphasis:focus {
+      background-color: #ffd174; }
+    .dd-form-button._emphasis:active, .dd-form-button._emphasis.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #e6b85b; }
+  .dd-form-button._deep {
+    background-color: #34362D;
+    border-color: #2f3129;
+    color: #fff; }
+    .dd-form-button._deep:hover, .dd-form-button._deep:focus {
+      background-color: #484a42; }
+    .dd-form-button._deep:active, .dd-form-button._deep.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #2f3129; }
+  .dd-form-button._neutral {
+    background-color: #669E81;
+    border-color: #5c8e74;
+    color: #000; }
+    .dd-form-button._neutral:hover, .dd-form-button._neutral:focus {
+      background-color: #75a88e; }
+    .dd-form-button._neutral:active, .dd-form-button._neutral.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #5c8e74; }
+  .dd-form-button._default {
+    background-color: #333333;
+    border-color: #2e2e2e;
+    color: #fff; }
+    .dd-form-button._default:hover, .dd-form-button._default:focus {
+      background-color: #474747; }
+    .dd-form-button._default:active, .dd-form-button._default.-active {
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #2e2e2e; }
+
+.dd-form-inputText {
+  display: inline-block; }
+  .dd-form-inputText > input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    padding: 0.65em 0.975em;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.2;
+    min-height: 2.5em;
+    color: #333;
+    font-family: inherit; }
+    .dd-form-inputText > input::-webkit-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputText > input::-moz-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputText > input:-ms-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputText > input::placeholder {
+      color: #d6d6d6; }
+  .dd-form-inputText.-default > input {
+    border-color: #666666; }
+  .dd-form-inputText.-error > input {
+    border-color: #ED5135; }
+  .dd-form-inputText.-success > input {
+    border-color: #669E81; }
+  .dd-form-inputText.-warning > input {
+    border-color: #FFCC65; }
+  .dd-form-inputText.-notice > input {
+    border-color: #8fccff; }
+  .dd-form-inputText.-muted > input {
+    border-color: #CCCCCC; }
+  .dd-form-inputText._fluid {
+    width: 100%; }
+
+.dd-form-inputTextarea {
+  display: inline-block;
+  max-width: 100%; }
+  .dd-form-inputTextarea > textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    padding: 0.65em 0.975em;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.2;
+    min-height: 2.5em;
+    color: #333;
+    font-family: inherit;
+    min-height: 150px;
+    max-width: 100%; }
+    .dd-form-inputTextarea > textarea::-webkit-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputTextarea > textarea::-moz-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputTextarea > textarea:-ms-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputTextarea > textarea::placeholder {
+      color: #d6d6d6; }
+  .dd-form-inputTextarea.-default > textarea {
+    border-color: #666666; }
+  .dd-form-inputTextarea.-error > textarea {
+    border-color: #ED5135; }
+  .dd-form-inputTextarea.-success > textarea {
+    border-color: #669E81; }
+  .dd-form-inputTextarea.-warning > textarea {
+    border-color: #FFCC65; }
+  .dd-form-inputTextarea.-notice > textarea {
+    border-color: #8fccff; }
+  .dd-form-inputTextarea.-muted > textarea {
+    border-color: #CCCCCC; }
+  .dd-form-inputTextarea._fluid {
+    width: 100%; }
+
+.dd-form-inputSelect {
+  display: inline-block;
+  position: relative; }
+  .dd-form-inputSelect > select {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    padding: 0.65em 0.975em;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.2;
+    min-height: 2.5em;
+    color: #333;
+    font-family: inherit;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    padding-right: 2.275em;
+    /*option {
+			padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
+		}*/ }
+    .dd-form-inputSelect > select::-webkit-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputSelect > select::-moz-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputSelect > select:-ms-input-placeholder {
+      color: #d6d6d6; }
+    .dd-form-inputSelect > select::placeholder {
+      color: #d6d6d6; }
+  .dd-form-inputSelect::after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 1.1875em;
+    right: 0.975em;
+    pointer-events: none;
+    border: 0.325em solid transparent;
+    border-top: 0.325em solid #c2c2c2; }
+  .dd-form-inputSelect.-default > select {
+    border-color: #666666; }
+  .dd-form-inputSelect.-error > select {
+    border-color: #ED5135; }
+  .dd-form-inputSelect.-success > select {
+    border-color: #669E81; }
+  .dd-form-inputSelect.-warning > select {
+    border-color: #FFCC65; }
+  .dd-form-inputSelect.-notice > select {
+    border-color: #8fccff; }
+  .dd-form-inputSelect.-muted > select {
+    border-color: #CCCCCC; }
+  .dd-form-inputSelect._fluid {
+    width: 100%; }

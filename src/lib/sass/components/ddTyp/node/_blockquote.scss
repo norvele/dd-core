@@ -12,7 +12,7 @@
 			}
 
 			& > footer, & > cite {
-				color: lighten(dd-color-palette($dd-typ-color), 30%);
+				color: mix(#fff, $dd-typ-color, 50%);
 				font-size: 0.9em;
 				line-height: 1em / 0.9em * $dd-typ-lineHeight;
 			}

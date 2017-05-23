@@ -70,10 +70,9 @@ $dd-responsive-breakpoints: (
 }
 
 // Возвращает следующее имя отсейчки или null если такой нет
-// TODO потенциальная проблема если отсечки не по порядку
-@function dd-responsive-nextBreakpointName($_breakpoint)
+@function dd-responsive-nextBreakpointName($_breakpoints, $_breakpoint)
 {
-	$_keys: map_keys($dd-responsive-breakpoints);
+	$_keys: map_keys($_breakpoints);
 	$_index: index($_keys, $_breakpoint);
 	@if ($_index + 1) <= length($_keys) {
 		@return nth($_keys, $_index + 1);
@@ -83,11 +82,11 @@ $dd-responsive-breakpoints: (
 }
 
 // Возвращает мапу следующей отсейчки или null если такой нет
-@function dd-responsive-nextBreakpoint($_breakpoint)
+@function dd-responsive-nextBreakpoint($_breakpoints, $_breakpoint)
 {
-	$_nextName: dd-responsive-nextBreakpointName($_breakpoint);
+	$_nextName: dd-responsive-nextBreakpointName($_breakpoints, $_breakpoint);
 	@if $_nextName {
-		@return map-get($dd-responsive-breakpoints, $_nextName)
+		@return map-get($_breakpoints, $_nextName)
 	} @else {
 		@return null
 	}
@@ -158,8 +157,57 @@ $dd-responsive-breakpoints: (
 	@return calc(#{$_base} + #{100vw * $_slope});
 }
 
+@function _dd-responsive-getSortVal($_breakpoint)
+{
+	$_sortVal: null;
+	$_cutoff: map_get($_breakpoint, 'cutoff');
+	$_range: map_get($_breakpoint, 'range');
+	@if ($_cutoff != null) {
+		$_sortVal: $_cutoff;
+	} @else {
+		@if ($_range != null && nth($_range, 1) != null) {
+			$_sortVal: nth($_range, 1);
+		}
+	}
+	@return $_sortVal;
+}
+
+@function _dd-responsive-sortBreakpoints($_breakpoints)
+{
+	$_keys: map-keys($_breakpoints);
+	$_len: length($_keys);
+	$_resultKeys: $_keys;
+	$_result: ();
+	@for $_i from 1 through $_len - 1 {
+		@for $_j from 1 through $_len - $_i {
+			$_sortVal1: _dd-responsive-getSortVal(
+					map_get($_breakpoints, nth($_resultKeys, $_j))
+			);
+			$_sortVal2: _dd-responsive-getSortVal(
+					map_get($_breakpoints, nth($_resultKeys, $_j + 1))
+			);
+			@if ($_sortVal1 != null && $_sortVal2 != null) {
+				@if ($_sortVal1 > $_sortVal2) {
+					$_min: nth($_resultKeys, $_j);
+					$_max: nth($_resultKeys, $_j + 1);
+					$_resultKeys: set_nth($_resultKeys, $_j + 1, $_min);
+					$_resultKeys: set_nth($_resultKeys, $_j, $_max);
+				}
+			}
+		}
+	}
+	@for $_i from 1 through $_len {
+		$_key: nth($_resultKeys, $_i);
+		$_result: map_merge($_result, (
+			$_key: map_get($_breakpoints, $_key)
+		));
+	}
+	@return $_result;
+}
+
 @function _dd-responsive-normalizeBreakpoints($_breakpoints)
 {
+	$_breakpoints: _dd-responsive-sortBreakpoints($_breakpoints);
 	// Проходим по брейкпойнтам, проставляя недостающие данные
 	$_newBreakpoints: ();
 	@each $_key, $_params in $_breakpoints {
@@ -176,7 +224,7 @@ $dd-responsive-breakpoints: (
 		$_gridGutterHorizontal: map_get($_params, 'gridGutterHorizontal');
 		$_gridGutterVertical: map_get($_params, 'gridGutterVertical');
 		$_spaceScale: map_get($_params, 'spaceScale');
-		$_nextBreakpoint: dd-responsive-nextBreakpoint($_key);
+		$_nextBreakpoint: dd-responsive-nextBreakpoint($_breakpoints, $_key);
 
 		// Нормализуем range и cutoff
 		@if ($_cutoff) {

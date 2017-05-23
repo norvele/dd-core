@@ -1,3 +1,23 @@
+@include dd-system-componentRegister(ddForm-inputText, (ddForm-input));
+
+@mixin dd-form-inputText-stateVariant($_color)
+{
+	& > input {
+		border-color: $_color;
+	}
+}
+
+@mixin dd-form-inputText-stateVariantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-inputText-stateVariant($_color);
+			}
+		}
+	}
+}
+
 @mixin dd-form-inputText()
 {
 	display: inline-block;
@@ -5,15 +25,20 @@
 	& > input {
 		@include dd-form-input();
 	}
+
+	@include dd-form-inputText-stateVariantMods();
 }
 
-.#{$dd-system-classPrefix}form {
+@mixin dd-form-inputText-generator()
+{
+	.#{$dd-system-classPrefix}form {
 
-	&-inputText {
-		@include dd-form-inputText();
+		&-inputText {
+			@include dd-form-inputText();
 
-		&._fluid {
-			width: 100%;
+			&._fluid {
+				width: 100%;
+			}
 		}
 	}
 }

@@ -3,7 +3,7 @@
 .#{$dd-system-classPrefix}typ, .#{$dd-system-classPrefix}typ-block {
 	font-size: $dd-typ-fontSize;
 	line-height: $dd-typ-lineHeight;
-	color: dd-color-palette($dd-typ-color);
+	color: $dd-typ-color;
 }
 
 // Контроль размера строк текста

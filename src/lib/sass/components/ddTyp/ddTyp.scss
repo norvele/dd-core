@@ -5,7 +5,11 @@ $dd-typ-fontSize: 16px !default;
 // Стандартный line-height текста
 $dd-typ-lineHeight: 1.5 !default;
 // Стандартный цвет текста
-$dd-typ-color: $dd-color-default !default;
+@if (dd-system-componentExist(ddColor)) {
+	$dd-typ-color: dd-color-palette($dd-color-default) !default !global;
+} @else {
+	$dd-typ-color: #333333 !default !global;
+}
 // Вертикальный ритм
 $dd-typ-rhythm: 1em * $dd-typ-lineHeight !default;
 

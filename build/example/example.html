@@ -46,7 +46,15 @@
 						<div class="form-message">Хз чо формы</div>
 					</div>
 					<div class="grid-cell">
-						<div class="form-message -error">Ошибка формы</div>
+						<div class="form-message -error">
+							<div class="">
+								<p>Ошибка формы</p>
+								<ul>
+									<li>Ошибка 1</li>
+									<li>Ошибка 2</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="grid-cell">
 						<div class="form-message -warning">Предупреждение формы</div>
@@ -62,14 +70,14 @@
 			<div class="grid-cell">
 				<div class="grid-area">
 					<div class="grid-cell _md-4">
-						<div class="form-field">
-							<label class="form-field-label" for="input1">Текстовое поле</label>
+						<div class="form-field -error">
+							<label class="form-field-label" for="input1">Текстовое поле с ошибкой</label>
 							<div class="form-field-input">
-								<div class="form-inputText">
+								<div class="form-inputText -error">
 									<input id="input1" type="text">
 								</div>
 							</div>
-							<div class="form-field-message _error">Ошибка поля</div>
+							<div class="form-field-message -error">Ошибка поля</div>
 						</div>
 					</div>
 					<div class="grid-cell _md-4">
@@ -80,7 +88,33 @@
 									<input id="input2" type="text" placeholder="Текст плейсхолдера">
 								</div>
 							</div>
-							<div class="form-field-message _error">Ошибка поля</div>
+							<div class="form-field-message -muted">Подсказка поля</div>
+						</div>
+					</div>
+					<div class="grid-cell _md-4">
+						<div class="form-field">
+							<label class="form-field-label" for="input3">Селект</label>
+							<div class="form-field-input">
+								<div class="form-inputSelect">
+									<select name="input3" id="input3">
+										<option value="">Дефолт</option>
+										<option value="1">Первый вариант</option>
+										<option value="2">Второй вариант</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-field-message -muted">Подсказка поля</div>
+						</div>
+					</div>
+					<div class="grid-cell _md-4">
+						<div class="form-field">
+							<label class="form-field-label" for="input4">Текстариа</label>
+							<div class="form-field-input">
+								<div class="form-inputTextarea">
+									<textarea name="input4" id="input4" cols="30" rows="10"></textarea>
+								</div>
+							</div>
+							<div class="form-field-message -muted">Подсказка поля</div>
 						</div>
 					</div>
 					<div class="grid-cell _md-4">

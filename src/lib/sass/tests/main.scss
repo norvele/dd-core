@@ -3,7 +3,7 @@
 // Отключаем вывод предупреждений библиотеки
 $dd-system-debug: false;
 // Отключаем генерацию
-$dd-system-autoGenerate: true;
+$dd-system-autoGenerate: false;
 
 // Подключаем библиотеку
 @import '../main.scss';

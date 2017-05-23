@@ -26,7 +26,10 @@ var collector = new Collector({
 				{
 					type: 'test',
 					src: `${roots.src}/lib/sass/tests/main.scss`,
-					watch: `${roots.src}/lib/sass/tests/**/*.*`,
+					watch: [
+						`${roots.src}/lib/sass/!**!/!*.*`,
+						`${roots.src}/lib/sass/tests/!**!/!*.*`
+					],
 				},
 			],
 		},
