@@ -95,23 +95,25 @@ $dd-grid-spaceGutters: true;
 
 @mixin _dd-grid-guttersStatic($_gutterH, $_gutterV)
 {
-	@if ($_gutterH != null) {
-		margin-left: -$_gutterH/2;
-		margin-right: -$_gutterH/2;
-	}
-	@if ($_gutterV != null) {
-		margin-bottom: -$_gutterV/2;
-		margin-top: -$_gutterV/2;
-	}
-
-	& > * {
+	&:not(._clear) {
 		@if ($_gutterH != null) {
-			padding-left: $_gutterH/2;
-			padding-right: $_gutterH/2;
+			margin-left: -$_gutterH/2;
+			margin-right: -$_gutterH/2;
 		}
 		@if ($_gutterV != null) {
-			padding-bottom: $_gutterV/2;
-			padding-top: $_gutterV/2;
+			margin-bottom: -$_gutterV/2;
+			margin-top: -$_gutterV/2;
+		}
+
+		& > * {
+			@if ($_gutterH != null) {
+				padding-left: $_gutterH/2;
+				padding-right: $_gutterH/2;
+			}
+			@if ($_gutterV != null) {
+				padding-bottom: $_gutterV/2;
+				padding-top: $_gutterV/2;
+			}
 		}
 	}
 }
