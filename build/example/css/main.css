@@ -1,8 +1,4 @@
 @charset "UTF-8";
-/*@mixin dd-form-inputText-custom()
-{
-	color: #9534cf;
-}*/
 /*
 	DivoDivnoe System.
 */
@@ -2130,11 +2126,7 @@ ul.typ {
     font-family: inherit;
     -webkit-appearance: none;
        -moz-appearance: none;
-            appearance: none;
-    padding-right: 2.275em;
-    /*option {
-			padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
-		}*/ }
+            appearance: none; }
     .form-inputSelect > select::-webkit-input-placeholder {
       color: #d6d6d6; }
     .form-inputSelect > select::-moz-placeholder {
@@ -2143,6 +2135,8 @@ ul.typ {
       color: #d6d6d6; }
     .form-inputSelect > select::placeholder {
       color: #d6d6d6; }
+  .form-inputSelect > select {
+    padding-right: 2.275em; }
   .form-inputSelect::after {
     content: '';
     position: absolute;

@@ -18,20 +18,12 @@
 	}
 }
 
-@mixin dd-form-inputSelect()
+@mixin dd-form-inputSelect-customRules()
 {
-	display: inline-block;
-	position: relative;
 	$_arrowSize: $_dd-form-paddingHorizontal/3;
-
+	
 	& > select {
-		@include dd-form-input();
-		appearance: none;
 		padding-right: $_dd-form-paddingHorizontal * 2 + $_arrowSize;
-
-		/*option {
-			padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
-		}*/
 	}
 
 	&::after {
@@ -45,7 +37,19 @@
 		border: $_arrowSize solid transparent;
 		border-top: $_arrowSize solid $dd-form-inputBorderColor;
 	}
+}
 
+@mixin dd-form-inputSelect()
+{
+	display: inline-block;
+	position: relative;
+
+	& > select {
+		@include dd-form-input();
+		appearance: none;
+	}
+
+	@include dd-form-inputSelect-customRules();
 	@include dd-form-inputSelect-stateVariantMods();
 }
 

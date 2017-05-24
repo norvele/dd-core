@@ -1,11 +1,6 @@
 $dd-system-classPrefix: '';
 $dd-system-autoGenerate: false;
 
-/*@mixin dd-form-inputText-custom()
-{
-	color: #9534cf;
-}*/
-
 @import '../../lib/sass/main';
 
 $color-splashy: #EC6A00;
@@ -16,8 +11,6 @@ $color-neutralDark: #669E81;
 $color-gray: #666666;
 $color-grayLight: #F5F5F5;
 $color-grayDark: #333333;
-
-
 
 @include dd-generator();
 
