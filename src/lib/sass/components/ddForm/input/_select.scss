@@ -21,7 +21,7 @@
 @mixin dd-form-inputSelect-customRules()
 {
 	$_arrowSize: $_dd-form-paddingHorizontal/3;
-	
+
 	& > select {
 		padding-right: $_dd-form-paddingHorizontal * 2 + $_arrowSize;
 	}
