@@ -3,7 +3,7 @@
 	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
 */
 
-@include dd-system-componentRegister(ddGrid, (ddResponsive));
+@include dd-system-componentRegister(ddGrid, (ddResponsive, ddSpace));
 
 $dd-grid-columns: 12 !default;
 $dd-grid-gutterContainer: $dd-space-defaultSpace !default;
@@ -401,6 +401,9 @@ $dd-grid-spaceGutters: true;
 					&-area {
 						& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j} {
 							width: percentage($j / $dd-grid-columns);
+						}
+						& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-offset-#{$j} {
+							margin-left: percentage($j / $dd-grid-columns);
 						}
 					}
 				}
