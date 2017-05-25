@@ -1,6 +1,5 @@
 /*
 	DivoDivnoe Grid
-	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
 */
 
 @include dd-system-componentRegister(ddGrid, (ddResponsive, ddSpace));
@@ -9,8 +8,9 @@ $dd-grid-columns: 12 !default;
 $dd-grid-gutterContainer: $dd-space-defaultSpace !default;
 $dd-grid-gutterHorizontal: $dd-space-defaultSpace !default;
 $dd-grid-gutterVertical: $dd-space-defaultSpace !default;
-$dd-grid-dynamicGutters: true;
-$dd-grid-spaceGutters: true;
+$dd-grid-dynamicGutters: true !default;
+$dd-grid-spaceGutters: true !default;
+$dd-grid-noGuttersMod: 'clear' !default;
 
 // Генерирует сетку в заданном направлении
 // используя grid-подобный синтаксис
@@ -93,9 +93,18 @@ $dd-grid-spaceGutters: true;
 	@include dd-grid-template(col, $params)
 }
 
-@mixin _dd-grid-guttersStatic($_gutterH, $_gutterV)
+@mixin _dd-grid-guttersStatic($_gutterH, $_gutterV, $_onlyContainer: false)
 {
-	&:not(._clear) {
+	@if ($_onlyContainer == true) {
+		@if ($_gutterH != null) {
+			padding-left: $_gutterH/2;
+			padding-right: $_gutterH/2;
+		}
+		@if ($_gutterV != null) {
+			padding-bottom: $_gutterV/2;
+			padding-top: $_gutterV/2;
+		}
+	} @else {
 		@if ($_gutterH != null) {
 			margin-left: -$_gutterH/2;
 			margin-right: -$_gutterH/2;
@@ -104,7 +113,6 @@ $dd-grid-spaceGutters: true;
 			margin-bottom: -$_gutterV/2;
 			margin-top: -$_gutterV/2;
 		}
-
 		& > * {
 			@if ($_gutterH != null) {
 				padding-left: $_gutterH/2;
@@ -118,76 +126,101 @@ $dd-grid-spaceGutters: true;
 	}
 }
 
-@mixin _dd-grid-guttersDynamic($_gutterH, $_gutterV)
+@mixin _dd-grid-guttersDynamic($_gutterH, $_gutterV, $_onlyContainer: false)
 {
 	@each $_key, $_params in $dd-responsive-breakpoints {
 		$_range: map_get($_params, 'range');
 		$_minWidth: nth($_range, 1);
 		$_maxWidth: nth($_range, 2);
-
 		$_spaceScale: map_get($_params, 'spaceScale');
+
+		$_newGutterH: null;
+		@if ($_gutterH != null) {
+			$_newGutterH: $_spaceScale * $_gutterH;
+		}
+		$_newGutterV: null;
+		@if ($_gutterV != null) {
+			$_newGutterV: $_spaceScale * $_gutterV;
+		}
 
 		@if ($_maxWidth) {
 			@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
-				@include _dd-grid-guttersStatic($_spaceScale * $_gutterH, $_spaceScale * $_gutterV);
+				@include _dd-grid-guttersStatic($_newGutterH, $_newGutterV, $_onlyContainer);
 			}
 		} @else {
 			@media all and ( min-width: $_minWidth ) {
-				@include _dd-grid-guttersStatic($_spaceScale * $_gutterH, $_spaceScale * $_gutterV);
+				@include _dd-grid-guttersStatic($_newGutterH, $_newGutterV, $_onlyContainer);
 			}
 		}
 	}
 }
 
-@mixin _dd-grid-guttersStaticSpaces($_gutterH, $_gutterV)
+@mixin _dd-grid-guttersStaticSpaces($_gutterH, $_gutterV, $_onlyContainer: false)
 {
 	@each $_factorKey, $_factorVal in $dd-space-factor {
 		$_val: dd-space-getSpace($_factorKey);
 
+		$_newGutterH: null;
+		@if ($_gutterH != null) {
+			$_newGutterH: $_factorVal * $_gutterH;
+		}
+		$_newGutterV: null;
+		@if ($_gutterV != null) {
+			$_newGutterV: $_factorVal * $_gutterV;
+		}
+
 		&._#{$_factorKey} {
-			@include _dd-grid-guttersStatic($_factorVal * $_gutterH, $_factorVal * $_gutterV);
+			@include _dd-grid-guttersStatic($_newGutterH, $_newGutterV, $_onlyContainer);
 		}
 	}
 }
 
-@mixin _dd-grid-guttersDynamicSpaces($_gutterH, $_gutterV)
+@mixin _dd-grid-guttersDynamicSpaces($_gutterH, $_gutterV, $_onlyContainer: false)
 {
 	@each $_key, $_params in $dd-responsive-breakpoints {
 		$_range: map_get($_params, 'range');
 		$_minWidth: nth($_range, 1);
 		$_maxWidth: nth($_range, 2);
-
 		$_spaceScale: map_get($_params, 'spaceScale');
+
+		$_newGutterH: null;
+		@if ($_gutterH != null) {
+			$_newGutterH: $_spaceScale * $_gutterH;
+		}
+		$_newGutterV: null;
+		@if ($_gutterV != null) {
+			$_newGutterV: $_spaceScale * $_gutterV;
+		}
 
 		@if ($_maxWidth) {
 			@media all and ( min-width: $_minWidth ) and ( max-width: $_maxWidth ) {
-				@include _dd-grid-guttersStaticSpaces($_spaceScale * $_gutterH, $_spaceScale * $_gutterV);
+				@include _dd-grid-guttersStaticSpaces($_newGutterH, $_newGutterV, $_onlyContainer);
 			}
 		} @else {
 			@media all and ( min-width: $_minWidth ) {
-				@include _dd-grid-guttersStaticSpaces($_spaceScale * $_gutterH, $_spaceScale * $_gutterV);
+				@include _dd-grid-guttersStaticSpaces($_newGutterH, $_newGutterV, $_onlyContainer);
 			}
 		}
 	}
 }
 
-@mixin dd-grid-gutters($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: false, $_spaces: false)
+@mixin dd-grid-gutters($_gutterH: $dd-grid-gutterHorizontal, $_gutterV: $dd-grid-gutterVertical, $_gutterDynamic: false, $_spaces: false, $_onlyContainer: false)
 {
 	$_gutterH: dd-space-getSpace($_gutterH);
 	$_gutterV: dd-space-getSpace($_gutterV);
 
 	@if ($_gutterDynamic) {
-		@include _dd-grid-guttersDynamic($_gutterH, $_gutterV);
+		@include _dd-grid-guttersDynamic($_gutterH, $_gutterV, $_onlyContainer);
 
 		@if ($_spaces) {
-			@include _dd-grid-guttersDynamicSpaces($_gutterH, $_gutterV);
+			@include _dd-grid-guttersDynamicSpaces($_gutterH, $_gutterV, $_onlyContainer);
 		}
 
 	} @else {
-		@include _dd-grid-guttersStatic($_gutterH, $_gutterV);
+		@include _dd-grid-guttersStatic($_gutterH, $_gutterV, $_onlyContainer);
 
 		@if ($_spaces) {
-			@include _dd-grid-guttersStaticSpaces($_gutterH, $_gutterV);
+			@include _dd-grid-guttersStaticSpaces($_gutterH, $_gutterV, $_onlyContainer);
 		}
 	}
 }
@@ -224,13 +257,20 @@ $dd-grid-spaceGutters: true;
 		width: 100%;
 	}
 
-	@include dd-grid-gutters($_gutterH, $_gutterV, $_gutterDynamic, $_spaces);
+	&:not(._#{$dd-system-classPrefix}#{$dd-grid-noGuttersMod}) {
+		@include dd-grid-gutters($_gutterH, $_gutterV, $_gutterDynamic, $_spaces);
+	}
 }
 
-// TODO
-@mixin dd-grid-container()
+@mixin dd-grid-container($_gutterH: $dd-grid-gutterHorizontal, $_gutterDynamic: $dd-grid-dynamicGutters, $_spaces: $dd-grid-spaceGutters)
 {
+	box-sizing: border-box;
+	//margin: 0 auto;
 
+	&:not(._#{$dd-system-classPrefix}#{$dd-grid-noGuttersMod}) {
+		padding: 0 $_gutterH;
+		@include dd-grid-gutters($_gutterH, null, $_gutterDynamic, $_spaces, true);
+	}
 }
 
 @mixin _dd-grid-listMedia($_params)
@@ -330,32 +370,31 @@ $dd-grid-spaceGutters: true;
 	.#{$dd-system-classPrefix}grid {
 
 		&-container {
-			box-sizing: border-box;
-			padding: 0 $dd-grid-gutterHorizontal;
-			margin: 0 auto;
+			@include dd-grid-container($dd-grid-gutterHorizontal*2);
 
-			&._#{$dd-system-classPrefix}fluid {
-				width: 100%;
+			&._#{$dd-system-classPrefix}main {
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
 
 		&-area {
 			@include dd-grid-area($dd-grid-gutterHorizontal, $dd-grid-gutterVertical, true, true);
 
-			&._justifyCenter {
+			&._#{$dd-system-classPrefix}justifyCenter {
 				justify-content: center;
 			}
 
-			&._alignCenter {
+			&._#{$dd-system-classPrefix}alignCenter {
 				align-items: center;
 			}
 
-			&._center {
+			&._#{$dd-system-classPrefix}center {
 				justify-content: center;
 				align-items: center;
 			}
 
-			&._auto {
+			&._#{$dd-system-classPrefix}auto {
 
 				& > * {
 					width: auto;
@@ -394,19 +433,23 @@ $dd-grid-spaceGutters: true;
 
 			// Размеры ячеек сетки
 			@media all and ( min-width: $_minWidth ) {
-				&-container {
+				&-container._#{$dd-system-classPrefix}main {
 					width: $_containerWidth;
-					padding-left: $_gutterContainer;
-					padding-right: $_gutterContainer;
 				}
 				@for $j from 1 through $dd-grid-columns {
 					&-area {
-						& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-#{$j} {
+						& > .#{$dd-system-classPrefix}grid-cell._#{$dd-system-classPrefix}#{$_key}-#{$j} {
 							width: percentage($j / $dd-grid-columns);
 						}
-						& > .#{$dd-system-classPrefix}grid-cell._#{$_key}-offset-#{$j} {
+						& > .#{$dd-system-classPrefix}grid-cell._#{$dd-system-classPrefix}#{$_key}-offset-#{$j} {
 							margin-left: percentage($j / $dd-grid-columns);
 						}
+					}
+					&-container._#{$dd-system-classPrefix}#{$_key}-#{$j} {
+						width: percentage($j / $dd-grid-columns);
+					}
+					&-container._#{$dd-system-classPrefix}#{$_key}-offset-#{$j} {
+						margin-left: percentage($j / $dd-grid-columns);
 					}
 				}
 			}

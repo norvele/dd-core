@@ -58,7 +58,6 @@
 */
 /*
 	DivoDivnoe Grid
-	Зависит от "DivoDivnoe Responsive", "DivoDivnoe Space"
 */
 /*
 	@include dd-grid-list(
@@ -808,11 +807,112 @@ mark {
     height: 96px; } }
 
 .dd-grid-container {
-  box-sizing: border-box;
-  padding: 0 16px;
-  margin: 0 auto; }
-  .dd-grid-container._dd-fluid {
-    width: 100%; }
+  box-sizing: border-box; }
+  .dd-grid-container:not(._dd-clear) {
+    padding: 0 32px; }
+    @media all and (min-width: 0) and (max-width: 543px) {
+      .dd-grid-container:not(._dd-clear) {
+        padding-left: 8px;
+        padding-right: 8px; } }
+    @media all and (min-width: 544px) and (max-width: 767px) {
+      .dd-grid-container:not(._dd-clear) {
+        padding-left: 8px;
+        padding-right: 8px; } }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+      .dd-grid-container:not(._dd-clear) {
+        padding-left: 12px;
+        padding-right: 12px; } }
+    @media all and (min-width: 992px) and (max-width: 1199px) {
+      .dd-grid-container:not(._dd-clear) {
+        padding-left: 16px;
+        padding-right: 16px; } }
+    @media all and (min-width: 1200px) {
+      .dd-grid-container:not(._dd-clear) {
+        padding-left: 24px;
+        padding-right: 24px; } }
+    @media all and (min-width: 0) and (max-width: 543px) {
+      .dd-grid-container:not(._dd-clear)._tiny {
+        padding-left: 2px;
+        padding-right: 2px; }
+      .dd-grid-container:not(._dd-clear)._small {
+        padding-left: 4px;
+        padding-right: 4px; }
+      .dd-grid-container:not(._dd-clear)._medium {
+        padding-left: 8px;
+        padding-right: 8px; }
+      .dd-grid-container:not(._dd-clear)._large {
+        padding-left: 16px;
+        padding-right: 16px; }
+      .dd-grid-container:not(._dd-clear)._massive {
+        padding-left: 32px;
+        padding-right: 32px; } }
+    @media all and (min-width: 544px) and (max-width: 767px) {
+      .dd-grid-container:not(._dd-clear)._tiny {
+        padding-left: 2px;
+        padding-right: 2px; }
+      .dd-grid-container:not(._dd-clear)._small {
+        padding-left: 4px;
+        padding-right: 4px; }
+      .dd-grid-container:not(._dd-clear)._medium {
+        padding-left: 8px;
+        padding-right: 8px; }
+      .dd-grid-container:not(._dd-clear)._large {
+        padding-left: 16px;
+        padding-right: 16px; }
+      .dd-grid-container:not(._dd-clear)._massive {
+        padding-left: 32px;
+        padding-right: 32px; } }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+      .dd-grid-container:not(._dd-clear)._tiny {
+        padding-left: 3px;
+        padding-right: 3px; }
+      .dd-grid-container:not(._dd-clear)._small {
+        padding-left: 6px;
+        padding-right: 6px; }
+      .dd-grid-container:not(._dd-clear)._medium {
+        padding-left: 12px;
+        padding-right: 12px; }
+      .dd-grid-container:not(._dd-clear)._large {
+        padding-left: 24px;
+        padding-right: 24px; }
+      .dd-grid-container:not(._dd-clear)._massive {
+        padding-left: 48px;
+        padding-right: 48px; } }
+    @media all and (min-width: 992px) and (max-width: 1199px) {
+      .dd-grid-container:not(._dd-clear)._tiny {
+        padding-left: 4px;
+        padding-right: 4px; }
+      .dd-grid-container:not(._dd-clear)._small {
+        padding-left: 8px;
+        padding-right: 8px; }
+      .dd-grid-container:not(._dd-clear)._medium {
+        padding-left: 16px;
+        padding-right: 16px; }
+      .dd-grid-container:not(._dd-clear)._large {
+        padding-left: 32px;
+        padding-right: 32px; }
+      .dd-grid-container:not(._dd-clear)._massive {
+        padding-left: 64px;
+        padding-right: 64px; } }
+    @media all and (min-width: 1200px) {
+      .dd-grid-container:not(._dd-clear)._tiny {
+        padding-left: 6px;
+        padding-right: 6px; }
+      .dd-grid-container:not(._dd-clear)._small {
+        padding-left: 12px;
+        padding-right: 12px; }
+      .dd-grid-container:not(._dd-clear)._medium {
+        padding-left: 24px;
+        padding-right: 24px; }
+      .dd-grid-container:not(._dd-clear)._large {
+        padding-left: 48px;
+        padding-right: 48px; }
+      .dd-grid-container:not(._dd-clear)._massive {
+        padding-left: 96px;
+        padding-right: 96px; } }
+  .dd-grid-container._dd-main {
+    margin-left: auto;
+    margin-right: auto; }
 
 .dd-grid-area {
   display: -webkit-box;
@@ -841,331 +941,331 @@ mark {
     min-height: 0;
     width: 100%; }
   @media all and (min-width: 0) and (max-width: 543px) {
-    .dd-grid-area:not(._clear) {
+    .dd-grid-area:not(._dd-clear) {
       margin-left: -4px;
       margin-right: -4px;
       margin-bottom: -4px;
       margin-top: -4px; }
-      .dd-grid-area:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear) > * {
         padding-left: 4px;
         padding-right: 4px;
         padding-bottom: 4px;
         padding-top: 4px; } }
   @media all and (min-width: 544px) and (max-width: 767px) {
-    .dd-grid-area:not(._clear) {
+    .dd-grid-area:not(._dd-clear) {
       margin-left: -4px;
       margin-right: -4px;
       margin-bottom: -4px;
       margin-top: -4px; }
-      .dd-grid-area:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear) > * {
         padding-left: 4px;
         padding-right: 4px;
         padding-bottom: 4px;
         padding-top: 4px; } }
   @media all and (min-width: 768px) and (max-width: 991px) {
-    .dd-grid-area:not(._clear) {
+    .dd-grid-area:not(._dd-clear) {
       margin-left: -6px;
       margin-right: -6px;
       margin-bottom: -6px;
       margin-top: -6px; }
-      .dd-grid-area:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear) > * {
         padding-left: 6px;
         padding-right: 6px;
         padding-bottom: 6px;
         padding-top: 6px; } }
   @media all and (min-width: 992px) and (max-width: 1199px) {
-    .dd-grid-area:not(._clear) {
+    .dd-grid-area:not(._dd-clear) {
       margin-left: -8px;
       margin-right: -8px;
       margin-bottom: -8px;
       margin-top: -8px; }
-      .dd-grid-area:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear) > * {
         padding-left: 8px;
         padding-right: 8px;
         padding-bottom: 8px;
         padding-top: 8px; } }
   @media all and (min-width: 1200px) {
-    .dd-grid-area:not(._clear) {
+    .dd-grid-area:not(._dd-clear) {
       margin-left: -12px;
       margin-right: -12px;
       margin-bottom: -12px;
       margin-top: -12px; }
-      .dd-grid-area:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear) > * {
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 12px;
         padding-top: 12px; } }
   @media all and (min-width: 0) and (max-width: 543px) {
-    .dd-grid-area._tiny:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._tiny {
       margin-left: -1px;
       margin-right: -1px;
       margin-bottom: -1px;
       margin-top: -1px; }
-      .dd-grid-area._tiny:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._tiny > * {
         padding-left: 1px;
         padding-right: 1px;
         padding-bottom: 1px;
         padding-top: 1px; }
-    .dd-grid-area._small:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._small {
       margin-left: -2px;
       margin-right: -2px;
       margin-bottom: -2px;
       margin-top: -2px; }
-      .dd-grid-area._small:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._small > * {
         padding-left: 2px;
         padding-right: 2px;
         padding-bottom: 2px;
         padding-top: 2px; }
-    .dd-grid-area._medium:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._medium {
       margin-left: -4px;
       margin-right: -4px;
       margin-bottom: -4px;
       margin-top: -4px; }
-      .dd-grid-area._medium:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._medium > * {
         padding-left: 4px;
         padding-right: 4px;
         padding-bottom: 4px;
         padding-top: 4px; }
-    .dd-grid-area._large:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._large {
       margin-left: -8px;
       margin-right: -8px;
       margin-bottom: -8px;
       margin-top: -8px; }
-      .dd-grid-area._large:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._large > * {
         padding-left: 8px;
         padding-right: 8px;
         padding-bottom: 8px;
         padding-top: 8px; }
-    .dd-grid-area._massive:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._massive {
       margin-left: -16px;
       margin-right: -16px;
       margin-bottom: -16px;
       margin-top: -16px; }
-      .dd-grid-area._massive:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._massive > * {
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 16px;
         padding-top: 16px; } }
   @media all and (min-width: 544px) and (max-width: 767px) {
-    .dd-grid-area._tiny:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._tiny {
       margin-left: -1px;
       margin-right: -1px;
       margin-bottom: -1px;
       margin-top: -1px; }
-      .dd-grid-area._tiny:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._tiny > * {
         padding-left: 1px;
         padding-right: 1px;
         padding-bottom: 1px;
         padding-top: 1px; }
-    .dd-grid-area._small:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._small {
       margin-left: -2px;
       margin-right: -2px;
       margin-bottom: -2px;
       margin-top: -2px; }
-      .dd-grid-area._small:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._small > * {
         padding-left: 2px;
         padding-right: 2px;
         padding-bottom: 2px;
         padding-top: 2px; }
-    .dd-grid-area._medium:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._medium {
       margin-left: -4px;
       margin-right: -4px;
       margin-bottom: -4px;
       margin-top: -4px; }
-      .dd-grid-area._medium:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._medium > * {
         padding-left: 4px;
         padding-right: 4px;
         padding-bottom: 4px;
         padding-top: 4px; }
-    .dd-grid-area._large:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._large {
       margin-left: -8px;
       margin-right: -8px;
       margin-bottom: -8px;
       margin-top: -8px; }
-      .dd-grid-area._large:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._large > * {
         padding-left: 8px;
         padding-right: 8px;
         padding-bottom: 8px;
         padding-top: 8px; }
-    .dd-grid-area._massive:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._massive {
       margin-left: -16px;
       margin-right: -16px;
       margin-bottom: -16px;
       margin-top: -16px; }
-      .dd-grid-area._massive:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._massive > * {
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 16px;
         padding-top: 16px; } }
   @media all and (min-width: 768px) and (max-width: 991px) {
-    .dd-grid-area._tiny:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._tiny {
       margin-left: -1.5px;
       margin-right: -1.5px;
       margin-bottom: -1.5px;
       margin-top: -1.5px; }
-      .dd-grid-area._tiny:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._tiny > * {
         padding-left: 1.5px;
         padding-right: 1.5px;
         padding-bottom: 1.5px;
         padding-top: 1.5px; }
-    .dd-grid-area._small:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._small {
       margin-left: -3px;
       margin-right: -3px;
       margin-bottom: -3px;
       margin-top: -3px; }
-      .dd-grid-area._small:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._small > * {
         padding-left: 3px;
         padding-right: 3px;
         padding-bottom: 3px;
         padding-top: 3px; }
-    .dd-grid-area._medium:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._medium {
       margin-left: -6px;
       margin-right: -6px;
       margin-bottom: -6px;
       margin-top: -6px; }
-      .dd-grid-area._medium:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._medium > * {
         padding-left: 6px;
         padding-right: 6px;
         padding-bottom: 6px;
         padding-top: 6px; }
-    .dd-grid-area._large:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._large {
       margin-left: -12px;
       margin-right: -12px;
       margin-bottom: -12px;
       margin-top: -12px; }
-      .dd-grid-area._large:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._large > * {
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 12px;
         padding-top: 12px; }
-    .dd-grid-area._massive:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._massive {
       margin-left: -24px;
       margin-right: -24px;
       margin-bottom: -24px;
       margin-top: -24px; }
-      .dd-grid-area._massive:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._massive > * {
         padding-left: 24px;
         padding-right: 24px;
         padding-bottom: 24px;
         padding-top: 24px; } }
   @media all and (min-width: 992px) and (max-width: 1199px) {
-    .dd-grid-area._tiny:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._tiny {
       margin-left: -2px;
       margin-right: -2px;
       margin-bottom: -2px;
       margin-top: -2px; }
-      .dd-grid-area._tiny:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._tiny > * {
         padding-left: 2px;
         padding-right: 2px;
         padding-bottom: 2px;
         padding-top: 2px; }
-    .dd-grid-area._small:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._small {
       margin-left: -4px;
       margin-right: -4px;
       margin-bottom: -4px;
       margin-top: -4px; }
-      .dd-grid-area._small:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._small > * {
         padding-left: 4px;
         padding-right: 4px;
         padding-bottom: 4px;
         padding-top: 4px; }
-    .dd-grid-area._medium:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._medium {
       margin-left: -8px;
       margin-right: -8px;
       margin-bottom: -8px;
       margin-top: -8px; }
-      .dd-grid-area._medium:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._medium > * {
         padding-left: 8px;
         padding-right: 8px;
         padding-bottom: 8px;
         padding-top: 8px; }
-    .dd-grid-area._large:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._large {
       margin-left: -16px;
       margin-right: -16px;
       margin-bottom: -16px;
       margin-top: -16px; }
-      .dd-grid-area._large:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._large > * {
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 16px;
         padding-top: 16px; }
-    .dd-grid-area._massive:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._massive {
       margin-left: -32px;
       margin-right: -32px;
       margin-bottom: -32px;
       margin-top: -32px; }
-      .dd-grid-area._massive:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._massive > * {
         padding-left: 32px;
         padding-right: 32px;
         padding-bottom: 32px;
         padding-top: 32px; } }
   @media all and (min-width: 1200px) {
-    .dd-grid-area._tiny:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._tiny {
       margin-left: -3px;
       margin-right: -3px;
       margin-bottom: -3px;
       margin-top: -3px; }
-      .dd-grid-area._tiny:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._tiny > * {
         padding-left: 3px;
         padding-right: 3px;
         padding-bottom: 3px;
         padding-top: 3px; }
-    .dd-grid-area._small:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._small {
       margin-left: -6px;
       margin-right: -6px;
       margin-bottom: -6px;
       margin-top: -6px; }
-      .dd-grid-area._small:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._small > * {
         padding-left: 6px;
         padding-right: 6px;
         padding-bottom: 6px;
         padding-top: 6px; }
-    .dd-grid-area._medium:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._medium {
       margin-left: -12px;
       margin-right: -12px;
       margin-bottom: -12px;
       margin-top: -12px; }
-      .dd-grid-area._medium:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._medium > * {
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 12px;
         padding-top: 12px; }
-    .dd-grid-area._large:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._large {
       margin-left: -24px;
       margin-right: -24px;
       margin-bottom: -24px;
       margin-top: -24px; }
-      .dd-grid-area._large:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._large > * {
         padding-left: 24px;
         padding-right: 24px;
         padding-bottom: 24px;
         padding-top: 24px; }
-    .dd-grid-area._massive:not(._clear) {
+    .dd-grid-area:not(._dd-clear)._massive {
       margin-left: -48px;
       margin-right: -48px;
       margin-bottom: -48px;
       margin-top: -48px; }
-      .dd-grid-area._massive:not(._clear) > * {
+      .dd-grid-area:not(._dd-clear)._massive > * {
         padding-left: 48px;
         padding-right: 48px;
         padding-bottom: 48px;
         padding-top: 48px; } }
-  .dd-grid-area._justifyCenter {
+  .dd-grid-area._dd-justifyCenter {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-  .dd-grid-area._alignCenter {
+  .dd-grid-area._dd-alignCenter {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  .dd-grid-area._center {
+  .dd-grid-area._dd-center {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  .dd-grid-area._auto > * {
+  .dd-grid-area._dd-auto > * {
     width: auto; }
 
 .dd-grid-cell._xs-1, .dd-grid-cell._xs-2, .dd-grid-cell._xs-3, .dd-grid-cell._xs-4, .dd-grid-cell._xs-5, .dd-grid-cell._xs-6, .dd-grid-cell._xs-7, .dd-grid-cell._xs-8, .dd-grid-cell._xs-9, .dd-grid-cell._xs-10, .dd-grid-cell._xs-11, .dd-grid-cell._xs-12, .dd-grid-cell._sm-1, .dd-grid-cell._sm-2, .dd-grid-cell._sm-3, .dd-grid-cell._sm-4, .dd-grid-cell._sm-5, .dd-grid-cell._sm-6, .dd-grid-cell._sm-7, .dd-grid-cell._sm-8, .dd-grid-cell._sm-9, .dd-grid-cell._sm-10, .dd-grid-cell._sm-11, .dd-grid-cell._sm-12, .dd-grid-cell._md-1, .dd-grid-cell._md-2, .dd-grid-cell._md-3, .dd-grid-cell._md-4, .dd-grid-cell._md-5, .dd-grid-cell._md-6, .dd-grid-cell._md-7, .dd-grid-cell._md-8, .dd-grid-cell._md-9, .dd-grid-cell._md-10, .dd-grid-cell._md-11, .dd-grid-cell._md-12, .dd-grid-cell._lg-1, .dd-grid-cell._lg-2, .dd-grid-cell._lg-3, .dd-grid-cell._lg-4, .dd-grid-cell._lg-5, .dd-grid-cell._lg-6, .dd-grid-cell._lg-7, .dd-grid-cell._lg-8, .dd-grid-cell._lg-9, .dd-grid-cell._lg-10, .dd-grid-cell._lg-11, .dd-grid-cell._lg-12, .dd-grid-cell._xl-1, .dd-grid-cell._xl-2, .dd-grid-cell._xl-3, .dd-grid-cell._xl-4, .dd-grid-cell._xl-5, .dd-grid-cell._xl-6, .dd-grid-cell._xl-7, .dd-grid-cell._xl-8, .dd-grid-cell._xl-9, .dd-grid-cell._xl-10, .dd-grid-cell._xl-11, .dd-grid-cell._xl-12 {
@@ -1176,273 +1276,503 @@ mark {
       flex-shrink: 0; }
 
 @media all and (min-width: 0) {
-  .dd-grid-container {
-    width: 100%;
-    padding-left: 8px;
-    padding-right: 8px; }
-  .dd-grid-area > .dd-grid-cell._xs-1 {
-    width: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-1 {
-    margin-left: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-2 {
-    width: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-2 {
-    margin-left: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-3 {
-    width: 25%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-3 {
-    margin-left: 25%; }
-  .dd-grid-area > .dd-grid-cell._xs-4 {
-    width: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-4 {
-    margin-left: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-5 {
-    width: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-5 {
-    margin-left: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-6 {
-    width: 50%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-6 {
-    margin-left: 50%; }
-  .dd-grid-area > .dd-grid-cell._xs-7 {
-    width: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-7 {
-    margin-left: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-8 {
-    width: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-8 {
-    margin-left: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-9 {
-    width: 75%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-9 {
-    margin-left: 75%; }
-  .dd-grid-area > .dd-grid-cell._xs-10 {
-    width: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-10 {
-    margin-left: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._xs-11 {
-    width: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-11 {
-    margin-left: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._xs-12 {
+  .dd-grid-container._dd-main {
     width: 100%; }
-  .dd-grid-area > .dd-grid-cell._xs-offset-12 {
+  .dd-grid-area > .dd-grid-cell._dd-xs-1 {
+    width: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-container._dd-xs-1 {
+    width: 8.33333%; }
+  .dd-grid-container._dd-xs-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-2 {
+    width: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-container._dd-xs-2 {
+    width: 16.66667%; }
+  .dd-grid-container._dd-xs-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-3 {
+    width: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-container._dd-xs-3 {
+    width: 25%; }
+  .dd-grid-container._dd-xs-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-4 {
+    width: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-container._dd-xs-4 {
+    width: 33.33333%; }
+  .dd-grid-container._dd-xs-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-5 {
+    width: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-container._dd-xs-5 {
+    width: 41.66667%; }
+  .dd-grid-container._dd-xs-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-6 {
+    width: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-container._dd-xs-6 {
+    width: 50%; }
+  .dd-grid-container._dd-xs-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-7 {
+    width: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-container._dd-xs-7 {
+    width: 58.33333%; }
+  .dd-grid-container._dd-xs-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-8 {
+    width: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-container._dd-xs-8 {
+    width: 66.66667%; }
+  .dd-grid-container._dd-xs-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-9 {
+    width: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-container._dd-xs-9 {
+    width: 75%; }
+  .dd-grid-container._dd-xs-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-10 {
+    width: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-container._dd-xs-10 {
+    width: 83.33333%; }
+  .dd-grid-container._dd-xs-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-11 {
+    width: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-container._dd-xs-11 {
+    width: 91.66667%; }
+  .dd-grid-container._dd-xs-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-12 {
+    width: 100%; }
+  .dd-grid-area > .dd-grid-cell._dd-xs-offset-12 {
+    margin-left: 100%; }
+  .dd-grid-container._dd-xs-12 {
+    width: 100%; }
+  .dd-grid-container._dd-xs-offset-12 {
     margin-left: 100%; } }
 
 @media all and (min-width: 544px) {
-  .dd-grid-container {
-    width: 544px;
-    padding-left: 8px;
-    padding-right: 8px; }
-  .dd-grid-area > .dd-grid-cell._sm-1 {
+  .dd-grid-container._dd-main {
+    width: 544px; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-1 {
     width: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-1 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-1 {
     margin-left: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-2 {
+  .dd-grid-container._dd-sm-1 {
+    width: 8.33333%; }
+  .dd-grid-container._dd-sm-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-2 {
     width: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-2 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-2 {
     margin-left: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-3 {
+  .dd-grid-container._dd-sm-2 {
+    width: 16.66667%; }
+  .dd-grid-container._dd-sm-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-3 {
     width: 25%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-3 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-3 {
     margin-left: 25%; }
-  .dd-grid-area > .dd-grid-cell._sm-4 {
+  .dd-grid-container._dd-sm-3 {
+    width: 25%; }
+  .dd-grid-container._dd-sm-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-4 {
     width: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-4 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-4 {
     margin-left: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-5 {
+  .dd-grid-container._dd-sm-4 {
+    width: 33.33333%; }
+  .dd-grid-container._dd-sm-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-5 {
     width: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-5 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-5 {
     margin-left: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-6 {
+  .dd-grid-container._dd-sm-5 {
+    width: 41.66667%; }
+  .dd-grid-container._dd-sm-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-6 {
     width: 50%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-6 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-6 {
     margin-left: 50%; }
-  .dd-grid-area > .dd-grid-cell._sm-7 {
+  .dd-grid-container._dd-sm-6 {
+    width: 50%; }
+  .dd-grid-container._dd-sm-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-7 {
     width: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-7 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-7 {
     margin-left: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-8 {
+  .dd-grid-container._dd-sm-7 {
+    width: 58.33333%; }
+  .dd-grid-container._dd-sm-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-8 {
     width: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-8 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-8 {
     margin-left: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-9 {
+  .dd-grid-container._dd-sm-8 {
+    width: 66.66667%; }
+  .dd-grid-container._dd-sm-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-9 {
     width: 75%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-9 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-9 {
     margin-left: 75%; }
-  .dd-grid-area > .dd-grid-cell._sm-10 {
+  .dd-grid-container._dd-sm-9 {
+    width: 75%; }
+  .dd-grid-container._dd-sm-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-10 {
     width: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-10 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-10 {
     margin-left: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._sm-11 {
+  .dd-grid-container._dd-sm-10 {
+    width: 83.33333%; }
+  .dd-grid-container._dd-sm-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-11 {
     width: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-11 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-11 {
     margin-left: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._sm-12 {
+  .dd-grid-container._dd-sm-11 {
+    width: 91.66667%; }
+  .dd-grid-container._dd-sm-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-sm-12 {
     width: 100%; }
-  .dd-grid-area > .dd-grid-cell._sm-offset-12 {
+  .dd-grid-area > .dd-grid-cell._dd-sm-offset-12 {
+    margin-left: 100%; }
+  .dd-grid-container._dd-sm-12 {
+    width: 100%; }
+  .dd-grid-container._dd-sm-offset-12 {
     margin-left: 100%; } }
 
 @media all and (min-width: 768px) {
-  .dd-grid-container {
-    width: 768px;
-    padding-left: 12px;
-    padding-right: 12px; }
-  .dd-grid-area > .dd-grid-cell._md-1 {
+  .dd-grid-container._dd-main {
+    width: 768px; }
+  .dd-grid-area > .dd-grid-cell._dd-md-1 {
     width: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-1 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-1 {
     margin-left: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-2 {
+  .dd-grid-container._dd-md-1 {
+    width: 8.33333%; }
+  .dd-grid-container._dd-md-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-2 {
     width: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-2 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-2 {
     margin-left: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-3 {
+  .dd-grid-container._dd-md-2 {
+    width: 16.66667%; }
+  .dd-grid-container._dd-md-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-3 {
     width: 25%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-3 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-3 {
     margin-left: 25%; }
-  .dd-grid-area > .dd-grid-cell._md-4 {
+  .dd-grid-container._dd-md-3 {
+    width: 25%; }
+  .dd-grid-container._dd-md-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-4 {
     width: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-4 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-4 {
     margin-left: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-5 {
+  .dd-grid-container._dd-md-4 {
+    width: 33.33333%; }
+  .dd-grid-container._dd-md-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-5 {
     width: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-5 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-5 {
     margin-left: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-6 {
+  .dd-grid-container._dd-md-5 {
+    width: 41.66667%; }
+  .dd-grid-container._dd-md-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-6 {
     width: 50%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-6 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-6 {
     margin-left: 50%; }
-  .dd-grid-area > .dd-grid-cell._md-7 {
+  .dd-grid-container._dd-md-6 {
+    width: 50%; }
+  .dd-grid-container._dd-md-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-7 {
     width: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-7 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-7 {
     margin-left: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-8 {
+  .dd-grid-container._dd-md-7 {
+    width: 58.33333%; }
+  .dd-grid-container._dd-md-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-8 {
     width: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-8 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-8 {
     margin-left: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-9 {
+  .dd-grid-container._dd-md-8 {
+    width: 66.66667%; }
+  .dd-grid-container._dd-md-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-9 {
     width: 75%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-9 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-9 {
     margin-left: 75%; }
-  .dd-grid-area > .dd-grid-cell._md-10 {
+  .dd-grid-container._dd-md-9 {
+    width: 75%; }
+  .dd-grid-container._dd-md-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-10 {
     width: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-10 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-10 {
     margin-left: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._md-11 {
+  .dd-grid-container._dd-md-10 {
+    width: 83.33333%; }
+  .dd-grid-container._dd-md-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-11 {
     width: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-11 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-11 {
     margin-left: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._md-12 {
+  .dd-grid-container._dd-md-11 {
+    width: 91.66667%; }
+  .dd-grid-container._dd-md-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-md-12 {
     width: 100%; }
-  .dd-grid-area > .dd-grid-cell._md-offset-12 {
+  .dd-grid-area > .dd-grid-cell._dd-md-offset-12 {
+    margin-left: 100%; }
+  .dd-grid-container._dd-md-12 {
+    width: 100%; }
+  .dd-grid-container._dd-md-offset-12 {
     margin-left: 100%; } }
 
 @media all and (min-width: 992px) {
-  .dd-grid-container {
-    width: 992px;
-    padding-left: 16px;
-    padding-right: 16px; }
-  .dd-grid-area > .dd-grid-cell._lg-1 {
+  .dd-grid-container._dd-main {
+    width: 992px; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-1 {
     width: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-1 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-1 {
     margin-left: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-2 {
+  .dd-grid-container._dd-lg-1 {
+    width: 8.33333%; }
+  .dd-grid-container._dd-lg-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-2 {
     width: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-2 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-2 {
     margin-left: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-3 {
+  .dd-grid-container._dd-lg-2 {
+    width: 16.66667%; }
+  .dd-grid-container._dd-lg-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-3 {
     width: 25%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-3 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-3 {
     margin-left: 25%; }
-  .dd-grid-area > .dd-grid-cell._lg-4 {
+  .dd-grid-container._dd-lg-3 {
+    width: 25%; }
+  .dd-grid-container._dd-lg-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-4 {
     width: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-4 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-4 {
     margin-left: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-5 {
+  .dd-grid-container._dd-lg-4 {
+    width: 33.33333%; }
+  .dd-grid-container._dd-lg-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-5 {
     width: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-5 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-5 {
     margin-left: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-6 {
+  .dd-grid-container._dd-lg-5 {
+    width: 41.66667%; }
+  .dd-grid-container._dd-lg-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-6 {
     width: 50%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-6 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-6 {
     margin-left: 50%; }
-  .dd-grid-area > .dd-grid-cell._lg-7 {
+  .dd-grid-container._dd-lg-6 {
+    width: 50%; }
+  .dd-grid-container._dd-lg-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-7 {
     width: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-7 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-7 {
     margin-left: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-8 {
+  .dd-grid-container._dd-lg-7 {
+    width: 58.33333%; }
+  .dd-grid-container._dd-lg-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-8 {
     width: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-8 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-8 {
     margin-left: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-9 {
+  .dd-grid-container._dd-lg-8 {
+    width: 66.66667%; }
+  .dd-grid-container._dd-lg-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-9 {
     width: 75%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-9 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-9 {
     margin-left: 75%; }
-  .dd-grid-area > .dd-grid-cell._lg-10 {
+  .dd-grid-container._dd-lg-9 {
+    width: 75%; }
+  .dd-grid-container._dd-lg-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-10 {
     width: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-10 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-10 {
     margin-left: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._lg-11 {
+  .dd-grid-container._dd-lg-10 {
+    width: 83.33333%; }
+  .dd-grid-container._dd-lg-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-11 {
     width: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-11 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-11 {
     margin-left: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._lg-12 {
+  .dd-grid-container._dd-lg-11 {
+    width: 91.66667%; }
+  .dd-grid-container._dd-lg-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-lg-12 {
     width: 100%; }
-  .dd-grid-area > .dd-grid-cell._lg-offset-12 {
+  .dd-grid-area > .dd-grid-cell._dd-lg-offset-12 {
+    margin-left: 100%; }
+  .dd-grid-container._dd-lg-12 {
+    width: 100%; }
+  .dd-grid-container._dd-lg-offset-12 {
     margin-left: 100%; } }
 
 @media all and (min-width: 1200px) {
-  .dd-grid-container {
-    width: 1200px;
-    padding-left: 24px;
-    padding-right: 24px; }
-  .dd-grid-area > .dd-grid-cell._xl-1 {
+  .dd-grid-container._dd-main {
+    width: 1200px; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-1 {
     width: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-1 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-1 {
     margin-left: 8.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-2 {
+  .dd-grid-container._dd-xl-1 {
+    width: 8.33333%; }
+  .dd-grid-container._dd-xl-offset-1 {
+    margin-left: 8.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-2 {
     width: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-2 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-2 {
     margin-left: 16.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-3 {
+  .dd-grid-container._dd-xl-2 {
+    width: 16.66667%; }
+  .dd-grid-container._dd-xl-offset-2 {
+    margin-left: 16.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-3 {
     width: 25%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-3 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-3 {
     margin-left: 25%; }
-  .dd-grid-area > .dd-grid-cell._xl-4 {
+  .dd-grid-container._dd-xl-3 {
+    width: 25%; }
+  .dd-grid-container._dd-xl-offset-3 {
+    margin-left: 25%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-4 {
     width: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-4 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-4 {
     margin-left: 33.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-5 {
+  .dd-grid-container._dd-xl-4 {
+    width: 33.33333%; }
+  .dd-grid-container._dd-xl-offset-4 {
+    margin-left: 33.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-5 {
     width: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-5 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-5 {
     margin-left: 41.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-6 {
+  .dd-grid-container._dd-xl-5 {
+    width: 41.66667%; }
+  .dd-grid-container._dd-xl-offset-5 {
+    margin-left: 41.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-6 {
     width: 50%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-6 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-6 {
     margin-left: 50%; }
-  .dd-grid-area > .dd-grid-cell._xl-7 {
+  .dd-grid-container._dd-xl-6 {
+    width: 50%; }
+  .dd-grid-container._dd-xl-offset-6 {
+    margin-left: 50%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-7 {
     width: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-7 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-7 {
     margin-left: 58.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-8 {
+  .dd-grid-container._dd-xl-7 {
+    width: 58.33333%; }
+  .dd-grid-container._dd-xl-offset-7 {
+    margin-left: 58.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-8 {
     width: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-8 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-8 {
     margin-left: 66.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-9 {
+  .dd-grid-container._dd-xl-8 {
+    width: 66.66667%; }
+  .dd-grid-container._dd-xl-offset-8 {
+    margin-left: 66.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-9 {
     width: 75%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-9 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-9 {
     margin-left: 75%; }
-  .dd-grid-area > .dd-grid-cell._xl-10 {
+  .dd-grid-container._dd-xl-9 {
+    width: 75%; }
+  .dd-grid-container._dd-xl-offset-9 {
+    margin-left: 75%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-10 {
     width: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-10 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-10 {
     margin-left: 83.33333%; }
-  .dd-grid-area > .dd-grid-cell._xl-11 {
+  .dd-grid-container._dd-xl-10 {
+    width: 83.33333%; }
+  .dd-grid-container._dd-xl-offset-10 {
+    margin-left: 83.33333%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-11 {
     width: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-11 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-11 {
     margin-left: 91.66667%; }
-  .dd-grid-area > .dd-grid-cell._xl-12 {
+  .dd-grid-container._dd-xl-11 {
+    width: 91.66667%; }
+  .dd-grid-container._dd-xl-offset-11 {
+    margin-left: 91.66667%; }
+  .dd-grid-area > .dd-grid-cell._dd-xl-12 {
     width: 100%; }
-  .dd-grid-area > .dd-grid-cell._xl-offset-12 {
+  .dd-grid-area > .dd-grid-cell._dd-xl-offset-12 {
+    margin-left: 100%; }
+  .dd-grid-container._dd-xl-12 {
+    width: 100%; }
+  .dd-grid-container._dd-xl-offset-12 {
     margin-left: 100%; } }
 
 .dd-typ, .dd-typ-block {
