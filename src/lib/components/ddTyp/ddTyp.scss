@@ -35,24 +35,24 @@ $dd-typ-rhythm: 1em * $dd-typ-lineHeight !default;
 }
 
 @import '_common';
-@import 'node/_a';
-@import 'node/_abbr';
-@import 'node/_blockquote';
-@import 'node/_code';
-@import 'node/_del';
-@import 'node/_em';
-@import 'node/_h';
-@import 'node/_img';
-@import 'node/_ins';
-@import 'node/_mark';
-@import 'node/_ol';
-@import 'node/_pre';
-@import 'node/_s';
-@import 'node/_small';
-@import 'node/_strong';
-@import 'node/_u';
-@import 'node/_ul';
-@import 'node/_p';
+@import 'components/a';
+@import 'components/abbr';
+@import 'components/blockquote';
+@import 'components/code';
+@import 'components/del';
+@import 'components/em';
+@import 'components/h';
+@import 'components/img';
+@import 'components/ins';
+@import 'components/mark';
+@import 'components/ol';
+@import 'components/pre';
+@import 'components/s';
+@import 'components/small';
+@import 'components/strong';
+@import 'components/u';
+@import 'components/ul';
+@import 'components/p';
 // figure, вставка изображений, видео, графиков, кода с подписью
 // details, оформить нативные выпадашки
 

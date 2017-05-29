@@ -246,7 +246,7 @@ $dd-grid-noGuttersMod: 'clear' !default;
 	min-width: 0;
 
 	@if ($_gutterV != 0) {
-		&:empty::after, &:blank::after {
+		&:empty::after {
 			content: '';
 			height: $_gutterV*2;
 		}
@@ -395,11 +395,16 @@ $dd-grid-noGuttersMod: 'clear' !default;
 			}
 
 			&._#{$dd-system-classPrefix}auto {
-
 				& > * {
 					width: auto;
 				}
+			}
 
+			&._#{$dd-system-classPrefix}inline {
+				display: inline-flex;
+				& > * {
+					width: auto;
+				}
 			}
 		}
 	}

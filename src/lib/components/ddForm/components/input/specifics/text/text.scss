@@ -20,12 +20,7 @@
 
 @mixin dd-form-inputText()
 {
-	display: inline-block;
-
-	& > input {
-		@include dd-form-input();
-	}
-
+	@include dd-form-input-area();
 	@include dd-form-inputText-stateVariantMods();
 }
 

@@ -15,14 +15,14 @@ $_dd-form-padding: ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) /
 $_dd-form-paddingVertical: $_dd-form-padding !default;
 $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
 
-@import '_common';
-@import '_message';
-@import '_button';
-@import '_field';
-@import '_input';
-@import 'input/_text';
-@import 'input/_textarea';
-@import 'input/_select';
+@import 'components/message/message';
+@import 'components/button/button';
+@import 'components/field/field';
+@import 'components/input/input';
+@import 'components/input/specifics/text/text';
+@import 'components/input/specifics/textarea/textarea';
+@import 'components/input/specifics/select/select';
+@import 'components/input/specifics/checkbox/checkbox';
 
 @mixin dd-form-generator()
 {
@@ -32,4 +32,5 @@ $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
 	@include dd-form-inputText-generator();
 	@include dd-form-inputTextarea-generator();
 	@include dd-form-inputSelect-generator();
+	@include dd-form-inputCheckbox-generator();
 }

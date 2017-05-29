@@ -1,0 +1,16 @@
+@include dd-system-componentRegister(ddForm-inputCheckbox, (ddForm));
+
+@mixin dd-form-inputCheckbox()
+{
+	@include dd-form-input-control();
+}
+
+@mixin dd-form-inputCheckbox-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-inputCheckbox {
+			@include dd-form-inputCheckbox();
+		}
+	}
+}

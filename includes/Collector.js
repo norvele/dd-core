@@ -19,6 +19,14 @@ export default class Collector
 		this._gulpTasksNames = [];
 	}
 
+	get env() {
+		return this.constructor.env;
+	}
+
+	set env(val) {
+		this.constructor.env = val;
+	}
+
 	/**
 	 * Запускает формирование тасков
 	 */
@@ -53,11 +61,17 @@ export default class Collector
 		// Создаем таск наблюдения за изменениями
 		gulp.task('watch', () => {
 			this._watch.forEach(watch => {
-				gulp.watch(watch.src, watch.tasks || []);
+				gulp.watch(watch.src, { interval: 500 } , watch.tasks || []);
 			});
 		});
 		// Создаем таск по умолчанию
 		gulp.task('default', ['build', 'watch']);
+		// Создаем таск сборки для продакшена
+		gulp.task('production', () => {
+			this.env = 'prod';
+			//del('dist/**', {force:true});
+			gulp.run('build');
+		});
 	}
 
 	/**
@@ -125,3 +139,4 @@ export default class Collector
 		return newName;
 	}
 }
+Collector.env = 'dev';

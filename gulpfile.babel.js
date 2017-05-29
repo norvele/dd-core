@@ -13,22 +13,22 @@ var collector = new Collector({
 			tasks: [
 				{
 					type: 'sass',
-					src: `${roots.src}/lib/sass/main.scss`,
+					src: `${roots.src}/lib/main.scss`,
 					dest: `${roots.dest}/lib/css/`,
-					watch: `${roots.src}/lib/sass/**/*.*`,
+					watch: `${roots.src}/lib/components/**/*.scss`,
 				},
 				{
 					type: 'js',
-					src: `${roots.src}/lib/js/main.js`,
+					src: `${roots.src}/lib/main.js`,
 					dest: `${roots.dest}/lib/js/`,
-					watch: `${roots.src}/lib/js/**/*.*`,
+					watch: `${roots.src}/lib/components/**/*.js`,
 				},
 				{
 					type: 'test',
-					src: `${roots.src}/lib/sass/tests/main.scss`,
+					src: `${roots.src}/lib/tests/main.scss`,
 					watch: [
-						`${roots.src}/lib/sass/!**!/!*.*`,
-						`${roots.src}/lib/sass/tests/!**!/!*.*`
+						`${roots.src}/lib/components/!**!/!*.scss`,
+						`${roots.src}/lib/tests/!**!/!*.*`
 					],
 				},
 			],
@@ -55,7 +55,10 @@ var collector = new Collector({
 					type: 'js',
 					src: `${roots.src}/example/js/main.js`,
 					dest: `${roots.dest}/example/js/`,
-					watch: `${roots.src}/example/js/**/*.*`,
+					watch: [
+						`${roots.src}/example/js/**/*.*`,
+						`${roots.src}/lib/**/*.*`,
+					],
 				},
 			],
 		}

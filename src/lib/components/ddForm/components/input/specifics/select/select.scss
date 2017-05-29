@@ -47,6 +47,9 @@
 	& > select {
 		@include dd-form-input();
 		appearance: none;
+		&::-ms-expand{
+			display: none;
+		}
 	}
 
 	@include dd-form-inputSelect-customRules();
