@@ -24,6 +24,13 @@ var collector = new Collector({
 					watch: `${roots.src}/lib/components/**/*.js`,
 				},
 				{
+					type: 'copy',
+					name: 'lib-copyImages',
+					src: `${roots.src}/lib/components/**/*.svg`,
+					dest: `${roots.dest}/lib/img/`,
+					watch: `${roots.src}/lib/components/**/*.svg`
+				},
+				{
 					type: 'test',
 					src: `${roots.src}/lib/tests/main.scss`,
 					watch: [
@@ -59,6 +66,13 @@ var collector = new Collector({
 						`${roots.src}/example/js/**/*.*`,
 						`${roots.src}/lib/**/*.*`,
 					],
+				},
+				{
+					type: 'copy',
+					name: 'example-copyLibImages',
+					src: `${roots.src}/lib/components/**/*.svg`,
+					dest: `${roots.dest}/example/img/`,
+					watch: `${roots.src}/lib/components/**/*.svg`
 				},
 			],
 		}

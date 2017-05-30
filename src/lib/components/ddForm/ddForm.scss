@@ -23,6 +23,7 @@ $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
 @import 'components/input/specifics/textarea/textarea';
 @import 'components/input/specifics/select/select';
 @import 'components/input/specifics/checkbox/checkbox';
+@import 'components/input/specifics/radio/radio';
 
 @mixin dd-form-generator()
 {
@@ -33,4 +34,5 @@ $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !default;
 	@include dd-form-inputTextarea-generator();
 	@include dd-form-inputSelect-generator();
 	@include dd-form-inputCheckbox-generator();
+	@include dd-form-inputRadio-generator();
 }

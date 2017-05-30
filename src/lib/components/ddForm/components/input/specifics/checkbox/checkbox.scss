@@ -1,8 +1,24 @@
-@include dd-system-componentRegister(ddForm-inputCheckbox, (ddForm));
+@include dd-system-componentRegister(ddForm-inputCheckbox, (ddForm, ddForm-input));
+
+@mixin dd-form-inputCheckbox-inner()
+{
+	background-color: transparent;
+	background-image: url(dd-system-path('img', 'ddForm/components/input/specifics/checkbox/checked.svg'));
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
 
 @mixin dd-form-inputCheckbox()
 {
 	@include dd-form-input-control();
+
+	& > label {
+
+		&::after {
+			@include dd-form-inputCheckbox-inner();
+		}
+	}
 }
 
 @mixin dd-form-inputCheckbox-generator()

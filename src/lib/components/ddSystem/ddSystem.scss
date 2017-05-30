@@ -28,6 +28,14 @@ $dd-system-autoGenerate: true !default;
 /*
 
 */
+$dd-system-path: (
+	root: '../',
+	img: '../img/',
+);
+
+/*
+
+*/
 @function _dd-system-message($_message, $_type: 'warn')
 {
 	@if ($dd-system-debug) {
@@ -122,4 +130,12 @@ $dd-system-autoGenerate: true !default;
 @mixin dd-system-componentRegister($_component, $_dependencies: ())
 {
 	$_: dd-system-componentRegister($_component, $_dependencies);
+}
+
+/*
+
+*/
+@function dd-system-path($_prefix, $_path)
+{
+	@return #{map_get($dd-system-path, $_prefix)}#{$_path};
 }

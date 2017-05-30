@@ -1,28 +1,8 @@
+import Util from "../../../ddUtil/ddUtil";
+
 export default class Input
 {
-	static normalizeElements(input)
-	{
-		let els = [];
-		if (input instanceof HTMLElement) {
-			els.push(input);
-		} else if (Array.isArray(input)) {
-			els = input;
-		} else if (input instanceof NodeList) {
-			els = [...input];
-		} else {
-			console.log(`${input} must be Array, NodeList or HTMLElement`);
-			return [];
-		}
-		return els;
-	}
-
-	static initInputControls(input)
-	{
-		let els = this.normalizeElements(input);
-		els.forEach(function(el){
-			new InputControl(el);
-		});
-	}
+	
 }
 
 export class InputControl
@@ -35,6 +15,13 @@ export class InputControl
 		this.label = this.el.querySelector('label');
 		this.toggleCallback = () => {};
 		this.init();
+	}
+
+	static initFew(input)
+	{
+		Util.eachNodes(input, (el) => {
+			new InputControl(el);
+		});
 	}
 
 	init()

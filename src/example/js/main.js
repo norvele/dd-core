@@ -1,5 +1,6 @@
-import Input from '../../lib/components/ddForm/components/input/input';
+import InputCheckbox from '../../lib/components/ddForm/components/input/specifics/checkbox/checkbox';
 
 document.addEventListener('DOMContentLoaded', () => {
-	Input.initInputControls(document.querySelectorAll('.form-inputCheckbox'));
+	//Input.initInputControls(document.querySelectorAll('.form-inputCheckbox'));
+	InputCheckbox.initFew('.form-inputCheckbox');
 });
