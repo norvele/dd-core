@@ -15,7 +15,9 @@ var collector = new Collector({
 					type: 'sass',
 					src: `${roots.src}/lib/main.scss`,
 					dest: `${roots.dest}/lib/css/`,
-					watch: `${roots.src}/lib/components/**/*.scss`,
+					watch: [
+						`${roots.src}/lib/**/*.scss`,
+					],
 				},
 				{
 					type: 'js',
@@ -31,11 +33,18 @@ var collector = new Collector({
 					watch: `${roots.src}/lib/components/**/*.svg`
 				},
 				{
-					type: 'test',
+					type: 'styleTest',
 					src: `${roots.src}/lib/tests/main.scss`,
 					watch: [
 						`${roots.src}/lib/components/!**!/!*.scss`,
 						`${roots.src}/lib/tests/!**!/!*.*`
+					],
+				},
+				{
+					type: 'styleLint',
+					src: `${roots.src}/lib/**/*.scss`,
+					watch: [
+						`${roots.src}/lib/**/*.scss`,
 					],
 				},
 			],
@@ -55,7 +64,7 @@ var collector = new Collector({
 					dest: `${roots.dest}/example/css/`,
 					watch: [
 						`${roots.src}/example/sass/**/*.*`,
-						`${roots.src}/lib/sass/**/*.*`,
+						`${roots.src}/lib/**/*.scss`,
 					],
 				},
 				{
@@ -64,7 +73,7 @@ var collector = new Collector({
 					dest: `${roots.dest}/example/js/`,
 					watch: [
 						`${roots.src}/example/js/**/*.*`,
-						`${roots.src}/lib/**/*.*`,
+						`${roots.src}/lib/**/*.js`,
 					],
 				},
 				{

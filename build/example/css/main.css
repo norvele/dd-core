@@ -2450,15 +2450,19 @@ ul.typ {
   text-decoration: none;
   border-radius: 3px;
   border: 1px solid;
+  border-bottom-width: 2px;
   vertical-align: top;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
-  background-color: #333;
-  border-color: #2e2e2e;
-  color: #fff; }
+  -webkit-transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  background-color: #fff;
+  border-color: #e6e6e6;
+  color: #000;
+  box-shadow: 0 1px 2px 0 rgba(128, 128, 128, 0.15); }
   .form-button > * {
     -webkit-flex-shrink: 0;
         -ms-flex-negative: 0;
@@ -2493,53 +2497,60 @@ ul.typ {
     content: '↓'; }
   .form-button._sort.-asc::before {
     content: '↑'; }
-  .form-button:hover, .form-button:focus {
-    background-color: #474747; }
+  .form-button._circle {
+    border-radius: 9999px; }
+  .form-button:hover {
+    background-color: #f7f7f7; }
   .form-button:active, .form-button.-active {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #2e2e2e; }
+    background-color: #e6e6e6; }
   .form-button._splashy {
     background-color: #EC6A00;
     border-color: #d45f00;
-    color: #fff; }
-    .form-button._splashy:hover, .form-button._splashy:focus {
-      background-color: #ee791a; }
+    color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(118, 53, 0, 0.15); }
+    .form-button._splashy:hover {
+      background-color: #e56700; }
     .form-button._splashy:active, .form-button._splashy.-active {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background-color: #d45f00; }
   .form-button._emphasis {
     background-color: #FFCC65;
     border-color: #e6b85b;
-    color: #000; }
-    .form-button._emphasis:hover, .form-button._emphasis:focus {
-      background-color: #ffd174; }
+    color: #000;
+    box-shadow: 0 1px 2px 0 rgba(128, 102, 51, 0.15); }
+    .form-button._emphasis:hover {
+      background-color: #f7c662; }
     .form-button._emphasis:active, .form-button._emphasis.-active {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background-color: #e6b85b; }
   .form-button._deep {
     background-color: #34362D;
     border-color: #2f3129;
-    color: #fff; }
-    .form-button._deep:hover, .form-button._deep:focus {
-      background-color: #484a42; }
+    color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(26, 27, 23, 0.15); }
+    .form-button._deep:hover {
+      background-color: #32342c; }
     .form-button._deep:active, .form-button._deep.-active {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background-color: #2f3129; }
   .form-button._neutral {
     background-color: #669E81;
     border-color: #5c8e74;
-    color: #000; }
-    .form-button._neutral:hover, .form-button._neutral:focus {
-      background-color: #75a88e; }
+    color: #000;
+    box-shadow: 0 1px 2px 0 rgba(51, 79, 65, 0.15); }
+    .form-button._neutral:hover {
+      background-color: #63997d; }
     .form-button._neutral:active, .form-button._neutral.-active {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background-color: #5c8e74; }
   .form-button._default {
     background-color: #333333;
     border-color: #2e2e2e;
-    color: #fff; }
-    .form-button._default:hover, .form-button._default:focus {
-      background-color: #474747; }
+    color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(26, 26, 26, 0.15); }
+    .form-button._default:hover {
+      background-color: #313131; }
     .form-button._default:active, .form-button._default.-active {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
       background-color: #2e2e2e; }
@@ -2551,7 +2562,7 @@ ul.typ {
     box-sizing: border-box;
     background-color: #fff;
     padding: 0.65em 0.975em;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #e6e6e6;
     border-radius: 3px;
     font-size: 1em;
     line-height: 1.2;
@@ -2589,7 +2600,7 @@ ul.typ {
     box-sizing: border-box;
     background-color: #fff;
     padding: 0.65em 0.975em;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #e6e6e6;
     border-radius: 3px;
     font-size: 1em;
     line-height: 1.2;
@@ -2629,7 +2640,7 @@ ul.typ {
     box-sizing: border-box;
     background-color: #fff;
     padding: 0.65em 0.975em;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #e6e6e6;
     border-radius: 3px;
     font-size: 1em;
     line-height: 1.2;
@@ -2660,7 +2671,7 @@ ul.typ {
     right: 0.975em;
     pointer-events: none;
     border: 0.325em solid transparent;
-    border-top: 0.325em solid #c2c2c2; }
+    border-top: 0.325em solid #e6e6e6; }
   .form-inputSelect.-default > select {
     border-color: #666666; }
   .form-inputSelect.-error > select {
@@ -2705,7 +2716,7 @@ ul.typ {
       width: 1.25em;
       height: 1.25em;
       background-color: #fff;
-      border: 1px solid #c2c2c2;
+      border: 1px solid #e6e6e6;
       border-radius: 3px; }
     .form-inputCheckbox > label::after {
       content: '';
@@ -2759,7 +2770,7 @@ ul.typ {
       width: 1.25em;
       height: 1.25em;
       background-color: #fff;
-      border: 1px solid #c2c2c2;
+      border: 1px solid #e6e6e6;
       border-radius: 3px; }
     .form-inputRadio > label::after {
       content: '';

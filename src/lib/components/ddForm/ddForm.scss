@@ -9,7 +9,7 @@ $dd-form-borderRadius: 3px !default;
 $dd-form-color: #333 !default;
 $dd-form-placeholderColor: mix(#fff, $dd-form-color, 80%) !default;
 $dd-form-backgroundColor: #fff !default;
-$dd-form-borderColor: mix(#fff, $dd-form-color, 70%) !default;
+$dd-form-borderColor: #e6e6e6 !default;
 
 $_dd-form-padding: ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) / 2 !default;
 $_dd-form-paddingVertical: $_dd-form-padding !default;

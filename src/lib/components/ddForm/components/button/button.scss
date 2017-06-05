@@ -3,16 +3,17 @@
 @mixin dd-form-button-variant($_color)
 {
 	background-color: $_color;
-	border-color: dd-color-modifier($_color, dark);
+	border-color: mix(#000, $_color, 10%);
 	color: dd-color-contrast($_color);
+	box-shadow: 0 1px 2px 0 rgba(mix(#000, $_color, 50%), 0.15);
 
-	&:hover, &:focus {
-		background-color: dd-color-modifier($_color, light);
+	&:hover {
+		background-color: mix(#000, $_color, 3%);
 	}
 
 	&:active, &.-active {
 		box-shadow: inset 0 2px 5px rgba(#000, 0.1);
-		background-color: dd-color-modifier($_color, dark);
+		background-color: mix(#000, $_color, 10%);
 	}
 }
 
@@ -44,9 +45,11 @@
 			text-decoration: none;
 			border-radius: $dd-form-borderRadius;
 			border: 1px solid;
+			border-bottom-width: 2px;
 			vertical-align: top;
 			user-select: none;
 			cursor: pointer;
+			transition: background 0.2s, box-shadow 0.2s;
 
 			& > * {
 				flex-shrink: 0;
@@ -106,7 +109,11 @@
 				}
 			}
 
-			@include dd-form-button-variant(dd-color-palette($dd-form-color));
+			&._circle {
+				border-radius: 9999px;
+			}
+
+			@include dd-form-button-variant(#fff);
 			@include dd-form-button-variantMods();
 		}
 	}
