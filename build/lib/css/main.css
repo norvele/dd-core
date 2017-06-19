@@ -2660,9 +2660,9 @@ ul.dd-typ {
       color: #d6d6d6; }
     .dd-form-inputSelect > select::-ms-expand {
       display: none; }
-  .dd-form-inputSelect > select {
+  .dd-form-inputSelect:not(._multiple) > select {
     padding-right: 2.275em; }
-  .dd-form-inputSelect::after {
+  .dd-form-inputSelect:not(._multiple)::after {
     content: '';
     position: absolute;
     height: 0;

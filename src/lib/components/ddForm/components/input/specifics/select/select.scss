@@ -22,11 +22,11 @@
 {
 	$_arrowSize: $_dd-form-paddingHorizontal/3;
 
-	& > select {
+	&:not(._multiple) > select {
 		padding-right: $_dd-form-paddingHorizontal * 2 + $_arrowSize;
 	}
 
-	&::after {
+	&:not(._multiple)::after {
 		content: '';
 		position: absolute;
 		height: 0;
@@ -47,6 +47,7 @@
 	& > select {
 		@include dd-form-input();
 		appearance: none;
+
 		&::-ms-expand{
 			display: none;
 		}
@@ -65,10 +66,6 @@
 
 			&._fluid {
 				width: 100%;
-			}
-
-			&._multiple {
-
 			}
 		}
 	}
