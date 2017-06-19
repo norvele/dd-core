@@ -11,7 +11,7 @@
 
 @mixin dd-form-inputCheckbox()
 {
-	@include dd-form-input-control();
+	@include dd-form-input-control((innerSize:$dd-form-height/3));
 
 	& > label {
 

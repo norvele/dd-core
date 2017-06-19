@@ -87,3 +87,10 @@
 	}
 	@return $_result;
 }
+
+@function dd-util-getMapParam($_map, $_key, $_default: null) {
+	@if (map-has-key($_map, $_key)) {
+		@return map-get($_map, $_key);
+	}
+	@return $_default;
+}

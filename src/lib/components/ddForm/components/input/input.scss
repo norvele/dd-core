@@ -33,11 +33,11 @@ $dd-form-inputBorderColor: $dd-form-borderColor !default;
 	}
 }
 
-@mixin dd-form-input-control()
+@mixin dd-form-input-control($_params: ())
 {
-	$_size: $dd-form-height/2;
-	$_innerSize: $_size/2;
-	$_borderSize: 1px;
+	$_size: dd-util-getMapParam($_params, size, $dd-form-height/2);
+	$_innerSize: dd-util-getMapParam($_params, innerSize, $_size);
+	$_borderSize: dd-util-getMapParam($_params, borderSize, 1px);
 
 	display: inline-block;
 	line-height: 1;
@@ -74,7 +74,6 @@ $dd-form-inputBorderColor: $dd-form-borderColor !default;
 			left: calc(#{($_size - $_innerSize)/2} + #{$_borderSize});
 			width: $_innerSize;
 			height: $_innerSize;
-			background-color: $dd-form-inputColor;
 			border-radius: $dd-form-borderRadius;
 		}
 	}

@@ -2722,13 +2722,12 @@ ul.typ {
       content: '';
       display: none;
       position: absolute;
-      top: -webkit-calc(0.3125em + 1px);
-      top: calc(0.3125em + 1px);
-      left: -webkit-calc(0.3125em + 1px);
-      left: calc(0.3125em + 1px);
-      width: 0.625em;
-      height: 0.625em;
-      background-color: #333;
+      top: -webkit-calc(0.20833em + 1px);
+      top: calc(0.20833em + 1px);
+      left: -webkit-calc(0.20833em + 1px);
+      left: calc(0.20833em + 1px);
+      width: 0.83333em;
+      height: 0.83333em;
       border-radius: 3px; }
   .form-inputCheckbox > input {
     display: none; }
@@ -2782,7 +2781,6 @@ ul.typ {
       left: calc(0.3125em + 1px);
       width: 0.625em;
       height: 0.625em;
-      background-color: #333;
       border-radius: 3px; }
   .form-inputRadio > input {
     display: none; }
@@ -2791,7 +2789,8 @@ ul.typ {
   .form-inputRadio > label::before {
     border-radius: 999px; }
   .form-inputRadio > label::after {
-    border-radius: 999px; }
+    border-radius: 999px;
+    background-color: #333; }
 
 html, body {
   height: 100%;
