@@ -5,19 +5,19 @@
 @include dd-system-componentRegister(ddGlobalMod);
 
 $dd-globalMod-map: (
-	pullRight: (
+	pullEnd: (
 		float: 'right',
 	),
-	pullLeft: (
+	pullStart: (
 		float: 'left',
 	),
 	hidden: (
 		display: 'none',
 	),
-	textRight: (
+	textEnd: (
 		text-align: 'right',
 	),
-	textLeft: (
+	textStart: (
 		text-align: 'left',
 	),
 	textCenter: (
@@ -26,8 +26,20 @@ $dd-globalMod-map: (
 	textJustify: (
 		text-align: 'justify',
 	),
-	textNoWrap: (
-		white-space: 'nowrap',
+) !default;
+
+$dd-globalMod-mapRtl: (
+	pullEnd: (
+		float: 'left',
+	),
+	pullStart: (
+		float: 'right',
+	),
+	textEnd: (
+		text-align: 'left',
+	),
+	textStart: (
+		text-align: 'right',
 	),
 ) !default;
 

@@ -129,19 +129,19 @@ abbr {
 mark {
   color: inherit; }
 
-.__dd-pullRight {
+.__dd-pullEnd {
   float: right !important; }
 
-.__dd-pullLeft {
+.__dd-pullStart {
   float: left !important; }
 
 .__dd-hidden {
   display: none !important; }
 
-.__dd-textRight {
+.__dd-textEnd {
   text-align: right !important; }
 
-.__dd-textLeft {
+.__dd-textStart {
   text-align: left !important; }
 
 .__dd-textCenter {
@@ -150,256 +150,227 @@ mark {
 .__dd-textJustify {
   text-align: justify !important; }
 
-.__dd-textNoWrap {
-  white-space: nowrap !important; }
-
 @media all and (min-width: 0) {
-  .__dd-pullRight-xs-up {
+  .__dd-pullEnd-xs-up {
     float: right !important; }
-  .__dd-pullLeft-xs-up {
+  .__dd-pullStart-xs-up {
     float: left !important; }
   .__dd-hidden-xs-up {
     display: none !important; }
-  .__dd-textRight-xs-up {
+  .__dd-textEnd-xs-up {
     text-align: right !important; }
-  .__dd-textLeft-xs-up {
+  .__dd-textStart-xs-up {
     text-align: left !important; }
   .__dd-textCenter-xs-up {
     text-align: center !important; }
   .__dd-textJustify-xs-up {
-    text-align: justify !important; }
-  .__dd-textNoWrap-xs-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 543px) {
-  .__dd-pullRight-xs-down {
+  .__dd-pullEnd-xs-down {
     float: right !important; }
-  .__dd-pullLeft-xs-down {
+  .__dd-pullStart-xs-down {
     float: left !important; }
   .__dd-hidden-xs-down {
     display: none !important; }
-  .__dd-textRight-xs-down {
+  .__dd-textEnd-xs-down {
     text-align: right !important; }
-  .__dd-textLeft-xs-down {
+  .__dd-textStart-xs-down {
     text-align: left !important; }
   .__dd-textCenter-xs-down {
     text-align: center !important; }
   .__dd-textJustify-xs-down {
-    text-align: justify !important; }
-  .__dd-textNoWrap-xs-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 543px) {
-  .__dd-pullRight-xs {
+  .__dd-pullEnd-xs {
     float: right !important; }
-  .__dd-pullLeft-xs {
+  .__dd-pullStart-xs {
     float: left !important; }
   .__dd-hidden-xs {
     display: none !important; }
-  .__dd-textRight-xs {
+  .__dd-textEnd-xs {
     text-align: right !important; }
-  .__dd-textLeft-xs {
+  .__dd-textStart-xs {
     text-align: left !important; }
   .__dd-textCenter-xs {
     text-align: center !important; }
   .__dd-textJustify-xs {
-    text-align: justify !important; }
-  .__dd-textNoWrap-xs {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 544px) {
-  .__dd-pullRight-sm-up {
+  .__dd-pullEnd-sm-up {
     float: right !important; }
-  .__dd-pullLeft-sm-up {
+  .__dd-pullStart-sm-up {
     float: left !important; }
   .__dd-hidden-sm-up {
     display: none !important; }
-  .__dd-textRight-sm-up {
+  .__dd-textEnd-sm-up {
     text-align: right !important; }
-  .__dd-textLeft-sm-up {
+  .__dd-textStart-sm-up {
     text-align: left !important; }
   .__dd-textCenter-sm-up {
     text-align: center !important; }
   .__dd-textJustify-sm-up {
-    text-align: justify !important; }
-  .__dd-textNoWrap-sm-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 767px) {
-  .__dd-pullRight-sm-down {
+  .__dd-pullEnd-sm-down {
     float: right !important; }
-  .__dd-pullLeft-sm-down {
+  .__dd-pullStart-sm-down {
     float: left !important; }
   .__dd-hidden-sm-down {
     display: none !important; }
-  .__dd-textRight-sm-down {
+  .__dd-textEnd-sm-down {
     text-align: right !important; }
-  .__dd-textLeft-sm-down {
+  .__dd-textStart-sm-down {
     text-align: left !important; }
   .__dd-textCenter-sm-down {
     text-align: center !important; }
   .__dd-textJustify-sm-down {
-    text-align: justify !important; }
-  .__dd-textNoWrap-sm-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 544px) and (max-width: 767px) {
-  .__dd-pullRight-sm {
+  .__dd-pullEnd-sm {
     float: right !important; }
-  .__dd-pullLeft-sm {
+  .__dd-pullStart-sm {
     float: left !important; }
   .__dd-hidden-sm {
     display: none !important; }
-  .__dd-textRight-sm {
+  .__dd-textEnd-sm {
     text-align: right !important; }
-  .__dd-textLeft-sm {
+  .__dd-textStart-sm {
     text-align: left !important; }
   .__dd-textCenter-sm {
     text-align: center !important; }
   .__dd-textJustify-sm {
-    text-align: justify !important; }
-  .__dd-textNoWrap-sm {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 768px) {
-  .__dd-pullRight-md-up {
+  .__dd-pullEnd-md-up {
     float: right !important; }
-  .__dd-pullLeft-md-up {
+  .__dd-pullStart-md-up {
     float: left !important; }
   .__dd-hidden-md-up {
     display: none !important; }
-  .__dd-textRight-md-up {
+  .__dd-textEnd-md-up {
     text-align: right !important; }
-  .__dd-textLeft-md-up {
+  .__dd-textStart-md-up {
     text-align: left !important; }
   .__dd-textCenter-md-up {
     text-align: center !important; }
   .__dd-textJustify-md-up {
-    text-align: justify !important; }
-  .__dd-textNoWrap-md-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 991px) {
-  .__dd-pullRight-md-down {
+  .__dd-pullEnd-md-down {
     float: right !important; }
-  .__dd-pullLeft-md-down {
+  .__dd-pullStart-md-down {
     float: left !important; }
   .__dd-hidden-md-down {
     display: none !important; }
-  .__dd-textRight-md-down {
+  .__dd-textEnd-md-down {
     text-align: right !important; }
-  .__dd-textLeft-md-down {
+  .__dd-textStart-md-down {
     text-align: left !important; }
   .__dd-textCenter-md-down {
     text-align: center !important; }
   .__dd-textJustify-md-down {
-    text-align: justify !important; }
-  .__dd-textNoWrap-md-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 768px) and (max-width: 991px) {
-  .__dd-pullRight-md {
+  .__dd-pullEnd-md {
     float: right !important; }
-  .__dd-pullLeft-md {
+  .__dd-pullStart-md {
     float: left !important; }
   .__dd-hidden-md {
     display: none !important; }
-  .__dd-textRight-md {
+  .__dd-textEnd-md {
     text-align: right !important; }
-  .__dd-textLeft-md {
+  .__dd-textStart-md {
     text-align: left !important; }
   .__dd-textCenter-md {
     text-align: center !important; }
   .__dd-textJustify-md {
-    text-align: justify !important; }
-  .__dd-textNoWrap-md {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 992px) {
-  .__dd-pullRight-lg-up {
+  .__dd-pullEnd-lg-up {
     float: right !important; }
-  .__dd-pullLeft-lg-up {
+  .__dd-pullStart-lg-up {
     float: left !important; }
   .__dd-hidden-lg-up {
     display: none !important; }
-  .__dd-textRight-lg-up {
+  .__dd-textEnd-lg-up {
     text-align: right !important; }
-  .__dd-textLeft-lg-up {
+  .__dd-textStart-lg-up {
     text-align: left !important; }
   .__dd-textCenter-lg-up {
     text-align: center !important; }
   .__dd-textJustify-lg-up {
-    text-align: justify !important; }
-  .__dd-textNoWrap-lg-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 1199px) {
-  .__dd-pullRight-lg-down {
+  .__dd-pullEnd-lg-down {
     float: right !important; }
-  .__dd-pullLeft-lg-down {
+  .__dd-pullStart-lg-down {
     float: left !important; }
   .__dd-hidden-lg-down {
     display: none !important; }
-  .__dd-textRight-lg-down {
+  .__dd-textEnd-lg-down {
     text-align: right !important; }
-  .__dd-textLeft-lg-down {
+  .__dd-textStart-lg-down {
     text-align: left !important; }
   .__dd-textCenter-lg-down {
     text-align: center !important; }
   .__dd-textJustify-lg-down {
-    text-align: justify !important; }
-  .__dd-textNoWrap-lg-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 992px) and (max-width: 1199px) {
-  .__dd-pullRight-lg {
+  .__dd-pullEnd-lg {
     float: right !important; }
-  .__dd-pullLeft-lg {
+  .__dd-pullStart-lg {
     float: left !important; }
   .__dd-hidden-lg {
     display: none !important; }
-  .__dd-textRight-lg {
+  .__dd-textEnd-lg {
     text-align: right !important; }
-  .__dd-textLeft-lg {
+  .__dd-textStart-lg {
     text-align: left !important; }
   .__dd-textCenter-lg {
     text-align: center !important; }
   .__dd-textJustify-lg {
-    text-align: justify !important; }
-  .__dd-textNoWrap-lg {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 1200px) {
-  .__dd-pullRight-xl-up {
+  .__dd-pullEnd-xl-up {
     float: right !important; }
-  .__dd-pullLeft-xl-up {
+  .__dd-pullStart-xl-up {
     float: left !important; }
   .__dd-hidden-xl-up {
     display: none !important; }
-  .__dd-textRight-xl-up {
+  .__dd-textEnd-xl-up {
     text-align: right !important; }
-  .__dd-textLeft-xl-up {
+  .__dd-textStart-xl-up {
     text-align: left !important; }
   .__dd-textCenter-xl-up {
     text-align: center !important; }
   .__dd-textJustify-xl-up {
-    text-align: justify !important; }
-  .__dd-textNoWrap-xl-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
-.__dd-pullRight-xl-down {
+.__dd-pullEnd-xl-down {
   float: right !important; }
 
-.__dd-pullLeft-xl-down {
+.__dd-pullStart-xl-down {
   float: left !important; }
 
 .__dd-hidden-xl-down {
   display: none !important; }
 
-.__dd-textRight-xl-down {
+.__dd-textEnd-xl-down {
   text-align: right !important; }
 
-.__dd-textLeft-xl-down {
+.__dd-textStart-xl-down {
   text-align: left !important; }
 
 .__dd-textCenter-xl-down {
@@ -408,26 +379,21 @@ mark {
 .__dd-textJustify-xl-down {
   text-align: justify !important; }
 
-.__dd-textNoWrap-xl-down {
-  white-space: nowrap !important; }
-
 @media all and (min-width: 1200px) {
-  .__dd-pullRight-xl {
+  .__dd-pullEnd-xl {
     float: right !important; }
-  .__dd-pullLeft-xl {
+  .__dd-pullStart-xl {
     float: left !important; }
   .__dd-hidden-xl {
     display: none !important; }
-  .__dd-textRight-xl {
+  .__dd-textEnd-xl {
     text-align: right !important; }
-  .__dd-textLeft-xl {
+  .__dd-textStart-xl {
     text-align: left !important; }
   .__dd-textCenter-xl {
     text-align: center !important; }
   .__dd-textJustify-xl {
-    text-align: justify !important; }
-  .__dd-textNoWrap-xl {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 .dd-space {
   display: block;

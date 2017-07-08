@@ -129,19 +129,19 @@ abbr {
 mark {
   color: inherit; }
 
-.__pullRight {
+.__pullEnd {
   float: right !important; }
 
-.__pullLeft {
+.__pullStart {
   float: left !important; }
 
 .__hidden {
   display: none !important; }
 
-.__textRight {
+.__textEnd {
   text-align: right !important; }
 
-.__textLeft {
+.__textStart {
   text-align: left !important; }
 
 .__textCenter {
@@ -150,256 +150,227 @@ mark {
 .__textJustify {
   text-align: justify !important; }
 
-.__textNoWrap {
-  white-space: nowrap !important; }
-
 @media all and (min-width: 0) {
-  .__pullRight-xs-up {
+  .__pullEnd-xs-up {
     float: right !important; }
-  .__pullLeft-xs-up {
+  .__pullStart-xs-up {
     float: left !important; }
   .__hidden-xs-up {
     display: none !important; }
-  .__textRight-xs-up {
+  .__textEnd-xs-up {
     text-align: right !important; }
-  .__textLeft-xs-up {
+  .__textStart-xs-up {
     text-align: left !important; }
   .__textCenter-xs-up {
     text-align: center !important; }
   .__textJustify-xs-up {
-    text-align: justify !important; }
-  .__textNoWrap-xs-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 543px) {
-  .__pullRight-xs-down {
+  .__pullEnd-xs-down {
     float: right !important; }
-  .__pullLeft-xs-down {
+  .__pullStart-xs-down {
     float: left !important; }
   .__hidden-xs-down {
     display: none !important; }
-  .__textRight-xs-down {
+  .__textEnd-xs-down {
     text-align: right !important; }
-  .__textLeft-xs-down {
+  .__textStart-xs-down {
     text-align: left !important; }
   .__textCenter-xs-down {
     text-align: center !important; }
   .__textJustify-xs-down {
-    text-align: justify !important; }
-  .__textNoWrap-xs-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 543px) {
-  .__pullRight-xs {
+  .__pullEnd-xs {
     float: right !important; }
-  .__pullLeft-xs {
+  .__pullStart-xs {
     float: left !important; }
   .__hidden-xs {
     display: none !important; }
-  .__textRight-xs {
+  .__textEnd-xs {
     text-align: right !important; }
-  .__textLeft-xs {
+  .__textStart-xs {
     text-align: left !important; }
   .__textCenter-xs {
     text-align: center !important; }
   .__textJustify-xs {
-    text-align: justify !important; }
-  .__textNoWrap-xs {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 544px) {
-  .__pullRight-sm-up {
+  .__pullEnd-sm-up {
     float: right !important; }
-  .__pullLeft-sm-up {
+  .__pullStart-sm-up {
     float: left !important; }
   .__hidden-sm-up {
     display: none !important; }
-  .__textRight-sm-up {
+  .__textEnd-sm-up {
     text-align: right !important; }
-  .__textLeft-sm-up {
+  .__textStart-sm-up {
     text-align: left !important; }
   .__textCenter-sm-up {
     text-align: center !important; }
   .__textJustify-sm-up {
-    text-align: justify !important; }
-  .__textNoWrap-sm-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 767px) {
-  .__pullRight-sm-down {
+  .__pullEnd-sm-down {
     float: right !important; }
-  .__pullLeft-sm-down {
+  .__pullStart-sm-down {
     float: left !important; }
   .__hidden-sm-down {
     display: none !important; }
-  .__textRight-sm-down {
+  .__textEnd-sm-down {
     text-align: right !important; }
-  .__textLeft-sm-down {
+  .__textStart-sm-down {
     text-align: left !important; }
   .__textCenter-sm-down {
     text-align: center !important; }
   .__textJustify-sm-down {
-    text-align: justify !important; }
-  .__textNoWrap-sm-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 544px) and (max-width: 767px) {
-  .__pullRight-sm {
+  .__pullEnd-sm {
     float: right !important; }
-  .__pullLeft-sm {
+  .__pullStart-sm {
     float: left !important; }
   .__hidden-sm {
     display: none !important; }
-  .__textRight-sm {
+  .__textEnd-sm {
     text-align: right !important; }
-  .__textLeft-sm {
+  .__textStart-sm {
     text-align: left !important; }
   .__textCenter-sm {
     text-align: center !important; }
   .__textJustify-sm {
-    text-align: justify !important; }
-  .__textNoWrap-sm {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 768px) {
-  .__pullRight-md-up {
+  .__pullEnd-md-up {
     float: right !important; }
-  .__pullLeft-md-up {
+  .__pullStart-md-up {
     float: left !important; }
   .__hidden-md-up {
     display: none !important; }
-  .__textRight-md-up {
+  .__textEnd-md-up {
     text-align: right !important; }
-  .__textLeft-md-up {
+  .__textStart-md-up {
     text-align: left !important; }
   .__textCenter-md-up {
     text-align: center !important; }
   .__textJustify-md-up {
-    text-align: justify !important; }
-  .__textNoWrap-md-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 991px) {
-  .__pullRight-md-down {
+  .__pullEnd-md-down {
     float: right !important; }
-  .__pullLeft-md-down {
+  .__pullStart-md-down {
     float: left !important; }
   .__hidden-md-down {
     display: none !important; }
-  .__textRight-md-down {
+  .__textEnd-md-down {
     text-align: right !important; }
-  .__textLeft-md-down {
+  .__textStart-md-down {
     text-align: left !important; }
   .__textCenter-md-down {
     text-align: center !important; }
   .__textJustify-md-down {
-    text-align: justify !important; }
-  .__textNoWrap-md-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 768px) and (max-width: 991px) {
-  .__pullRight-md {
+  .__pullEnd-md {
     float: right !important; }
-  .__pullLeft-md {
+  .__pullStart-md {
     float: left !important; }
   .__hidden-md {
     display: none !important; }
-  .__textRight-md {
+  .__textEnd-md {
     text-align: right !important; }
-  .__textLeft-md {
+  .__textStart-md {
     text-align: left !important; }
   .__textCenter-md {
     text-align: center !important; }
   .__textJustify-md {
-    text-align: justify !important; }
-  .__textNoWrap-md {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 992px) {
-  .__pullRight-lg-up {
+  .__pullEnd-lg-up {
     float: right !important; }
-  .__pullLeft-lg-up {
+  .__pullStart-lg-up {
     float: left !important; }
   .__hidden-lg-up {
     display: none !important; }
-  .__textRight-lg-up {
+  .__textEnd-lg-up {
     text-align: right !important; }
-  .__textLeft-lg-up {
+  .__textStart-lg-up {
     text-align: left !important; }
   .__textCenter-lg-up {
     text-align: center !important; }
   .__textJustify-lg-up {
-    text-align: justify !important; }
-  .__textNoWrap-lg-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 0) and (max-width: 1199px) {
-  .__pullRight-lg-down {
+  .__pullEnd-lg-down {
     float: right !important; }
-  .__pullLeft-lg-down {
+  .__pullStart-lg-down {
     float: left !important; }
   .__hidden-lg-down {
     display: none !important; }
-  .__textRight-lg-down {
+  .__textEnd-lg-down {
     text-align: right !important; }
-  .__textLeft-lg-down {
+  .__textStart-lg-down {
     text-align: left !important; }
   .__textCenter-lg-down {
     text-align: center !important; }
   .__textJustify-lg-down {
-    text-align: justify !important; }
-  .__textNoWrap-lg-down {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 992px) and (max-width: 1199px) {
-  .__pullRight-lg {
+  .__pullEnd-lg {
     float: right !important; }
-  .__pullLeft-lg {
+  .__pullStart-lg {
     float: left !important; }
   .__hidden-lg {
     display: none !important; }
-  .__textRight-lg {
+  .__textEnd-lg {
     text-align: right !important; }
-  .__textLeft-lg {
+  .__textStart-lg {
     text-align: left !important; }
   .__textCenter-lg {
     text-align: center !important; }
   .__textJustify-lg {
-    text-align: justify !important; }
-  .__textNoWrap-lg {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 @media all and (min-width: 1200px) {
-  .__pullRight-xl-up {
+  .__pullEnd-xl-up {
     float: right !important; }
-  .__pullLeft-xl-up {
+  .__pullStart-xl-up {
     float: left !important; }
   .__hidden-xl-up {
     display: none !important; }
-  .__textRight-xl-up {
+  .__textEnd-xl-up {
     text-align: right !important; }
-  .__textLeft-xl-up {
+  .__textStart-xl-up {
     text-align: left !important; }
   .__textCenter-xl-up {
     text-align: center !important; }
   .__textJustify-xl-up {
-    text-align: justify !important; }
-  .__textNoWrap-xl-up {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
-.__pullRight-xl-down {
+.__pullEnd-xl-down {
   float: right !important; }
 
-.__pullLeft-xl-down {
+.__pullStart-xl-down {
   float: left !important; }
 
 .__hidden-xl-down {
   display: none !important; }
 
-.__textRight-xl-down {
+.__textEnd-xl-down {
   text-align: right !important; }
 
-.__textLeft-xl-down {
+.__textStart-xl-down {
   text-align: left !important; }
 
 .__textCenter-xl-down {
@@ -408,26 +379,21 @@ mark {
 .__textJustify-xl-down {
   text-align: justify !important; }
 
-.__textNoWrap-xl-down {
-  white-space: nowrap !important; }
-
 @media all and (min-width: 1200px) {
-  .__pullRight-xl {
+  .__pullEnd-xl {
     float: right !important; }
-  .__pullLeft-xl {
+  .__pullStart-xl {
     float: left !important; }
   .__hidden-xl {
     display: none !important; }
-  .__textRight-xl {
+  .__textEnd-xl {
     text-align: right !important; }
-  .__textLeft-xl {
+  .__textStart-xl {
     text-align: left !important; }
   .__textCenter-xl {
     text-align: center !important; }
   .__textJustify-xl {
-    text-align: justify !important; }
-  .__textNoWrap-xl {
-    white-space: nowrap !important; } }
+    text-align: justify !important; } }
 
 .space {
   display: block;
