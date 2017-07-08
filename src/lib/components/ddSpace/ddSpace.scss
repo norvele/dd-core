@@ -29,14 +29,14 @@ $dd-space-factor: (
 		@if ($_val != null) {
 			@return round($_val * $dd-space-defaultSpace);
 		} @else {
-			$🗑: dd-system-message('Не существует размера "#{$_factor}"');
+			$_: dd-system-message('Не существует размера "#{$_factor}"');
 			@return null;
 		}
 	} @elseif (type_of($_factor) == number and unitless($_factor)) {
 		@return round($_factor * $dd-space-defaultSpace);
 	} @else {
 		@if ($_strict) {
-			$🗑: dd-system-message('Не правильное имя размера "#{$_factor}"');
+			$_: dd-system-message('Не правильное имя размера "#{$_factor}"');
 			@return null;
 		}
 	}
@@ -72,6 +72,7 @@ $dd-space-factor: (
 {
 	.#{$dd-system-classPrefix}space {
 		display: block;
+		height: $dd-space-defaultSpace;
 		@each $_key, $_val in $dd-space-factor {
 			&._#{$_key} {
 				height: dd-space-getSpace($_key);
@@ -84,12 +85,16 @@ $dd-space-factor: (
 {
 	@if (dd-system-componentExist(ddResponsive)) {
 		.#{$dd-system-classPrefix}space {
-			@each $_factorKey, $_factorVal in $dd-space-factor {
-				$_val: dd-space-getSpace($_factorKey);
-				@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
-					@include dd-responsive-media($_breakKey) {
-						&._#{$_factorKey}:not(._#{$dd-space-fixedMod}) {
-							height: $_val * map_get($_breakParams, 'spaceScale');
+			@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
+				@include dd-responsive-media($_breakKey) {
+					height: $dd-space-defaultSpace * map_get($_breakParams, 'spaceScale');
+				}
+				@each $_factorKey, $_factorVal in $dd-space-factor {
+					&._#{$_factorKey}:not(._#{$dd-space-fixedMod}) {
+						@include dd-responsive-media($_breakKey) {
+							&._#{$_factorKey}:not(._#{$dd-space-fixedMod}) {
+								height: dd-space-getSpace($_factorKey) * map_get($_breakParams, 'spaceScale');
+							}
 						}
 					}
 				}

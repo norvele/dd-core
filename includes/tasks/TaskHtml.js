@@ -1,10 +1,6 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import htmlExtend from 'gulp-html-extend';
-import handlebars from 'gulp-handlebars';
-import wrap from 'gulp-wrap';
-import declare from 'gulp-declare';
-import concat from 'gulp-concat';
 
 export default class TaskHtml
 {

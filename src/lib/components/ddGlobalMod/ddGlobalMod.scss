@@ -11,14 +11,8 @@ $dd-globalMod-map: (
 	pullLeft: (
 		float: 'left',
 	),
-	invisible: (
-		visibility: 'hidden',
-	),
 	hidden: (
 		display: 'none',
-	),
-	clear: (
-		clear: 'both',
 	),
 	textRight: (
 		text-align: 'right',
@@ -34,21 +28,6 @@ $dd-globalMod-map: (
 	),
 	textNoWrap: (
 		white-space: 'nowrap',
-	),
-	textLowerCase: (
-		text-transform: 'lowercase',
-	),
-	textUpperCase: (
-		text-transform: 'uppercase',
-	),
-	textCapitalize: (
-		text-transform: 'capitalize',
-	),
-	flexWrap: (
-		flex-wrap: 'wrap',
-	),
-	flexNoWrap: (
-		flex-wrap: 'nowrap',
 	),
 ) !default;
 
