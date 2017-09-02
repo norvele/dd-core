@@ -554,6 +554,9 @@ $dd-grid-noGuttersMod: 'none' !default;
 					justify-content: center;
 					align-items: center;
 				}
+				@include dd-modifier(nowrap, (prefix: $dd-system-classPrefix)) {
+					flex-wrap: nowrap;
+				}
 				@include dd-modifier(layout-auto, (prefix: $dd-system-classPrefix)) {
 					& > * {
 						width: auto;
