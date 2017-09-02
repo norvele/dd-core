@@ -1,49 +1,29 @@
 {
-  "name": "divo-divnoe",
-  "version": "0.1.2",
-  "description": "",
-  "main": "index.js",
-	"dependencies": {
+	"name": "divo-divnoe",
+	"version": "0.1.2",
+	"description": "",
+	"main": "index.js",
+	"dependencies": {},
+	"devDependencies": {
+		"babel-core": "^6.7.7",
 		"babel-polyfill": "^6.23.0",
-		"babel-preset-es2015": "^6.9.0",
+		"babel-preset-es2015": "^6.6.0",
+		"babelify": "^7.3.0",
 		"babelify-es6-polyfill": "^1.0.4",
-		"colors": "^1.1.2",
+		"browserify": "^14.1.0",
 		"gulp": "*",
 		"gulp-autoprefixer": "*",
 		"gulp-babel": "^6.1.2",
-		"gulp-connect": "*",
-		"gulp-cssmin": "*",
-		"gulp-csso": "^3.0.0",
-		"gulp-html-extend": "^1.1.6",
 		"gulp-if": "^2.0.2",
-		"gulp-imagemin": "^3.2.0",
-		"gulp-load-plugins": "*",
 		"gulp-plumber": "*",
-		"gulp-preprocess": "*",
-		"gulp-rollup": "^2.11.0",
 		"gulp-sass": "*",
-		"gulp-sourcemaps": "*",
-		"gulp-streamify": "^1.0.2",
-		"gulp-svg-symbols": "^1.0.0",
-		"gulp-uglify": "^2.1.2",
-		"require-dir": "*"
+		"gulp-streamify": "*",
+		"vinyl-source-stream": "*",
+		"gulp-html-extend": "^1.1.6"
 	},
-	"devDependencies": {
-		"babel-core": "^6.7.7",
-		"babel-preset-es2015": "^6.6.0",
-		"babelify": "^7.3.0",
-		"browserify": "^14.1.0",
-		"gulp": "^3.9.1",
-		"gulp-concat": "^2.6.0",
-		"gulp-declare": "^0.3.0",
-		"gulp-handlebars": "^4.0.0",
-		"gulp-sass-lint": "^1.2.0",
-		"gulp-wrap": "^0.13.0",
-		"vinyl-source-stream": "^1.1.0"
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Konstantin Doroschenko",
-  "license": "ISC"
+	"author": "Konstantin Doroschenko",
+	"license": "ISC"
 }

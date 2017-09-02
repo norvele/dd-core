@@ -1,5 +1,4 @@
 import gulp   from 'gulp'; // Подключаем gulp
-import colors from 'colors'; // Подключаем цвета, для расскрашивания консоли
 import * as tasks from './tasks'; // Подключаем все таски
 
 /**

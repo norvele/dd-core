@@ -1,0 +1,33 @@
+@include dd-system-componentRegister(ddForm-inputRadio, (ddForm-input));
+
+@mixin dd-form-inputRadio-inner()
+{
+	border-radius: 999px;
+	background-color: $dd-form-inputColor;
+}
+
+@mixin dd-form-inputRadio()
+{
+	@include dd-form-input-control((innerSize:$dd-form-height/6));
+
+	& > label {
+
+		&::before {
+			border-radius: 999px;
+		}
+
+		&::after {
+			@include dd-form-inputRadio-inner();
+		}
+	}
+}
+
+@mixin dd-form-inputRadio-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-inputRadio {
+			@include dd-form-inputRadio();
+		}
+	}
+}

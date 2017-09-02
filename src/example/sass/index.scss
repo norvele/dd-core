@@ -1,0 +1,9 @@
+$dd-system-classPrefix: '';
+$dd-system-autoGenerate: false;
+
+@import '../../lib/index';
+
+@include dd-generator();
+
+@import '../components/page/index';
+@import '../components/example/index';

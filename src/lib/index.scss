@@ -1,0 +1,40 @@
+// Подключение всех компонентов
+@import 'components/ddSystem/index';
+@import 'components/ddReset/index';
+@import 'components/ddResponsive/index';
+@import 'components/ddModifier/index';
+@import 'components/ddSpace/index';
+@import 'components/ddColor/index';
+@import 'components/ddGrid/index';
+@import 'components/ddTyp/index';
+@import 'components/ddForm/index';
+@import 'components/ddIcon/index';
+@import 'components/ddDebug/index';
+
+@mixin dd-bootstrap()
+{
+
+}
+
+@mixin dd-generator()
+{
+	@include dd-responsive-bootstrap();
+	//@include dd-reset-generator();
+	//@include dd-modifier-generator();
+	//@include dd-modifier-generatorResponsive();
+	//@include dd-space-generator();
+	//@include dd-space-generatorResponsive();
+	@include dd-grid-generator();
+	//@include dd-typ-generator();
+	//@include dd-form-generator();
+	//@include dd-icon-generator();
+	// Дебаг стили
+	@if ($dd-system-debug) {
+		//@include dd-debug-generator();
+	}
+}
+
+// Генерация стилей
+@if ($dd-system-autoGenerate) {
+	@include dd-generator();
+}

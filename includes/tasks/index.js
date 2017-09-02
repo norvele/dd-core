@@ -1,13 +1,7 @@
-import TaskHtml from './TaskHtml';
 import TaskSass from './TaskSass';
-import TaskJs   from './TaskJs';
-//import TaskImgStatic   from './TaskImgStatic';
-//import TaskImgSprite   from './TaskImgSprite';
-import TaskSvgSprite   from './TaskSvgSprite';
-import TaskCopy   from './TaskCopy';
-import TaskStyleTest   from './TaskStyleTest';
-import TaskStyleLint from './TaskStyleLint';
-// import TaskPicMin   from './TaskPicMin';
-// import TaskStaticMin   from './TaskStaticMin';
+import TaskJs from './TaskJs';
+import TaskCopy from './TaskCopy';
+import TaskStyleTest from './TaskStyleTest';
+import TaskHtml from './TaskHtml';
 
-export {TaskHtml, TaskSass, TaskJs, /*TaskImgStatic, TaskImgSprite,*/ TaskSvgSprite, TaskCopy, TaskStyleTest, TaskStyleLint};
+export {TaskSass, TaskJs, TaskCopy, TaskStyleTest, TaskHtml};

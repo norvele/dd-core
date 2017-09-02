@@ -1,0 +1,120 @@
+@include dd-system-componentRegister(ddForm-button, (ddForm, ddColor));
+
+@mixin dd-form-button-variant($_color)
+{
+	background-color: $_color;
+	border-color: mix(#000, $_color, 10%);
+	color: dd-color-contrast($_color);
+	box-shadow: 0 1px 2px 0 rgba(mix(#000, $_color, 50%), 0.15);
+
+	&:hover {
+		background-color: mix(#000, $_color, 3%);
+	}
+
+	&:active, &.-active {
+		box-shadow: inset 0 2px 5px rgba(#000, 0.1);
+		background-color: mix(#000, $_color, 10%);
+	}
+}
+
+@mixin dd-form-button-variantMods()
+{
+	@if (dd-system-componentExist(ddColor)) {
+		@each $_name, $_color in $dd-color-palette {
+			&._#{$_name} {
+				@include dd-form-button-variant($_color);
+			}
+		}
+	}
+}
+
+@mixin dd-form-button-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-button {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			box-sizing: border-box;
+			text-align: center;
+			padding: _dd-form-paddingVertical() _dd-form-getPaddingHorizontal()/4*3;
+			font-size: $dd-form-fontSize;
+			line-height: $dd-form-lineHeight;
+			min-height: $dd-form-height;
+			text-decoration: none;
+			border-radius: $dd-form-borderRadius;
+			border: 1px solid;
+			border-bottom-width: 2px;
+			vertical-align: top;
+			user-select: none;
+			cursor: pointer;
+			transition: background 0.2s, box-shadow 0.2s;
+
+			& > * {
+				flex-shrink: 0;
+				flex-grow: 0;
+				flex-basis: auto;
+				margin: 0 _dd-form-getPaddingHorizontal()/4;
+			}
+
+			&-icon {
+				display: inline-block;
+				line-height: 1;
+				width: $dd-form-fontSize * $dd-form-lineHeight;
+				height: $dd-form-fontSize * $dd-form-lineHeight;
+				fill: currentColor;
+
+				& > * {
+					fill: currentColor;
+					max-width: 100%;
+					max-height: 100%;
+				}
+			}
+
+			&._fluid {
+				width: 100%;
+			}
+
+			&._toggle {
+
+				& > input {
+					display: none;
+				}
+			}
+
+			&._sort {
+
+				& > input {
+					display: none;
+				}
+
+				&::before {
+					//content: '';
+					margin-right: 0.3em;
+				}
+
+				&.-desc {
+
+					&::before {
+						content: '↓';
+					}
+				}
+
+				&.-asc {
+
+					&::before {
+						content: '↑';
+					}
+				}
+			}
+
+			&._circle {
+				border-radius: 9999px;
+			}
+
+			@include dd-form-button-variant(#fff);
+			@include dd-form-button-variantMods();
+		}
+	}
+}

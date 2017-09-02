@@ -1,0 +1,18 @@
+@import 'testKit/index';
+
+// Отключаем вывод предупреждений библиотеки
+$dd-system-debug: false;
+// Отключаем генерацию
+$dd-system-autoGenerate: false;
+
+// Подключаем библиотеку
+@import '../index';
+
+// Подключаем тесты
+@import 'ddHelpers';
+@import 'ddColor';
+@import 'ddSpace';
+@import 'ddResponsive';
+
+// Print result
+@include test-output();

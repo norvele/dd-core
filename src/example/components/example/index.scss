@@ -1,0 +1,26 @@
+.example {
+
+	&-containerInner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		background-color: #8fccff;
+		min-height: 50px;
+		color: #fff;
+	}
+
+	&-modifierTest {
+		@include dd-grid-area();
+
+		&-item {
+			width: 20%;
+			padding: 5px;
+			background-color: #eee;
+			@include dd-modifier(active) {
+				background-color: #68477a;
+				color: #fff;
+			}
+		}
+	}
+}

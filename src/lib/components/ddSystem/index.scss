@@ -1,0 +1,114 @@
+// DivoDivnoe System
+
+@import '../ddUtil/index';
+
+$_dd-system-components: (ddSystem, ddUtil);
+$dd-system-classPrefix: 'dd-' !default;
+$dd-system-debug: true !default;
+$dd-system-autoGenerate: true !default;
+$dd-system-paths: (
+	root: '../',
+) !default;
+
+@function _dd-system-message($_message, $_type: 'warn')
+{
+	@if ($dd-system-debug) {
+		@if ($_type == 'warn') {
+			@warn $_message;
+		} @elseif ($_type == 'error') {
+			@error $_message;
+		} @else {
+			@debug $_message;
+		}
+	}
+	@return null;
+}
+
+@mixin dd-system-message($_message, $_type: 'warn')
+{
+	$_: _dd-system-message($_message, $_type);
+}
+
+@function dd-system-message($_message, $_type: 'warn')
+{
+	@return _dd-system-message($_message, $_type);
+}
+
+@function dd-system-componentListOfMissing($_components...)
+{
+	$_notFoundComponents: ();
+	@each $_component in $_components {
+		@if ((null == index($_dd-system-components, $_component))) {
+			$_notFoundComponents: append($_notFoundComponents, $_component);
+		}
+	}
+	@return $_notFoundComponents;
+}
+
+@function dd-system-componentExist($_components, $_message: true)
+{
+	$_result: true;
+	@if (type_of($_components) != list) {
+		$_components: ($_components);
+	}
+	@each $_component in $_components {
+		@if ((null == index($_dd-system-components, $_component))) {
+			$_result: false;
+		}
+	}
+	@if ($_result == false) {
+		@if ($_message == true) {
+			$_missing: dd-system-componentListOfMissing($_components...);
+			$_: dd-system-message('Не найдены следующие зависимости: #{$_missing}', warn);
+		}
+		@if (type_of($_message) == string) {
+			$_: dd-system-message($_message, warn);
+		}
+	}
+	@return $_result;
+}
+
+@function dd-system-componentRegister($_component, $_dependencies: ())
+{
+	@if (dd-system-componentExist($_component, false)) {
+		$_: dd-system-message('Компонент #{$_component} уже существует', error);
+		@return false;
+	}
+	$_dependenciesNotExists: dd-system-componentListOfMissing($_dependencies...);
+	@if (length($_dependenciesNotExists) > 0) {
+		$_: dd-system-message('Для #{$_component} не найдены следующие зависимости: #{$_dependenciesNotExists}', error);
+		@return true;
+	}
+	$_dd-system-components: append($_dd-system-components, $_component) !global;
+	@return true;
+}
+
+@mixin dd-system-componentRegister($_component, $_dependencies: ())
+{
+	$_: dd-system-componentRegister($_component, $_dependencies);
+}
+
+@function dd-system-path($_prefix, $_path)
+{
+	@return #{map_get($dd-system-paths, $_prefix)}#{$_path};
+}
+
+// $_component: grid, responsive, etc...
+// $_nodes: list of elements or one element, for example: (size, small, 6, lg)
+// $_mod: __ or _
+// $_prefix: custom prefix
+@function dd-system-name($_component, $_nodes: null, $_mod: null, $_prefix: $dd-system-classPrefix)
+{
+	$_prefix: dd-util-assertRule($_prefix, '');
+	$_result: '';
+	@if ($_mod != null) {
+		$_result: $_mod + $_prefix;
+	} @else {
+		$_result: $_prefix + $_component;
+		@if ($_nodes != null) {
+			$_result: $_result + '-';
+		}
+	}
+	$_result: $_result + dd-util-implode($_nodes, '-');
+	@return $_result;
+}

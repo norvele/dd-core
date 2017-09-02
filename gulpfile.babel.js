@@ -6,14 +6,13 @@ var roots = {
 };
 
 var collector = new Collector({
-
 	parts: [
 		{
 			name: 'lib',
 			tasks: [
 				{
 					type: 'sass',
-					src: `${roots.src}/lib/main.scss`,
+					src: `${roots.src}/lib/index.scss`,
 					dest: `${roots.dest}/lib/css/`,
 					watch: [
 						`${roots.src}/lib/**/*.scss`,
@@ -21,72 +20,61 @@ var collector = new Collector({
 				},
 				{
 					type: 'js',
-					src: `${roots.src}/lib/main.js`,
+					src: `${roots.src}/lib/index.js`,
 					dest: `${roots.dest}/lib/js/`,
-					watch: `${roots.src}/lib/components/**/*.js`,
+					watch: [
+						`${roots.src}/lib/components/**/*.js`,
+					],
 				},
-				{
-					type: 'copy',
-					name: 'lib-copyImages',
-					src: `${roots.src}/lib/components/**/*.svg`,
-					dest: `${roots.dest}/lib/img/`,
-					watch: `${roots.src}/lib/components/**/*.svg`
-				},
-				{
+				/*{
 					type: 'styleTest',
-					src: `${roots.src}/lib/tests/main.scss`,
+					src: `${roots.src}/lib/tests/index.scss`,
 					watch: [
 						`${roots.src}/lib/components/!**!/!*.scss`,
-						`${roots.src}/lib/tests/!**!/!*.*`
+						`${roots.src}/lib/tests/!**!/!*.*`,
 					],
-				},
-				{
+				},*/
+				/*{
 					type: 'styleLint',
-					src: `${roots.src}/lib/**/*.scss`,
+					src: `${roots.src}/lib/!**!/!*.scss`,
 					watch: [
-						`${roots.src}/lib/**/*.scss`,
+						`${roots.src}/lib/!**!/!*.scss`,
 					],
-				},
+				},*/
 			],
 		},
 		{
 			name: 'example',
 			tasks: [
 				{
-					type: 'html',
-					src: `${roots.src}/example/*.html`,
-					dest: `${roots.dest}/example/`,
-					watch: `${roots.src}/example/**/*.html`,
-				},
-				{
 					type: 'sass',
-					src: `${roots.src}/example/sass/main.scss`,
+					src: `${roots.src}/example/sass/index.scss`,
 					dest: `${roots.dest}/example/css/`,
 					watch: [
-						`${roots.src}/example/sass/**/*.*`,
+						`${roots.src}/example/**/*.scss`,
 						`${roots.src}/lib/**/*.scss`,
 					],
 				},
 				{
 					type: 'js',
-					src: `${roots.src}/example/js/main.js`,
+					src: `${roots.src}/example/js/index.js`,
 					dest: `${roots.dest}/example/js/`,
 					watch: [
-						`${roots.src}/example/js/**/*.*`,
-						`${roots.src}/lib/**/*.js`,
+						`${roots.src}/example/**/*.js`,
+						`${roots.src}/lib/components/**/*.js`
 					],
 				},
 				{
-					type: 'copy',
-					name: 'example-copyLibImages',
-					src: `${roots.src}/lib/components/**/*.svg`,
-					dest: `${roots.dest}/example/img/`,
-					watch: `${roots.src}/lib/components/**/*.svg`
+					type: 'html',
+					src: `${roots.src}/example/html/*.html`,
+					dest: `${roots.dest}/example/`,
+					watch: [
+						`${roots.src}/example/**/*.html`,
+					],
 				},
 			],
-		}
+		},
 	],
-
 });
 
 collector.run();

@@ -1,0 +1,87 @@
+@include dd-system-componentRegister(ddTyp);
+
+// Стандартный размер шрифта
+$dd-typ-fontSize: 16px !default;
+// Стандартный line-height текста
+$dd-typ-lineHeight: 1.5 !default;
+// Стандартный цвет текста
+@if (dd-system-componentExist(ddColor)) {
+	$dd-typ-color: dd-color-palette($dd-color-default) !default !global;
+} @else {
+	$dd-typ-color: #333333 !default !global;
+}
+// Вертикальный ритм
+$dd-typ-rhythm: 1em * $dd-typ-lineHeight !default;
+// Название для контейнера типографики
+$dd-typ-blockMod: block !default;
+
+@mixin dd-typ-node($_margin: false) {
+	$_selector: &;
+	&.#{$dd-system-classPrefix}typ {
+		@content;
+	}
+	@at-root {
+		.#{dd-system-name(typ, $_selector)} {
+			@content;
+		}
+		.#{dd-system-name(typ, $dd-typ-blockMod)} & {
+			@content;
+			@if ($_margin != false) {
+				@if ($_margin == true) {
+					margin-bottom: $dd-typ-rhythm;
+				} @else {
+					margin-bottom: $_margin;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@import '_common';
+@import 'components/a';
+@import 'components/abbr';
+@import 'components/blockquote';
+@import 'components/code';
+@import 'components/del';
+@import 'components/em';
+@import 'components/h';
+@import 'components/img';
+@import 'components/ins';
+@import 'components/mark';
+@import 'components/ol';
+@import 'components/pre';
+@import 'components/s';
+@import 'components/small';
+@import 'components/strong';
+@import 'components/u';
+@import 'components/ul';
+@import 'components/p';
+// figure, вставка изображений, видео, графиков, кода с подписью
+// details, оформить нативные выпадашки
+
+@mixin dd-typ-generator()
+{
+	@include dd-typ-common-generator();
+	@include dd-typ-a-generator();
+	@include dd-typ-abbr-generator();
+	@include dd-typ-blockquote-generator();
+	@include dd-typ-code-generator();
+	@include dd-typ-del-generator();
+	@include dd-typ-em-generator();
+	@include dd-typ-h-generator();
+	@include dd-typ-h-generatorResponsive();
+	@include dd-typ-img-generator();
+	@include dd-typ-ins-generator();
+	@include dd-typ-mark-generator();
+	@include dd-typ-ol-generator();
+	@include dd-typ-p-generator();
+	@include dd-typ-pre-generator();
+	@include dd-typ-s-generator();
+	@include dd-typ-small-generator();
+	@include dd-typ-strong-generator();
+	@include dd-typ-u-generator();
+	@include dd-typ-ul-generator();
+}

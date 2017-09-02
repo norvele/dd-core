@@ -1,0 +1,118 @@
+// DivoDivnoe Modifier
+
+@include dd-system-componentRegister(ddModifier);
+
+$dd-modifier-map: (
+	pullEnd: (
+		float: 'right',
+	),
+	pullStart: (
+		float: 'left',
+	),
+	hidden: (
+		display: 'none',
+	),
+	textEnd: (
+		text-align: 'right',
+	),
+	textStart: (
+		text-align: 'left',
+	),
+	textCenter: (
+		text-align: 'center',
+	),
+	textJustify: (
+		text-align: 'justify',
+	),
+) !default;
+
+$dd-modifier-mapRtl: (
+	pullEnd: (
+		float: 'left',
+	),
+	pullStart: (
+		float: 'right',
+	),
+	textEnd: (
+		text-align: 'left',
+	),
+	textStart: (
+		text-align: 'right',
+	),
+) !default;
+
+@mixin dd-modifier-renderParams($_params)
+{
+	@each $_prop, $_value in $_params {
+		#{$_prop}: #{$_value} !important;
+	}
+}
+
+@mixin dd-modifier($_name, $_params: ())
+{
+	$_p: dd-util-assertSchema($_params, (
+		mod: _,
+		prefix: '',
+		component: modifier,
+	));
+	$_mod: map_get($_p, mod);
+	$_prefix: map_get($_p, prefix);
+	$_component: map_get($_p, component);
+
+	&.#{dd-system-name($_component, $_name, $_mod, $_prefix)} {
+		@content;
+	}
+	@if (dd-system-componentExist(ddResponsive)) {
+		@each $_intervalName, $_interval in $dd-responsive-intervals {
+			&.#{dd-system-name($_component, ($_name, $_intervalName), $_mod, $_prefix)} {
+				@include dd-responsive-media($_intervalName) {
+					@content;
+				}
+			}
+			&.#{dd-system-name($_component, ($_name, $_intervalName, up), $_mod, $_prefix)} {
+				@include dd-responsive-media(($_intervalName, infinite)) {
+					@content;
+				}
+			}
+			&.#{dd-system-name($_component, ($_name, $_intervalName, down), $_mod, $_prefix)} {
+				@include dd-responsive-media((0, $_intervalName)) {
+					@content;
+				}
+			}
+		}
+	}
+}
+
+@mixin dd-modifier-generator()
+{
+	@each $_key, $_params in $dd-modifier-map {
+		.#{dd-system-name(modifier, $_key, __)} {
+			@include dd-modifier-renderParams($_params);
+		}
+	}
+}
+
+@mixin dd-modifier-generatorResponsive()
+{
+	@if (dd-system-componentExist(ddResponsive)) {
+		@each $_intervalName, $_interval in $dd-responsive-intervals {
+			@each $_key, $_params in $dd-modifier-map {
+				.#{dd-system-name(modifier, ($_key, $_intervalName), __)} {
+					@include dd-responsive-media($_intervalName) {
+						@include dd-modifier-renderParams($_params);
+					}
+				}
+				.#{dd-system-name(modifier, ($_key, $_intervalName, up), __)} {
+					@include dd-responsive-media(($_intervalName, infinite)) {
+						@include dd-modifier-renderParams($_params);
+					}
+				}
+				.#{dd-system-name(modifier, ($_key, $_intervalName, down), __)} {
+					@include dd-responsive-media((0, $_intervalName)) {
+						@include dd-modifier-renderParams($_params);
+					}
+				}
+			}
+		}
+	}
+}

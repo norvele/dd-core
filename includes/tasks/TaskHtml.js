@@ -9,13 +9,6 @@ export default class TaskHtml
 		gulp.task(config.name, () => {
 			gulp.src(config.src)
 				.pipe(plumber())
-				/*.pipe(handlebars())
-				.pipe(wrap('Handlebars.template(<%= contents %>)'))
-				.pipe(declare({
-					namespace: 'app.templates',
-					noRedeclare: true, // Avoid duplicate declarations
-				}))
-				.pipe(concat('templates.js'))*/
 				.pipe(htmlExtend())
 				.pipe(gulp.dest(config.dest));
 		});

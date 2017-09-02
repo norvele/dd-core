@@ -3,9 +3,6 @@ import Collector from '../Collector';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
-import sourcemaps from 'gulp-sourcemaps';
-import csso from 'gulp-csso';
-import gulpif from 'gulp-if';
 
 export default class TaskSass
 {
@@ -15,7 +12,11 @@ export default class TaskSass
 			gulp.src(config.src)
 				.pipe(plumber())
 				//.pipe(sourcemaps.init())
-				.pipe(sass())
+				.pipe(sass({
+					outputStyle: 'expanded',
+					indentType: 'tab',
+					indentWidth: 1,
+				}))
 				.pipe(autoprefixer({
 					browsers: [
 						'safari >= 6',
@@ -26,7 +27,7 @@ export default class TaskSass
 						'Opera >= 32'
 					]
 				}))
-				.pipe(gulpif(Collector.env == 'prod', csso()))
+				//.pipe(gulpif(Collector.env == 'prod', csso()))
 				//.pipe(sourcemaps.write())
 				.pipe(gulp.dest(config.dest));
 		});

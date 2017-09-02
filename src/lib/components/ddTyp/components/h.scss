@@ -6,7 +6,7 @@ $dd-typ-h-fontSizes: (3em, 2.25em, 1.5em, 1.3em, 1.12em, 1em) !default;
 $dd-typ-h-responsiveMinFontSize: 1em !default;
 
 @if (dd-system-componentExist(ddResponsive)) {
-	$dd-responsive-breakpoints: dd-responsive-normalizeBreakpoints($dd-responsive-breakpoints, (
+	$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
 		typHScale: 1,
 	));
 }
@@ -65,7 +65,7 @@ $dd-typ-h-responsiveMinFontSize: 1em !default;
 @mixin dd-typ-h-generatorResponsive()
 {
 	@if (dd-system-componentExist(ddResponsive)) {
-		@each $_breakKey, $_breakParams in $dd-responsive-breakpoints {
+		@each $_breakKey, $_breakParams in $dd-responsive-intervals {
 			@include dd-responsive-media($_breakKey) {
 				@for $_i from 1 through length($dd-typ-h-fontSizes) {
 					$_size: nth($dd-typ-h-fontSizes, $_i) * map_get($_breakParams, 'typHScale');
