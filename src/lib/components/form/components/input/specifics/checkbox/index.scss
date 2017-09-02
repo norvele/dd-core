@@ -1,0 +1,28 @@
+@include dd-system-componentRegister(dd-form-inputCheckbox, (dd-form, dd-form-input));
+
+@mixin dd-form-inputCheckbox-inner()
+{
+	content: '✔';
+}
+
+@mixin dd-form-inputCheckbox()
+{
+	@include dd-form-input-control((innerSize:$dd-form-height/3));
+
+	& > label {
+
+		&::after {
+			@include dd-form-inputCheckbox-inner();
+		}
+	}
+}
+
+@mixin dd-form-inputCheckbox-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-inputCheckbox {
+			@include dd-form-inputCheckbox();
+		}
+	}
+}

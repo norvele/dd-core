@@ -1,0 +1,24 @@
+@include dd-system-componentRegister(dd-typ-a, (dd-typ));
+
+$dd-typ-a-color: #34a1cf !default;
+$dd-typ-a-colorHover: #cf3434 !default;
+$dd-typ-a-colorVisited: #9534cf !default;
+
+@mixin dd-typ-a-generator()
+{
+	a {
+		@include dd-typ-node() {
+			color: $dd-typ-a-color;
+			text-decoration: underline;
+
+			&:hover {
+				color: $dd-typ-a-colorHover;
+				text-decoration: none;
+			}
+
+			&:visited {
+				color: $dd-typ-a-colorVisited;
+			}
+		}
+	}
+}

@@ -1,0 +1,42 @@
+// DivoDivnoe Debug
+
+@include dd-system-componentRegister(dd-debug);
+
+@mixin dd-debug-generator()
+{
+	@if (dd-system-componentExist(dd-responsive)) {
+
+		html {
+
+			&::after {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				padding: 5px;
+				pointer-events: none;
+				background-color: #fff;
+				color: #000;
+				opacity: 1;
+				transition: opacity 0.2s;
+
+				@each $_key, $_params in $dd-responsive-intervals {
+					@include dd-responsive-media(($_key)) {
+						$_min: dd-responsive-minWidth($_key);
+						$_max: '∞';
+						@if (dd-responsive-maxWidth($_key)) {
+							$_max: dd-responsive-maxWidth($_key);
+						}
+						content: '#{$_key} (#{$_min} - #{$_max})';
+					}
+				}
+			}
+
+			&:active {
+
+				&::after {
+					opacity: 0;
+				}
+			}
+		}
+	}
+}

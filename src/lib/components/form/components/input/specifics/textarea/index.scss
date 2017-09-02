@@ -1,0 +1,47 @@
+@include dd-system-componentRegister(dd-form-inputTextarea, (dd-form-input));
+
+@mixin dd-form-inputTextarea-stateVariant($_color)
+{
+	& > textarea {
+		border-color: $_color;
+	}
+}
+
+@mixin dd-form-inputTextarea-stateVariantMods()
+{
+	@if (dd-system-componentExist(dd-color)) {
+		@each $_name, $_color in $dd-color-state {
+			&.-#{$_name} {
+				@include dd-form-inputTextarea-stateVariant($_color);
+			}
+		}
+	}
+}
+
+@mixin dd-form-inputTextarea()
+{
+	display: inline-block;
+	max-width: 100%;
+
+	& > textarea {
+		@include dd-form-input();
+		min-height: 150px;
+		max-width: 100%;
+	}
+
+	@include dd-form-inputTextarea-stateVariantMods();
+}
+
+@mixin dd-form-inputTextarea-generator()
+{
+	.#{$dd-system-classPrefix}form {
+
+		&-inputTextarea {
+			@include dd-form-inputTextarea();
+
+			&._fluid {
+				width: 100%;
+			}
+		}
+	}
+}

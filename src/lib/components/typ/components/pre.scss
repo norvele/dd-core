@@ -1,0 +1,11 @@
+@include dd-system-componentRegister(dd-typ-pre, (dd-typ));
+
+@mixin dd-typ-pre-generator()
+{
+	pre {
+		@include dd-typ-node() {
+			white-space: pre;
+			tab-size: 4;
+		}
+	}
+}

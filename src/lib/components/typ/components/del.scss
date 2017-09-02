@@ -1,0 +1,10 @@
+@include dd-system-componentRegister(dd-typ-del, (dd-typ));
+
+@mixin dd-typ-del-generator()
+{
+	del {
+		@include dd-typ-node() {
+			text-decoration: line-through;
+		}
+	}
+}

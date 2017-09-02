@@ -1,0 +1,49 @@
+@include dd-system-componentRegister(dd-form);
+
+// Параметры форм
+$dd-form-fontFamily: inherit !default;
+$dd-form-fontSize: 1em !default;
+$dd-form-lineHeight: 1.2 !default;
+$dd-form-height: 2.5em !default;
+$dd-form-borderRadius: 3px !default;
+$dd-form-color: #333 !default;
+$dd-form-placeholderColor: mix(#fff, $dd-form-color, 80%) !default;
+$dd-form-backgroundColor: #fff !default;
+$dd-form-borderColor: #e6e6e6 !default;
+
+@function _dd-form-getPadding()
+{
+	@return ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) / 2;
+}
+
+@function _dd-form-paddingVertical()
+{
+	@return _dd-form-getPadding();
+}
+
+@function _dd-form-getPaddingHorizontal()
+{
+	@return _dd-form-getPadding() * 1.5;
+}
+
+@import 'components/message/index';
+@import 'components/button/index';
+@import 'components/field/index';
+@import 'components/input/index';
+@import 'components/input/specifics/text/index';
+@import 'components/input/specifics/textarea/index';
+@import 'components/input/specifics/select/index';
+@import 'components/input/specifics/checkbox/index';
+@import 'components/input/specifics/radio/index';
+
+@mixin dd-form-generator()
+{
+	@include dd-form-message-generator();
+	@include dd-form-field-generator();
+	@include dd-form-button-generator();
+	@include dd-form-inputText-generator();
+	@include dd-form-inputTextarea-generator();
+	@include dd-form-inputSelect-generator();
+	@include dd-form-inputCheckbox-generator();
+	@include dd-form-inputRadio-generator();
+}
