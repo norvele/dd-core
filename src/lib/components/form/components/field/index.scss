@@ -9,7 +9,7 @@
 {
 	@if (dd-system-componentExist(dd-color)) {
 		@each $_name, $_color in $dd-color-state {
-			&.-#{$_name} {
+			&.#{dd-system-name(form, $_name, '-')} {
 				@include dd-form-field-messageVariant($_color);
 			}
 		}
@@ -18,7 +18,7 @@
 
 @mixin dd-form-field-stateVariant($_color)
 {
-	.#{$dd-system-classPrefix}form-field-label {
+	.#{dd-system-name(form, (field, label))} {
 		color: $_color;
 	}
 }
@@ -27,7 +27,7 @@
 {
 	@if (dd-system-componentExist(dd-color)) {
 		@each $_name, $_color in $dd-color-state {
-			&.-#{$_name} {
+			&.#{dd-system-name(form, $_name, '-')} {
 				@include dd-form-field-stateVariant($_color);
 			}
 		}
@@ -36,23 +36,19 @@
 
 @mixin dd-form-field-generator()
 {
-	.#{$dd-system-classPrefix}form {
+	.#{dd-system-name(form, field)} {
+		@include dd-form-field-stateVariantMods();
+	}
 
-		&-field {
+	.#{dd-system-name(form, (field, label))} {
+		display: block;
+		font-size: $dd-form-fontSize;
+		margin-bottom: 0.5em;
+	}
 
-			&-label {
-				display: block;
-				font-size: $dd-form-fontSize;
-				margin-bottom: 0.5em;
-			}
-
-			&-message {
-				padding: 5px 0;
-				font-size: $dd-form-fontSize;
-				@include dd-form-field-messageVariantMods();
-			}
-
-			@include dd-form-field-stateVariantMods();
-		}
+	.#{dd-system-name(form, (field, message))} {
+		padding: 5px 0;
+		font-size: $dd-form-fontSize;
+		@include dd-form-field-messageVariantMods();
 	}
 }

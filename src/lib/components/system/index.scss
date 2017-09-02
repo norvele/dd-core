@@ -95,7 +95,7 @@ $dd-system-paths: (
 
 // $_component: grid, responsive, etc...
 // $_nodes: list of elements or one element, for example: (size, small, 6, lg)
-// $_mod: __ or _
+// $_mod: __ or _ or -
 // $_prefix: custom prefix
 @function dd-system-name($_component, $_nodes: null, $_mod: null, $_prefix: $dd-system-classPrefix)
 {

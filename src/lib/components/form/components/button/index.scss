@@ -30,91 +30,87 @@
 
 @mixin dd-form-button-generator()
 {
-	.#{$dd-system-classPrefix}form {
+	.#{dd-system-name(form, button)} {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		text-align: center;
+		padding: _dd-form-paddingVertical() _dd-form-getPaddingHorizontal()/4*3;
+		font-size: $dd-form-fontSize;
+		line-height: $dd-form-lineHeight;
+		min-height: $dd-form-height;
+		text-decoration: none;
+		border-radius: $dd-form-borderRadius;
+		border: 1px solid;
+		border-bottom-width: 2px;
+		vertical-align: top;
+		user-select: none;
+		cursor: pointer;
+		transition: background 0.2s, box-shadow 0.2s;
 
-		&-button {
-			display: inline-flex;
-			justify-content: center;
-			align-items: center;
-			box-sizing: border-box;
-			text-align: center;
-			padding: _dd-form-paddingVertical() _dd-form-getPaddingHorizontal()/4*3;
-			font-size: $dd-form-fontSize;
-			line-height: $dd-form-lineHeight;
-			min-height: $dd-form-height;
-			text-decoration: none;
-			border-radius: $dd-form-borderRadius;
-			border: 1px solid;
-			border-bottom-width: 2px;
-			vertical-align: top;
-			user-select: none;
-			cursor: pointer;
-			transition: background 0.2s, box-shadow 0.2s;
+		@include dd-form-button-variant(#fff);
+		@include dd-form-button-variantMods();
 
-			& > * {
-				flex-shrink: 0;
-				flex-grow: 0;
-				flex-basis: auto;
-				margin: 0 _dd-form-getPaddingHorizontal()/4;
+		& > * {
+			flex-shrink: 0;
+			flex-grow: 0;
+			flex-basis: auto;
+			margin: 0 _dd-form-getPaddingHorizontal()/4;
+		}
+
+		&.#{dd-system-name(form, fluid, _)} {
+			width: 100%;
+		}
+
+		&.#{dd-system-name(form, toggle, _)} {
+
+			& > input {
+				display: none;
+			}
+		}
+
+		&.#{dd-system-name(form, sort, _)} {
+
+			& > input {
+				display: none;
 			}
 
-			&-icon {
-				display: inline-block;
-				line-height: 1;
-				width: $dd-form-fontSize * $dd-form-lineHeight;
-				height: $dd-form-fontSize * $dd-form-lineHeight;
-				fill: currentColor;
-
-				& > * {
-					fill: currentColor;
-					max-width: 100%;
-					max-height: 100%;
-				}
+			&::before {
+				margin-right: 0.3em;
 			}
 
-			&._fluid {
-				width: 100%;
-			}
-
-			&._toggle {
-
-				& > input {
-					display: none;
-				}
-			}
-
-			&._sort {
-
-				& > input {
-					display: none;
-				}
+			&.#{dd-system-name(form, desc, '-')} {
 
 				&::before {
-					//content: '';
-					margin-right: 0.3em;
-				}
-
-				&.-desc {
-
-					&::before {
-						content: '↓';
-					}
-				}
-
-				&.-asc {
-
-					&::before {
-						content: '↑';
-					}
+					content: '↓';
 				}
 			}
 
-			&._circle {
-				border-radius: 9999px;
-			}
+			&.#{dd-system-name(form, asc, '-')} {
 
-			@include dd-form-button-variant(#fff);
-			@include dd-form-button-variantMods();
+				&::before {
+					content: '↑';
+				}
+			}
+		}
+
+		&.#{dd-system-name(form, circle, _)} {
+			border-radius: 9999px;
+		}
+	}
+
+	.#{dd-system-name(form, (button, icon))} {
+		display: inline-block;
+		line-height: 1;
+		width: $dd-form-fontSize * $dd-form-lineHeight;
+		height: $dd-form-fontSize * $dd-form-lineHeight;
+		fill: currentColor;
+
+		& > * {
+			fill: currentColor;
+			max-width: 100%;
+			max-height: 100%;
 		}
 	}
 }
