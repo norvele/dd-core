@@ -5,17 +5,14 @@ $dd-typ-fontSize: 16px !default;
 // Стандартный line-height текста
 $dd-typ-lineHeight: 1.5 !default;
 // Стандартный цвет текста
-@if (dd-system-componentExist(dd-color)) {
-	$dd-typ-color: dd-color-palette($dd-color-default) !default !global;
-} @else {
-	$dd-typ-color: #333333 !default !global;
-}
-// Вертикальный ритм
-$dd-typ-rhythm: 1em * $dd-typ-lineHeight !default;
+$dd-typ-color: #333333 !default;
 // Название для контейнера типографики
 $dd-typ-blockMod: block !default;
+// Вертикальный ритм
+$_dd-typ-rhythm: 1em * $dd-typ-lineHeight;
 
-@mixin dd-typ-node($_margin: false) {
+@mixin dd-typ-node($_margin: false)
+{
 	$_selector: &;
 	&.#{$dd-system-classPrefix}typ {
 		@content;
@@ -28,7 +25,7 @@ $dd-typ-blockMod: block !default;
 			@content;
 			@if ($_margin != false) {
 				@if ($_margin == true) {
-					margin-bottom: $dd-typ-rhythm;
+					margin-bottom: $_dd-typ-rhythm;
 				} @else {
 					margin-bottom: $_margin;
 				}
@@ -38,6 +35,13 @@ $dd-typ-blockMod: block !default;
 			}
 		}
 	}
+}
+
+@function dd-typ-bootstrap()
+{
+	// Вертикальный ритм
+	$_dd-typ-rhythm: 1em * $dd-typ-lineHeight !global;
+	@return true;
 }
 
 @import '_common';

@@ -5,7 +5,7 @@
 	blockquote {
 		@include dd-typ-node(true) {
 			border-left: 5px solid #eee;
-			padding-left: calc(#{$dd-typ-rhythm} - 5px);
+			padding-left: calc(#{$_dd-typ-rhythm} - 5px);
 
 			& > p:last-child {
 				margin-bottom: 0;

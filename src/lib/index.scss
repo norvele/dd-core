@@ -18,23 +18,28 @@
 
 @mixin dd-generator()
 {
-	@include dd-bootstrap();
-	//@include dd-reset-generator();
-	//@include dd-modifier-generator();
-	//@include dd-modifier-generatorResponsive();
-	//@include dd-space-generator();
-	//@include dd-space-generatorResponsive();
+	@include dd-reset-generator();
+	@include dd-modifier-generator();
+	@include dd-modifier-generatorResponsive();
+	@include dd-space-generator();
+	@include dd-space-generatorResponsive();
 	@include dd-grid-generator();
-	//@include dd-typ-generator();
-	//@include dd-form-generator();
-	//@include dd-icon-generator();
+	@include dd-typ-generator();
+	@include dd-form-generator();
+	@include dd-icon-generator();
 	// Дебаг стили
 	@if ($dd-system-debug) {
-		//@include dd-debug-generator();
+		@include dd-debug-generator();
 	}
 }
 
-// Генерация стилей
-@if ($dd-system-autoGenerate) {
+@mixin dd-run()
+{
+	@include dd-bootstrap();
 	@include dd-generator();
+}
+
+// Генерация стилей
+@if ($dd-system-autoRun) {
+	@include dd-run();
 }

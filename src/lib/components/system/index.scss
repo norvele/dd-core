@@ -5,7 +5,7 @@
 $_dd-system-components: (dd-system, dd-util);
 $dd-system-classPrefix: 'dd-' !default;
 $dd-system-debug: true !default;
-$dd-system-autoGenerate: true !default;
+$dd-system-autoRun: true !default;
 $dd-system-paths: (
 	root: '../',
 ) !default;

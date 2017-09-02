@@ -25,11 +25,11 @@
 			background-image:
 				linear-gradient(#aacee6 1px, transparent 1px),
 				linear-gradient(to right, #aacee6 1px, transparent 1px),
-				linear-gradient(to right, transparent $dd-typ-rhythm, #aacee6 $dd-typ-rhythm);
+				linear-gradient(to right, transparent $_dd-typ-rhythm, #aacee6 $_dd-typ-rhythm);
 			background-size:
-				100% $dd-typ-rhythm,
-				calc(#{$dd-typ-rhythm} + 2px) 100%,
-				calc(#{$dd-typ-rhythm} + 2px) 100%;
+				100% $_dd-typ-rhythm,
+				calc(#{$_dd-typ-rhythm} + 2px) 100%,
+				calc(#{$_dd-typ-rhythm} + 2px) 100%;
 			background-repeat: repeat, no-repeat, no-repeat;
 		}
 	}
