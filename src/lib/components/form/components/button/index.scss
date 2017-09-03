@@ -1,3 +1,8 @@
+////
+/// DivoDivnoe Form-button
+/// @group form-button
+////
+
 @include dd-system-componentRegister(dd-form-button, (dd-form, dd-color));
 
 @mixin dd-form-button-variant($_color)

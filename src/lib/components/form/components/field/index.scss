@@ -1,3 +1,8 @@
+////
+/// DivoDivnoe Form-field
+/// @group form-field
+////
+
 @include dd-system-componentRegister(dd-form-field, (dd-form));
 
 @mixin dd-form-field-messageVariant($_color)

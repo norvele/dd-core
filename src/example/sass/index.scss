@@ -1,7 +1,7 @@
-$dd-system-classPrefix: '';
 $dd-system-autoRun: false;
-
 @import '../../lib/index';
+
+$dd-system-classPrefix: '';
 
 @include dd-run();
 

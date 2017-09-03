@@ -1,3 +1,8 @@
+////
+/// DivoDivnoe Form-input
+/// @group form-input
+////
+
 @include dd-system-componentRegister(dd-form-input, (dd-form));
 
 $dd-form-inputColor: $dd-form-color !default;

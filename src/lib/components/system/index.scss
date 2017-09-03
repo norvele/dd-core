@@ -1,14 +1,29 @@
-// DivoDivnoe System
+////
+/// DivoDivnoe System
+/// @group system
+////
 
 @import '../util/index';
 
+/// Contain list of registered components
+/// @type List
 $_dd-system-components: (dd-system, dd-util);
-$dd-system-classPrefix: 'dd-' !default;
-$dd-system-debug: true !default;
+
+/// If true - run bootstrap and generators automatically
+/// @type Bool
 $dd-system-autoRun: true !default;
-$dd-system-paths: (
-	root: '../',
-) !default;
+
+/// Processing of vars
+/// @return {bool} only true
+@function dd-system-bootstrap()
+{
+	$dd-system-classPrefix: 'dd-' !default !global;
+	$dd-system-debug: true !default !global;
+	$dd-system-paths: (
+		root: '../',
+	) !default !global;
+	@return true;
+}
 
 @function _dd-system-message($_message, $_type: 'warn')
 {
@@ -116,8 +131,9 @@ $dd-system-paths: (
 @mixin dd-system-bootstrap()
 {
 	@each $_component in $_dd-system-components {
-		@if function_exists('#{$_component}-bootstrap') {
-			$_: call('#{$_component}-bootstrap');
+		$_name: '#{$_component}-bootstrap';
+		@if function_exists($_name) {
+			$_: call($_name);
 		}
 	}
 }

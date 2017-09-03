@@ -1,6 +1,6 @@
 {
 	"name": "divo-divnoe",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"description": "",
 	"main": "index.js",
 	"dependencies": {},
@@ -14,12 +14,13 @@
 		"gulp": "*",
 		"gulp-autoprefixer": "*",
 		"gulp-babel": "^6.1.2",
+		"gulp-html-extend": "^1.1.6",
 		"gulp-if": "^2.0.2",
 		"gulp-plumber": "*",
 		"gulp-sass": "*",
 		"gulp-streamify": "*",
 		"vinyl-source-stream": "*",
-		"gulp-html-extend": "^1.1.6"
+		"sassdoc": "^2.3.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

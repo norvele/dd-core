@@ -1,3 +1,8 @@
+////
+/// DivoDivnoe Typ-h
+/// @group typ-h
+////
+
 @include dd-system-componentRegister(dd-typ-h, (dd-typ, dd-util));
 
 $dd-typ-h-lineHeight: $dd-typ-lineHeight * 0.8 !default;

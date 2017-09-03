@@ -26,6 +26,14 @@ var collector = new Collector({
 						`${roots.src}/lib/components/**/*.js`,
 					],
 				},
+				{
+					type: 'sassDoc',
+					src: `${roots.src}/lib/**/*.scss`,
+					dest: `${roots.dest}/docs/`,
+					watch: [
+						`${roots.src}/lib/**/*.scss`,
+					],
+				},
 				/*{
 					type: 'styleTest',
 					src: `${roots.src}/lib/tests/index.scss`,
