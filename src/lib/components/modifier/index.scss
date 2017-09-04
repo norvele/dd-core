@@ -5,44 +5,49 @@
 
 @include dd-system-componentRegister(dd-modifier);
 
-$dd-modifier-map: (
-	pullEnd: (
-		float: 'right',
-	),
-	pullStart: (
-		float: 'left',
-	),
-	hidden: (
-		display: 'none',
-	),
-	textEnd: (
-		text-align: 'right',
-	),
-	textStart: (
-		text-align: 'left',
-	),
-	textCenter: (
-		text-align: 'center',
-	),
-	textJustify: (
-		text-align: 'justify',
-	),
-) !default;
+@function dd-modifier-bootstrap()
+{
+	$dd-modifier-map: (
+		pullEnd: (
+			float: 'right',
+		),
+		pullStart: (
+			float: 'left',
+		),
+		hidden: (
+			display: 'none',
+		),
+		textEnd: (
+			text-align: 'right',
+		),
+		textStart: (
+			text-align: 'left',
+		),
+		textCenter: (
+			text-align: 'center',
+		),
+		textJustify: (
+			text-align: 'justify',
+		),
+	) !default !global;
 
-$dd-modifier-mapRtl: (
-	pullEnd: (
-		float: 'left',
-	),
-	pullStart: (
-		float: 'right',
-	),
-	textEnd: (
-		text-align: 'left',
-	),
-	textStart: (
-		text-align: 'right',
-	),
-) !default;
+	$dd-modifier-mapRtl: (
+		pullEnd: (
+			float: 'left',
+		),
+		pullStart: (
+			float: 'right',
+		),
+		textEnd: (
+			text-align: 'left',
+		),
+		textStart: (
+			text-align: 'right',
+		),
+	) !default !global;
+
+	@return true;
+}
 
 @mixin dd-modifier-renderParams($_params)
 {

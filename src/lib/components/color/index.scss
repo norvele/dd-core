@@ -5,29 +5,34 @@
 
 @include dd-system-componentRegister(dd-color);
 
-$dd-color-palette: (
-	splashy: #EC6A00,
-	emphasis: #FFCC65,
-	deep: #34362D,
-	neutral: #669E81,
-	default: #333333,
-) !default;
+@function dd-color-bootstrap()
+{
+	$dd-color-palette: (
+		splashy: #EC6A00,
+		emphasis: #FFCC65,
+		deep: #34362D,
+		neutral: #669E81,
+		default: #333333,
+	) !default !global;
 
-$dd-color-default: default !default;
+	$dd-color-default: default !default !global;
 
-$dd-color-state: (
-	default: #666666,
-	error: #ED5135,
-	success: #669E81,
-	warning: #FFCC65,
-	notice: #8fccff,
-	muted: #CCCCCC,
-) !default;
+	$dd-color-state: (
+		default: #666666,
+		error: #ED5135,
+		success: #669E81,
+		warning: #FFCC65,
+		notice: #8fccff,
+		muted: #CCCCCC,
+	) !default !global;
 
-$dd-color-modifier: (
-	light: dd-color-modifierLight,
-	dark: dd-color-modifierDark,
-) !default;
+	$dd-color-modifier: (
+		light: dd-color-modifierLight,
+		dark: dd-color-modifierDark,
+	) !default !global;
+
+	@return true;
+}
 
 @function dd-color-modifierLight($_color)
 {

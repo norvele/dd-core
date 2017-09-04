@@ -41,7 +41,7 @@
 		align-items: center;
 		box-sizing: border-box;
 		text-align: center;
-		padding: _dd-form-paddingVertical() _dd-form-getPaddingHorizontal()/4*3;
+		padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal/4*3;
 		font-size: $dd-form-fontSize;
 		line-height: $dd-form-lineHeight;
 		min-height: $dd-form-height;
@@ -61,7 +61,7 @@
 			flex-shrink: 0;
 			flex-grow: 0;
 			flex-basis: auto;
-			margin: 0 _dd-form-getPaddingHorizontal()/4;
+			margin: 0 $_dd-form-paddingHorizontal/4;
 		}
 
 		&.#{dd-system-name(form, fluid, _)} {

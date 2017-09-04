@@ -5,13 +5,18 @@
 
 @include dd-system-componentRegister(dd-grid, (dd-responsive, dd-space));
 
-$dd-grid-columns: 12 !default;
-$dd-grid-gutterHorizontal: $dd-space-defaultSpace !default;
-$dd-grid-gutterVertical: $dd-space-defaultSpace !default;
-$dd-grid-gutterDynamic: true !default;
-$dd-grid-gutterSpaces: true !default;
-$dd-grid-gutterDisables: true !default;
-$dd-grid-noGuttersMod: 'none' !default;
+@function dd-grid-bootstrap()
+{
+	$dd-grid-columns: 12 !default !global;
+	$dd-grid-gutterHorizontal: $dd-space-defaultSpace !default !global;
+	$dd-grid-gutterVertical: $dd-space-defaultSpace !default !global;
+	$dd-grid-gutterDynamic: true !default !global;
+	$dd-grid-gutterSpaces: true !default !global;
+	$dd-grid-gutterDisables: true !default !global;
+	$dd-grid-noGuttersMod: 'none' !default !global;
+
+	@return true;
+}
 
 // Генерирует сетку в заданном направлении
 // используя grid-подобный синтаксис

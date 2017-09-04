@@ -19,8 +19,8 @@
 		"gulp-plumber": "*",
 		"gulp-sass": "*",
 		"gulp-streamify": "*",
-		"vinyl-source-stream": "*",
-		"sassdoc": "^2.3.0"
+		"sassdoc": "^2.3.0",
+		"vinyl-source-stream": "*"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

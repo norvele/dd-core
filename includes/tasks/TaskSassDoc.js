@@ -9,6 +9,7 @@ export default class TaskSassDoc
 			gulp.src(config.src)
 				.pipe(sassdoc({
 					dest: config.dest,
+					//theme: 'neat',
 				}));
 		});
 	}

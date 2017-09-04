@@ -5,17 +5,22 @@
 
 @include dd-system-componentRegister(dd-form-input, (dd-form));
 
-$dd-form-inputColor: $dd-form-color !default;
-$dd-form-inputPlaceholderColor: $dd-form-placeholderColor !default;
-$dd-form-inputBackgroundColor: $dd-form-backgroundColor !default;
-$dd-form-inputBorderColor: $dd-form-borderColor !default;
+@function dd-form-input-bootstrap()
+{
+	$dd-form-inputColor: $dd-form-color !default !global;
+	$dd-form-inputPlaceholderColor: $dd-form-placeholderColor !default !global;
+	$dd-form-inputBackgroundColor: $dd-form-backgroundColor !default !global;
+	$dd-form-inputBorderColor: $dd-form-borderColor !default !global;
+
+	@return true;
+}
 
 @mixin dd-form-input()
 {
 	width: 100%;
 	box-sizing: border-box;
 	background-color: $dd-form-inputBackgroundColor;
-	padding: _dd-form-paddingVertical() _dd-form-getPaddingHorizontal();
+	padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal;
 	border: 1px solid $dd-form-inputBorderColor;
 	border-radius: $dd-form-borderRadius;
 	font-size: $dd-form-fontSize;

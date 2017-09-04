@@ -17,8 +17,14 @@ $dd-system-autoRun: true !default;
 /// @return {bool} only true
 @function dd-system-bootstrap()
 {
+/// Prefix for all generated classes
+/// @type String
 	$dd-system-classPrefix: 'dd-' !default !global;
+/// If true - display debug messages
+/// @type Bool
 	$dd-system-debug: true !default !global;
+/// Map of paths
+/// @type Map
 	$dd-system-paths: (
 		root: '../',
 	) !default !global;

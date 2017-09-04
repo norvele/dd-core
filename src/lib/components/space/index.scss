@@ -5,22 +5,23 @@
 
 @include dd-system-componentRegister(dd-space);
 
-$dd-space-defaultSpace: 16px !default;
-
-$dd-space-fixedMod: fixed !default;
-
-$dd-space-factor: (
-	tiny: 0.25,
-	small: 0.5,
-	medium: 1,
-	large: 2,
-	massive: 3,
-);
-
-@if (dd-system-componentExist(dd-responsive)) {
-	$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
-		spaceScale: 1,
-	));
+@function dd-space-bootstrap()
+{
+	$dd-space-defaultSpace: 16px !default !global;
+	$dd-space-fixedMod: fixed !default !global;
+	$dd-space-factor: (
+		tiny: 0.25,
+		small: 0.5,
+		medium: 1,
+		large: 2,
+		massive: 3,
+	) !default !global;
+	@if (dd-system-componentExist(dd-responsive)) {
+		$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
+			spaceScale: 1,
+		)) !global;
+	}
+	@return true;
 }
 
 @function dd-space-getSpace($_factor, $_strict: false)

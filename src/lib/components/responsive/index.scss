@@ -5,38 +5,44 @@
 
 @include dd-system-componentRegister(dd-responsive);
 
-// Массив размеров устройств, каждый размер может содержать следующие параметры:
-// cutoff - отсечка в пикселях. (обязательно если не указан range)
-// range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
-// containerWidth - ширина контейнера (по умолчанию равен cutoff)
-$dd-responsive-intervals: (
-	xs:(
-		cutoff: 0,
-		containerWidth: 100%,
-		spaceScale: 0.75,
-		typHScale: 0.5,
-	),
-	sm:(
-		cutoff: 544px,
-		spaceScale: 0.75,
-		typHScale: 0.7,
-	),
-	md:(
-		cutoff: 768px,
-		spaceScale: 0.75,
-		typHScale: 0.8,
-	),
-	lg:(
-		cutoff: 992px,
-		spaceScale: 1,
-		typHScale: 1,
-	),
-	xl:(
-		cutoff: 1200px,
-		spaceScale: 1.5,
-		typHScale: 1,
-	),
-) !default
+@function dd-responsive-bootstrap()
+{
+	// Массив размеров устройств, каждый размер может содержать следующие параметры:
+	// cutoff - отсечка в пикселях. (обязательно если не указан range)
+	// range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
+	// containerWidth - ширина контейнера (по умолчанию равен cutoff)
+	$dd-responsive-intervals: (
+		xs:(
+			cutoff: 0,
+			containerWidth: 100%,
+			spaceScale: 0.75,
+			typHScale: 0.5,
+		),
+		sm:(
+			cutoff: 544px,
+			spaceScale: 0.75,
+			typHScale: 0.7,
+		),
+		md:(
+			cutoff: 768px,
+			spaceScale: 0.75,
+			typHScale: 0.8,
+		),
+		lg:(
+			cutoff: 992px,
+			spaceScale: 1,
+			typHScale: 1,
+		),
+		xl:(
+			cutoff: 1200px,
+			spaceScale: 1.5,
+			typHScale: 1,
+		),
+	) !default !global;
+	$_intervals: $dd-responsive-intervals !global;
+	$dd-responsive-intervals: dd-responsive-normalizeIntervals($_intervals) !global;
+	@return true;
+}
 
 // Возвращает параметр отсечки по имени отсечки и имени параметра
 @function dd-responsive-intervalVal($_interval, $_param)
@@ -274,11 +280,4 @@ $dd-responsive-intervals: (
 		));
 	}
 	@return $_newIntervals;
-}
-
-@function dd-responsive-bootstrap()
-{
-	$_intervals: $dd-responsive-intervals !global;
-	$dd-responsive-intervals: dd-responsive-normalizeIntervals($_intervals) !global;
-	@return true;
 }

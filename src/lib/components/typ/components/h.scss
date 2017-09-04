@@ -5,15 +5,19 @@
 
 @include dd-system-componentRegister(dd-typ-h, (dd-typ, dd-util));
 
-$dd-typ-h-lineHeight: $dd-typ-lineHeight * 0.8 !default;
-$dd-typ-h-color: $dd-typ-color !default;
-$dd-typ-h-fontSizes: (3em, 2.25em, 1.5em, 1.3em, 1.12em, 1em) !default;
-$dd-typ-h-responsiveMinFontSize: 1em !default;
+@function dd-typ-h-bootstrap()
+{
+	$dd-typ-h-lineHeight: $dd-typ-lineHeight * 0.8 !default !global;
+	$dd-typ-h-color: $dd-typ-color !default !global;
+	$dd-typ-h-fontSizes: (3em, 2.25em, 1.5em, 1.3em, 1.12em, 1em) !default !global;
+	$dd-typ-h-responsiveMinFontSize: 1em !default !global;
 
-@if (dd-system-componentExist(dd-responsive)) {
-	$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
-		typHScale: 1,
-	));
+	@if (dd-system-componentExist(dd-responsive)) {
+		$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
+			typHScale: 1,
+		)) !global;
+	}
+	@return true;
 }
 
 @function dd-typ-h-margins($_headerSize, $_headerLineHeight, $_textSize, $_textLineHeight) {

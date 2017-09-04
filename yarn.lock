@@ -66,6 +66,10 @@ ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.0.0"
 
+ap@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ap/-/ap-0.2.0.tgz#ae0942600b29912f0d2b14ec60c45e8f330b6110"
+
 aproba@^1.0.3:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.2.tgz#45c6629094de4e96f693ef7eab74ae079c240fc1"
@@ -652,6 +656,10 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird@^2.9.26:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
+
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.7"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.7.tgz#ddb048e50d9482790094c13eb3fcfc833ce7ab46"
@@ -1062,6 +1070,12 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
+consolidate@^0.13.0:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/consolidate/-/consolidate-0.13.1.tgz#9e9503568eb4850889da6ed87a852c8dd2d13f64"
+  dependencies:
+    bluebird "^2.9.26"
+
 constants-browserify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
@@ -1470,6 +1484,10 @@ extend@2.*:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-2.0.1.tgz#1ee8010689e7395ff9448241c98652bc759a8260"
 
+extend@^1.0.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/extend/-/extend-1.3.0.tgz#d1516fb0ff5624d2ebf9123ea1dac5a1994004f8"
+
 extend@^3.0.0, extend@~3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
@@ -1582,6 +1600,14 @@ from@~0:
 fs-exists-sync@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
+
+fs-extra@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-0.13.0.tgz#dcafc10f2cb5184f2360b5ffff06267370539433"
+  dependencies:
+    jsonfile "^2.0.0"
+    ncp "^1.0.1"
+    rimraf "^2.2.8"
 
 fs-extra@^2.0.0:
   version "2.1.2"
@@ -2373,7 +2399,7 @@ json5@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
-jsonfile@^2.1.0:
+jsonfile@^2.0.0, jsonfile@^2.1.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
   optionalDependencies:
@@ -2804,6 +2830,10 @@ merge-stream@^1.0.0:
   dependencies:
     readable-stream "^2.0.1"
 
+merge@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
+
 micromatch@^2.3.7:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
@@ -2930,6 +2960,10 @@ ncname@1.0.x:
   resolved "https://registry.yarnpkg.com/ncname/-/ncname-1.0.0.tgz#5b57ad18b1ca092864ef62b0b1ed8194f383b71c"
   dependencies:
     xml-char-classes "^1.0.0"
+
+ncp@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ncp/-/ncp-1.0.1.tgz#d15367e5cb87432ba117d2bf80fdf45aecfb4246"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -3628,7 +3662,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@2.*, rimraf@^2.3.2:
+rimraf@2, rimraf@2.*, rimraf@^2.2.8, rimraf@^2.3.2:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.1.tgz#c2338ec643df7a1b7fe5c54fa86f57428a55f33d"
   dependencies:
@@ -3678,7 +3712,7 @@ sass-graph@^2.1.1:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sassdoc-extras@^2.4.0:
+sassdoc-extras@^2.0.0, sassdoc-extras@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/sassdoc-extras/-/sassdoc-extras-2.4.1.tgz#d69c783142a8fe427c72bb32fcd652f1da03f80a"
   dependencies:
@@ -3698,6 +3732,16 @@ sassdoc-theme-default@^2.6.1:
     sassdoc-extras "^2.4.0"
     swig "1.4.0"
     swig-extras "0.0.1"
+
+sassdoc-theme-neat@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/sassdoc-theme-neat/-/sassdoc-theme-neat-0.0.2.tgz#acc082f472a19b33bdf5b04fafdb40f1418bc67c"
+  dependencies:
+    extend "^1.0.0"
+    sassdoc-extras "^2.0.0"
+    swig "1.4.0"
+    swig-extras "0.*"
+    themeleon "^3.0.0"
 
 sassdoc@^2.3.0:
   version "2.3.0"
@@ -4045,7 +4089,7 @@ supports-color@^4.0.0, supports-color@^4.1.0:
   dependencies:
     has-flag "^2.0.0"
 
-swig-extras@0.0.1:
+swig-extras@0.*, swig-extras@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/swig-extras/-/swig-extras-0.0.1.tgz#b503fede372ab9c24c6ac68caf656bcef1872328"
   dependencies:
@@ -4086,6 +4130,17 @@ ternary-stream@^2.0.1:
     fork-stream "^0.0.4"
     merge-stream "^1.0.0"
     through2 "^2.0.1"
+
+themeleon@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/themeleon/-/themeleon-3.0.2.tgz#802bf3c428c0efb7d21240e2941227804cb65fab"
+  dependencies:
+    ap "^0.2.0"
+    consolidate "^0.13.0"
+    fs-extra "^0.13.0"
+    glob "^4.3.1"
+    merge "^1.2.0"
+    q "^1.1.2"
 
 through2-filter@^2.0.0:
   version "2.0.0"

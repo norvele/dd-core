@@ -5,9 +5,14 @@
 
 @include dd-system-componentRegister(dd-typ-a, (dd-typ));
 
-$dd-typ-a-color: #34a1cf !default;
-$dd-typ-a-colorHover: #cf3434 !default;
-$dd-typ-a-colorVisited: #9534cf !default;
+@function dd-typ-a-bootstrap()
+{
+	$dd-typ-a-color: #34a1cf !default !global;
+	$dd-typ-a-colorHover: #cf3434 !default !global;
+	$dd-typ-a-colorVisited: #9534cf !default !global;
+
+	@return true;
+}
 
 @mixin dd-typ-a-generator()
 {
