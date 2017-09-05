@@ -1,9 +1,0 @@
-$dd-system-autoRun: false;
-@import '../../lib/index';
-
-$dd-system-classPrefix: '';
-
-@include dd-run();
-
-@import '../components/page/index';
-@import '../components/example/index';

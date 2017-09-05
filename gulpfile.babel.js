@@ -51,37 +51,37 @@ var collector = new Collector({
 				},*/
 			],
 		},
-		{
-			name: 'example',
-			tasks: [
-				{
-					type: 'sass',
-					src: `${roots.src}/example/sass/index.scss`,
-					dest: `${roots.dest}/example/css/`,
-					watch: [
-						`${roots.src}/example/**/*.scss`,
-						`${roots.src}/lib/**/*.scss`,
-					],
-				},
-				{
-					type: 'js',
-					src: `${roots.src}/example/js/index.js`,
-					dest: `${roots.dest}/example/js/`,
-					watch: [
-						`${roots.src}/example/**/*.js`,
-						`${roots.src}/lib/components/**/*.js`
-					],
-				},
-				{
-					type: 'html',
-					src: `${roots.src}/example/html/*.html`,
-					dest: `${roots.dest}/example/`,
-					watch: [
-						`${roots.src}/example/**/*.html`,
-					],
-				},
-			],
-		},
+		// {
+		// 	name: 'example',
+		// 	tasks: [
+		// 		{
+		// 			type: 'sass',
+		// 			src: `${roots.src}/example/index.scss`,
+		// 			dest: `${roots.dest}/example/css/`,
+		// 			watch: [
+		// 				`${roots.src}/example/**/*.scss`,
+		// 				`${roots.src}/lib/**/*.scss`,
+		// 			],
+		// 		},
+		// 		{
+		// 			type: 'js',
+		// 			src: `${roots.src}/example/index.js`,
+		// 			dest: `${roots.dest}/example/js/`,
+		// 			watch: [
+		// 				`${roots.src}/example/**/*.js`,
+		// 				`${roots.src}/lib/components/**/*.js`
+		// 			],
+		// 		},
+		// 		{
+		// 			type: 'html',
+		// 			src: `${roots.src}/example/*.html`,
+		// 			dest: `${roots.dest}/example/`,
+		// 			watch: [
+		// 				`${roots.src}/example/**/*.html`,
+		// 			],
+		// 		},
+		// 	],
+		// },
 	],
 });
 
