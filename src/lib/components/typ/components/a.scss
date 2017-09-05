@@ -14,7 +14,7 @@
 	@return true;
 }
 
-@mixin dd-typ-a-generator()
+@mixin dd-typ-a-generate()
 {
 	a {
 		@include dd-typ-node() {

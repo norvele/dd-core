@@ -33,7 +33,7 @@
 	}
 }
 
-@mixin dd-form-button-generator()
+@mixin dd-form-button-generate()
 {
 	.#{dd-system-name(form, button)} {
 		display: inline-flex;

@@ -22,12 +22,9 @@
 	}
 }
 
-@mixin dd-form-inputCheckbox-generator()
+@mixin dd-form-inputCheckbox-generate()
 {
-	.#{$dd-system-classPrefix}form {
-
-		&-inputCheckbox {
-			@include dd-form-inputCheckbox();
-		}
+	.#{dd-system-name(form, inputCheckbox)} {
+		@include dd-form-inputCheckbox();
 	}
 }

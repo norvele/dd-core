@@ -5,7 +5,7 @@
 
 @include dd-system-componentRegister(dd-typ-strong, (dd-typ));
 
-@mixin dd-typ-strong-generator()
+@mixin dd-typ-strong-generate()
 {
 	strong {
 		@include dd-typ-node() {

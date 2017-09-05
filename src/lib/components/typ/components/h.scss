@@ -13,9 +13,11 @@
 	$dd-typ-h-responsiveMinFontSize: 1em !default !global;
 
 	@if (dd-system-componentExist(dd-responsive)) {
-		$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
-			typHScale: 1,
-		)) !global;
+		@if (variable_exists(dd-responsive-intervals)) {
+			$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
+				typHScale: 1,
+			)) !global;
+		}
 	}
 	@return true;
 }
@@ -53,7 +55,7 @@
 	}
 }
 
-@mixin dd-typ-h-generator()
+@mixin dd-typ-h-generate()
 {
 	// Генерируем заголовки
 	@for $_i from 1 through length($dd-typ-h-fontSizes) {
@@ -64,14 +66,14 @@
 				font-size: $_size;
 				line-height: $dd-typ-h-lineHeight;
 			}
-			.#{$dd-system-classPrefix}typ-block & {
+			.#{dd-system-name(typ, block)} & {
 				@include dd-typ-h-margins($_size);
 			}
 		}
 	}
 }
 
-@mixin dd-typ-h-generatorResponsive()
+@mixin dd-typ-h-generateResponsive()
 {
 	@if (dd-system-componentExist(dd-responsive)) {
 		@each $_breakKey, $_breakParams in $dd-responsive-intervals {
@@ -85,7 +87,7 @@
 						@include dd-typ-node() {
 							font-size: $_size;
 						}
-						.#{$dd-system-classPrefix}typ-block & {
+						.#{dd-system-name(typ, block)} & {
 							@include dd-typ-h-margins($_size);
 						}
 					}

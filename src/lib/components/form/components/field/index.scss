@@ -39,7 +39,7 @@
 	}
 }
 
-@mixin dd-form-field-generator()
+@mixin dd-form-field-generate()
 {
 	.#{dd-system-name(form, field)} {
 		@include dd-form-field-stateVariantMods();

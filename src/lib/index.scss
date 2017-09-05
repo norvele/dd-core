@@ -16,27 +16,27 @@
 	@include dd-system-bootstrap();
 }
 
-@mixin dd-generator()
+@mixin dd-generate()
 {
-	@include dd-reset-generator();
-	@include dd-modifier-generator();
-	@include dd-modifier-generatorResponsive();
-	@include dd-space-generator();
-	@include dd-space-generatorResponsive();
-	@include dd-grid-generator();
-	@include dd-typ-generator();
-	@include dd-form-generator();
-	@include dd-icon-generator();
+	@include dd-reset-generate();
+	@include dd-modifier-generate();
+	@include dd-modifier-generateResponsive();
+	@include dd-space-generate();
+	@include dd-space-generateResponsive();
+	@include dd-grid-generate();
+	@include dd-typ-generate();
+	@include dd-form-generate();
+	@include dd-icon-generate();
 	// Дебаг стили
 	@if ($dd-system-debug) {
-		@include dd-debug-generator();
+		@include dd-debug-generate();
 	}
 }
 
 @mixin dd-run()
 {
 	@include dd-bootstrap();
-	@include dd-generator();
+	@include dd-generate();
 }
 
 // Генерация стилей

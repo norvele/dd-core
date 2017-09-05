@@ -5,7 +5,7 @@
 
 @include dd-system-componentRegister(dd-typ-abbr, (dd-typ));
 
-@mixin dd-typ-abbr-generator()
+@mixin dd-typ-abbr-generate()
 {
 	abbr {
 		@include dd-typ-node() {

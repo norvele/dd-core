@@ -16,7 +16,7 @@
 {
 	@if (dd-system-componentExist(dd-color)) {
 		@each $_name, $_color in $dd-color-state {
-			&.-#{$_name} {
+			&.#{dd-system-name(form, $_name, '-')} {
 				@include dd-form-inputSelect-stateVariant($_color);
 			}
 		}
@@ -62,16 +62,13 @@
 	@include dd-form-inputSelect-stateVariantMods();
 }
 
-@mixin dd-form-inputSelect-generator()
+@mixin dd-form-inputSelect-generate()
 {
-	.#{$dd-system-classPrefix}form {
+	.#{dd-system-name(form, inputSelect)} {
+		@include dd-form-inputSelect();
 
-		&-inputSelect {
-			@include dd-form-inputSelect();
-
-			&._fluid {
-				width: 100%;
-			}
+		&.#{dd-system-name(form, fluid, _)} {
+			width: 100%;
 		}
 	}
 }

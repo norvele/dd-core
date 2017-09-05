@@ -17,9 +17,11 @@
 		massive: 3,
 	) !default !global;
 	@if (dd-system-componentExist(dd-responsive)) {
-		$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
-			spaceScale: 1,
-		)) !global;
+		@if (variable_exists(dd-responsive-intervals)) {
+			$dd-responsive-intervals: dd-responsive-assertToIntervals($dd-responsive-intervals, (
+				spaceScale: 1,
+			)) !global;
+		}
 	}
 	@return true;
 }
@@ -70,7 +72,7 @@
 	}
 }
 
-@mixin dd-space-generator()
+@mixin dd-space-generate()
 {
 	.#{dd-system-name(space)} {
 		display: block;
@@ -83,7 +85,7 @@
 	}
 }
 
-@mixin dd-space-generatorResponsive()
+@mixin dd-space-generateResponsive()
 {
 	@if (dd-system-componentExist(dd-responsive)) {
 		.#{dd-system-name(space)} {

@@ -5,7 +5,7 @@
 
 @include dd-system-componentRegister(dd-typ-small, (dd-typ));
 
-@mixin dd-typ-small-generator()
+@mixin dd-typ-small-generate()
 {
 	small {
 		@include dd-typ-node() {

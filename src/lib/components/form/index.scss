@@ -34,14 +34,14 @@
 	@return true;
 }
 
-@mixin dd-form-generator()
+@mixin dd-form-generate()
 {
-	@include dd-form-message-generator();
-	@include dd-form-field-generator();
-	@include dd-form-button-generator();
-	@include dd-form-inputText-generator();
-	@include dd-form-inputTextarea-generator();
-	@include dd-form-inputSelect-generator();
-	@include dd-form-inputCheckbox-generator();
-	@include dd-form-inputRadio-generator();
+	@include dd-form-message-generate();
+	@include dd-form-field-generate();
+	@include dd-form-button-generate();
+	@include dd-form-inputText-generate();
+	@include dd-form-inputTextarea-generate();
+	@include dd-form-inputSelect-generate();
+	@include dd-form-inputCheckbox-generate();
+	@include dd-form-inputRadio-generate();
 }

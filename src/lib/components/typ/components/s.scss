@@ -5,7 +5,7 @@
 
 @include dd-system-componentRegister(dd-typ-s, (dd-typ));
 
-@mixin dd-typ-s-generator()
+@mixin dd-typ-s-generate()
 {
 	s {
 		@include dd-typ-node() {

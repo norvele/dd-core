@@ -27,12 +27,9 @@
 	}
 }
 
-@mixin dd-form-inputRadio-generator()
+@mixin dd-form-inputRadio-generate()
 {
-	.#{$dd-system-classPrefix}form {
-
-		&-inputRadio {
-			@include dd-form-inputRadio();
-		}
+	.#{dd-system-name(form, inputRadio)} {
+		@include dd-form-inputRadio();
 	}
 }

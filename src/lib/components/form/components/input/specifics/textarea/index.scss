@@ -16,7 +16,7 @@
 {
 	@if (dd-system-componentExist(dd-color)) {
 		@each $_name, $_color in $dd-color-state {
-			&.-#{$_name} {
+			&.#{dd-system-name(form, $_name, '-')} {
 				@include dd-form-inputTextarea-stateVariant($_color);
 			}
 		}
@@ -37,16 +37,13 @@
 	@include dd-form-inputTextarea-stateVariantMods();
 }
 
-@mixin dd-form-inputTextarea-generator()
+@mixin dd-form-inputTextarea-generate()
 {
-	.#{$dd-system-classPrefix}form {
+	.#{dd-system-name(form, inputTextarea)} {
+		@include dd-form-inputTextarea();
 
-		&-inputTextarea {
-			@include dd-form-inputTextarea();
-
-			&._fluid {
-				width: 100%;
-			}
+		&.#{dd-system-name(form, fluid, _)} {
+			width: 100%;
 		}
 	}
 }

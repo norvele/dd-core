@@ -6,36 +6,33 @@
 	@return true;
 }
 
-@mixin dd-form-message-variant($_color)
+@mixin dd-form-message-stateVariant($_color)
 {
 	color: mix(#000, $_color, 20%);
 	background-color: mix(#fff, $_color, 80%);
 	border-color: mix(#fff, $_color, 10%);
 }
 
-@mixin dd-form-message-variantMods()
+@mixin dd-form-message-stateVariantMods()
 {
 	@if (dd-system-componentExist(dd-color)) {
 		@each $_name, $_color in $dd-color-state {
-			&.-#{$_name} {
-				@include dd-form-message-variant($_color);
+			&.#{dd-system-name(form, $_name, '-')} {
+				@include dd-form-message-stateVariant($_color);
 			}
 		}
 	}
 }
 
-@mixin dd-form-message-generator()
+@mixin dd-form-message-generate()
 {
-	.#{$dd-system-classPrefix}form {
-
-		&-message {
-			font-size: $dd-form-fontSize;
-			padding: 0.5em 1em;
-			border-radius: 3px;
-			line-height: 1.2em;
-			border: 1px solid;
-			@include dd-form-message-variant($dd-form-message-defaultColor);
-			@include dd-form-message-variantMods();
-		}
+	.#{dd-system-name(form, message)} {
+		font-size: $dd-form-fontSize;
+		padding: 0.5em 1em;
+		border-radius: 3px;
+		line-height: 1.2em;
+		border: 1px solid;
+		@include dd-form-message-stateVariant($dd-form-message-defaultColor);
+		@include dd-form-message-stateVariantMods();
 	}
 }

@@ -523,73 +523,70 @@
 	}
 }
 
-@mixin dd-grid-generator()
+@mixin dd-grid-generate()
 {
-	.#{$dd-system-classPrefix}grid {
+	.#{dd-system-name(grid, container)} {
+		@include dd-grid-container((
+			gutterH: $dd-grid-gutterHorizontal,
+			gutterV: $dd-grid-gutterVertical,
+			gutterDynamic: $dd-grid-gutterDynamic,
+			gutterSpaces: $dd-grid-gutterSpaces,
+			gutterDisables: $dd-grid-gutterDisables,
+		));
 
-		&-container {
-			@include dd-grid-container((
-				gutterH: $dd-grid-gutterHorizontal,
-				gutterV: $dd-grid-gutterVertical,
-				gutterDynamic: $dd-grid-gutterDynamic,
-				gutterSpaces: $dd-grid-gutterSpaces,
-				gutterDisables: $dd-grid-gutterDisables,
-			));
-
-			&.#{dd-system-name(grid, main, _)} {
-				margin-left: auto;
-				margin-right: auto;
-			}
+		&.#{dd-system-name(grid, main, _)} {
+			margin-left: auto;
+			margin-right: auto;
 		}
+	}
 
-		&-area {
-			@include dd-grid-area((
-				gutterH: $dd-grid-gutterHorizontal,
-				gutterV: $dd-grid-gutterVertical,
-				gutterDynamic: $dd-grid-gutterDynamic,
-				gutterSpaces: $dd-grid-gutterSpaces,
-				gutterDisables: $dd-grid-gutterDisables,
-			));
+	.#{dd-system-name(grid, area)} {
+		@include dd-grid-area((
+			gutterH: $dd-grid-gutterHorizontal,
+			gutterV: $dd-grid-gutterVertical,
+			gutterDynamic: $dd-grid-gutterDynamic,
+			gutterSpaces: $dd-grid-gutterSpaces,
+			gutterDisables: $dd-grid-gutterDisables,
+		));
 
-			@if (dd-system-componentExist(dd-modifier)) {
-				@include dd-modifier(justify-center, (prefix: $dd-system-classPrefix)) {
-					justify-content: center;
-				}
-				@include dd-modifier(align-center, (prefix: $dd-system-classPrefix)) {
-					align-items: center;
-				}
-				@include dd-modifier(center, (prefix: $dd-system-classPrefix)) {
-					justify-content: center;
-					align-items: center;
-				}
-				@include dd-modifier(nowrap, (prefix: $dd-system-classPrefix)) {
-					flex-wrap: nowrap;
-				}
-				@include dd-modifier(layout-auto, (prefix: $dd-system-classPrefix)) {
-					& > * {
-						width: auto;
-					}
-				}
-				@include dd-modifier(layout-inline, (prefix: $dd-system-classPrefix)) {
-					& > * {
-						width: auto;
-						flex-shrink: 0;
-						flex-grow: 0;
-					}
+		@if (dd-system-componentExist(dd-modifier)) {
+			@include dd-modifier(justify-center, (prefix: $dd-system-classPrefix)) {
+				justify-content: center;
+			}
+			@include dd-modifier(align-center, (prefix: $dd-system-classPrefix)) {
+				align-items: center;
+			}
+			@include dd-modifier(center, (prefix: $dd-system-classPrefix)) {
+				justify-content: center;
+				align-items: center;
+			}
+			@include dd-modifier(nowrap, (prefix: $dd-system-classPrefix)) {
+				flex-wrap: nowrap;
+			}
+			@include dd-modifier(layout-auto, (prefix: $dd-system-classPrefix)) {
+				& > * {
+					width: auto;
 				}
 			}
-
-			& > * {
-				@include dd-modifier(size-auto, (prefix: $dd-system-classPrefix)) {
-					width: auto;
-					flex-shrink: 1;
-					flex-grow: 1;
-				}
-				@include dd-modifier(size-content, (prefix: $dd-system-classPrefix)) {
+			@include dd-modifier(layout-inline, (prefix: $dd-system-classPrefix)) {
+				& > * {
 					width: auto;
 					flex-shrink: 0;
 					flex-grow: 0;
 				}
+			}
+		}
+
+		& > * {
+			@include dd-modifier(size-auto, (prefix: $dd-system-classPrefix)) {
+				width: auto;
+				flex-shrink: 1;
+				flex-grow: 1;
+			}
+			@include dd-modifier(size-content, (prefix: $dd-system-classPrefix)) {
+				width: auto;
+				flex-shrink: 0;
+				flex-grow: 0;
 			}
 		}
 	}

@@ -91,7 +91,7 @@
 	}
 }
 
-@mixin dd-modifier-generator()
+@mixin dd-modifier-generate()
 {
 	@each $_key, $_params in $dd-modifier-map {
 		.#{dd-system-name(modifier, $_key, __)} {
@@ -100,7 +100,7 @@
 	}
 }
 
-@mixin dd-modifier-generatorResponsive()
+@mixin dd-modifier-generateResponsive()
 {
 	@if (dd-system-componentExist(dd-responsive)) {
 		@each $_intervalName, $_interval in $dd-responsive-intervals {

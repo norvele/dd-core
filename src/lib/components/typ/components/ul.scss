@@ -5,7 +5,7 @@
 
 @include dd-system-componentRegister(dd-typ-ul, (dd-typ));
 
-@mixin dd-typ-ul-generator()
+@mixin dd-typ-ul-generate()
 {
 	ul {
 		@include dd-typ-node(true) {

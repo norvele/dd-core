@@ -24,16 +24,15 @@
 @mixin dd-typ-node($_margin: false)
 {
 	$_selector: &;
-	&.#{$dd-system-classPrefix}typ {
-		@content;
-	}
 	@at-root {
-		.#{dd-system-name(typ, $_selector)} {
-			@content;
-		}
+		&.#{dd-system-name(typ)},
+		.#{dd-system-name(typ, $_selector)},
 		.#{dd-system-name(typ, $dd-typ-blockMod)} & {
 			@content;
-			@if ($_margin != false) {
+		}
+		@if ($_margin != false) {
+			.#{dd-system-name(typ, $dd-typ-blockMod)} & {
+				@content;
 				@if ($_margin == true) {
 					margin-bottom: $_dd-typ-rhythm;
 				} @else {
@@ -69,26 +68,26 @@
 // figure, вставка изображений, видео, графиков, кода с подписью
 // details, оформить нативные выпадашки
 
-@mixin dd-typ-generator()
+@mixin dd-typ-generate()
 {
-	@include dd-typ-common-generator();
-	@include dd-typ-a-generator();
-	@include dd-typ-abbr-generator();
-	@include dd-typ-blockquote-generator();
-	@include dd-typ-code-generator();
-	@include dd-typ-del-generator();
-	@include dd-typ-em-generator();
-	@include dd-typ-h-generator();
-	@include dd-typ-h-generatorResponsive();
-	@include dd-typ-img-generator();
-	@include dd-typ-ins-generator();
-	@include dd-typ-mark-generator();
-	@include dd-typ-ol-generator();
-	@include dd-typ-p-generator();
-	@include dd-typ-pre-generator();
-	@include dd-typ-s-generator();
-	@include dd-typ-small-generator();
-	@include dd-typ-strong-generator();
-	@include dd-typ-u-generator();
-	@include dd-typ-ul-generator();
+	@include dd-typ-common-generate();
+	@include dd-typ-a-generate();
+	@include dd-typ-abbr-generate();
+	@include dd-typ-blockquote-generate();
+	@include dd-typ-code-generate();
+	@include dd-typ-del-generate();
+	@include dd-typ-em-generate();
+	@include dd-typ-h-generate();
+	@include dd-typ-h-generateResponsive();
+	@include dd-typ-img-generate();
+	@include dd-typ-ins-generate();
+	@include dd-typ-mark-generate();
+	@include dd-typ-ol-generate();
+	@include dd-typ-p-generate();
+	@include dd-typ-pre-generate();
+	@include dd-typ-s-generate();
+	@include dd-typ-small-generate();
+	@include dd-typ-strong-generate();
+	@include dd-typ-u-generate();
+	@include dd-typ-ul-generate();
 }
