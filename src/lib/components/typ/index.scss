@@ -27,7 +27,8 @@
 	@at-root {
 		&.#{dd-system-name(typ)},
 		.#{dd-system-name(typ, $_selector)},
-		.#{dd-system-name(typ, $dd-typ-blockMod)} & {
+		.#{dd-system-name(typ, $dd-typ-blockMod)} &,
+		.#{dd-system-name(typ, $dd-typ-blockMod)} .#{dd-system-name(typ, $_selector)} {
 			@content;
 		}
 		@if ($_margin != false) {
