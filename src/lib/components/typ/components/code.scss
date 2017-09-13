@@ -5,11 +5,22 @@
 
 @include dd-system-componentRegister(dd-typ-code, (dd-typ));
 
+@function dd-typ-code-bootstrap()
+{
+	$dd-typ-code-background: #f7f7f7 !default !global;
+	$dd-typ-code-color: $dd-typ-color !default !global;
+	$dd-typ-code-blockBackground: #2b2b2b !default !global;
+	$dd-typ-code-blockColor: #fff !default !global;
+
+	@return true;
+}
+
 @mixin dd-typ-code-generate()
 {
 	code {
 		@include dd-typ-node() {
-			background: #f7f7f7;
+			color: $dd-typ-code-color;
+			background: $dd-typ-code-background;
 			padding: 0.2em 0.4em;
 			border-radius: 3px;
 			font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -19,8 +30,8 @@
 			@include dd-typ-node(true) {
 				display: block;
 				max-width: 100%;
-				background: #2b2b2b;
-				color: #fff;
+				background: $dd-typ-code-blockBackground;
+				color: $dd-typ-code-blockColor;
 				padding: $_dd-typ-rhythm;
 				overflow-x: auto;
 				white-space: pre;

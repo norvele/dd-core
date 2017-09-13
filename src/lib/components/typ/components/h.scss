@@ -65,6 +65,7 @@
 				font-weight: 600;
 				font-size: $_size;
 				line-height: $dd-typ-h-lineHeight;
+				color: $dd-typ-h-color;
 			}
 			.#{dd-system-name(typ, block)} & {
 				@include dd-typ-h-margins($_size);
