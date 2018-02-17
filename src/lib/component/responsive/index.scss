@@ -1,0 +1,265 @@
+////
+/// DivoDivnoe Responsive
+/// @group responsive
+////
+
+@include dd-system-componentRegister(dd-responsive);
+
+@function dd-responsive-bootstrap() {
+    // Массив размеров устройств, каждый размер может содержать следующие параметры:
+    // cutoff - отсечка в пикселях. (обязательно если не указан range)
+    // range: [val1, val2] - минимальная и максимальная ширина viewport (обязательно если не указан cutoff)
+    // containerWidth - ширина контейнера (по умолчанию равен cutoff)
+    $dd-responsive-intervals: (
+        xs:(
+            cutoff: 0,
+            containerWidth: 100%,
+            spaceScale: 0.75,
+            typHScale: 0.5,
+        ),
+        sm:(
+            cutoff: 544px,
+            spaceScale: 0.75,
+            typHScale: 0.7,
+        ),
+        md:(
+            cutoff: 768px,
+            spaceScale: 0.75,
+            typHScale: 0.8,
+        ),
+        lg:(
+            cutoff: 992px,
+            spaceScale: 1,
+            typHScale: 1,
+        ),
+        xl:(
+            cutoff: 1200px,
+            spaceScale: 1.5,
+            typHScale: 1,
+        ),
+    ) !default !global;
+    $_intervals: $dd-responsive-intervals !global;
+    $dd-responsive-intervals: dd-responsive-normalizeIntervals($_intervals) !global;
+    @return true;
+}
+
+// Возвращает параметр отсечки по имени отсечки и имени параметра
+@function dd-responsive-intervalVal($_interval, $_param) {
+    @return map_get(map_get($dd-responsive-intervals, $_interval), $_param);
+}
+
+// Возвращает минимальную ширину для отсечки
+@function dd-responsive-minWidth($_interval) {
+    @return nth(dd-responsive-intervalVal($_interval, range), 1);
+}
+
+// Возвращает максимальную ширину для отсечки
+@function dd-responsive-maxWidth($_interval) {
+    @return nth(dd-responsive-intervalVal($_interval, range), 2);
+}
+
+// Возвращает следующее имя отсейчки или null если такой нет
+@function dd-responsive-nextIntervalName($_intervals, $_interval) {
+    $_keys: map_keys($_intervals);
+    $_index: index($_keys, $_interval);
+    @if ($_index + 1) <= length($_keys) {
+        @return nth($_keys, $_index + 1);
+    }
+    @return null;
+}
+
+// Возвращает мапу следующей отсейчки или null если такой нет
+@function dd-responsive-nextInterval($_intervals, $_interval) {
+    $_nextName: dd-responsive-nextIntervalName($_intervals, $_interval);
+    @if $_nextName {
+        @return map-get($_intervals, $_nextName);
+    }
+    @return null;
+}
+
+@function _dd-responsive-getSortVal($_interval) {
+    $_sortVal: null;
+    $_cutoff: map_get($_interval, 'cutoff');
+    $_range: map_get($_interval, 'range');
+    @if ($_cutoff != null) {
+        $_sortVal: $_cutoff;
+    } @else {
+        @if ($_range != null & & nth($_range, 1) != null) {
+            $_sortVal: nth($_range, 1);
+        }
+    }
+    @return $_sortVal;
+}
+
+@function _dd-responsive-sortIntervals($_intervals) {
+    $_keys: map-keys($_intervals);
+    $_len: length($_keys);
+    $_resultKeys: $_keys;
+    $_result: ();
+    @for $_i from 1 through $_len - 1 {
+        @for $_j from 1 through $_len - $_i {
+            $_sortVal1: _dd-responsive-getSortVal(map_get($_intervals, nth($_resultKeys, $_j)));
+            $_sortVal2: _dd-responsive-getSortVal(map_get($_intervals, nth($_resultKeys, $_j + 1)));
+            @if ($_sortVal1 != null & & $_sortVal2 != null) {
+                @if ($_sortVal1 > $_sortVal2) {
+                    $_min: nth($_resultKeys, $_j);
+                    $_max: nth($_resultKeys, $_j + 1);
+                    $_resultKeys: set_nth($_resultKeys, $_j + 1, $_min);
+                    $_resultKeys: set_nth($_resultKeys, $_j, $_max);
+                }
+            }
+        }
+    }
+    @for $_i from 1 through $_len {
+        $_key: nth($_resultKeys, $_i);
+        $_result: map_merge($_result, (
+            $_key: map_get($_intervals, $_key)
+        ));
+    }
+    @return $_result;
+}
+
+@function dd-responsive-normalizeIntervals($_intervals) {
+    $_intervals: _dd-responsive-sortIntervals($_intervals);
+    // Проходим по брейкпойнтам, проставляя недостающие данные
+    $_newIntervals: ();
+    @each $_key, $_params in $_intervals {
+        $_cutoff: map_get($_params, 'cutoff');
+        $_range: map_get($_params, 'range');
+        $_minWidth: null;
+        $_maxWidth: null;
+        @if ($_range) {
+            $_minWidth: nth($_range, 1);
+            $_maxWidth: nth($_range, 2);
+        }
+        $_containerWidth: map_get($_params, 'containerWidth');
+        $_containerGutter: map_get($_params, 'containerGutter');
+        $_gridGutterHorizontal: map_get($_params, 'gridGutterHorizontal');
+        $_gridGutterVertical: map_get($_params, 'gridGutterVertical');
+        $_spaceScale: map_get($_params, 'spaceScale');
+        $_nextInterval: dd-responsive-nextInterval($_intervals, $_key);
+
+        // Нормализуем range и cutoff
+        @if ($_cutoff) {
+            @if ($_minWidth or $_maxWidth) {
+                $_trash: dd-system-message('Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff', 'error');
+            }
+            @if ($_nextInterval) {
+                $_nextCutoff: map_get($_nextInterval, 'cutoff');
+                @if (not $_nextCutoff) {
+                    $_nextRange: map_get($_nextInterval, 'range');
+                    $_nextCutoff: nth($_nextRange, 1);
+                }
+                @if (not $_nextCutoff) {
+                    $_trash: dd-system-message('Для отсейчки следующей за #{$_key} нет minWidth или cutoff', 'error');
+                }
+                $_params: map_merge($_params, (
+                    range: ($_cutoff, $_nextCutoff - 1px)
+                ));
+            } @else {
+                $_params: map_merge($_params, (
+                    range: ($_cutoff, null)
+                ));
+            }
+        } @else {
+            @if (not $_minWidth or not $_maxWidth) {
+                $_trash: dd-system-message('Для отсечки #{$_key} должны быть указаны minWidth и maxWidth ИЛИ cutoff', 'error');
+            }
+            $_params: map_merge($_params, (
+                cutoff: $_minWidth,
+            ));
+        }
+
+        // Проставляем containerWidth
+        @if (not $_containerWidth) {
+            $_params: map_merge($_params, (
+                containerWidth: map_get($_params, 'cutoff'),
+            ));
+        }
+
+        $_newIntervals: map-merge($_newIntervals, (
+            $_key: $_params,
+        ));
+    }
+    @return $_newIntervals;
+}
+
+@function dd-responsive-parseMedia($_args...) {
+    $_result: ();
+    @each $_arg in $_args {
+        $_firstPoint: null;
+        $_secondPoint: null;
+        @if (type_of($_arg) == 'list') {
+            $_p1: nth($_arg, 1);
+            $_p2: nth($_arg, 2);
+            @if ($_p1) {
+                // Если указаны два параметра
+                @if ($_p2) {
+                    // Преобразуем точки
+                    @if (type-of($_p1) == 'number') {
+                        $_firstPoint: $_p1;
+                    } @else {
+                        $_firstPoint: dd-responsive-minWidth($_p1);
+                    }
+                    @if (type-of($_p2) == 'number') {
+                        $_secondPoint: $_p2;
+                    } @else {
+                        @if ($_p2 == infinite) {
+                            $_secondPoint: null;
+                        } @else {
+                            $_secondPoint: dd-responsive-maxWidth($_p2);
+                        }
+                    }
+                }
+                // Если указан только первый параметр
+                @else {
+                    @if (type-of($_p1) == 'number') {
+                        $_trash: dd-system-message('Если указан 1 параметр "#{$_arg}" - он должен быть именем интервала', 'error');
+                    } @else {
+                        $_firstPoint: dd-responsive-minWidth($_p1);
+                        $_secondPoint: dd-responsive-maxWidth($_p1);
+                    }
+                }
+            }
+        } @else if (type_of($_arg) == 'string') {
+            $_firstPoint: dd-responsive-minWidth($_arg);
+            $_secondPoint: dd-responsive-maxWidth($_arg);
+        }
+        @if ($_secondPoint) {
+            $_result: append($_result, 'all and (min-width: #{$_firstPoint}) and (max-width: #{$_secondPoint})', comma);
+        } @else {
+            $_result: append($_result, 'all and (min-width: #{$_firstPoint})', comma);
+        }
+    }
+    @return $_result;
+}
+
+@mixin dd-responsive-media($_args...) {
+    @media #{dd-util-implode(dd-responsive-parseMedia($_args...), ', ')} {
+        @content;
+    }
+}
+
+@function dd-responsive-lock($_to, $_from, $_toWidth, $_fromWidth) {
+    $_slope: ($_to - $_from) / ($_toWidth - $_fromWidth);
+    $_base: $_from - $_slope * $_fromWidth;
+
+    @return calc(#{$_base} + #{100vw * $_slope});
+}
+
+@function dd-responsive-assertToIntervals($_intervals, $_defaults) {
+    $_newIntervals: ();
+    @each $_key, $_params in $_intervals {
+        @each $_defaultKey, $_defaultVal in $_defaults {
+            @if (not map_get($_params, $_defaultKey)) {
+                $_params: map_merge($_params, (
+                    $_defaultKey: $_defaultVal,
+                ));
+            }
+        }
+        $_newIntervals: map-merge($_newIntervals, (
+            $_key: $_params,
+        ));
+    }
+    @return $_newIntervals;
+}

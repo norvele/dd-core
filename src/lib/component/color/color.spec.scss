@@ -1,0 +1,75 @@
+@import 'true';
+@import '~lib/component/system/index';
+@import '~test/mockSystemMessage';
+@import '~test/itHelpers';
+@import './color';
+$_trash: dd-system-bootstrap();
+
+@function modifier($_color) {
+    @return mix(#fff, $_color, 50%);
+}
+
+$dd-color-palette: (
+    juicy: #ec6a00,
+);
+
+$dd-color-state: (
+    success: #669e81,
+);
+
+$dd-color-modifier: (
+    test: modifier,
+);
+
+@include describe('component/color') {
+    @include describe('dd-color-modifier') {
+        @include itPositive('Цвет модифицируется') {
+            @include assert-equal(dd-color-modifier(#000, test), gray);
+        }
+        @include itNegative('Ошибка если нет модификатора') {
+            $_trash: dd-color-modifier(#000, wrong);
+        }
+    }
+    @include describe('dd-color-palette') {
+        @include itPositive('Цвет возвращается') {
+            @include assert-equal(dd-color-palette(juicy), #ec6a00);
+        }
+        @include itPositive('Цвет возвращается модифицированным') {
+            @include assert-equal(dd-color-palette(juicy, test), #f6b580);
+        }
+        @include itNegative('Ошибка если нет цвета') {
+            $_trash: dd-color-palette(wrong);
+        }
+        @include itNegative('Ошибка если нет модификатора') {
+            $_trash: dd-color-palette(juicy, wrong);
+        }
+    }
+    @include describe('dd-color-state') {
+        @include itPositive('Цвет возвращается') {
+            @include assert-equal(dd-color-state(success), #669e81);
+        }
+        @include itPositive('Цвет возвращается модифицированным') {
+            @include assert-equal(dd-color-state(success, test), #b3cfc0);
+        }
+        @include itNegative('Ошибка если нет цвета') {
+            $_trash: dd-color-state(wrong);
+        }
+        @include itNegative('Ошибка если нет модификатора') {
+            $_trash: dd-color-state(success, wrong);
+        }
+    }
+    @include describe('dd-color-contrast') {
+        @include itPositive('Выбирается светлый цвет по HEX') {
+            @include assert-equal(dd-color-contrast(#333, #000, #FFF), #FFF);
+        }
+        @include itPositive('Выбирается темный цвет по HEX') {
+            @include assert-equal(dd-color-contrast(#999, #000, #FFF), #000);
+        }
+        @include itPositive('Выбирается светлый цвет по имени в палитре') {
+            @include assert-equal(dd-color-contrast(juicy, #000, #FFF), #FFF);
+        }
+        @include itNegative('Ошибка если нет цвета') {
+            $_trash: dd-color-contrast(wrong);
+        }
+    }
+}

@@ -1,0 +1,54 @@
+////
+/// DivoDivnoe Form-field
+/// @group form-field
+////
+
+@include dd-system-componentRegister(dd-form-field, (dd-form));
+
+@mixin dd-form-field-messageVariant($_color) {
+    color: $_color;
+}
+
+@mixin dd-form-field-messageVariantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-state {
+            &.#{dd-system-name(form, $_name, '-')} {
+                @include dd-form-field-messageVariant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-field-stateVariant($_color) {
+    .#{dd-system-name(form, (field, label))} {
+        color: $_color;
+    }
+}
+
+@mixin dd-form-field-stateVariantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-state {
+            &.#{dd-system-name(form, $_name, '-')} {
+                @include dd-form-field-stateVariant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-field-generate() {
+    .#{dd-system-name(form, field)} {
+        @include dd-form-field-stateVariantMods();
+    }
+
+    .#{dd-system-name(form, (field, label))} {
+        display: block;
+        font-size: $dd-form-fontSize;
+        margin-bottom: 0.5em;
+    }
+
+    .#{dd-system-name(form, (field, message))} {
+        @include dd-form-field-messageVariantMods();
+        font-size: $dd-form-fontSize;
+        padding: 5px 0;
+    }
+}

@@ -1,45 +1,42 @@
 // Подключение всех компонентов
-@import 'components/system/index';
-@import 'components/reset/index';
-@import 'components/responsive/index';
-@import 'components/modifier/index';
-@import 'components/space/index';
-@import 'components/color/index';
-@import 'components/grid/index';
-@import 'components/typ/index';
-@import 'components/form/index';
-@import 'components/icon/index';
-@import 'components/debug/index';
+@import 'component/system/index';
+@import 'component/responsive/index';
+@import 'component/modifier/index';
+@import 'component/space/index';
+@import 'component/color/color';
+@import 'component/grid/index';
+@import 'component/typ/index';
+@import 'component/form/index';
+@import 'component/icon/index';
+@import 'component/debug/index';
 
-@mixin dd-bootstrap()
-{
-	@include dd-system-bootstrap();
+@mixin dd-bootstrap() {
+    @include dd-system-bootstrap();
 }
 
-@mixin dd-generate()
-{
-	//@include dd-reset-generate();
-	@include dd-modifier-generate();
-	@include dd-modifier-generateResponsive();
-	@include dd-space-generate();
-	@include dd-space-generateResponsive();
-	@include dd-grid-generate();
-	@include dd-typ-generate();
-	@include dd-form-generate();
-	@include dd-icon-generate();
-	// Дебаг стили
-	@if ($dd-system-debug) {
-		@include dd-debug-generate();
-	}
+@mixin dd-generate() {
+    //@include dd-reset-generate();
+    @include dd-modifier-generate();
+    @include dd-modifier-generateResponsive();
+    @include dd-space-generate();
+    @include dd-space-generateResponsive();
+    @include dd-grid-generate();
+    @include dd-typ-generate();
+    @include dd-form-generate();
+    @include dd-icon-generate();
+
+    // Дебаг стили
+    @if ($dd-system-debug) {
+        @include dd-debug-generate();
+    }
 }
 
-@mixin dd-run()
-{
-	@include dd-bootstrap();
-	@include dd-generate();
+@mixin dd-run() {
+    @include dd-bootstrap();
+    @include dd-generate();
 }
 
 // Генерация стилей
 @if ($dd-system-autoRun) {
-	@include dd-run();
+    @include dd-run();
 }

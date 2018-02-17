@@ -1,0 +1,21 @@
+$_dd-mock-system-message-body: null;
+$_dd-mock-system-message-type: null;
+
+@function _dd-system-message($_message, $_type: 'warn') {
+    $_dd-mock-system-message-body: $_message !global;
+    $_dd-mock-system-message-type: $_type !global;
+    @return null;
+}
+
+@function dd-mock-system-message-getBody() {
+    @return $_dd-mock-system-message-body;
+}
+
+@function dd-mock-system-message-getType() {
+    @return $_dd-mock-system-message-type;
+}
+
+@mixin dd-mock-system-message-clear() {
+    $_dd-mock-system-message-body: null !global;
+    $_dd-mock-system-message-type: null !global;
+}

@@ -1,0 +1,14 @@
+////
+/// DivoDivnoe Typ-strong
+/// @group typ-strong
+////
+
+@include dd-system-componentRegister(dd-typ-strong, (dd-typ));
+
+@mixin dd-typ-strong-generate() {
+    strong {
+        @include dd-typ-node() {
+            font-weight: 600;
+        }
+    }
+}

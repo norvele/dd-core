@@ -1,0 +1,15 @@
+////
+/// DivoDivnoe Typ-pre
+/// @group typ-pre
+////
+
+@include dd-system-componentRegister(dd-typ-pre, (dd-typ));
+
+@mixin dd-typ-pre-generate() {
+    pre {
+        @include dd-typ-node() {
+            tab-size: 4;
+            white-space: pre;
+        }
+    }
+}

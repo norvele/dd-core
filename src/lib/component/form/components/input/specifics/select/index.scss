@@ -1,0 +1,69 @@
+////
+/// DivoDivnoe Form-inputSelect
+/// @group form-input-select
+////
+
+@include dd-system-componentRegister(dd-form-inputSelect, (dd-form, dd-form-input));
+
+@mixin dd-form-inputSelect-stateVariant($_color) {
+    > select {
+        border-color: $_color;
+    }
+}
+
+@mixin dd-form-inputSelect-stateVariantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-state {
+            &.#{dd-system-name(form, $_name, '-')} {
+                @include dd-form-inputSelect-stateVariant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-inputSelect-customRules() {
+    $_arrowSize: $_dd-form-paddingHorizontal/3;
+
+    &:not(._multiple) > select {
+        padding-right: $_dd-form-paddingHorizontal * 2 + $_arrowSize;
+    }
+
+    &:not(._multiple)::after {
+        border: $_arrowSize solid transparent;
+        border-top: $_arrowSize solid $dd-form-inputBorderColor;
+        content: '';
+        height: 0;
+        pointer-events: none;
+        position: absolute;
+        right: $_dd-form-paddingHorizontal;
+        top: ($dd-form-height - $_arrowSize)/2 + 0.1em;
+        width: 0;
+    }
+}
+
+@mixin dd-form-inputSelect() {
+
+    @include dd-form-inputSelect-customRules();
+    @include dd-form-inputSelect-stateVariantMods();
+    display: inline-block;
+    position: relative;
+
+    > select {
+        @include dd-form-input();
+        appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+}
+
+@mixin dd-form-inputSelect-generate() {
+    .#{dd-system-name(form, inputSelect)} {
+        @include dd-form-inputSelect();
+
+        &.#{dd-system-name(form, fluid, _)} {
+            width: 100%;
+        }
+    }
+}

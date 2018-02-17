@@ -1,6 +1,15 @@
 {
-	"rules": {
-		"color-hex-case": "upper",
-		"color-hex-length": "long",
-	}
+    "extends": "stylelint-config-sass-guidelines",
+    "defaultSeverity": "warning",
+    "rules": {
+        "indentation": 4,
+        "selector-no-qualifying-type": false,
+        "max-nesting-depth": null,
+        "at-rule-blacklist": ["error", "debug", "warn"],
+        "scss/at-function-pattern": "^_?[a-z]+\\w*(-[a-z]+\\w*)*$",
+        "scss/at-mixin-pattern": "^_?[a-z]+\\w*(-[a-z]+\\w*)*$",
+        "scss/dollar-variable-pattern": "^_?[a-z]+\\w*(-[a-z]+\\w*)*$",
+        "scss/percent-placeholder-pattern": "^_?[a-z]+\\w*(-[a-z]+\\w*)*$",
+        "selector-class-pattern": "^[_-]?[a-z]+\\w*(-[a-z]+\\w*)*$"
+    }
 }

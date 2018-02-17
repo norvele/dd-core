@@ -1,0 +1,19 @@
+////
+/// DivoDivnoe Icon
+/// @group icon
+////
+
+@include dd-system-componentRegister(dd-icon);
+
+@mixin dd-icon-generate() {
+    .#{dd-system-name(icon)} {
+        display: inline-block;
+        height: 1em;
+        vertical-align: middle;
+        width: 1em;
+    }
+
+    svg.#{dd-system-name(icon)} {
+        fill: currentColor;
+    }
+}

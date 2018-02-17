@@ -1,0 +1,37 @@
+////
+/// DivoDivnoe Form-inputText
+/// @group form-input-text
+////
+
+@include dd-system-componentRegister(dd-form-inputText, (dd-form-input));
+
+@mixin dd-form-inputText-stateVariant($_color) {
+    > input {
+        border-color: $_color;
+    }
+}
+
+@mixin dd-form-inputText-stateVariantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-state {
+            &.#{dd-system-name(form, $_name, '-')} {
+                @include dd-form-inputText-stateVariant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-inputText() {
+    @include dd-form-input-area();
+    @include dd-form-inputText-stateVariantMods();
+}
+
+@mixin dd-form-inputText-generate() {
+    .#{dd-system-name(form, inputText)} {
+        @include dd-form-inputText();
+
+        &.#{dd-system-name(form, fluid, _)} {
+            width: 100%;
+        }
+    }
+}

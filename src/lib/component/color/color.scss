@@ -1,0 +1,179 @@
+////
+/// DivoDivnoe Color
+/// @group color
+////
+
+@include dd-system-componentRegister(dd-color);
+
+/// Цветовая палитра
+/// @type Map
+/// @example
+/// $dd-color-palette: (
+///     juicy: #ec6a00,
+///     emphasis: #ffcc65,
+///     deep: #34362d,
+///     neutral: #669e81,
+///     default: #333,
+/// );
+$dd-color-palette: $dd-system-undefinedValue !default;
+
+/// Цвет по умолчанию
+/// @type String
+/// @example
+/// $dd-color-default: default;
+$dd-color-default: $dd-system-undefinedValue !default;
+
+/// Цветовая палитра состояний
+/// @type Map
+/// @example
+/// $dd-color-state: (
+///     default: #666,
+///     error: #ed5135,
+///     success: #669e81,
+///     warning: #ffcc65,
+///     notice: #8fccff,
+///     muted: #ccc,
+/// );
+$dd-color-state: $dd-system-undefinedValue !default;
+
+/// Список модификаторов цвета
+/// @type Map
+/// @example
+/// $dd-color-modifier: (
+///     light: dd-color-modifierLight,
+///     dark: dd-color-modifierDark,
+/// );
+$dd-color-modifier: $dd-system-undefinedValue !default;
+
+@function dd-color-bootstrap() {
+    @if ($dd-color-palette == $dd-system-undefinedValue) {
+        $dd-color-palette: (
+            juicy: #ec6a00,
+            emphasis: #ffcc65,
+            deep: #34362d,
+            neutral: #669e81,
+            default: #333,
+        ) !global;
+    }
+
+    @if ($dd-color-default == $dd-system-undefinedValue) {
+        $dd-color-default: default !global;
+    }
+
+    @if ($dd-color-state == $dd-system-undefinedValue) {
+        $dd-color-state: (
+            default: #666,
+            error: #ed5135,
+            success: #669e81,
+            warning: #ffcc65,
+            notice: #8fccff,
+            muted: #ccc,
+        ) !global;
+    }
+
+    @if ($dd-color-modifier == $dd-system-undefinedValue) {
+        $dd-color-modifier: (
+            light: dd-color-modifierLight,
+            dark: dd-color-modifierDark,
+        ) !global;
+    }
+
+    @return true;
+}
+
+/// Осветляет цвет
+/// @param {Color} $_color - цвет
+/// @return {Color} осветленный цвет
+@function dd-color-modifierLight($_color) {
+    @return mix(#fff, $_color, 10%);
+}
+
+/// Затемняет цвет
+/// @param {Color} $_color - цвет
+/// @return {Color} затемненный цвет
+@function dd-color-modifierDark($_color) {
+    @return mix(#000, $_color, 10%);
+}
+
+/// Применяет модификатор к цвету
+/// @param {Color} $_color - цвет
+/// @param {String} $_modifier - имя модификатора
+/// @return {Color | null | *} новый цвет, null в случае ошибки или результат функции-модификатора
+/// @example
+/// dd-color-modifier(#333, light);
+@function dd-color-modifier($_color, $_modifier: null) {
+    $_modifierFunc: map_get($dd-color-modifier, $_modifier);
+    @if ($_modifierFunc == null) {
+        $_trash: dd-system-message('Не существует модификатора цвета "#{$_modifier}"', error);
+        @return null;
+    }
+    @if (not function_exists($_modifierFunc)) {
+        $_trash: dd-system-message('Не существует функции модификатора цвета "#{$_modifierFunc}"', error);
+        @return null;
+    }
+    @return call($_modifierFunc, $_color);
+}
+
+/// Возвращает цвет по имени в палитре с применением модификатора
+/// @param {Map} $_map - палитра цветов
+/// @param {String} $_colorName - имя цвета в палитре
+/// @param {String | null} $_modifier [null] - имя модификатора
+/// @return {String | null} новый цвет или null в случае ошибки
+/// @example
+/// _dd-color-get($dd-color-palette, juicy, light);
+@function _dd-color-get($_map, $_color, $_modifier: null) {
+    $_color: map_get($_map, $_color);
+    @if ($_color == null) {
+        $_trash: dd-system-message('Не существует цвета "#{$_color}"', error);
+        @return null;
+    }
+    @if ($_modifier != null) {
+        $_color: dd-color-modifier($_color, $_modifier);
+    }
+    @return $_color;
+}
+
+/// Возвращает цвет по имени в палитре цветов с применением модификатора
+/// @param {String} $_color - имя цвета в палитре
+/// @param {String | null} $_modifier [null] - имя модификатора
+/// @return {String | null} новый цвет или null в случае ошибки
+/// @example
+/// dd-color-palette(juicy, light);
+@function dd-color-palette($_color, $_modifier: null) {
+    @return _dd-color-get($dd-color-palette, $_color, $_modifier);
+}
+
+/// Возвращает цвет по имени в палитре состояний с применением модификатора
+/// @param {String} $_color - имя цвета в палитре
+/// @param {String | null} $_modifier [null] - имя модификатора
+/// @return {String | null} новый цвет или null в случае ошибки
+/// @example
+/// dd-color-palette(notice, light);
+@function dd-color-state($_color, $_modifier: null) {
+    @return _dd-color-get($dd-color-state, $_color, $_modifier);
+}
+
+/// Возвращает контрастный цвет по отношению к $_color
+/// Выбор цвета осуществляется из аргмунетов $_dark и $_light
+/// @param {Color | String} $_color - цвет, к которому подбирать констрастный, если передана строка - будет взят цвет из палитры
+/// @param {Color | String} $_dark [#000] - темный констрастный цвет, если передана строка - будет взят цвет из палитры
+/// @param {Color | String} $_light [#FFF] - светлый констрастный цвет, если передана строка - будет взят цвет из палитры
+/// @return {Color | null} контрастный цвет или null в случае ошибки
+/// @example
+/// dd-color-contrast(default, #000, #FFF);
+@function dd-color-contrast($_color, $_dark: #000, $_light: #FFF) {
+    @if (type_of($_color) == string) {
+        $_color: dd-color-palette($_color);
+    }
+    @if (type_of($_dark) == string) {
+        $_dark: dd-color-palette($_dark);
+    }
+    @if (type_of($_light) == string) {
+        $_light: dd-color-palette($_light);
+    }
+    @if $_color == null {
+        @return null;
+    }
+    $_yiq: (red($_color) * 299 + green($_color) * 587 + blue($_color) * 114) / 1000;
+    @return if($_yiq >= 133, $_dark, $_light);
+}

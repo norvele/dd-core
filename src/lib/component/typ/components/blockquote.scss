@@ -1,0 +1,30 @@
+////
+/// DivoDivnoe Typ-blockquote
+/// @group typ-blockquote
+////
+
+@include dd-system-componentRegister(dd-typ-blockquote, (dd-typ));
+
+@mixin dd-typ-blockquote-generate() {
+    blockquote {
+        @include dd-typ-node(true) {
+            border-left: 5px solid #eee;
+            padding-left: calc(#{$_dd-typ-rhythm} - 5px);
+
+            > p:last-child {
+                margin-bottom: 0;
+            }
+
+            > footer,
+            > cite {
+                color: mix(#fff, $dd-typ-color, 50%);
+                font-size: 0.9em;
+                line-height: 1em / 0.9em * $dd-typ-lineHeight;
+            }
+
+            &::before {
+                content: '\2014 \00A0';
+            }
+        }
+    }
+}

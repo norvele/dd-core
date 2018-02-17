@@ -1,0 +1,25 @@
+@import 'true';
+@import './mockSystemMessage';
+
+@mixin itSafe($_message) {
+    @include dd-mock-system-message-clear;
+    @include it($_message) {
+        @content;
+    }
+}
+
+/* stylelint-disable order/order */
+@mixin itPositive($_message) {
+    @include itSafe($_message) {
+        @content;
+    }
+    @include assert-false(dd-mock-system-message-getBody(), 'Есть ошибка');
+}
+
+@mixin itNegative($_message) {
+    @include itSafe($_message) {
+        @content;
+    }
+    @include assert-true(dd-mock-system-message-getBody(), 'Должна быть ошибка');
+}
+/* stylelint-enable */

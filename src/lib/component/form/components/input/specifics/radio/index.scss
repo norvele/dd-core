@@ -1,0 +1,31 @@
+////
+/// DivoDivnoe Form-inputRadio
+/// @group form-input-radio
+////
+
+@include dd-system-componentRegister(dd-form-inputRadio, (dd-form-input));
+
+@mixin dd-form-inputRadio-inner() {
+    background-color: $dd-form-inputColor;
+    border-radius: 999px;
+}
+
+@mixin dd-form-inputRadio() {
+    @include dd-form-input-control((innerSize:$dd-form-height/6));
+
+    > label {
+        &::before {
+            border-radius: 999px;
+        }
+
+        &::after {
+            @include dd-form-inputRadio-inner();
+        }
+    }
+}
+
+@mixin dd-form-inputRadio-generate() {
+    .#{dd-system-name(form, inputRadio)} {
+        @include dd-form-inputRadio();
+    }
+}

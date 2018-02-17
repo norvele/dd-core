@@ -1,0 +1,45 @@
+////
+/// DivoDivnoe Form-inputTextarea
+/// @group form-input-textarea
+////
+
+@include dd-system-componentRegister(dd-form-inputTextarea, (dd-form-input));
+
+@mixin dd-form-inputTextarea-stateVariant($_color) {
+    > textarea {
+        border-color: $_color;
+    }
+}
+
+@mixin dd-form-inputTextarea-stateVariantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-state {
+            &.#{dd-system-name(form, $_name, '-')} {
+                @include dd-form-inputTextarea-stateVariant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-inputTextarea() {
+
+    @include dd-form-inputTextarea-stateVariantMods();
+    display: inline-block;
+    max-width: 100%;
+
+    > textarea {
+        @include dd-form-input();
+        max-width: 100%;
+        min-height: 150px;
+    }
+}
+
+@mixin dd-form-inputTextarea-generate() {
+    .#{dd-system-name(form, inputTextarea)} {
+        @include dd-form-inputTextarea();
+
+        &.#{dd-system-name(form, fluid, _)} {
+            width: 100%;
+        }
+    }
+}

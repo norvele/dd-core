@@ -1,0 +1,115 @@
+////
+/// DivoDivnoe Form-button
+/// @group form-button
+////
+
+@include dd-system-componentRegister(dd-form-button, (dd-form, dd-color));
+
+@mixin dd-form-button-variant($_color) {
+    background-color: $_color;
+    border-color: mix(#000, $_color, 10%);
+    box-shadow: 0 1px 2px 0 rgba(mix(#000, $_color, 50%), 0.15);
+    color: dd-color-contrast($_color);
+
+    &:hover {
+        background-color: mix(#000, $_color, 3%);
+    }
+
+    &:active,
+    &.-active {
+        background-color: mix(#000, $_color, 10%);
+        box-shadow: inset 0 2px 5px rgba(#000, 0.1);
+    }
+}
+
+@mixin dd-form-button-variantMods() {
+    @if (dd-system-componentExist(dd-color)) {
+        @each $_name, $_color in $dd-color-palette {
+            &._#{$_name} {
+                @include dd-form-button-variant($_color);
+            }
+        }
+    }
+}
+
+@mixin dd-form-button-generate() {
+    .#{dd-system-name(form, button)} {
+
+        @include dd-form-button-variant(#fff);
+        @include dd-form-button-variantMods();
+        align-items: center;
+        border: 1px solid;
+        border-bottom-width: 2px;
+        border-radius: $dd-form-borderRadius;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: $dd-form-fontSize;
+        justify-content: center;
+        line-height: $dd-form-lineHeight;
+        min-height: $dd-form-height;
+        padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal/4*3;
+        text-align: center;
+        text-decoration: none;
+        transition: background 0.2s, box-shadow 0.2s;
+        user-select: none;
+        vertical-align: top;
+
+        > * {
+            flex-basis: auto;
+            flex-grow: 0;
+            flex-shrink: 0;
+            margin: 0 $_dd-form-paddingHorizontal/4;
+        }
+
+        &.#{dd-system-name(form, fluid, _)} {
+            width: 100%;
+        }
+
+        &.#{dd-system-name(form, toggle, _)} {
+            > input {
+                display: none;
+            }
+        }
+
+        &.#{dd-system-name(form, sort, _)} {
+            > input {
+                display: none;
+            }
+
+            &::before {
+                margin-right: 0.3em;
+            }
+
+            &.#{dd-system-name(form, desc, '-')} {
+                &::before {
+                    content: '↓';
+                }
+            }
+
+            &.#{dd-system-name(form, asc, '-')} {
+                &::before {
+                    content: '↑';
+                }
+            }
+        }
+
+        &.#{dd-system-name(form, circle, _)} {
+            border-radius: 9999px;
+        }
+    }
+
+    .#{dd-system-name(form, (button, icon))} {
+        display: inline-block;
+        fill: currentColor;
+        height: $dd-form-fontSize * $dd-form-lineHeight;
+        line-height: 1;
+        width: $dd-form-fontSize * $dd-form-lineHeight;
+
+        > * {
+            fill: currentColor;
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+}

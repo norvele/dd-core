@@ -1,0 +1,45 @@
+////
+/// DivoDivnoe Form
+/// @group form
+////
+
+@include dd-system-componentRegister(dd-form);
+
+@import 'components/message/index';
+@import 'components/button/index';
+@import 'components/field/index';
+@import 'components/input/index';
+@import 'components/input/specifics/text/index';
+@import 'components/input/specifics/textarea/index';
+@import 'components/input/specifics/select/index';
+@import 'components/input/specifics/checkbox/index';
+@import 'components/input/specifics/radio/index';
+
+@function dd-form-bootstrap() {
+    // Параметры форм
+    $dd-form-fontFamily: inherit !default !global;
+    $dd-form-fontSize: 1em !default !global;
+    $dd-form-lineHeight: 1.2 !default !global;
+    $dd-form-height: 2.5em !default !global;
+    $dd-form-borderRadius: 3px !default !global;
+    $dd-form-color: #333 !default !global;
+    $dd-form-placeholderColor: mix(#fff, $dd-form-color, 80%) !default !global;
+    $dd-form-backgroundColor: #fff !default !global;
+    $dd-form-borderColor: #e6e6e6 !default !global;
+    $_dd-form-padding: ($dd-form-height - $dd-form-fontSize * $dd-form-lineHeight) / 2 !global;
+    $_dd-form-paddingVertical: $_dd-form-padding !global;
+    $_dd-form-paddingHorizontal: $_dd-form-padding * 1.5 !global;
+
+    @return true;
+}
+
+@mixin dd-form-generate() {
+    @include dd-form-message-generate();
+    @include dd-form-field-generate();
+    @include dd-form-button-generate();
+    @include dd-form-inputText-generate();
+    @include dd-form-inputTextarea-generate();
+    @include dd-form-inputSelect-generate();
+    @include dd-form-inputCheckbox-generate();
+    @include dd-form-inputRadio-generate();
+}
