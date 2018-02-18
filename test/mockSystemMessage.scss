@@ -15,7 +15,9 @@ $_dd-mock-system-message-list: ();
 /// @param {warn | error | debug} $_type [warn] - тип сообщения
 /// @return null
 @function _dd-system-message($_message, $_type: 'warn') {
-    $_dd-mock-system-message-list: append($_dd-mock-system-message-list, ($_message, $_type)) !global;
+    @if ($_type == warn or $_type == error) {
+        $_dd-mock-system-message-list: append($_dd-mock-system-message-list, ($_message, $_type)) !global;
+    }
     @return null;
 }
 

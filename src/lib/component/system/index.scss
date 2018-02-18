@@ -22,7 +22,7 @@ $_dd-system-components: (dd-system, dd-util);
     $dd-system-classPrefix: 'dd-' !default !global;
     /// If true - display debug messages
     /// @type Bool
-    $dd-system-debug: true !default !global;
+    $dd-system-debug: false !default !global;
     /// Map of paths
     /// @type Map
     $dd-system-paths: (
@@ -32,17 +32,16 @@ $_dd-system-components: (dd-system, dd-util);
 }
 
 @function _dd-system-message($_message, $_type: 'warn') {
-    @if ($dd-system-debug) {
-        /* stylelint-disable at-rule-blacklist */
-        @if ($_type == 'warn') {
-            @warn $_message;
-        } @else if ($_type == 'error') {
-            @error $_message;
-        } @else {
-            @debug $_message;
-        }
-        /* stylelint-enable */
+    /* stylelint-disable at-rule-blacklist */
+    @if ($_type == 'warn') {
+        @warn $_message;
+    } @else if ($_type == 'error') {
+        @error $_message;
     }
+    @if ($dd-system-debug) {
+        @debug $_message;
+    }
+    /* stylelint-enable */
     @return null;
 }
 

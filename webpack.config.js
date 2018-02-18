@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const scssData = '$dd-system-debug: ' + ((process.env.NODE_ENV === 'dev') ? 'true' : 'false') + ';';
+
 module.exports = {
     entry: './src/example/index.js',
     resolve: {
@@ -20,7 +22,7 @@ module.exports = {
             syntax: 'scss',
         }),
         new ExtractTextPlugin({
-            filename: '[name].[contenthash].css',
+            filename: '[name].css',
             disable: process.env.NODE_ENV === 'dev',
         }),
     ],
@@ -49,6 +51,7 @@ module.exports = {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
+                                data: scssData,
                             },
                         },
                     ]

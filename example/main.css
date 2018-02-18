@@ -2550,33 +2550,4 @@ ul.dd-typ, .dd-typ-ul,
 svg.dd-icon {
   fill: currentColor; }
 
-html::after {
-  background-color: #fff;
-  bottom: 0;
-  color: #000;
-  left: 0;
-  opacity: 1;
-  padding: 5px;
-  pointer-events: none;
-  position: fixed;
-  transition: opacity 0.2s; }
-  @media all and (min-width: 0) and (max-width: 543px) {
-    html::after {
-      content: "xs (0 - 543px)"; } }
-  @media all and (min-width: 544px) and (max-width: 767px) {
-    html::after {
-      content: "sm (544px - 767px)"; } }
-  @media all and (min-width: 768px) and (max-width: 991px) {
-    html::after {
-      content: "md (768px - 991px)"; } }
-  @media all and (min-width: 992px) and (max-width: 1199px) {
-    html::after {
-      content: "lg (992px - 1199px)"; } }
-  @media all and (min-width: 1200px) {
-    html::after {
-      content: "xl (1200px - \221E)"; } }
-
-html:active::after {
-  opacity: 0; }
-
-/*# sourceMappingURL=main.3d6ef1d12992c3b801298be47ef2a645.css.map*/
+/*# sourceMappingURL=main.css.map*/
