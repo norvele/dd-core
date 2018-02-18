@@ -1,9 +1,12 @@
 @import 'true';
 @import '~lib/component/system/index';
-@import '~test/mockSystemMessage';
-@import '~test/itHelpers';
 @import './color';
+
 $_trash: dd-system-bootstrap();
+
+@import '~test/itHelpers';
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 @function modifier($_color) {
     @return mix(#fff, $_color, 50%);

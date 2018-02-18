@@ -1,6 +1,17 @@
+////
+/// itHelpers
+/// Содержит обертки для sass-true.
+/// Должен подключаться после ~lib/component/system/index
+/// т.к. переопределяет вывод сообщений об ошибках.
+////
+
 @import 'true';
 @import './mockSystemMessage';
 
+/// Безопасный запуск теста
+/// Очищает сообщения об ошибках перед тестом
+/// @param {String} $_message - имя теста
+/// @content тело теста
 @mixin itSafe($_message) {
     @include dd-mock-system-message-clear;
     @include it($_message) {
@@ -9,17 +20,27 @@
 }
 
 /* stylelint-disable order/order */
+/// Безопасный запуск позитивного теста
+/// После теста проверяет отсутствие ошибок
+/// @param {String} $_message - имя теста
+/// @content тело теста
 @mixin itPositive($_message) {
     @include itSafe($_message) {
         @content;
     }
-    @include assert-false(dd-mock-system-message-getBody(), 'Есть ошибка');
+    @include assert-false(dd-mock-system-message-hasMessages(), 'Есть ошибка');
 }
+/* stylelint-enable */
 
+/* stylelint-disable order/order */
+/// Безопасный запуск негативного теста
+/// После теста проверяет наличие ошибок
+/// @param {String} $_message - имя теста
+/// @content тело теста
 @mixin itNegative($_message) {
     @include itSafe($_message) {
         @content;
     }
-    @include assert-true(dd-mock-system-message-getBody(), 'Должна быть ошибка');
+    @include assert-true(dd-mock-system-message-hasMessages(), 'Должна быть ошибка');
 }
 /* stylelint-enable */

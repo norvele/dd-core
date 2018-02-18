@@ -1,21 +1,31 @@
-$_dd-mock-system-message-body: null;
-$_dd-mock-system-message-type: null;
+////
+/// mockSystemMessage
+/// Переопределяет системный вывод сообщений библиотеки,
+/// записывая их в список, позволяя отслеживать наличие ошибок.
+/// Должен подключаться после ~lib/component/system/index.
+////
 
+/// Список сообщений (ошибок)
+/// @type List
+$_dd-mock-system-message-list: ();
+
+/// Переопределяет системный вывод сообщений
+/// Записывает сообщения в список
+/// @param {String} $_message - текст сообщения
+/// @param {warn | error | debug} $_type [warn] - тип сообщения
+/// @return null
 @function _dd-system-message($_message, $_type: 'warn') {
-    $_dd-mock-system-message-body: $_message !global;
-    $_dd-mock-system-message-type: $_type !global;
+    $_dd-mock-system-message-list: append($_dd-mock-system-message-list, ($_message, $_type)) !global;
     @return null;
 }
 
-@function dd-mock-system-message-getBody() {
-    @return $_dd-mock-system-message-body;
+/// Проверяет если ли сообщения в списке
+/// @return Boolean
+@function dd-mock-system-message-hasMessages() {
+    @return if(length($_dd-mock-system-message-list) == 0, false, true);
 }
 
-@function dd-mock-system-message-getType() {
-    @return $_dd-mock-system-message-type;
-}
-
+/// Очищает список сообщений
 @mixin dd-mock-system-message-clear() {
-    $_dd-mock-system-message-body: null !global;
-    $_dd-mock-system-message-type: null !global;
+    $_dd-mock-system-message-list: () !global;
 }
