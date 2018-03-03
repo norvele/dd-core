@@ -6,10 +6,10 @@
 @include dd-system-componentRegister(dd-form-button, (dd-form, dd-color));
 
 @mixin dd-form-button-variant($_color) {
+    color: dd-color-contrast($_color);
     background-color: $_color;
     border-color: mix(#000, $_color, 10%);
     box-shadow: 0 1px 2px 0 rgba(mix(#000, $_color, 50%), 0.15);
-    color: dd-color-contrast($_color);
 
     &:hover {
         background-color: mix(#000, $_color, 3%);
@@ -37,29 +37,29 @@
 
         @include dd-form-button-variant(#fff);
         @include dd-form-button-variantMods();
-        align-items: center;
+        display: inline-flex;
+        box-sizing: border-box;
+        padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal/4*3;
         border: 1px solid;
+        font-size: $dd-form-fontSize;
+        line-height: $dd-form-lineHeight;
+        text-align: center;
+        align-items: center;
         border-bottom-width: 2px;
         border-radius: $dd-form-borderRadius;
-        box-sizing: border-box;
         cursor: pointer;
-        display: inline-flex;
-        font-size: $dd-form-fontSize;
         justify-content: center;
-        line-height: $dd-form-lineHeight;
         min-height: $dd-form-height;
-        padding: $_dd-form-paddingVertical $_dd-form-paddingHorizontal/4*3;
-        text-align: center;
         text-decoration: none;
         transition: background 0.2s, box-shadow 0.2s;
         user-select: none;
         vertical-align: top;
 
         > * {
+            margin: 0 $_dd-form-paddingHorizontal/4;
             flex-basis: auto;
             flex-grow: 0;
             flex-shrink: 0;
-            margin: 0 $_dd-form-paddingHorizontal/4;
         }
 
         &.#{dd-system-name(form, fluid, _)} {
@@ -101,10 +101,10 @@
 
     .#{dd-system-name(form, (button, icon))} {
         display: inline-block;
-        fill: currentColor;
+        width: $dd-form-fontSize * $dd-form-lineHeight;
         height: $dd-form-fontSize * $dd-form-lineHeight;
         line-height: 1;
-        width: $dd-form-fontSize * $dd-form-lineHeight;
+        fill: currentColor;
 
         > * {
             fill: currentColor;

@@ -9,18 +9,18 @@
     }
 
     .#{dd-system-name(typ, widthControl)} {
-        max-width: 30em;
         position: relative;
+        max-width: 30em;
     }
 
     .#{dd-system-name(typ, rhythmGrid)} {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-image: linear-gradient(#aacee6 1px, transparent 1px), linear-gradient(to right, #aacee6 1px, transparent 1px), linear-gradient(to right, transparent $_dd-typ-rhythm, #aacee6 $_dd-typ-rhythm);
         background-repeat: repeat, no-repeat, no-repeat;
         background-size: 100% $_dd-typ-rhythm, calc(#{$_dd-typ-rhythm} + 2px) 100%, calc(#{$_dd-typ-rhythm} + 2px) 100%;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
     }
 }

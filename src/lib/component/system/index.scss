@@ -1,33 +1,36 @@
 ////
 /// DivoDivnoe System
+/// Главный компонент библиотеки
 /// @group system
 ////
 @import '../util/index';
 
 $dd-system-undefinedValue: undefined !default;
 
-/// If true - run bootstrap and generators automatically
+/// Запускать ли генерацию стилей сразу при подключении библиотеки
 /// @type Bool
 $dd-system-autoRun: true !default;
 
-/// Contain list of registered components
+/// Префикс для всех генерируемых классов
+/// @type String
+$dd-system-classPrefix: $dd-system-undefinedValue !default;
+
+/// Выводить ли отладочную информацию
+/// Переменная не влияет на вывод предупреждений и ошибок, они выводятся всегда
+/// @type Bool
+$dd-system-debug: $dd-system-undefinedValue !default;
+
+/// Содержит список зарегистрированных компонентов
 /// @type List
 $_dd-system-components: (dd-system, dd-util);
 
-/// Processing of vars
-/// @return {bool} only true
 @function dd-system-bootstrap() {
-    /// Prefix for all generated classes
-    /// @type String
-    $dd-system-classPrefix: 'dd-' !default !global;
-    /// If true - display debug messages
-    /// @type Bool
-    $dd-system-debug: false !default !global;
-    /// Map of paths
-    /// @type Map
-    $dd-system-paths: (
-        root: '../',
-    ) !default !global;
+    @if ($dd-system-classPrefix == $dd-system-undefinedValue) {
+        $dd-system-classPrefix: 'dd-' !global;
+    }
+    @if ($dd-system-debug == $dd-system-undefinedValue) {
+        $dd-system-debug: false !global;
+    }
     @return true;
 }
 
@@ -103,10 +106,6 @@ $_dd-system-components: (dd-system, dd-util);
     $_trash: dd-system-componentRegister($_component, $_dependencies);
 }
 
-@function dd-system-path($_prefix, $_path) {
-    @return #{map_get($dd-system-paths, $_prefix)}#{$_path};
-}
-
 // $_component: grid, responsive, etc...
 // $_nodes: list of elements or one element, for example: (size, small, 6, lg)
 // $_mod: __ or _ or -
@@ -129,7 +128,7 @@ $_dd-system-components: (dd-system, dd-util);
 @mixin dd-system-bootstrap() {
     @each $_component in $_dd-system-components {
         $_name: '#{$_component}-bootstrap';
-        @if function_exists($_name) {
+        @if function-exists($_name) {
             $_trash: call($_name);
         }
     }

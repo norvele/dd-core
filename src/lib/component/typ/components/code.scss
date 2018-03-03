@@ -17,26 +17,25 @@
 @mixin dd-typ-code-generate() {
     code {
         @include dd-typ-node() {
+            padding: 0.2em 0.4em;
             background: $dd-typ-code-background;
-            border-radius: 3px;
             color: $dd-typ-code-color;
             font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            padding: 0.2em 0.4em;
+            border-radius: 3px;
         }
-        /* stylelint-disable selector-no-qualifying-type */
+
         &._block {
             @include dd-typ-node(true) {
-                background: $dd-typ-code-blockBackground;
-                box-sizing: border-box;
-                color: $dd-typ-code-blockColor;
                 display: block;
+                box-sizing: border-box;
+                padding: $_dd-typ-rhythm;
+                background: $dd-typ-code-blockBackground;
+                color: $dd-typ-code-blockColor;
                 max-width: 100%;
                 overflow-x: auto;
-                padding: $_dd-typ-rhythm;
                 tab-size: 4;
                 white-space: pre;
             }
         }
-        /* stylelint-enable */
     }
 }

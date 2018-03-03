@@ -8,8 +8,8 @@
 @mixin dd-typ-ol-generate() {
     ol {
         @include dd-typ-node(true) {
-            list-style: decimal;
             padding-left: 40px;
+            list-style: decimal;
 
             ul,
             ol {

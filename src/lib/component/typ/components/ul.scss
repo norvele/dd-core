@@ -8,8 +8,8 @@
 @mixin dd-typ-ul-generate() {
     ul {
         @include dd-typ-node(true) {
-            list-style: disc;
             padding-left: 40px;
+            list-style: disc;
 
             ul,
             ol {

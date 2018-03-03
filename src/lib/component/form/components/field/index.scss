@@ -42,13 +42,13 @@
 
     .#{dd-system-name(form, (field, label))} {
         display: block;
-        font-size: $dd-form-fontSize;
         margin-bottom: 0.5em;
+        font-size: $dd-form-fontSize;
     }
 
     .#{dd-system-name(form, (field, message))} {
         @include dd-form-field-messageVariantMods();
-        font-size: $dd-form-fontSize;
         padding: 5px 0;
+        font-size: $dd-form-fontSize;
     }
 }

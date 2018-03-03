@@ -6,9 +6,9 @@
 }
 
 @mixin dd-form-message-stateVariant($_color) {
+    color: mix(#000, $_color, 20%);
     background-color: mix(#fff, $_color, 80%);
     border-color: mix(#fff, $_color, 10%);
-    color: mix(#000, $_color, 20%);
 }
 
 @mixin dd-form-message-stateVariantMods() {
@@ -25,10 +25,10 @@
     .#{dd-system-name(form, message)} {
         @include dd-form-message-stateVariant($dd-form-message-defaultColor);
         @include dd-form-message-stateVariantMods();
+        padding: 0.5em 1em;
         border: 1px solid;
-        border-radius: 3px;
         font-size: $dd-form-fontSize;
         line-height: 1.2em;
-        padding: 0.5em 1em;
+        border-radius: 3px;
     }
 }

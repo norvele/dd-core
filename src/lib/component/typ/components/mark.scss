@@ -8,8 +8,8 @@
 @mixin dd-typ-mark-generate() {
     mark {
         @include dd-typ-node() {
-            background: #eff6ff;
             padding: 0.2em;
+            background: #eff6ff;
         }
     }
 }

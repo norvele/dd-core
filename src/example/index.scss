@@ -4,3 +4,8 @@ $dd-system-autoRun: false;
 
 @include dd-bootstrap;
 @include dd-generate;
+
+.mock {
+    padding: 10px;
+    background-color: #5c8e74;
+}

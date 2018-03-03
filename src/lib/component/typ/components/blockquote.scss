@@ -8,8 +8,8 @@
 @mixin dd-typ-blockquote-generate() {
     blockquote {
         @include dd-typ-node(true) {
-            border-left: 5px solid #eee;
             padding-left: calc(#{$_dd-typ-rhythm} - 5px);
+            border-left: 5px solid #eee;
 
             > p:last-child {
                 margin-bottom: 0;

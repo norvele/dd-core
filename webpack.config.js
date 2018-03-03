@@ -17,6 +17,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'DivoDivnoe',
             filename: 'index.html',
+            template: './src/example/template.html'
         }),
         new StyleLintPlugin({
             syntax: 'scss',

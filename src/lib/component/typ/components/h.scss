@@ -46,11 +46,11 @@
     // для поддержания вертикального ритма
     @if unit($_size) == em {
         $_margins: dd-typ-h-margins($_size, $_lineHeight, $dd-typ-fontSize, $dd-typ-lineHeight);
-        margin-bottom: nth($_margins, 2);
         margin-top: nth($_margins, 1);
+        margin-bottom: nth($_margins, 2);
     } @else {
-        margin-bottom: $typ-fontSize;
         margin-top: $typ-fontSize*2;
+        margin-bottom: $typ-fontSize;
     }
 }
 
@@ -63,8 +63,8 @@
             @include dd-typ-node() {
                 color: $dd-typ-h-color;
                 font-size: $_size;
-                font-weight: 600;
                 line-height: $dd-typ-h-lineHeight;
+                font-weight: 600;
             }
 
             .#{dd-system-name(typ, block)} & {

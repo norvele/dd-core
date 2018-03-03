@@ -29,15 +29,15 @@
     }
 
     &:not(._multiple)::after {
+        content: '';
+        position: absolute;
+        top: ($dd-form-height - $_arrowSize)/2 + 0.1em;
+        right: $_dd-form-paddingHorizontal;
+        width: 0;
+        height: 0;
         border: $_arrowSize solid transparent;
         border-top: $_arrowSize solid $dd-form-inputBorderColor;
-        content: '';
-        height: 0;
         pointer-events: none;
-        position: absolute;
-        right: $_dd-form-paddingHorizontal;
-        top: ($dd-form-height - $_arrowSize)/2 + 0.1em;
-        width: 0;
     }
 }
 
@@ -45,8 +45,8 @@
 
     @include dd-form-inputSelect-customRules();
     @include dd-form-inputSelect-stateVariantMods();
-    display: inline-block;
     position: relative;
+    display: inline-block;
 
     > select {
         @include dd-form-input();

@@ -25,10 +25,10 @@
 /// @param {String} $_message - имя теста
 /// @content тело теста
 @mixin itPositive($_message) {
+    @include assert-false(dd-mock-system-message-hasMessages(), 'Есть ошибка');
     @include itSafe($_message) {
         @content;
     }
-    @include assert-false(dd-mock-system-message-hasMessages(), 'Есть ошибка');
 }
 /* stylelint-enable */
 
@@ -38,9 +38,9 @@
 /// @param {String} $_message - имя теста
 /// @content тело теста
 @mixin itNegative($_message) {
+    @include assert-true(dd-mock-system-message-hasMessages(), 'Должна быть ошибка');
     @include itSafe($_message) {
         @content;
     }
-    @include assert-true(dd-mock-system-message-hasMessages(), 'Должна быть ошибка');
 }
 /* stylelint-enable */

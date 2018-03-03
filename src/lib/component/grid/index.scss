@@ -1,298 +1,321 @@
 ////
 /// DivoDivnoe Grid
+/// Реализует сетки
 /// @group grid
 ////
 
 @include dd-system-componentRegister(dd-grid, (dd-responsive, dd-space));
 
+/// Кол-во колонок в сетке
+/// @type Number
+/// @example
+/// $dd-grid-columns: 12;
+$dd-grid-columns: $dd-system-undefinedValue !default;
+
+/// Горизонтальный отступ между ячейками
+/// @type Number
+/// @example
+/// $dd-grid-gutterHorizontal: $dd-space-defaultSpace;
+$dd-grid-gutterHorizontal: $dd-system-undefinedValue !default;
+
+/// Вертикальный отступ между ячейками
+/// @type
+/// @example
+/// $dd-grid-gutterVertical: $dd-space-defaultSpace;
+$dd-grid-gutterVertical: $dd-system-undefinedValue !default;
+
+/// Динамические отступы (в зависимости от текущего интервала)
+/// Расчет осуществляется на основании параметра spaceScale переменной $dd-responsive-intervals
+/// @type Boolean
+/// @see $dd-responsive-intervals
+/// @example
+/// $dd-grid-gutterDynamic: true;
+$dd-grid-gutterDynamic: $dd-system-undefinedValue !default;
+
+/// Генерировать классы для контроля размера отступов
+/// На основании переменной $dd-space-factor
+/// @type Boolean
+/// @see $dd-space-factor
+/// @example
+/// $dd-grid-gutterSpaces: true;
+$dd-grid-gutterSpaces: $dd-system-undefinedValue !default;
+
+/// Генерировать классы для отключения отступов
+/// @type Boolean
+/// @example
+/// $dd-grid-gutterDisables: true;
+$dd-grid-gutterDisables: $dd-system-undefinedValue !default;
+
+/// Имя класса для отключения отступов
+/// @type String
+/// @example
+/// $dd-grid-noGuttersMod: none;
+$dd-grid-noGuttersMod: $dd-system-undefinedValue !default;
+
 @function dd-grid-bootstrap() {
-    $dd-grid-columns: 12 !default !global;
-    $dd-grid-gutterHorizontal: $dd-space-defaultSpace !default !global;
-    $dd-grid-gutterVertical: $dd-space-defaultSpace !default !global;
-    $dd-grid-gutterDynamic: true !default !global;
-    $dd-grid-gutterSpaces: true !default !global;
-    $dd-grid-gutterDisables: true !default !global;
-    $dd-grid-noGuttersMod: 'none' !default !global;
+    $dd-grid-columns: 12 !global;
+    $dd-grid-gutterHorizontal: $dd-space-defaultSpace !global;
+    $dd-grid-gutterVertical: $dd-space-defaultSpace !global;
+    $dd-grid-gutterDynamic: true !global;
+    $dd-grid-gutterSpaces: true !global;
+    $dd-grid-gutterDisables: true !global;
+    $dd-grid-noGuttersMod: none !global;
 
     @return true;
 }
 
-@mixin _dd-grid-guttersStatic($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        container: false,
-    ));
-    $_container: map_get($_p, container);
-    $_gutterH: map_get($_p, gutterH);
-    $_gutterV: map_get($_p, gutterV);
-
-    @if ($_container == true) {
-        @if ($_gutterH != null) {
-            padding-left: $_gutterH;
-            padding-right: $_gutterH;
+/// Создает статичные отступы
+/// Добавляет внешние и внутренние отступы равные половине расстояния между ячейками
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $container [false] - флаг контейнера, будут сгенерированы только внутренние отступы равные $gutterH и $gutterV
+@mixin _dd-grid-guttersStatic($gutterH: null, $gutterV: null, $container: false) {
+    @if ($container == true) {
+        @if ($gutterH != null) {
+            padding-left: $gutterH;
+            padding-right: $gutterH;
         }
-        @if ($_gutterV != null) {
-            padding-bottom: $_gutterV;
-            padding-top: $_gutterV;
+        @if ($gutterV != null) {
+            padding-top: $gutterV;
+            padding-bottom: $gutterV;
         }
     } @else {
         > * {
-            @if ($_gutterH != null) {
-                padding-left: $_gutterH/2;
-                padding-right: $_gutterH/2;
+            @if ($gutterH != null) {
+                padding-left: $gutterH/2;
+                padding-right: $gutterH/2;
             }
-            @if ($_gutterV != null) {
-                padding-bottom: $_gutterV/2;
-                padding-top: $_gutterV/2;
+            @if ($gutterV != null) {
+                padding-top: $gutterV/2;
+                padding-bottom: $gutterV/2;
             }
         }
-        @if ($_gutterH != null) {
-            margin-left: -$_gutterH/2;
-            margin-right: -$_gutterH/2;
+        @if ($gutterH != null) {
+            margin-left: -$gutterH/2;
+            margin-right: -$gutterH/2;
         }
-        @if ($_gutterV != null) {
-            margin-bottom: -$_gutterV/2;
-            margin-top: -$_gutterV/2;
+        @if ($gutterV != null) {
+            margin-top: -$gutterV/2;
+            margin-bottom: -$gutterV/2;
         }
     }
 }
 
-@mixin _dd-grid-guttersDynamic($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        container: false,
-    ));
-    $_container: map_get($_p, container);
-    $_gutterH: map_get($_p, gutterH);
-    $_gutterV: map_get($_p, gutterV);
+/// Создает динамичные отступы (в зависимости от текущего интервала)
+/// Расчет осуществляется на основании параметра spaceScale переменной $dd-responsive-intervals
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $container [false] - флаг контейнера, будут сгенерированы только внутренние отступы равные $gutterH и $gutterV
+@mixin _dd-grid-guttersDynamic($gutterH: null, $gutterV: null, $container: false) {
+    @each $intervalKey, $intervalParams in $dd-responsive-intervals {
+        $range: map_get($intervalParams, 'range');
+        $minWidth: nth($range, 1);
+        $maxWidth: nth($range, 2);
+        $spaceScale: map_get($intervalParams, 'spaceScale');
 
-    @each $_key, $_params in $dd-responsive-intervals {
-        $_range: map_get($_params, 'range');
-        $_minWidth: nth($_range, 1);
-        $_maxWidth: nth($_range, 2);
-        $_spaceScale: map_get($_params, 'spaceScale');
+        $newGutterH: if($gutterH != null, $spaceScale * $gutterH, null);
+        $newGutterV: if($gutterV != null, $spaceScale * $gutterV, null);
 
-        $_newGutterH: null;
-        $_newGutterV: null;
-        @if ($_gutterH != null) {
-            $_newGutterH: $_spaceScale * $_gutterH;
-        }
-        @if ($_gutterV != null) {
-            $_newGutterV: $_spaceScale * $_gutterV;
-        }
-
-        @if ($_maxWidth) {
-            @media all and (min-width: $_minWidth) and (max-width: $_maxWidth) {
-                @include _dd-grid-guttersStatic((
-                    gutterH: $_newGutterH,
-                    gutterV: $_newGutterV,
-                    container: $_container,
-                ));
+        @if ($maxWidth) {
+            @media all and (min-width: $minWidth) and (max-width: $maxWidth) {
+                @include _dd-grid-guttersStatic(
+                    $gutterH: $newGutterH,
+                    $gutterV: $newGutterV,
+                    $container: $container
+                );
             }
         } @else {
-            @media all and (min-width: $_minWidth) {
-                @include _dd-grid-guttersStatic((
-                    gutterH: $_newGutterH,
-                    gutterV: $_newGutterV,
-                    container: $_container,
-                ));
+            @media all and (min-width: $minWidth) {
+                @include _dd-grid-guttersStatic(
+                    $gutterH: $newGutterH,
+                    $gutterV: $newGutterV,
+                    $container: $container
+                );
             }
         }
     }
 }
 
-@mixin _dd-grid-guttersStaticSpaces($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        container: false,
-    ));
-    $_container: map_get($_p, container);
-    $_gutterH: map_get($_p, gutterH);
-    $_gutterV: map_get($_p, gutterV);
+/// Создает статичные отступы с возможностью в разметке указывать размер отступа
+/// Размер назначается именем на основании переменной $dd-space-factor
+/// Например могут быть сгенерированы такие классы-модификаторы:
+/// _dd-gutters-small - сделать все отступы маленькими
+/// _dd-gutters-v-large - сделать вертикальные отступы большими
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $container [false] - флаг контейнера, будут сгенерированы только внутренние отступы равные $gutterH и $gutterV
+@mixin _dd-grid-guttersStaticSpaces($gutterH: null, $gutterV: null, $container: false) {
+    @each $factorKey, $factorVal in $dd-space-factor {
+        $newGutterH: if($gutterH != null, $factorVal * $gutterH, null);
+        $newGutterV: if($gutterV != null, $factorVal * $gutterV, null);
 
-    @each $_factorKey, $_factorVal in $dd-space-factor {
-        $_val: dd-space-getSpace($_factorKey);
-
-        $_newGutterH: null;
-        $_newGutterV: null;
-
-        &.#{dd-system-name(grid, (gutters, h, $_factorKey), _)},
-        &.#{dd-system-name(grid, (gutters, $_factorKey), _)} {
-            @include _dd-grid-guttersStatic((
-                gutterH: $_newGutterH,
-                gutterV: null,
-                container: $_container,
-            ));
+        &.#{dd-system-name(grid, (gutters, h, $factorKey), _)},
+        &.#{dd-system-name(grid, (gutters, $factorKey), _)} {
+            @include _dd-grid-guttersStatic(
+                $gutterH: $newGutterH,
+                $gutterV: null,
+                $container: $container
+            );
         }
 
-        &.#{dd-system-name(grid, (gutters, v, $_factorKey), _)},
-        &.#{dd-system-name(grid, (gutters, $_factorKey), _)} {
-            @include _dd-grid-guttersStatic((
-                gutterH: null,
-                gutterV: $_newGutterV,
-                container: $_container,
-            ));
-        }
-        @if ($_gutterH != null) {
-            $_newGutterH: $_factorVal * $_gutterH;
-        }
-        @if ($_gutterV != null) {
-            $_newGutterV: $_factorVal * $_gutterV;
+        &.#{dd-system-name(grid, (gutters, v, $factorKey), _)},
+        &.#{dd-system-name(grid, (gutters, $factorKey), _)} {
+            @include _dd-grid-guttersStatic(
+                $gutterH: null,
+                $gutterV: $newGutterV,
+                $container: $container
+            );
         }
     }
 }
 
-@mixin _dd-grid-guttersDynamicSpaces($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        container: false,
-    ));
-    $_container: map_get($_p, container);
-    $_gutterH: map_get($_p, gutterH);
-    $_gutterV: map_get($_p, gutterV);
+/// Создает динамичные отступы (в зависимости от текущего интервала)
+/// с возможностью в разметке указывать размер отступа
+/// Размер назначается именем на основании переменной $dd-space-factor
+/// Например могут быть сгенерированы такие классы-модификаторы:
+/// _dd-gutters-small - сделать все отступы маленькими
+/// _dd-gutters-v-large - сделать вертикальные отступы большими
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $container [false] - флаг контейнера, будут сгенерированы только внутренние отступы равные $gutterH и $gutterV
+@mixin _dd-grid-guttersDynamicSpaces($gutterH: null, $gutterV: null, $container: false) {
+    @each $intervalKey, $intervalParams in $dd-responsive-intervals {
+        $range: map_get($intervalParams, 'range');
+        $minWidth: nth($range, 1);
+        $maxWidth: nth($range, 2);
+        $spaceScale: map_get($intervalParams, 'spaceScale');
 
-    @each $_key, $_params in $dd-responsive-intervals {
-        $_range: map_get($_params, 'range');
-        $_minWidth: nth($_range, 1);
-        $_maxWidth: nth($_range, 2);
-        $_spaceScale: map_get($_params, 'spaceScale');
+        $newGutterH: if($gutterH != null, $spaceScale * $gutterH, null);
+        $newGutterV: if($gutterV != null, $spaceScale * $gutterV, null);
 
-        $_newGutterH: null;
-        $_newGutterV: null;
-        @if ($_gutterH != null) {
-            $_newGutterH: $_spaceScale * $_gutterH;
-        }
-        @if ($_gutterV != null) {
-            $_newGutterV: $_spaceScale * $_gutterV;
-        }
-
-        @if ($_maxWidth) {
-            @media all and (min-width: $_minWidth) and (max-width: $_maxWidth) {
-                @include _dd-grid-guttersStaticSpaces((
-                    gutterH: $_newGutterH,
-                    gutterV: $_newGutterV,
-                    container: $_container,
-                ));
+        @if ($maxWidth) {
+            @media all and (min-width: $minWidth) and (max-width: $maxWidth) {
+                @include _dd-grid-guttersStaticSpaces(
+                    $gutterH: $newGutterH,
+                    $gutterV: $newGutterV,
+                    $container: $container
+                );
             }
         } @else {
-            @media all and (min-width: $_minWidth) {
-                @include _dd-grid-guttersStaticSpaces((
-                    gutterH: $_newGutterH,
-                    gutterV: $_newGutterV,
-                    container: $_container,
-                ));
+            @media all and (min-width: $minWidth) {
+                @include _dd-grid-guttersStaticSpaces(
+                    $gutterH: $newGutterH,
+                    $gutterV: $newGutterV,
+                    $container: $container
+                );
             }
         }
     }
 }
 
-@mixin dd-grid-gutters($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        container: false,
-        gutterDynamic: false,
-        gutterSpaces: false,
-        gutterDisables: false,
-    ));
-    $_container: map_get($_p, container);
-    $_gutterDynamic: map_get($_p, gutterDynamic);
-    $_gutterSpaces: map_get($_p, gutterSpaces);
-    $_gutterDisables: map_get($_p, gutterDisables);
-    $_gutterH: dd-space-getSpace(map_get($_p, gutterH));
-    $_gutterV: dd-space-getSpace(map_get($_p, gutterV));
+/// Создает отступы для ячеек сетки или контейнера
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $container [false] - флаг контейнера, будут сгенерированы только внутренние отступы равные $gutterH и $gutterV
+/// @param {Boolean} $gutterDynamic [false] - генерировать ли динамические отступы (на основании параметра spaceScale текущего интервала)
+/// @param {Boolean} $gutterSpaces [false] - генерировать классы-модификаторы для изменения отступов на основании переменной $dd-space-factor
+/// @param {Boolean} $gutterDisables [false] - генерировать классы-модификаторы для отключения отступов
+@mixin dd-grid-gutters(
+    $gutterH: null,
+    $gutterV: null,
+    $container: false,
+    $gutterDynamic: false,
+    $gutterSpaces: false,
+    $gutterDisables: false
+) {
+    @if ($gutterDynamic) {
+        @include _dd-grid-guttersDynamic(
+            $gutterH: $gutterH,
+            $gutterV: $gutterV,
+            $container: $container
+        );
 
-    @if ($_gutterDynamic) {
-        @include _dd-grid-guttersDynamic((
-            gutterH: $_gutterH,
-            gutterV: $_gutterV,
-            container: $_container,
-        ));
-
-        @if ($_gutterSpaces) {
-            @include _dd-grid-guttersDynamicSpaces((
-                gutterH: $_gutterH,
-                gutterV: $_gutterV,
-                container: $_container,
-            ));
+        @if ($gutterSpaces) {
+            @include _dd-grid-guttersDynamicSpaces(
+                $gutterH: $gutterH,
+                $gutterV: $gutterV,
+                $container: $container
+            );
         }
     } @else {
-        @include _dd-grid-guttersStatic((
-            gutterH: $_gutterH,
-            gutterV: $_gutterV,
-            container: $_container,
-        ));
+        @include _dd-grid-guttersStatic(
+            $gutterH: $gutterH,
+            $gutterV: $gutterV,
+            $container: $container
+        );
 
-        @if ($_gutterSpaces) {
-            @include _dd-grid-guttersStaticSpaces((
-                gutterH: $_gutterH,
-                gutterV: $_gutterV,
-                container: $_container,
-            ));
+        @if ($gutterSpaces) {
+            @include _dd-grid-guttersStaticSpaces(
+                $gutterH: $gutterH,
+                $gutterV: $gutterV,
+                $container: $container
+            );
         }
     }
 
-    @if ($_gutterDisables) {
+    @if ($gutterDisables) {
         &.#{dd-system-name(grid, (gutters, $dd-grid-noGuttersMod), _)} {
-            @include _dd-grid-guttersStatic((
-                gutterH: 0,
-                gutterV: 0,
-                container: $_container,
-            ));
+            @include _dd-grid-guttersStatic(
+                $gutterH: 0,
+                $gutterV: 0,
+                $container: $container
+            );
         }
 
         &.#{dd-system-name(grid, (gutters, h, $dd-grid-noGuttersMod), _)} {
-            @include _dd-grid-guttersStatic((
-                gutterH: 0,
-                gutterV: null,
-                container: $_container,
-            ));
+            @include _dd-grid-guttersStatic(
+                $gutterH: 0,
+                $gutterV: null,
+                $container: $container
+            );
         }
 
         &.#{dd-system-name(grid, (gutters, v, $dd-grid-noGuttersMod), _)} {
-            @include _dd-grid-guttersStatic((
-                gutterH: null,
-                gutterV: 0,
-                container: $_container,
-            ));
+            @include _dd-grid-guttersStatic(
+                $gutterH: null,
+                $gutterV: 0,
+                $container: $container
+            );
         }
     }
 }
 
-@mixin dd-grid-cell($_grow: 1, $_shrink: 1) {
+/// Создает ячейку сетки
+/// @param {Number} $grow - значение flex-grow
+/// @param {Number} $shrink - значение flex-shrink
+@mixin dd-grid-cell($grow: 0, $shrink: 0) {
     box-sizing: border-box;
     flex-basis: auto;
-    flex-grow: $_grow;
-    flex-shrink: $_shrink;
+    flex-grow: $grow;
+    flex-shrink: $shrink;
+    max-width: 100%;
     min-height: 0;
     min-width: 0;
 }
 
-@mixin dd-grid-area($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        gutterDynamic: false,
-        gutterSpaces: false,
-        gutterDisables: false,
-    ));
-    $_gutterDynamic: map_get($_p, gutterDynamic);
-    $_gutterSpaces: map_get($_p, gutterSpaces);
-    $_gutterDisables: map_get($_p, gutterDisables);
-    $_gutterH: dd-space-getSpace(map_get($_p, gutterH));
-    $_gutterV: dd-space-getSpace(map_get($_p, gutterV));
+/// Создает сетку
+/// @param {Number | null} $gutterH - горизонтальный отступ между ячейками
+/// @param {Number | null} $gutterV - вертикальный отступ между ячейками
+/// @param {Boolean} $gutterDynamic [false] - генерировать ли динамические отступы (на основании параметра spaceScale текущего интервала)
+/// @param {Boolean} $gutterSpaces [false] - генерировать классы-модификаторы для изменения отступов на основании переменной $dd-space-factor
+/// @param {Boolean} $gutterDisables [false] - генерировать классы-модификаторы для отключения отступов
+@mixin dd-grid-area(
+    $gutterH: null,
+    $gutterV: null,
+    $gutterDynamic: false,
+    $gutterSpaces: false,
+    $gutterDisables: false
+) {
+    $gutterH: dd-space-getSpace($gutterH);
+    $gutterV: dd-space-getSpace($gutterV);
 
-    @include dd-grid-gutters((
-        gutterH: $_gutterH,
-        gutterV: $_gutterV,
-        gutterDynamic: $_gutterDynamic,
-        gutterSpaces: $_gutterSpaces,
-        gutterDisables: $_gutterDisables,
-    ));
+    @include dd-grid-gutters(
+        $gutterH: $gutterH,
+        $gutterV: $gutterV,
+        $gutterDynamic: $gutterDynamic,
+        $gutterSpaces: $gutterSpaces,
+        $gutterDisables: $gutterDisables
+    );
 
     display: flex;
     flex-direction: row;
@@ -301,173 +324,64 @@
 
     > * {
         @include dd-grid-cell();
-        width: 100%;
+        width: auto;
     }
 
-    @if ($_gutterV != 0 and $_gutterV != null) {
+    @if ($gutterV != 0 and $gutterV != null) {
         &:empty::after {
             content: '';
-            height: $_gutterV*2;
+            height: $gutterV*2;
         }
     }
 }
 
-@mixin dd-grid-container($_params: ()) {
-    $_p: dd-util-assertSchema($_params, (
-        gutterH: null,
-        gutterV: null,
-        gutterDynamic: false,
-        gutterSpaces: false,
-        gutterDisables: false,
-    ));
-    $_gutterDynamic: map_get($_p, gutterDynamic);
-    $_gutterSpaces: map_get($_p, gutterSpaces);
-    $_gutterDisables: map_get($_p, gutterDisables);
-    $_gutterH: dd-space-getSpace(map_get($_p, gutterH));
-    $_gutterV: dd-space-getSpace(map_get($_p, gutterV));
+/// Создает контейнер
+/// @param {Number | null} $gutterH - горизонтальные внутренние отступы
+/// @param {Number | null} $gutterV - вертикальные внутренние отступы
+/// @param {Boolean} $gutterDynamic [false] - генерировать ли динамические отступы (на основании параметра spaceScale текущего интервала)
+/// @param {Boolean} $gutterSpaces [false] - генерировать классы-модификаторы для изменения отступов на основании переменной $dd-space-factor
+/// @param {Boolean} $gutterDisables [false] - генерировать классы-модификаторы для отключения отступов
+@mixin dd-grid-container(
+    $gutterH: null,
+    $gutterV: null,
+    $gutterDynamic: false,
+    $gutterSpaces: false,
+    $gutterDisables: false
+) {
+    $gutterH: dd-space-getSpace($gutterH);
+    $gutterV: dd-space-getSpace($gutterV);
 
-    @include dd-grid-gutters((
-        gutterH: $_gutterH,
-        gutterV: $_gutterV,
-        gutterDynamic: $_gutterDynamic,
-        gutterSpaces: $_gutterSpaces,
-        gutterDisables: $_gutterDisables,
-        container: true,
-    ));
+    @include dd-grid-gutters(
+        $gutterH: $gutterH,
+        $gutterV: $gutterV,
+        $gutterDynamic: $gutterDynamic,
+        $gutterSpaces: $gutterSpaces,
+        $gutterDisables: $gutterDisables,
+        $container: true
+    );
 
     box-sizing: border-box;
 }
 
-@mixin _dd-grid-listMedia($_params) {
-    margin-bottom: - map_get($_params, 'gutterVertical');
-
-    margin-left: - map_get($_params, 'gutterHorizontal')/2;
-    margin-right: - map_get($_params, 'gutterHorizontal')/2;
-    margin-top: - map_get($_params, 'gutterVertical');
-
-    > * {
-        margin-bottom: map_get($_params, 'gutterVertical');
-        margin-top: map_get($_params, 'gutterVertical');
-        padding-left: map_get($_params, 'gutterHorizontal')/2;
-        padding-right: map_get($_params, 'gutterHorizontal')/2;
-        @if (map_get($_params, 'cellWidth') != null) {
-            flex-grow: 0;
-            flex-shrink: 0;
-            width: map_get($_params, 'cellWidth');
-        }
-    }
-    @if (map_get($_params, 'columns') != null) {
-        $_params: map_merge($_params, (
-            cellWidth: percentage(1/map_get($_params, 'columns'))
-        ));
-    }
-}
-
-// @include dd-grid-list(
-// 	(
-// 		columns: 5,
-// 		gutterVertical: 16px,
-// 		gutterHorizontal: small,
-// 	),
-// 	(
-// 		media: ((sm, md), xl),
-// 		columns: 3,
-// 	),
-// 	(
-// 		media: ((360px, 500px)),
-// 		gutterVertical: tiny,
-// 	),
-// )
-@mixin dd-grid-list($_args...) {
-    $_defaults: (
-        columns: null,
-        gutterVertical: $dd-grid-gutterVertical,
-        gutterHorizontal: $dd-grid-gutterHorizontal,
-    );
-    @for $_i from 1 through length($_args) {
-        $_arg: nth($_args, $_i);
-        $_media: map_get($_arg, 'media');
-        $_params: ();
-
-        $_params: map_merge($_params, (
-            gutterVertical: dd-space-getSpace(map_get($_params, 'gutterVertical')),
-            gutterHorizontal: dd-space-getSpace(map_get($_params, 'gutterHorizontal')),
-        ));
-        @if ($_media == null) {
-            $_defaults: map_merge($_defaults, $_arg);
-            $_params: $_defaults;
-        } @else {
-            $_params: map_merge($_defaults, $_arg);
-        }
-
-        @if ($_media == null) {
-
-            @include _dd-grid-listMedia($_params);
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            min-width: 0;
-
-            > * {
-                @include dd-grid-cell();
-            }
-
-            &:empty::after {
-                content: '';
-                height: map_get($_params, 'gutterVertical')*2;
-            }
-
-            &:blank::after {
-                content: '';
-                height: map_get($_params, 'gutterVertical')*2;
-            }
-
-        } @else {
-
-            @media #{dd-util-implode(dd-responsive-parseMedia($_media), ', ')} {
-                @include _dd-grid-listMedia($_params);
-            }
-        }
-    }
-}
-
 @mixin dd-grid-generate() {
     .#{dd-system-name(grid, container)} {
-        @include dd-grid-container((
-            gutterH: $dd-grid-gutterHorizontal,
-            gutterV: $dd-grid-gutterVertical,
-            gutterDynamic: $dd-grid-gutterDynamic,
-            gutterSpaces: $dd-grid-gutterSpaces,
-            gutterDisables: $dd-grid-gutterDisables,
-        ));
-
-        &.#{dd-system-name(grid, main, _)} {
-            margin-left: auto;
-            margin-right: auto;
-        }
+        @include dd-grid-container(
+            $gutterH: $dd-grid-gutterHorizontal,
+            $gutterV: $dd-grid-gutterVertical,
+            $gutterDynamic: $dd-grid-gutterDynamic,
+            $gutterSpaces: $dd-grid-gutterSpaces,
+            $gutterDisables: $dd-grid-gutterDisables
+        );
     }
 
     .#{dd-system-name(grid, area)} {
-        @include dd-grid-area((
-            gutterH: $dd-grid-gutterHorizontal,
-            gutterV: $dd-grid-gutterVertical,
-            gutterDynamic: $dd-grid-gutterDynamic,
-            gutterSpaces: $dd-grid-gutterSpaces,
-            gutterDisables: $dd-grid-gutterDisables,
-        ));
-
-        > * {
-            @include dd-modifier(size-auto, (prefix: $dd-system-classPrefix)) {
-                flex-grow: 1;
-                flex-shrink: 1;
-                width: auto;
-            }
-            @include dd-modifier(size-content, (prefix: $dd-system-classPrefix)) {
-                flex-grow: 0;
-                flex-shrink: 0;
-                width: auto;
-            }
-        }
+        @include dd-grid-area(
+            $gutterH: $dd-grid-gutterHorizontal,
+            $gutterV: $dd-grid-gutterVertical,
+            $gutterDynamic: $dd-grid-gutterDynamic,
+            $gutterSpaces: $dd-grid-gutterSpaces,
+            $gutterDisables: $dd-grid-gutterDisables
+        );
 
         @if (dd-system-componentExist(dd-modifier)) {
             @include dd-modifier(justify-center, (prefix: $dd-system-classPrefix)) {
@@ -486,52 +400,49 @@
             @include dd-modifier(layout-auto, (prefix: $dd-system-classPrefix)) {
                 > * {
                     width: auto;
+                    flex-grow: 1;
+                    flex-shrink: 1;
                 }
             }
-            @include dd-modifier(layout-inline, (prefix: $dd-system-classPrefix)) {
-                > * {
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                    width: auto;
-                }
+        }
+
+        > * {
+            @include dd-modifier(size-auto, (prefix: $dd-system-classPrefix)) {
+                width: auto;
+                flex-grow: 1 !important;
+                flex-shrink: 1 !important;
             }
         }
     }
 
-    .#{dd-system-name(grid, area)} > *[class*='#{dd-system-name(grid, size, _)}'] {
-        flex-grow: 0;
-        flex-shrink: 0;
-    }
-
     // Генерируем стили для брейкпойтнов
-    @each $_key, $_params in $dd-responsive-intervals {
-        $_range: map_get($_params, 'range');
-        $_minWidth: nth($_range, 1);
-        $_containerWidth: map_get($_params, 'containerWidth');
-        $_spaceScale: map_get($_params, 'spaceScale');
+    @each $intervalKey, $intervalParams in $dd-responsive-intervals {
+        $range: map_get($intervalParams, 'range');
+        $minWidth: nth($range, 1);
+        $containerWidth: map_get($intervalParams, 'containerWidth');
 
         // Размеры ячеек сетки
-        @media all and (min-width: $_minWidth) {
+        @media all and (min-width: $minWidth) {
             .#{dd-system-name(grid, container)}.#{dd-system-name(grid, main, _)} {
-                width: $_containerWidth;
+                width: $containerWidth;
             }
             @for $j from 1 through $dd-grid-columns {
                 .#{dd-system-name(grid, area)} {
-                    > .#{dd-system-name(grid, (size, $j, $_key), _)} {
+                    > .#{dd-system-name(grid, (size, $j, $intervalKey), _)} {
                         width: percentage($j / $dd-grid-columns);
                     }
 
-                    > .#{dd-system-name(grid, (offset, $j, $_key), _)} {
+                    > .#{dd-system-name(grid, (offset, $j, $intervalKey), _)} {
                         margin-left: percentage($j / $dd-grid-columns);
                     }
                 }
 
                 .#{dd-system-name(grid, container)} {
-                    &.#{dd-system-name(grid, (size, $j, $_key), _)} {
+                    &.#{dd-system-name(grid, (size, $j, $intervalKey), _)} {
                         width: percentage($j / $dd-grid-columns);
                     }
 
-                    &.#{dd-system-name(grid, (offset, $j, $_key), _)} {
+                    &.#{dd-system-name(grid, (offset, $j, $intervalKey), _)} {
                         margin-left: percentage($j / $dd-grid-columns);
                     }
                 }
