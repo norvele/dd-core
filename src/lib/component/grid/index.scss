@@ -53,13 +53,27 @@ $dd-grid-gutterDisables: $dd-system-undefinedValue !default;
 $dd-grid-noGuttersMod: $dd-system-undefinedValue !default;
 
 @function dd-grid-bootstrap() {
-    $dd-grid-columns: 12 !global;
-    $dd-grid-gutterHorizontal: $dd-space-defaultSpace !global;
-    $dd-grid-gutterVertical: $dd-space-defaultSpace !global;
-    $dd-grid-gutterDynamic: true !global;
-    $dd-grid-gutterSpaces: true !global;
-    $dd-grid-gutterDisables: true !global;
-    $dd-grid-noGuttersMod: none !global;
+    @if ($dd-grid-columns == $dd-system-undefinedValue) {
+        $dd-grid-columns: 12 !global;
+    }
+    @if ($dd-grid-gutterHorizontal == $dd-system-undefinedValue) {
+        $dd-grid-gutterHorizontal: $dd-space-defaultSpace !global;
+    }
+    @if ($dd-grid-gutterVertical == $dd-system-undefinedValue) {
+        $dd-grid-gutterVertical: $dd-space-defaultSpace !global;
+    }
+    @if ($dd-grid-gutterDynamic == $dd-system-undefinedValue) {
+        $dd-grid-gutterDynamic: true !global;
+    }
+    @if ($dd-grid-gutterSpaces == $dd-system-undefinedValue) {
+        $dd-grid-gutterSpaces: true !global;
+    }
+    @if ($dd-grid-gutterDisables == $dd-system-undefinedValue) {
+        $dd-grid-gutterDisables: true !global;
+    }
+    @if ($dd-grid-noGuttersMod == $dd-system-undefinedValue) {
+        $dd-grid-noGuttersMod: none !global;
+    }
 
     @return true;
 }
